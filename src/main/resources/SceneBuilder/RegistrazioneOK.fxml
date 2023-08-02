@@ -14,7 +14,7 @@
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="394.0" prefWidth="334.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Completa tutti i campi per registrarti" />
+            <Label fx:id="messageLabel" text="Completa tutti i campi per registrarti" />
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
                <children>
                   <Label fx:id="labelUsername" alignment="CENTER" prefHeight="17.6" prefWidth="95.0" text="Username" textAlignment="CENTER" />
@@ -39,9 +39,9 @@
                   <PasswordField fx:id="rPasswordField" />
                </children>
             </HBox>
-            <HBox fx:id="buttonSendRegistration" alignment="CENTER" prefHeight="57.2" prefWidth="347.2">
+            <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2">
                <children>
-                  <Button mnemonicParsing="false" text="Invia" />
+                  <Button fx:id="buttonSend" mnemonicParsing="false" text="Invia" />
                </children>
             </HBox>
          </children>
