@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="345.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="345.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller=" uid.project.deliverboo.controller.AccessoController">
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="323.0" prefWidth="347.0" BorderPane.alignment="CENTER">
          <children>
@@ -29,7 +29,7 @@
             </HBox>
             <HBox fx:id="buttonSendRegistration" alignment="CENTER" prefHeight="57.2" prefWidth="347.2">
                <children>
-                  <Button fx:id="accessButton" mnemonicParsing="false" text="Accedi" />
+                  <Button fx:id="accessButton" mnemonicParsing="false" onAction="#GestioneAccesso" text="Accedi" />
                </children>
             </HBox>
          </children>
