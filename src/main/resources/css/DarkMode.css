@@ -1,0 +1,41 @@
+.root {
+    -fx-background-color: #3a0c4a;
+}
+
+/* Stile per il testo */
+.text {
+    -fx-fill: #f0f0f0; /* Colore del testo */
+}
+
+/* Stile per i pulsanti */
+.button {
+    -fx-background-color: #2c0938; /* Colore dello sfondo */
+    -fx-text-fill: #f0f0f0; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+}
+
+/* Stile per le caselle di testo */
+.text-field {
+    -fx-background-color: #53385c; /* Colore dello sfondo */
+    -fx-text-fill: #f0f0f0; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+}
+
+/* Stile per le etichette (Label) */
+.label {
+    -fx-text-fill: #f0f0f0; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+}
+
+
+
+/* Stile per i menu */
+.menu {
+    -fx-background-color: #2c0938; /* Colore dello sfondo */
+    -fx-text-fill: #f0f0f0; /* Colore del testo */
+}
+
+/* Stile per gli elementi di menu */
+.menu-item {
+    -fx-text-fill: #2c0938; /* Colore del testo */
+}

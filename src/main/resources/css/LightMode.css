@@ -1,0 +1,43 @@
+/* light-mode.css */
+
+/* Imposta il colore di sfondo per l'intera applicazione */
+.root {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Stile per il testo */
+.text {
+    -fx-fill: #2c0938; /* Colore del testo */
+}
+
+/* Stile per i pulsanti */
+.button {
+    -fx-background-color: #d4cad9; /* Colore dello sfondo */
+    -fx-text-fill: #2c0938; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+}
+
+/* Stile per le caselle di testo */
+.text-field {
+    -fx-background-color: #fff; /* Colore dello sfondo */
+    -fx-text-fill: #2c0938; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+}
+
+/* Stile per le etichette (Label) */
+.label {
+    -fx-text-fill: #2c0938; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+}
+
+
+
+/* Stile per i menu */
+.menu {
+    -fx-background-color: #d4cad9; /* Colore dello sfondo */
+}
+
+/* Stile per gli elementi di menu */
+.menu-item {
+    -fx-text-fill: #2c0938; /* Colore del testo */
+}
