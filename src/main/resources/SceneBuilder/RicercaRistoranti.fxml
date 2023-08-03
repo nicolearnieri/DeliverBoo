@@ -16,7 +16,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="78.0" prefWidth="179.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0">
+                  <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0">
                      <graphic>
                         <ImageView fitHeight="46.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -29,13 +29,13 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="78.0" prefWidth="381.0" spacing="10.0">
                <children>
-                  <TextField prefHeight="26.0" prefWidth="282.0" promptText="nome del ristorante" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="cerca" />
+                  <TextField fx:id="searchBar" prefHeight="26.0" prefWidth="282.0" promptText="nome del ristorante" />
+                  <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="cerca" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="68.0" prefWidth="142.0">
                <children>
-                  <Button mnemonicParsing="false" text="carrello">
+                  <Button fx:id="cart" mnemonicParsing="false" text="carrello">
                      <graphic>
                         <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -54,37 +54,37 @@
          <children>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="15.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="giapponese" />
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="messicano" />
+                  <Button fx:id="japanese" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="giapponese" />
+                  <Button fx:id="mexican" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="messicano" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="gourmet" />
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="pasticceria" />
+                  <Button fx:id="gourmet" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="gourmet" />
+                  <Button fx:id="patisserie" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="pasticceria" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="fast food" />
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="farinacei" />
+                  <Button fx:id="fastFood" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="fast food" />
+                  <Button fx:id="breadType" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="farinacei" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="pokè" />
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="caffetteria" />
+                  <Button fx:id="poke" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="pokè" />
+                  <Button fx:id="cafes" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="caffetteria" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="bar" />
-                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="panini" />
+                  <Button fx:id="bars" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="bar" />
+                  <Button fx:id="sandwich" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="panini" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="Utente">
+                  <Button fx:id="userLogged" mnemonicParsing="false" text="Utente">
                      <graphic>
                         <ImageView fitHeight="29.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -99,6 +99,6 @@
       </VBox>
    </left>
    <center>
-      <ListView prefHeight="330.0" prefWidth="414.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="centerListView" prefHeight="330.0" prefWidth="414.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>
