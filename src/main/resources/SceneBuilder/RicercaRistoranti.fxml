@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="699.0" BorderPane.alignment="TOP_RIGHT">
+         <children>
+            <HBox alignment="CENTER" prefHeight="78.0" prefWidth="179.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0">
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icone/logo2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="78.0" prefWidth="381.0" spacing="10.0">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="282.0" promptText="nome del ristorante" />
+                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="cerca" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="68.0" prefWidth="142.0">
+               <children>
+                  <Button mnemonicParsing="false" text="carrello">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icone/shopping-cart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="420.0" prefWidth="240.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="15.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="giapponese" />
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="messicano" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="gourmet" />
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="pasticceria" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="fast food" />
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="farinacei" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="pokè" />
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="caffetteria" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="bar" />
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="panini" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Utente">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icone/user.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <ListView prefHeight="330.0" prefWidth="414.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
