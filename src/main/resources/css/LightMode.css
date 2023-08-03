@@ -10,7 +10,7 @@
     -fx-fill: #2c0938; /* Colore del testo */
 }
 
-/* Stile per i pulsanti */
+/* Stile per i pulsanti non altrimenti definiti */
 .button {
     -fx-background-color: #d4cad9; /* Colore dello sfondo */
     -fx-text-fill: #2c0938; /* Colore del testo */
@@ -41,3 +41,4 @@
 .menu-item {
     -fx-text-fill: #2c0938; /* Colore del testo */
 }
+
