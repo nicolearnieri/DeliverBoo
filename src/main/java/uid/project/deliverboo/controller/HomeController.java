@@ -1,19 +1,12 @@
 package uid.project.deliverboo.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class HomeController {
-
-    @FXML
-    private MenuButton Menu;
 
     @FXML
     private Button accessButton;
@@ -22,22 +15,31 @@ public class HomeController {
     private TextField addressField;
 
     @FXML
-    private MenuItem darkButton;
+    private RadioMenuItem darkButton;
 
     @FXML
-    private MenuItem englishButton;
+    private RadioMenuItem englishButton;
 
     @FXML
     private Button homeButton;
 
     @FXML
-    private MenuItem italianButton;
+    private RadioMenuItem italianButton;
 
     @FXML
-    private MenuItem lightButton;
+    private RadioMenuItem lightButton;
+
+    @FXML
+    private MenuButton menu;
 
     @FXML
     private MenuItem menuFAQ;
+
+    @FXML
+    private Menu menuLanguage;
+
+    @FXML
+    private Menu menuTheme;
 
     @FXML
     private Button searchButton;
@@ -50,11 +52,13 @@ public class HomeController {
         updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
     }
 
+    @FXML
     private void handleItalian(){
         localizationManager.setLanguage(Locale.ITALIAN);
         updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
     }
 
+    @FXML
     private  void handleEnglish(){
         localizationManager.setLanguage(Locale.ENGLISH);
         updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
@@ -63,7 +67,17 @@ public class HomeController {
 
 
     private void updateTexts(String resourceName){
-
+        accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));
+        addressField.setPromptText("textfield.addressField");
+        darkButton.setText("radiomenuitem.dark");
+        lightButton.setText("radiomenuitem.light");
+        englishButton.setText("radiomenuitem.english");
+        italianButton.setText("radiomenuitem.italian");
+        menuFAQ.setText("menuitem.faq");
+        menuLanguage.setText("menu.menuLanguage");
+        menu.setText("menubutton.menu");
+        menuTheme.setText("menu.menuTheme");
+        searchButton.setText("button.searchButton");
 
     }
 

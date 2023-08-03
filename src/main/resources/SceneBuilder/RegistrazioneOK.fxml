@@ -35,7 +35,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
                <children>
-                  <Label fx:id="labelRPassword" alignment="CENTER" prefHeight="17.6" prefWidth="95.0" text="Repeat password" textAlignment="CENTER" />
+                  <Label fx:id="labelRPassword" alignment="CENTER" prefHeight="17.6" prefWidth="95.0" text="Ripeti password" textAlignment="CENTER" />
                   <PasswordField fx:id="rPasswordField" />
                </children>
             </HBox>

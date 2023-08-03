@@ -8,4 +8,5 @@ module uid.project.deliverboo {
 
     opens uid.project.deliverboo to javafx.fxml;
     exports uid.project.deliverboo;
+    opens uid.project.deliverboo.controller to javafx.fxml;
 }
