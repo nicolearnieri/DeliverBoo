@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SceneBuilder/PrimaInterfaccia.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 600);
         stage.setTitle("Hello!");
-        String css = getClass().getResource("/css/DarkMode.css").toExternalForm();
+        String css = getClass().getResource("/css/LightMode.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();

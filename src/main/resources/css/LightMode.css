@@ -28,12 +28,30 @@
     }
 }
 
+#homeButton {
+    -fx-background-color: transparent ;
+    -fx-transition-duration: 0.3s;
+    -fx-border-color: transparent;
+}
+#homeButton: hover {
+    -fx-background-color: #7847ad;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    }
+
 /* Stile per le caselle di testo */
 .text-field {
-    -fx-background-color: #fff; /* Colore dello sfondo */
+    -fx-background-color: #cfaef5; /* Colore dello sfondo */
     -fx-text-fill: #2c0938; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
+    -fx-background-radius: 15px; /* smussatura angoli */
 }
+.text-field: hover
+{
+    -fx-border-color: #7847ad;
+    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
 
 /* Stile per le etichette (Label) */
 .label {
@@ -41,17 +59,35 @@
     -fx-font-size: 14px; /* Dimensione del testo */
 }
 
-
+.menu-button {
+    -fx-background-color:  #9a66d4; /* Colore dello sfondo */
+    -fx-text-fill: #2c0938; /* Colore del testo */
+    -fx-transition-duration: 0.3s; /* transizione hover */
+    -fx-background-radius: 15px; /* smussatura angoli */
+}
+.menu-button: hover {
+    -fx-background-color: #7f59ab;
+    -fx-border-color: #2c0938;
+    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
 
 /* Stile per i menu */
 .menu {
-    -fx-background-color: #bf91c9; /* Colore dello sfondo */
+    -fx-background-color: #cfaef5; /* Colore dello sfondo */
+    -fx-transition-duration: 0.3s; /* transizione hover */
 }
 
 /* Stile per gli elementi di menu */
 .menu-item {
-    -fx-text-fill: #2c0938; /* Colore del testo */
+    -fx-background-color: #cfaef5;
+    -fx-text-fill: #cfaef5; /* Colore del testo */
 }
+.menu-item: hover
+{
+    -fx-background-color: #9d74cc;
+}
+
 
 /*
 #d4cad9
