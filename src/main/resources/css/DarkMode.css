@@ -64,7 +64,7 @@
 }
 .menu-item: hover
 {
-    -fx-background-color:#3c274d
+    -fx-background-color:#3c274d;
 }
 
 .menu-button {
@@ -74,7 +74,7 @@
     -fx-background-radius: 15px; /* smussatura angoli */
 }
 .menu-button: hover {
-    -fx-background-color:#3c274d
+    -fx-background-color:#3c274d;
     -fx-border-color: #2c0938;
     -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
