@@ -12,11 +12,19 @@
     -fx-background-color: #2c0938; /* Colore dello sfondo */
     -fx-text-fill: #f0f0f0; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
+    -fx-background-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-transition-duration: 0.3s;
 }
+
+.button: hover {
+    -fx-background-color: #7847ad ;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    }
+
 
 /* Stile per le caselle di testo */
 .text-field {
-    -fx-background-color: #53385c; /* Colore dello sfondo */
+    -fx-background-color: #4c385c; /* Colore dello sfondo */
     -fx-text-fill: #f0f0f0; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
 }

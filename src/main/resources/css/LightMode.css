@@ -12,9 +12,20 @@
 
 /* Stile per i pulsanti non altrimenti definiti */
 .button {
-    -fx-background-color: #d4cad9; /* Colore dello sfondo */
+    -fx-background-color: #af77ed; /* Colore dello sfondo */
     -fx-text-fill: #2c0938; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
+    -fx-border-color: #7847ad;
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-border-width : 1.65px;
+    -fx-transition-duration: 0.3s;
+}
+
+.button: hover {
+    -fx-background-color: #7847ad ;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    }
 }
 
 /* Stile per le caselle di testo */
@@ -34,7 +45,7 @@
 
 /* Stile per i menu */
 .menu {
-    -fx-background-color: #d4cad9; /* Colore dello sfondo */
+    -fx-background-color: #bf91c9; /* Colore dello sfondo */
 }
 
 /* Stile per gli elementi di menu */
@@ -42,3 +53,10 @@
     -fx-text-fill: #2c0938; /* Colore del testo */
 }
 
+/*
+#d4cad9
+ #A18BA6
+
+#bf91c9
+ #a479ad
+ */

@@ -37,15 +37,15 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="76.0" prefWidth="374.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="76.0" prefWidth="374.0" spacing="30.0">
                      <children>
-                        <Label fx:id="UserOrEmailLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="95.0" text="Username/e-mail" />
+                        <Label fx:id="UserOrEmailLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="100.0" text="Username/e-mail" />
                         <TextField fx:id="userEmailField" prefHeight="26.0" prefWidth="180.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="77.0" prefWidth="374.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="77.0" prefWidth="374.0" spacing="30.0">
                      <children>
-                        <Label fx:id="passwordLabel" alignment="CENTER" prefHeight="20.0" prefWidth="95.0" text="Password" />
+                        <Label fx:id="passwordLabel" alignment="CENTER" prefHeight="20.0" prefWidth="100.0" text="Password" />
                         <TextField fx:id="passwordField" prefHeight="26.0" prefWidth="180.0" />
                      </children>
                   </HBox>
