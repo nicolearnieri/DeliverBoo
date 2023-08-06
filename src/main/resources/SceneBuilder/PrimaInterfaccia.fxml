@@ -53,6 +53,8 @@
                         <Menu fx:id="menuTheme" mnemonicParsing="false" text="Tema">
                            <items>
                               <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" text="Unspecified Action" />
                               <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" text="Unspecified Action" />
                            </items>
                         </Menu>
@@ -115,7 +117,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField prefHeight="150.0" prefWidth="421.0">
+                        <TextField fx:id="addressField" prefHeight="150.0" prefWidth="421.0">
                            <HBox.margin>
                               <Insets left="50.0" top="100.0" />
                            </HBox.margin>

@@ -13,8 +13,8 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SceneBuilder/PrimaInterfaccia.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 600);
-        stage.setTitle("Hello!");
-        String css = getClass().getResource("/css/Light2.css").toExternalForm();
+        stage.setTitle("DeliverBoo");
+        String css = getClass().getResource("/css/LightMode.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();

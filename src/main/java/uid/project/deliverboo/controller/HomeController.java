@@ -2,12 +2,12 @@ package uid.project.deliverboo.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+//import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class HomeController {
-
     @FXML
     private Button accessButton;
 
@@ -18,6 +18,9 @@ public class HomeController {
     private RadioMenuItem darkButton;
 
     @FXML
+    private RadioMenuItem deliverBooThemeButton;
+
+    @FXML
     private RadioMenuItem englishButton;
 
     @FXML
@@ -25,6 +28,9 @@ public class HomeController {
 
     @FXML
     private RadioMenuItem italianButton;
+
+    @FXML
+    private RadioMenuItem light2Button;
 
     @FXML
     private RadioMenuItem lightButton;
@@ -80,5 +86,9 @@ public class HomeController {
         searchButton.setText("button.searchButton");
 
     }
+    //public void setLightMode(){SceneHandler.getInstance().changeTheme("LightMode.css");}
+    //public void setDarkTheme(){SceneHandler.getInstance().changeTheme("DarkTheme.css");}
+    //public void setLight2(){SceneHandler.getInstance().changeTheme("Light2.css");}
+    //public void setDeliverBooTheme(){SceneHandler.getInstance().changeTheme("DeliverBooTheme.css");}
 
 }
