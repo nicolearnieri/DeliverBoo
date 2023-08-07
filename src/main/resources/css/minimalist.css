@@ -87,7 +87,7 @@
 
 /* Stile per gli elementi di menu */
 .menu-item {
-    -fx-background-color: #e1e5eb
+    -fx-background-color: #e1e5eb;
     -fx-text-fill: #050505; /* Colore del testo */
 }
 .menu-item: hover
