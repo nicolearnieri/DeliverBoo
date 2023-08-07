@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import uid.project.deliverboo.controller.HomeController;
+import uid.project.deliverboo.controller.LocalizationManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +22,21 @@ public class SceneHandler {
     private Stage stage;
     private String theme = "minimalist"; //da rivedere
     private static SceneHandler instance = null;
+
     private SceneHandler() {}
 
     public void init(Stage primaryStage) throws Exception { //metodo che può generare eccezione
         if(stage != null)
             return;
         stage = primaryStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
         scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
         //loadFonts();
+
+        LocalizationManager localizationManager= new LocalizationManager();
+        HomeController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
         setCSSForScene(scene);
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
