@@ -2,6 +2,7 @@ package uid.project.deliverboo.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import uid.project.deliverboo.view.SceneHandler;
 //import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
@@ -86,9 +87,10 @@ public class HomeController {
         searchButton.setText("button.searchButton");
 
     }
-    //public void setLightMode(){SceneHandler.getInstance().changeTheme("LightMode.css");}
-    //public void setDarkTheme(){SceneHandler.getInstance().changeTheme("DarkTheme.css");}
-    //public void setLight2(){SceneHandler.getInstance().changeTheme("Light2.css");}
-    //public void setDeliverBooTheme(){SceneHandler.getInstance().changeTheme("DeliverBooTheme.css");}
+    public void setLightMode(){
+        SceneHandler.getInstance().changeTheme("LightMode.css");}
+    public void setDarkTheme(){SceneHandler.getInstance().changeTheme("DarkTheme.css");}
+    public void setLight2(){SceneHandler.getInstance().changeTheme("Light2.css");}
+    public void setDeliverBooTheme(){SceneHandler.getInstance().changeTheme("DeliverBooTheme.css");}
 
 }

@@ -1,0 +1,99 @@
+/* light-mode.css */
+
+/* Imposta il colore di sfondo per l'intera applicazione */
+.root {
+    -fx-background-color: #e1e5eb;
+}
+
+/* Stile per i pulsanti non altrimenti definiti */
+.button {
+    -fx-background-color: transparent; /* Colore dello sfondo */
+    -fx-text-fill: #050505; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+    -fx-border-color: #050505;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px; /* Raggio degli angoli dei bordi */
+    -fx-border-width : 2px;
+    -fx-transition-duration: 0.3s;
+}
+
+.button: hover {
+    -fx-background-color: #050505 ;
+    -fx-text-fill: #e1e5eb;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    }
+}
+
+#homeButton {
+    -fx-background-color: transparent ;
+    -fx-transition-duration: 0.3s;
+    -fx-border-color: transparent;
+}
+#homeButton: hover {
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    }
+
+/* Stile per le caselle di testo */
+.text-field {
+    -fx-background-color: #b8c0cc; /* Colore dello sfondo */
+    -fx-border-color: #768499;
+    -fx-text-fill : #1a222e;
+    -fx-font-size: 14px; /* Dimensione del testo */
+    -fx-background-radius: 15px; /* smussatura angoli */
+    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+}
+.text-field: hover
+{
+    -fx-border-color: #7847ad;
+    -fx-background-color: #768499;
+    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+
+/* Stile per le etichette (Label) */
+.label {
+    -fx-text-fill: #050505; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+}
+
+.menu-button {
+    -fx-background-color:  transparent; /* Colore dello sfondo */
+    -fx-text-fill: #e1e5eb;
+    -fx-border-color: #050505;
+    -fx-text-fill: #050505; /* Colore del testo */
+    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-transition-duration: 0.3s; /* transizione hover */
+    -fx-background-radius: 15px; /* smussatura angoli */
+}
+.menu-button: hover {
+    -fx-background-color: #050505;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+/* Stile per i menu */
+.menu {
+    -fx-background-color: #cfaef5; /* Colore dello sfondo */
+    -fx-transition-duration: 0.3s; /* transizione hover */
+}
+
+/* Stile per gli elementi di menu */
+.menu-item {
+    -fx-background-color: #cfaef5;
+    -fx-text-fill: #cfaef5; /* Colore del testo */
+}
+.menu-item: hover
+{
+    -fx-background-color: #9d74cc;
+}
+
+
+/*
+#d4cad9
+ #A18BA6
+
+#bf91c9
+ #a479ad
+ */

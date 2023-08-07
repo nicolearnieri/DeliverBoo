@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class SceneHandler {
-    private final static String RESOURCE_PATH = "src/main/resources/";
-    private final static String CSS_PATH = RESOURCE_PATH + "css/";
+    private final static String RESOURCE_PATH = "/src/main/resources/";
+    private final static String CSS_PATH = "/css/";
 
     //private final static String FONTS_PATH = RESOURCE_PATH + "fonts/";
     private final static String FXML_PATH = "/SceneBuilder/";
     private Scene scene;
     private Stage stage;
-    private String theme = "LightMode"; //da rivedere
+    private String theme = "minimalist"; //da rivedere
     private static SceneHandler instance = null;
     private SceneHandler() {}
 
@@ -26,7 +26,7 @@ public class SceneHandler {
         if(stage != null)
             return;
         stage = primaryStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
         scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
         //loadFonts();
         setCSSForScene(scene);
@@ -39,21 +39,21 @@ public class SceneHandler {
             instance = new SceneHandler();
         return instance;
     }
-    public void setPrimaInterfaccia() throws Exception {
+    public void setHomeInterface() throws Exception {
         setCurrentRoot("HomeInterface.fxml");
         stage.hide();
         stage.setWidth(700);
         stage.setHeight(600);
         stage.show();
     }
-    public void setRicercaRistoranti() throws Exception {
+    public void setSearchRestaurants() throws Exception {
         setCurrentRoot("SearchRestaurants.fxml");
         stage.hide();
         stage.setWidth(700);
         stage.setHeight(600);
         stage.show();
     }
-    public void setAccessoBuono() throws Exception {
+    public void setLogIn() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);// nuova finestra con cui interagire obbligatoriamente
@@ -62,7 +62,7 @@ public class SceneHandler {
         stage.setScene(scene);
         //stage.showAndWait();// a fine operazione non si chiude, lo deve fare l'utente
     }
-    public void setRegistrazione() throws Exception {
+    public void setSignUp() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SignUp.fxml"));
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -73,7 +73,7 @@ public class SceneHandler {
     }
     private String loadCSS() { //ERRORE SUL PATH
         try{
-            String style=CSS_PATH + theme + ".css";
+            String style= CSS_PATH + theme + ".css";
             return Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm();}
         catch(NullPointerException e){
             e.printStackTrace();
