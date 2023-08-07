@@ -7,7 +7,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-public class RegistrazioneController {
+public class SignUpController {
 
     @FXML
     private Button buttonSend;

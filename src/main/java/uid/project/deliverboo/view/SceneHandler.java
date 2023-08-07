@@ -26,7 +26,7 @@ public class SceneHandler {
         if(stage != null)
             return;
         stage = primaryStage;
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "PrimaInterfaccia.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
         scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
         //loadFonts();
         setCSSForScene(scene);
@@ -40,21 +40,21 @@ public class SceneHandler {
         return instance;
     }
     public void setPrimaInterfaccia() throws Exception {
-        setCurrentRoot("PrimaInterfaccia.fxml");
+        setCurrentRoot("HomeInterface.fxml");
         stage.hide();
         stage.setWidth(700);
         stage.setHeight(600);
         stage.show();
     }
     public void setRicercaRistoranti() throws Exception {
-        setCurrentRoot("RicercaRistoranti.fxml");
+        setCurrentRoot("SearchRestaurants.fxml");
         stage.hide();
         stage.setWidth(700);
         stage.setHeight(600);
         stage.show();
     }
     public void setAccessoBuono() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "AccessoBuono.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);// nuova finestra con cui interagire obbligatoriamente
         Scene scene = new Scene(loader.load(), 300, 500);
@@ -63,7 +63,7 @@ public class SceneHandler {
         //stage.showAndWait();// a fine operazione non si chiude, lo deve fare l'utente
     }
     public void setRegistrazione() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Registrazione.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SignUp.fxml"));
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         Scene scene = new Scene(loader.load(), 300, 500);

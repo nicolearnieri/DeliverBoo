@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-public class AccessoController {
+public class LogInController {
 
     @FXML
     private Button accessButton;
