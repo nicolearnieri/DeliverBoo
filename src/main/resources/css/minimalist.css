@@ -38,15 +38,16 @@
 /* Stile per le caselle di testo */
 .text-field {
     -fx-background-color: #b8c0cc; /* Colore dello sfondo */
-    -fx-border-color: #768499;
+    -fx-border-color: #050505;
     -fx-text-fill : #1a222e;
     -fx-font-size: 14px; /* Dimensione del testo */
     -fx-background-radius: 15px; /* smussatura angoli */
     -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-prompt-text-fill: #616469;
 }
 .text-field: hover
 {
-    -fx-border-color: #7847ad;
+    -fx-border-color: #050505;
     -fx-background-color: #768499;
     -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
@@ -64,36 +65,33 @@
     -fx-text-fill: #e1e5eb;
     -fx-border-color: #050505;
     -fx-text-fill: #050505; /* Colore del testo */
-    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-border-radius: 10px; /* Raggio degli angoli dei bordi */
     -fx-transition-duration: 0.3s; /* transizione hover */
-    -fx-background-radius: 15px; /* smussatura angoli */
+    -fx-background-radius: 10px; /* smussatura angoli */
+    -fx-border-width : 2px;
 }
+
+
 .menu-button: hover {
     -fx-background-color: #050505;
+    -fx-text-fill: #e1e5eb;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
 
 /* Stile per i menu */
 .menu {
-    -fx-background-color: #cfaef5; /* Colore dello sfondo */
+    -fx-background-color: #e1e5eb; /* Colore dello sfondo */
+    -fx-text-fill: #050505;
     -fx-transition-duration: 0.3s; /* transizione hover */
 }
 
 /* Stile per gli elementi di menu */
 .menu-item {
-    -fx-background-color: #cfaef5;
-    -fx-text-fill: #cfaef5; /* Colore del testo */
+    -fx-background-color: #e1e5eb;
+    -fx-text-fill: #050505; /* Colore del testo */
 }
 .menu-item: hover
 {
-    -fx-background-color: #9d74cc;
+    -fx-background-color: #b8c0cc;
 }
 
-
-/*
-#d4cad9
- #A18BA6
-
-#bf91c9
- #a479ad
- */
