@@ -99,7 +99,7 @@ public class HomeController {
     public void setLightMode(){
         SceneHandler.getInstance().changeTheme("LightMode.css");}
     public void setDarkTheme(){SceneHandler.getInstance().changeTheme("DarkTheme.css");}
-    public void setLight2(){SceneHandler.getInstance().changeTheme("Light2.css");}
+    public void setLight2(){SceneHandler.getInstance().changeTheme("paradiseTheme.css");}
     public void setDeliverBooTheme(){SceneHandler.getInstance().changeTheme("DeliverBooTheme.css");}
 
 }
