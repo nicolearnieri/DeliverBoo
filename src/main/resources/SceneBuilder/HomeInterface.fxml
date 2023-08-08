@@ -56,6 +56,7 @@
                               <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" text="Unspecified Action" />
                               <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" text="Unspecified Action" />
                               <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" text="Unspecified Action" />
                            </items>
                         </Menu>
                         <Menu fx:id="menuLanguage" mnemonicParsing="false" text="Lingua">

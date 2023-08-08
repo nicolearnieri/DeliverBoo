@@ -2,6 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -34,15 +37,34 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="68.0" prefWidth="142.0">
                <children>
-                  <Button fx:id="cart" mnemonicParsing="false" text="carrello">
+                  <Button fx:id="userLogged" mnemonicParsing="false" text="Utente">
                      <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Icone/shopping-cart.png" />
+                              <Image url="@../Icone/user.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
+                  <MenuButton mnemonicParsing="false" text="MenuButton">
+                     <items>
+                        <Menu fx:id="menuTheme" mnemonicParsing="false" text="Tema">
+                          <items>
+                              <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" text="Unspecified Action" />
+                          </items>
+                        </Menu>
+                        <Menu fx:id="menuLanguage" mnemonicParsing="false" text="Lingua">
+                          <items>
+                              <RadioMenuItem fx:id="italianButton" mnemonicParsing="false" onAction="#handleItalian" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="englishButton" mnemonicParsing="false" onAction="#handleEnglish" text="Unspecified Action" />
+                          </items>
+                        </Menu>
+                     </items>
+                  </MenuButton>
                </children>
             </HBox>
          </children>
@@ -78,16 +100,16 @@
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
                   <Button fx:id="bars" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="bar" />
-                  <Button fx:id="sandwich" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="panini" />
+                  <Button fx:id="pub" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="pub" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="userLogged" mnemonicParsing="false" text="Utente">
+                  <Button fx:id="cart" mnemonicParsing="false" text="carrello">
                      <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Icone/user.png" />
+                              <Image url="@../Icone/shopping-cart.png" />
                            </image>
                         </ImageView>
                      </graphic>

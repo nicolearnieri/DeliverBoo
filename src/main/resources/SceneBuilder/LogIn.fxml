@@ -39,7 +39,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="76.0" prefWidth="374.0" spacing="20.0">
                      <children>
-                        <Label fx:id="UserOrEmailLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="150.0" text="Username/e-mail" />
+                        <Label fx:id="UserOrEmailLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="150.0" text="username/e-mail" />
                         <TextField fx:id="userEmailField" prefHeight="26.0" prefWidth="180.0" />
                      </children>
                   </HBox>

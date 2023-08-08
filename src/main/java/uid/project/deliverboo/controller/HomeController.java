@@ -22,6 +22,15 @@ public class HomeController {
     private RadioMenuItem deliverBooThemeButton;
 
     @FXML
+    private RadioMenuItem light2Button;
+
+    @FXML
+    private RadioMenuItem lightButton;
+
+    @FXML
+    private RadioMenuItem minimalistButton;
+
+    @FXML
     private RadioMenuItem englishButton;
 
     @FXML
@@ -30,11 +39,7 @@ public class HomeController {
     @FXML
     private RadioMenuItem italianButton;
 
-    @FXML
-    private RadioMenuItem light2Button;
 
-    @FXML
-    private RadioMenuItem lightButton;
 
     @FXML
     private MenuButton menu;
@@ -75,16 +80,20 @@ public class HomeController {
 
     private void updateTexts(String resourceName){
         accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));
-        addressField.setPromptText("textfield.addressField");
-        darkButton.setText("radiomenuitem.dark");
-        lightButton.setText("radiomenuitem.light");
-        englishButton.setText("radiomenuitem.english");
-        italianButton.setText("radiomenuitem.italian");
-        menuFAQ.setText("menuitem.faq");
-        menuLanguage.setText("menu.menuLanguage");
-        menu.setText("menubutton.menu");
-        menuTheme.setText("menu.menuTheme");
-        searchButton.setText("button.searchButton");
+        addressField.setPromptText(localizationManager.getLocalizedString("textfield.addressField"));
+        darkButton.setText(localizationManager.getLocalizedString("radiomenuitem.dark"));
+        lightButton.setText(localizationManager.getLocalizedString("radiomenuitem.light"));
+        light2Button.setText(localizationManager.getLocalizedString("radionemuitem.light2"));
+        deliverBooThemeButton.setText(localizationManager.getLocalizedString("radiomenuitem.deliverbooTheme"));
+        minimalistButton.setText(localizationManager.getLocalizedString("radiomenuitem.minimalistTheme"));
+        englishButton.setText(localizationManager.getLocalizedString("radiomenuitem.english"));
+        italianButton.setText(localizationManager.getLocalizedString("radiomenuitem.italian"));
+        menuFAQ.setText(localizationManager.getLocalizedString("menuitem.faq"));
+        menuLanguage.setText(localizationManager.getLocalizedString("menu.menuLanguage"));
+        menu.setText(localizationManager.getLocalizedString("menubutton.menu"));
+        menuTheme.setText(localizationManager.getLocalizedString("menu.menuTheme"));
+        searchButton.setText(localizationManager.getLocalizedString("button.searchButton"));
+
 
     }
     public void setLightMode(){
