@@ -14,28 +14,35 @@
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="394.0" prefWidth="334.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="messageLabel" text="Completa tutti i campi per registrarti" />
+            <Label fx:id="messageLabel" alignment="CENTER" prefWidth="240.0" text="Completa tutti i campi per registrarti" textAlignment="CENTER" />
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
                <children>
-                  <Label fx:id="labelUsername" alignment="CENTER" prefHeight="17.6" prefWidth="95.0" text="Username" textAlignment="CENTER" />
+                  <Label fx:id="labelUsername" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="Username" textAlignment="CENTER" />
                   <TextField fx:id="usernameField" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
                <children>
-                  <Label fx:id="labelEmail" alignment="CENTER" prefHeight="17.6" prefWidth="95.0" text="E-mail" textAlignment="CENTER" />
+                  <Label fx:id="labelEmail" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="E-mail" textAlignment="CENTER" />
                   <TextField fx:id="emailField" promptText="example@gmail.com" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
                <children>
-                  <Label fx:id="labelPassword" alignment="CENTER" prefHeight="17.6" prefWidth="95.0" text="Password" textAlignment="CENTER" />
+                  <Label fx:id="labelPassword" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="Password" textAlignment="CENTER" />
                   <PasswordField fx:id="passwordField" />
                </children>
             </HBox>
+
+            <HBox fx:id="passwordSuggestionBox" visible="false">
+               <children>
+                  <Label fx:id="passwordSuggestions" text="Deve contenere almeno 8 caratteri tra cui un numero, una maiuscola e un carattere tra: $ ! € # * @ ? ^ % " />
+               </children>
+            </HBox>
+
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
                <children>
-                  <Label fx:id="labelRPassword" alignment="CENTER" prefHeight="17.6" prefWidth="95.0" text="Ripeti password" textAlignment="CENTER" />
+                  <Label fx:id="labelRPassword" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="Ripeti password" textAlignment="CENTER" />
                   <PasswordField fx:id="rPasswordField" />
                </children>
             </HBox>

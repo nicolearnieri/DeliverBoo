@@ -3,6 +3,7 @@ package uid.project.deliverboo.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -24,7 +25,7 @@ public class LogInController {
     private Label messageLabel;
 
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordFieldSU;
 
     @FXML
     private Label passwordLabel;
@@ -33,6 +34,7 @@ public class LogInController {
     private TextField userEmailField;
 
     private  LocalizationManager localizationManager;
+
 
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;

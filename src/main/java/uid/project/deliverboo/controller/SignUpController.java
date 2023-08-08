@@ -3,6 +3,7 @@ package uid.project.deliverboo.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 import java.util.Locale;
 
@@ -41,7 +42,26 @@ public class SignUpController {
     @FXML
     private TextField usernameField;
 
+    @FXML
+    private Label passwordSuggestions;
 
+    @FXML
+    private HBox passwordSuggestionBox;
+
+    public void initialize() {
+
+        passwordSuggestionBox.setManaged(false);
+
+        passwordField.setOnMouseEntered(e -> {
+            passwordSuggestionBox.setVisible(true);
+            passwordSuggestionBox.setManaged(true);
+        });
+
+        passwordField.setOnMouseExited(e -> {
+            passwordSuggestionBox.setVisible(false);
+            passwordSuggestionBox.setManaged(false);
+        });
+    }
 
     private LocalizationManager localizationManager;
 

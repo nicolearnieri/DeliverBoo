@@ -44,6 +44,7 @@
     -fx-text-fill: #2c0938; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
     -fx-background-radius: 15px; /* smussatura angoli */
+    -fx-prompt-text-fill: #9F75D0;
 }
 .text-field: hover
 {
