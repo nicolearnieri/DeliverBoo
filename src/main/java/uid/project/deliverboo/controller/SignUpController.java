@@ -69,12 +69,12 @@ public class SignUpController {
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
 
-        updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
+        updateTexts();
     }
 
 
 
-    private void updateTexts(String resourceName){
+    private void updateTexts(){
         buttonSend.setText(localizationManager.getLocalizedString("button.buttonSend"));
         labelEmail.setText(localizationManager.getLocalizedString("label.labelEmail"));
         emailField.setPromptText(localizationManager.getLocalizedString("textfield.emailField"));

@@ -5,8 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import uid.project.deliverboo.controller.HomeController;
-import uid.project.deliverboo.controller.LocalizationManager;
+import uid.project.deliverboo.controller.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +19,10 @@ public class SceneHandler {
     private final static String FXML_PATH = "/SceneBuilder/";
     private Scene scene;
     private Stage stage;
-    private String theme = "minimalist"; //da rivedere
+    private String theme = "ParadiseTheme";
     private static SceneHandler instance = null;
+
+    private LocalizationManager localizationManager;
 
     private SceneHandler() {}
 
@@ -33,7 +34,7 @@ public class SceneHandler {
         scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
         //loadFonts();
 
-        LocalizationManager localizationManager= new LocalizationManager();
+        localizationManager= new LocalizationManager();
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
@@ -48,24 +49,46 @@ public class SceneHandler {
         return instance;
     }
     public void setHomeInterface() throws Exception {
-        setCurrentRoot("HomeInterface.fxml");
-        stage.hide();
-        stage.setWidth(700);
-        stage.setHeight(600);
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
+        scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
+        //loadFonts();
+
+
+        HomeController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
+        setCSSForScene(scene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(scene);
         stage.show();
     }
+
     public void setSearchRestaurants() throws Exception {
-        setCurrentRoot("SearchRestaurants.fxml");
-        stage.hide();
-        stage.setWidth(700);
-        stage.setHeight(600);
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
+        scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
+        //loadFonts();
+
+
+        SearchReasturantsController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
+        setCSSForScene(scene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(scene);
         stage.show();
     }
+
     public void setLogIn() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);// nuova finestra con cui interagire obbligatoriamente
         Scene scene = new Scene(loader.load(), 300, 500);
+
+        LogInController controller=loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
         setCSSForScene(scene);
         stage.setScene(scene);
         //stage.showAndWait();// a fine operazione non si chiude, lo deve fare l'utente
@@ -75,11 +98,15 @@ public class SceneHandler {
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         Scene scene = new Scene(loader.load(), 300, 500);
+
+        SignUpController controller=loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
         setCSSForScene(scene);
         stage.setScene(scene);
         //stage.showAndWait();
     }
-    private String loadCSS() { //ERRORE SUL PATH
+    private String loadCSS() {
         try{
             String style= CSS_PATH + theme + ".css";
             return Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm();}

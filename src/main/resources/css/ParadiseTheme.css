@@ -48,6 +48,12 @@
     -fx-font-size: 14px; /* Dimensione del testo */
     -fx-background-radius: 15px; /* smussatura angoli */
 }
+
+.text-field::prompt {
+    -fx-text-fill: rgba(128, 0, 128, 0.8);
+}
+
+
 .text-field: hover
 {
     -fx-border-color: #368786;

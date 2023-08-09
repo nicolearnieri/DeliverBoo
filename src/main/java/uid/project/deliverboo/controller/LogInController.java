@@ -39,11 +39,11 @@ public class LogInController {
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
 
-        updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
+        updateTexts();
     }
 
 
-    private void updateTexts(String resourceName){
+    private void updateTexts(){
         accessButton.setText(localizationManager.getLocalizedString("button.accessButtonAc"));
         userOrEmailLabel.setText((localizationManager.getLocalizedString(("label.labelUserOrEmail"))));
         messageLabel.setText((localizationManager.getLocalizedString("label.messageLabelAc")));

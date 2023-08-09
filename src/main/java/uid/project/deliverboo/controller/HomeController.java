@@ -61,24 +61,24 @@ public class HomeController {
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
 
-        updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
+        updateTexts();
     }
 
     @FXML
     private void handleItalian(){
         localizationManager.setLanguage(Locale.ITALIAN);
-        updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
+        updateTexts();
     }
 
     @FXML
     private  void handleEnglish(){
         localizationManager.setLanguage(Locale.ENGLISH);
-        updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
+        updateTexts();
     }
 
 
 
-    private void updateTexts(String resourceName){
+    private void updateTexts(){
         accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));
         addressField.setPromptText(localizationManager.getLocalizedString("textfield.addressField"));
         darkButton.setText(localizationManager.getLocalizedString("radiomenuitem.dark"));

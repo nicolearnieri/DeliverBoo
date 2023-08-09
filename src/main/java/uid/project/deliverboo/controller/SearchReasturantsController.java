@@ -88,24 +88,24 @@ public class SearchReasturantsController {
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
 
-        updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
+        updateTexts();
     }
 
     @FXML
     private void handleItalian(){
         localizationManager.setLanguage(Locale.ITALIAN);
-        updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
+        updateTexts();
     }
 
     @FXML
     private  void handleEnglish(){
         localizationManager.setLanguage(Locale.ENGLISH);
-        updateTexts("strings_"+localizationManager.getCurrentLocale().getLanguage());
+        updateTexts();
     }
 
 
 
-    private void updateTexts(String resourceName){
+    private void updateTexts(){
         bars.setText(localizationManager.getLocalizedString("button.bar"));
         breadType.setText(localizationManager.getLocalizedString("button.breadType"));
         cafes.setText(localizationManager.getLocalizedString("button.cafe"));
