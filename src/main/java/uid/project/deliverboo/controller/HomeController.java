@@ -1,5 +1,6 @@
 package uid.project.deliverboo.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import uid.project.deliverboo.view.SceneHandler;
@@ -96,12 +97,21 @@ public class HomeController {
 
 
     }
-    public void setLightMode(){
-        SceneHandler.getInstance().changeTheme("LightTheme.css");}
-    public void setDarkTheme(){SceneHandler.getInstance().changeTheme("DarkTheme.css");}
-    public void setParadiseTheme(){SceneHandler.getInstance().changeTheme("ParadiseTheme.css");}
-    public void setDeliverBooTheme(){SceneHandler.getInstance().changeTheme("DeliverBooTheme.css");}
 
-    public void setObsidianTheme(){SceneHandler.getInstance().changeTheme("ObsidianTheme.css");}
 
+
+    public void setLightMode() {SceneHandler.getInstance().changeTheme("LightTheme");
+    }
+
+    public void setParadiseTheme() {SceneHandler.getInstance().changeTheme("ParadiseTheme");
+    }
+
+    public void setDeliverBooTheme() {SceneHandler.getInstance().changeTheme("DeliverBooTheme");
+    }
+
+    public void setDarkTheme() {SceneHandler.getInstance().changeTheme("DarkTheme");
+    }
+
+    public void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
+    }
 }
