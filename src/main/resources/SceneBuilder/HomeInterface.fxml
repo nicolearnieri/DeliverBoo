@@ -52,11 +52,11 @@
                         <MenuItem fx:id="menuFAQ" mnemonicParsing="false" text="FAQ" />
                         <Menu fx:id="menuTheme" mnemonicParsing="false" text="Tema">
                            <items>
-                              <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#setLightMode" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" onAction="#setParadiseTheme" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" onAction="#setDeliverBooTheme" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" onAction="#setDarkTheme" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" onAction="#setObsidianTheme" text="Unspecified Action" />
                            </items>
                         </Menu>
                         <Menu fx:id="menuLanguage" mnemonicParsing="false" text="Lingua">

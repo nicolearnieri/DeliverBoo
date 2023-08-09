@@ -97,9 +97,11 @@ public class HomeController {
 
     }
     public void setLightMode(){
-        SceneHandler.getInstance().changeTheme("LightMode.css");}
+        SceneHandler.getInstance().changeTheme("LightTheme.css");}
     public void setDarkTheme(){SceneHandler.getInstance().changeTheme("DarkTheme.css");}
-    public void setLight2(){SceneHandler.getInstance().changeTheme("paradiseTheme.css");}
+    public void setParadiseTheme(){SceneHandler.getInstance().changeTheme("ParadiseTheme.css");}
     public void setDeliverBooTheme(){SceneHandler.getInstance().changeTheme("DeliverBooTheme.css");}
+
+    public void setObsidianTheme(){SceneHandler.getInstance().changeTheme("ObsidianTheme.css");}
 
 }

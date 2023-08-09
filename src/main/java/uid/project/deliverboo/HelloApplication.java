@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SceneBuilder/HomeInterface.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 700, 600);
         stage.setTitle("DeliverBoo");
-        String css = getClass().getResource("/css/LightMode.css").toExternalForm();
+        String css = getClass().getResource("/css/LightTheme.css").toExternalForm();
         scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
