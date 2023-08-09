@@ -56,6 +56,9 @@ public class SearchReasturantsController {
     private Button userLogged;
 
     @FXML
+    private MenuButton menu;
+
+    @FXML
     private Menu menuLanguage;
 
     @FXML
@@ -118,6 +121,7 @@ public class SearchReasturantsController {
         poke.setText(localizationManager.getLocalizedString("button.poke"));
         pub.setText(localizationManager.getLocalizedString("button.pub"));
         searchBar.setPromptText(localizationManager.getLocalizedString("textfield.searchBar"));
+        menu.setText(localizationManager.getLocalizedString("menubutton.menu"));
         menuLanguage.setText(localizationManager.getLocalizedString("menu.menuLanguage"));
         menuTheme.setText(localizationManager.getLocalizedString("menu.menuTheme"));
         englishButton.setText(localizationManager.getLocalizedString("radiomenuitem.english"));

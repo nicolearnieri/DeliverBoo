@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
 
@@ -48,6 +49,8 @@ public class SignUpController {
     @FXML
     private HBox passwordSuggestionBox;
 
+
+
     public void initialize() {
 
         passwordSuggestionBox.setManaged(false);
@@ -85,4 +88,12 @@ public class SignUpController {
 
 
     }
+
+    public void setLightMode(){
+        SceneHandler.getInstance().changeTheme("LightTheme.css");}
+    public void setDarkTheme(){SceneHandler.getInstance().changeTheme("DarkTheme.css");}
+    public void setParadiseTheme(){SceneHandler.getInstance().changeTheme("ParadiseTheme.css");}
+    public void setDeliverBooTheme(){SceneHandler.getInstance().changeTheme("DeliverBooTheme.css");}
+
+    public void setObsidianTheme(){SceneHandler.getInstance().changeTheme("ObsidianTheme.css");}
 }
