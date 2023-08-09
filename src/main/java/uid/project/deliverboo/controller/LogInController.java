@@ -45,8 +45,8 @@ public class LogInController {
 
     private void updateTexts(){
         accessButton.setText(localizationManager.getLocalizedString("button.accessButtonAc"));
-        userOrEmailLabel.setText((localizationManager.getLocalizedString(("label.labelUserOrEmail"))));
-        messageLabel.setText((localizationManager.getLocalizedString("label.messageLabelAc")));
+        userOrEmailLabel.setText(localizationManager.getLocalizedString("label.labelUserOrEmail"));
+        messageLabel.setText(localizationManager.getLocalizedString("label.messageLabelAc"));
         passwordLabel.setText(localizationManager.getLocalizedString("label.labelPassword"));
     }
 
