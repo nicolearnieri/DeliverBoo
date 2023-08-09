@@ -2,6 +2,7 @@ package uid.project.deliverboo.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
 
@@ -134,6 +135,22 @@ public class SearchReasturantsController {
 
 
 
+    }
+
+    public void setLightMode() {
+        SceneHandler.getInstance().changeTheme("LightTheme");
+    }
+
+    public void setParadiseTheme() {SceneHandler.getInstance().changeTheme("ParadiseTheme");
+    }
+
+    public void setDeliverBooTheme() {SceneHandler.getInstance().changeTheme("DeliverBooTheme");
+    }
+
+    public void setDarkTheme() {SceneHandler.getInstance().changeTheme("DarkTheme");
+    }
+
+    public void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
     }
 
 
