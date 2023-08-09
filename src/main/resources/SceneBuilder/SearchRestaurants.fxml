@@ -8,72 +8,77 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.SearchReasturantsController">
    <top>
-      <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="699.0" BorderPane.alignment="TOP_RIGHT">
+      <HBox alignment="CENTER_LEFT" BorderPane.alignment="TOP_RIGHT">
          <children>
-            <HBox alignment="CENTER" prefHeight="78.0" prefWidth="179.0">
+            <AnchorPane>
                <children>
-                  <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0">
-                     <graphic>
-                        <ImageView fitHeight="46.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Icone/logo2.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <HBox alignment="CENTER" layoutX="521.0" layoutY="4.0" prefHeight="86.0" prefWidth="177.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="userLogged" mnemonicParsing="false" text="Utente">
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Icone/user.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="30.0" prefWidth="67.0" text="Menu">
+                           <items>
+                              <Menu fx:id="menuTheme" mnemonicParsing="false" text="Tema">
+                                 <items>
+                                    <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#setLightMode" text="Unspecified Action" />
+                                    <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" onAction="#setParadiseTheme" text="Unspecified Action" />
+                                    <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" onAction="#setDeliverBooTheme" text="Unspecified Action" />
+                                    <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" onAction="#setDarkTheme" text="Unspecified Action" />
+                                    <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" onAction="#setObsidianTheme" text="Unspecified Action" />
+                                 </items>
+                              </Menu>
+                              <Menu fx:id="menuLanguage" mnemonicParsing="false" text="Lingua">
+                                 <items>
+                                    <RadioMenuItem fx:id="italianButton" mnemonicParsing="false" onAction="#handleItalian" text="Unspecified Action" />
+                                    <RadioMenuItem fx:id="englishButton" mnemonicParsing="false" onAction="#handleEnglish" text="Unspecified Action" />
+                                 </items>
+                              </Menu>
+                           </items>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="86.0" prefWidth="152.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="547.2" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="homeButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Icone/logo2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="146.0" layoutY="-1.0" prefHeight="91.0" prefWidth="382.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="146.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TextField fx:id="searchBar" prefHeight="26.0" prefWidth="282.0" promptText="nome del ristorante" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="cerca" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="78.0" prefWidth="381.0" spacing="10.0">
-               <children>
-                  <TextField fx:id="searchBar" prefHeight="26.0" prefWidth="282.0" promptText="nome del ristorante" />
-                  <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="cerca" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="68.0" prefWidth="142.0">
-               <children>
-                  <Button fx:id="userLogged" mnemonicParsing="false" text="Utente">
-                     <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Icone/user.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" text="MenuButton">
-                     <items>
-                        <Menu fx:id="menuTheme" mnemonicParsing="false" text="Tema">
-                          <items>
-                              <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#setLightMode" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" onAction="#setParadiseTheme" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" onAction="#setDeliverBooTheme" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" onAction="#setDarkTheme" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" onAction="#setObsidianTheme" text="Unspecified Action" />
-                          </items>
-                        </Menu>
-                        <Menu fx:id="menuLanguage" mnemonicParsing="false" text="Lingua">
-                          <items>
-                              <RadioMenuItem fx:id="italianButton" mnemonicParsing="false" onAction="#handleItalian" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="englishButton" mnemonicParsing="false" onAction="#handleEnglish" text="Unspecified Action" />
-                          </items>
-                        </Menu>
-                     </items>
-                  </MenuButton>
-               </children>
-            </HBox>
+            </AnchorPane>
          </children>
       </HBox>
    </top>
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="420.0" prefWidth="240.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="15.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
                   <Button fx:id="japanese" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="giapponese" />
                   <Button fx:id="mexican" mnemonicParsing="false" prefHeight="38.0" prefWidth="112.0" text="messicano" />
