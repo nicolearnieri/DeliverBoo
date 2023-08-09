@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -52,17 +53,23 @@
                         <MenuItem fx:id="menuFAQ" mnemonicParsing="false" text="FAQ" />
                         <Menu fx:id="menuTheme" mnemonicParsing="false" text="Tema">
                            <items>
-                              <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#setLightMode" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" onAction="#setParadiseTheme" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" onAction="#setDeliverBooTheme" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" onAction="#setDarkTheme" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" onAction="#setObsidianTheme" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#setLightMode" text="Unspecified Action">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="themeGroup" />
+                                 </toggleGroup></RadioMenuItem>
+                              <RadioMenuItem fx:id="light2Button" mnemonicParsing="false" onAction="#setParadiseTheme" text="Unspecified Action" toggleGroup="$themeGroup" />
+                              <RadioMenuItem fx:id="deliverBooThemeButton" mnemonicParsing="false" onAction="#setDeliverBooTheme" text="Unspecified Action" toggleGroup="$themeGroup" />
+                              <RadioMenuItem fx:id="darkButton" mnemonicParsing="false" onAction="#setDarkTheme" text="Unspecified Action" toggleGroup="$themeGroup" />
+                              <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" onAction="#setObsidianTheme" text="Unspecified Action" toggleGroup="$themeGroup" />
                            </items>
                         </Menu>
                         <Menu fx:id="menuLanguage" mnemonicParsing="false" text="Lingua">
                            <items>
-                              <RadioMenuItem fx:id="italianButton" mnemonicParsing="false" onAction="#handleItalian" text="Unspecified Action" />
-                              <RadioMenuItem fx:id="englishButton" mnemonicParsing="false" onAction="#handleEnglish" text="Unspecified Action" />
+                              <RadioMenuItem fx:id="italianButton" mnemonicParsing="false" onAction="#handleItalian" text="Unspecified Action">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="languageGroup" />
+                                 </toggleGroup></RadioMenuItem>
+                              <RadioMenuItem fx:id="englishButton" mnemonicParsing="false" onAction="#handleEnglish" text="Unspecified Action" toggleGroup="$languageGroup" />
                            </items>
                         </Menu>
                      </items>
