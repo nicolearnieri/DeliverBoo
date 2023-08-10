@@ -6,14 +6,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class QueryUsers {
-    private DataBaseManager databaseManager;
+    private static DataBaseManager databaseManager;
 
-    public QueryUsers(DataBaseManager databaseManager) {
+    private QueryUsers(DataBaseManager databaseManager) {
         this.databaseManager = databaseManager;
     }
 
 
-    public boolean insertUser(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono) {
+    public static boolean insertUser(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono) {
         try
         {
             PreparedStatement insertQuery = DataBaseManager.getConnection().prepareStatement("INSERT INTO utenti (username, nome, cognome, email, password, indirizzo, numero_telefono) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -35,7 +35,7 @@ public class QueryUsers {
 
     }
 
-    public boolean deleteUser(int userId) {
+    public static boolean deleteUser(int userId) {
         String query = "DELETE FROM utenti WHERE id = ?";
 
         try
@@ -52,7 +52,7 @@ public class QueryUsers {
         }
     }
 
-    public boolean searchUserByEmailOrUsername(String searchTerm) {
+    public static boolean searchUserByEmailOrUsername(String searchTerm) {
         String query = "SELECT COUNT(*) FROM utenti WHERE email LIKE ? OR username LIKE ?";
         boolean isEmail = searchTerm.contains("@"); // Controlla se il termine di ricerca sembra un'email
 
@@ -72,6 +72,29 @@ public class QueryUsers {
             throw new RuntimeException(e);
         }
     }
+
+    public static boolean usernameNotExists(String username) {
+        String query = "SELECT COUNT(*) FROM utenti WHERE username = ?";
+
+        try {
+            PreparedStatement preparedStatement = DataBaseManager.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count == 0;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return true;
+    }
+
+
+
 }
 
 
