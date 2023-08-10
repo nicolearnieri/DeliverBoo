@@ -25,7 +25,7 @@
                            <graphic>
                               <ImageView fx:id="homeButton" fitHeight="38.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="C:\java\Lab\Deliverboo\src\main\resources\Icone\logo2.png" />
+                                    <Image url="@../Icone/logo2.png"/>
                                  </image>
                               </ImageView>
                            </graphic>
