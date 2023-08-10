@@ -41,6 +41,7 @@
     -fx-text-fill: #f0f0f0; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
     -fx-background-radius: 15px; /* smussatura angoli */
+    -fx-prompt-text-fill: #6B6173;
 }
 
 .text-field: hover
@@ -88,4 +89,8 @@
     -fx-border-color: #2c0938;
     -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+.context-menu {
+    -fx-background-color: #4c385c;
 }

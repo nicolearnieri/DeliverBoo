@@ -47,12 +47,8 @@
     -fx-text-fill: #131f1e; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
     -fx-background-radius: 15px; /* smussatura angoli */
+    -fx-prompt-text-fill: #336666;
 }
-
-.text-field::prompt {
-    -fx-text-fill: rgba(128, 0, 128, 0.8);
-}
-
 
 .text-field: hover
 {
@@ -73,7 +69,11 @@
     -fx-text-fill: #131f1e; /* Colore del testo */
     -fx-transition-duration: 0.3s; /* transizione hover */
     -fx-background-radius: 15px; /* smussatura angoli */
+    -fx-border-color: #368786;
+    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-border-width : 1.65px;
 }
+
 .menu-button: hover {
     -fx-background-color: #368786;
     -fx-border-color: #2c0938;
@@ -97,11 +97,6 @@
     -fx-background-color: #4daba9;
 }
 
-
-/*
-#d4cad9
- #A18BA6
-
-#bf91c9
- #a479ad
- */
+.context-menu {
+    -fx-background-color: #daf7f7;
+}
