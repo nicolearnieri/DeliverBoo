@@ -31,7 +31,7 @@ public class SceneHandler {
             return;
         stage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
-        scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
         //loadFonts();
 
         localizationManager= new LocalizationManager();
@@ -51,7 +51,7 @@ public class SceneHandler {
     public void setHomeInterface() throws Exception {
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
-        scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
         //loadFonts();
 
 
@@ -67,7 +67,7 @@ public class SceneHandler {
     public void setSearchRestaurants() throws Exception {
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
-        scene = new Scene(loader.load(), 700, 600); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
         //loadFonts();
 
 
