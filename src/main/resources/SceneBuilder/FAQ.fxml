@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.FAQController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -21,7 +20,7 @@
                <children>
                   <HBox prefHeight="58.0" prefWidth="219.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="68.0" prefWidth="162.0">
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="162.0">
                            <graphic>
                               <ImageView fx:id="homeButton" fitHeight="38.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -35,7 +34,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" prefHeight="57.0" prefWidth="106.0">
+                  <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" prefHeight="42.0" prefWidth="106.0">
                     <items>
                         <Menu fx:id="menuTheme" mnemonicParsing="false" text="Theme">
                           <items>

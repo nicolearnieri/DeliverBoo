@@ -23,12 +23,12 @@
                <children>
                   <HBox accessibleRole="BUTTON" prefHeight="43.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="homeButton" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="35.0" prefWidth="106.0" HBox.hgrow="NEVER">
+                        <Button fx:id="homeButton" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" HBox.hgrow="NEVER">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <graphic>
-                              <ImageView fitHeight="39.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="40.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Icone/logo2.png" />
                                  </image>
@@ -40,12 +40,19 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <Button fx:id="accessButton" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="137.0">
+                  <Button fx:id="accessButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="234.0">
                      <HBox.margin>
-                        <Insets left="200.0" />
+                        <Insets />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icone/userBoo.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0">
+                  <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="42.0" prefWidth="84.0">
                      <HBox.margin>
                         <Insets left="10.0" right="20.0" />
                      </HBox.margin>
@@ -107,7 +114,7 @@
                      </HBox.margin></ImageView>
                </children>
                <padding>
-                  <Insets bottom="40.0" />
+                  <Insets bottom="60.0" />
                </padding>
             </HBox>
          </bottom>
@@ -121,14 +128,14 @@
                               <Image url="@../Images/home%20images/cibo%20vario%20cut.jpeg" />
                            </image>
                            <HBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="45.0" />
                            </HBox.margin>
                         </ImageView>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="addressField" prefHeight="150.0" prefWidth="421.0">
+                        <TextField fx:id="addressField" prefHeight="38.0" prefWidth="421.0">
                            <HBox.margin>
                               <Insets left="50.0" top="100.0" />
                            </HBox.margin>
