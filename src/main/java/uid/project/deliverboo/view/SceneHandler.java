@@ -106,6 +106,22 @@ public class SceneHandler {
         stage.setScene(scene);
         //stage.showAndWait();
     }
+
+    public void setFaq() throws Exception {
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "FAQ.fxml"));
+        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
+        //loadFonts();
+
+
+        FAQController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
+        setCSSForScene(scene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(scene);
+        stage.show();
+    }
     private String loadCSS() {
         try{
             String style= CSS_PATH + theme + ".css";
