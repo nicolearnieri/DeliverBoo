@@ -47,7 +47,7 @@
             </HBox>
             <Button fx:id="userLogged" mnemonicParsing="false" prefHeight="46.0" prefWidth="111.0" text="Utente">
                <graphic>
-                  <ImageView fitHeight="29.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Icone/user.png" />
                      </image>
@@ -150,9 +150,9 @@
                <children>
                   <Button fx:id="cart" mnemonicParsing="false" text="carrello">
                      <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Icone/shopping-cart.png" />
+                              <Image url="@../Icone/cart.png" />
                            </image>
                         </ImageView>
                      </graphic>
