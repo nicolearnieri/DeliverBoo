@@ -33,6 +33,9 @@ public class QueryUsers {
             System.err.println("Errore durante l'inserimento dell'utente: " + e.getMessage());
             return false;
         }
+        finally {
+            DataBaseManager.closeConnection();
+        }
 
     }
 
@@ -50,6 +53,9 @@ public class QueryUsers {
         catch (SQLException e)
         {
             throw new RuntimeException(e);
+        }
+        finally {
+            DataBaseManager.closeConnection();
         }
     }
 
@@ -72,6 +78,9 @@ public class QueryUsers {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        finally {
+            DataBaseManager.closeConnection();
+        }
     }
 
     public static boolean usernameNotExists(String username) {
@@ -89,6 +98,9 @@ public class QueryUsers {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+        finally {
+            DataBaseManager.closeConnection();
         }
 
         return true;

@@ -35,7 +35,7 @@ public class DataBaseManager {
         return statement.executeUpdate(query);
     }
 
-    public void closeConnection() {
+    public static void closeConnection() {
         try {
             if (connection != null) {
                 connection.close();
