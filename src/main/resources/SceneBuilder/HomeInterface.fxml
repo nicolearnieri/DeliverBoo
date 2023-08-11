@@ -23,12 +23,12 @@
                <children>
                   <HBox accessibleRole="BUTTON" prefHeight="43.0" prefWidth="135.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="homeButton" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="106.0" HBox.hgrow="NEVER">
+                        <Button fx:id="homeButton" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="60.0" prefWidth="106.0" HBox.hgrow="NEVER">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <graphic>
-                              <ImageView fitHeight="40.0" fitWidth="126.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="63.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Icone/logo2.png" />
                                  </image>
@@ -40,19 +40,19 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <Button fx:id="accessButton" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="234.0">
+                  <Button fx:id="accessButton" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="234.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="49.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Icone/userBoo.png" />
+                              <Image url="@../Icone/user.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="42.0" prefWidth="84.0">
+                  <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="55.0" prefWidth="127.0">
                      <HBox.margin>
                         <Insets left="10.0" right="20.0" />
                      </HBox.margin>
@@ -80,6 +80,13 @@
                            </items>
                         </Menu>
                      </items>
+                     <graphic>
+                        <ImageView fitHeight="47.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icone/menu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </MenuButton>
                </children>
                <BorderPane.margin>
