@@ -1,11 +1,13 @@
 package uid.project.deliverboo.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import uid.project.deliverboo.model.QueryUsers;
 import uid.project.deliverboo.view.SceneHandler;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.Locale;
 
@@ -94,7 +96,7 @@ public class SignUpController {
     }
 
     @FXML
-    private void registration()
+    private void registration(ActionEvent event)
     {
         String email= GetFromTextField(emailField);
         String username = GetFromTextField(usernameField);
@@ -122,7 +124,7 @@ public class SignUpController {
         if (eqPasswords && usernameOk)
         {
             //CODIFICA PASSWORD SALE
-            String passwordEncoded="";
+            String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
             QueryUsers.insertUser(username, "","", email, passwordEncoded, "", "" );
                     //messaggio avviso che la registrazione è andata a buon fine e il profilo può essere completato da impostazioni
         }

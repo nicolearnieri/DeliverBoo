@@ -4,6 +4,7 @@ module uid.project.deliverboo {
     requires java.sql;
     requires org.simplejavamail.core;
     requires org.simplejavamail;
+    requires jbcrypt;
 
 
     opens uid.project.deliverboo to javafx.fxml;

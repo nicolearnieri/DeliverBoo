@@ -3,7 +3,7 @@ import java.sql.*;
 
 public class DataBaseManager {
 
-    private static final String DB_URL = "jdbc:sqlite:/src/main/resources/database/DataBase.db"; //percorso del DB
+    private static final String DB_URL = "/database/DataBase.db"; //percorso del DB
     private static Connection connection;
     //per stabilire una connessione al db:
 
