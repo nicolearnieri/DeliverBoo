@@ -49,6 +49,11 @@ public class FAQController {
 
     private  LocalizationManager localizationManager;
 
+
+    public void openHome(ActionEvent event) throws Exception{
+        SceneHandler.getInstance().setHomeInterface();
+    }
+
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
 

@@ -67,6 +67,24 @@ public class HomeController {
 
     private  LocalizationManager localizationManager;
 
+
+    public void openLogIn(ActionEvent event) throws Exception{
+        SceneHandler.getInstance().setLogIn();
+    }
+
+    public void openFAQ(ActionEvent event) throws Exception {
+        SceneHandler.getInstance().setFaq();
+    }
+
+    public void openSearchRestaurants(ActionEvent event) {
+        try {
+            //qua ci vuole l'if se l'inidirzzo è corretto (sarà un bool ritornato da un altro metodo)
+            SceneHandler.getInstance().setSearchRestaurants();
+        } catch (Exception e) {
+            //qua ci vuole il messaggio di errore
+        }
+    }
+
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
 
@@ -129,4 +147,6 @@ public class HomeController {
     public void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
         themeGroup.selectToggle(minimalistButton);
     }
+
+
 }

@@ -40,7 +40,7 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <Button fx:id="accessButton" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="234.0">
+                  <Button fx:id="accessButton" alignment="CENTER" mnemonicParsing="false" onAction="#openLogIn" prefHeight="60.0" prefWidth="234.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -57,7 +57,7 @@
                         <Insets left="10.0" right="20.0" />
                      </HBox.margin>
                      <items>
-                        <MenuItem fx:id="menuFAQ" mnemonicParsing="false" text="FAQ" />
+                        <MenuItem fx:id="menuFAQ" mnemonicParsing="false" onAction="#openFAQ" text="FAQ" />
                         <Menu fx:id="menuTheme" mnemonicParsing="false" text="Tema">
                            <items>
                               <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#setLightMode" text="Unspecified Action">
@@ -147,7 +147,7 @@
                               <Insets left="50.0" top="100.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="38.0" prefWidth="64.0">
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#openSearchRestaurants" prefHeight="38.0" prefWidth="64.0">
                            <HBox.margin>
                               <Insets left="50.0" top="100.0" />
                            </HBox.margin>

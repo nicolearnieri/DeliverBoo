@@ -1,5 +1,6 @@
 package uid.project.deliverboo.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import uid.project.deliverboo.view.SceneHandler;
@@ -60,6 +61,9 @@ public class SearchReasturantsController {
     private MenuButton menu;
 
     @FXML
+    private MenuItem FAQbutton;
+
+    @FXML
     private Menu menuLanguage;
 
     @FXML
@@ -87,6 +91,15 @@ public class SearchReasturantsController {
     private RadioMenuItem minimalistButton;
 
     private LocalizationManager localizationManager;
+
+    @FXML
+    public void openFAQ(ActionEvent event) throws Exception {
+        SceneHandler.getInstance().setFaq();
+    }
+
+    public void openHome(ActionEvent event) throws Exception{
+        SceneHandler.getInstance().setHomeInterface();
+    }
 
 
     public void setLocalizationManager(LocalizationManager localizationManager){
@@ -123,6 +136,7 @@ public class SearchReasturantsController {
         pub.setText(localizationManager.getLocalizedString("button.pub"));
         searchBar.setPromptText(localizationManager.getLocalizedString("textfield.searchBar"));
         menu.setText(localizationManager.getLocalizedString("menubutton.menu"));
+        FAQbutton.setText(localizationManager.getLocalizedString("menuitem.faq"));
         menuLanguage.setText(localizationManager.getLocalizedString("menu.menuLanguage"));
         menuTheme.setText(localizationManager.getLocalizedString("menu.menuTheme"));
         englishButton.setText(localizationManager.getLocalizedString("radiomenuitem.english"));
