@@ -2,10 +2,7 @@ package uid.project.deliverboo.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.RadioMenuItem;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import uid.project.deliverboo.view.SceneHandler;
 
@@ -20,7 +17,7 @@ public class FAQController {
     private RadioMenuItem deliverbooButton;
 
     @FXML
-    private ImageView homeButton;
+    private Button homeButton;
 
     @FXML
     private RadioMenuItem light2Button;
