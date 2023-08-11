@@ -16,7 +16,7 @@ public class QueryUsers {
     public static boolean insertUser(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono) {
         try
         {
-            PreparedStatement insertQuery = DataBaseManager.getConnection().prepareStatement("INSERT INTO utenti (username, nome, cognome, email, password, indirizzo, numero_telefono) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement insertQuery = DataBaseManager.getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, indirizzoPredefinito, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?, ?)");
             insertQuery.setString(1, username);
             insertQuery.setString(2, nome);
             insertQuery.setString(3, cognome);
@@ -30,13 +30,14 @@ public class QueryUsers {
 
         }
         catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Errore durante l'inserimento dell'utente: " + e.getMessage());
+            return false;
         }
 
     }
 
     public static boolean deleteUser(int userId) {
-        String query = "DELETE FROM utenti WHERE id = ?";
+        String query = "DELETE FROM utenti WHERE nomeUtente = ?";
 
         try
         {
@@ -53,7 +54,7 @@ public class QueryUsers {
     }
 
     public static boolean searchUserByEmailOrUsername(String searchTerm) {
-        String query = "SELECT COUNT(*) FROM utenti WHERE email LIKE ? OR username LIKE ?";
+        String query = "SELECT COUNT(*) FROM utenti WHERE email LIKE ? OR nomeUtente LIKE ?";
         boolean isEmail = searchTerm.contains("@"); // Controlla se il termine di ricerca sembra un'email
 
         try {
@@ -74,7 +75,7 @@ public class QueryUsers {
     }
 
     public static boolean usernameNotExists(String username) {
-        String query = "SELECT COUNT(*) FROM utenti WHERE username = ?";
+        String query = "SELECT COUNT(*) FROM utenti WHERE nomeUtente = ?";
 
         try {
             PreparedStatement preparedStatement = DataBaseManager.getConnection().prepareStatement(query);

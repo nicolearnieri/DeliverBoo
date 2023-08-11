@@ -1,15 +1,20 @@
 package uid.project.deliverboo.model;
+import java.net.URL;
 import java.sql.*;
 
 public class DataBaseManager {
 
-    private static final String DB_URL = "/database/DataBase.db"; //percorso del DB
+    static URL dbUrl = DataBaseManager.class.getResource("/database/DataBase.db");
+    static String dbPath = dbUrl.toExternalForm().replaceAll(" ", "%20");
+    static String connectionString = "jdbc:sqlite:" + dbPath;
+
+    private static final String DB_URL = "jdbc:sqlite:/database/DataBase.db"; //percorso del DB
     private static Connection connection;
     //per stabilire una connessione al db:
 
 
     public static Connection getConnection() throws SQLException {
-        connection = DriverManager.getConnection(DB_URL);
+        connection = DriverManager.getConnection(connectionString);
         return connection;
     }
 

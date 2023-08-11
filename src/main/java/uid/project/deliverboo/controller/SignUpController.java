@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import uid.project.deliverboo.model.DataBaseManager;
+import uid.project.deliverboo.model.EmailSender;
 import uid.project.deliverboo.model.QueryUsers;
 import uid.project.deliverboo.view.SceneHandler;
 import org.mindrot.jbcrypt.BCrypt;
@@ -82,8 +84,25 @@ public class SignUpController {
     }
 
 
+    private void showUsernameError() {
+        // Mostra un messaggio di errore all'utente
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore di registrazione");
+        alert.setHeaderText("Nome utente non disponibile");
+        alert.setContentText("Il nome utente inserito esiste già. Si prega di scegliere un nome utente diverso.");
+        alert.showAndWait();
+    }
 
+    private void showPasswordError (){
 
+        // Mostra un messaggio di errore all'utente
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore di registrazione");
+        alert.setHeaderText("Le password non corrispondono");
+        alert.setContentText("Le due password inserite non corrispondono. Si prega di reinserirle.");
+        alert.showAndWait();
+
+    }
 
 
     private LocalizationManager localizationManager;
@@ -105,29 +124,30 @@ public class SignUpController {
         boolean eqPasswords = false;
         boolean usernameOk = false;
 
-        //controllo username valido: non dev'essere ripetuto nelle query
-        if (QueryUsers.usernameNotExists(username))
-        {
-            usernameOk = true;
-        }
-        else {
-            //dai un errore che dica che non va bene
-        }
+        try {
+            //controllo username valido: non dev'essere ripetuto nelle query
+            if (QueryUsers.usernameNotExists(username))
+            {
+                usernameOk = true;
+            }
+            else {showUsernameError();}
 
-        if (password.equals(repPassword) )
-        {
-            eqPasswords = true;
-        }
-        else {//raise un alert che dice che le password non corrispondono lol
-             }
+            if (password.equals(repPassword) ) {eqPasswords = true;}
+            else {showPasswordError();}
 
-        if (eqPasswords && usernameOk)
-        {
-            //CODIFICA PASSWORD SALE
-            String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
-            QueryUsers.insertUser(username, "","", email, passwordEncoded, "", "" );
-                    //messaggio avviso che la registrazione è andata a buon fine e il profilo può essere completato da impostazioni
+            if (eqPasswords && usernameOk)
+            {
+                //CODIFICA PASSWORD SALE
+                String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
+                if (QueryUsers.insertUser(username, "","", email, passwordEncoded, "", "" ))
+                { //messaggio avviso che la registrazione è andata a buon fine e il profilo può essere completato da impostazioni
+                    EmailSender.sendEmail(email, "Registrazione completata","Registrazione avvenuta con successo! ti ringraziamo di esserti iscritto a DeliverBoo.");}
+            }
+
         }
+        catch (Exception exc) {
+            exc.printStackTrace(); }
+
     }
 
     private void updateTexts(){
