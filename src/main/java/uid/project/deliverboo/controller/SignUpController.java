@@ -104,7 +104,16 @@ public class SignUpController {
 
     }
 
+    private void regSuccess(){
 
+        // Mostra un messaggio di errore all'utente
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Registrazione");
+        alert.setHeaderText("Registrazione terminata con successo");
+        alert.setContentText("La registrazione è stata effettuata. Riceverai a breve un'email di conferma all'indirizzo specificato");
+        alert.showAndWait();
+
+    }
     private LocalizationManager localizationManager;
 
 
@@ -141,7 +150,9 @@ public class SignUpController {
                 String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
                 if (QueryUsers.insertUser(username, "","", email, passwordEncoded, "", "" ))
                 { //messaggio avviso che la registrazione è andata a buon fine e il profilo può essere completato da impostazioni
-                    EmailSender.sendEmail(email, "Registrazione completata","Registrazione avvenuta con successo! ti ringraziamo di esserti iscritto a DeliverBoo.");}
+                    EmailSender.sendEmail(email, "Registrazione completata","Registrazione avvenuta con successo! Ti ringraziamo di esserti iscritto a DeliverBoo.");
+                    regSuccess();
+                }
             }
 
         }
