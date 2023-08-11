@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static uid.project.deliverboo.model.DataBaseManager.getConnection;
+
 public class QueryUsers {
     private static DataBaseManager databaseManager;
 
@@ -16,7 +18,7 @@ public class QueryUsers {
     public static boolean insertUser(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono) {
         try
         {
-            PreparedStatement insertQuery = DataBaseManager.getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, indirizzoPredefinito, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement insertQuery = getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, indirizzoPredefinito, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?, ?)");
             insertQuery.setString(1, username);
             insertQuery.setString(2, nome);
             insertQuery.setString(3, cognome);
@@ -29,7 +31,7 @@ public class QueryUsers {
             return rowsAffected > 0;
 
         }
-        catch (SQLException e) {
+        catch (Exception e) {
             System.err.println("Errore durante l'inserimento dell'utente: " + e.getMessage());
             return false;
         }
@@ -44,7 +46,7 @@ public class QueryUsers {
 
         try
         {
-            PreparedStatement deleteQuery = DataBaseManager.getConnection().prepareStatement(query);
+            PreparedStatement deleteQuery = getConnection().prepareStatement(query);
             deleteQuery.setInt(1, userId);
 
             int rowsAffected = deleteQuery.executeUpdate();
@@ -64,7 +66,7 @@ public class QueryUsers {
         boolean isEmail = searchTerm.contains("@"); // Controlla se il termine di ricerca sembra un'email
 
         try {
-            PreparedStatement selectQuery = databaseManager.getConnection().prepareStatement(query);
+            PreparedStatement selectQuery = getConnection().prepareStatement(query);
             selectQuery.setString(1, "%" + searchTerm + "%");
             selectQuery.setString(2, "%" + searchTerm + "%");
 
@@ -87,7 +89,7 @@ public class QueryUsers {
         String query = "SELECT COUNT(*) FROM utenti WHERE nomeUtente = ?";
 
         try {
-            PreparedStatement preparedStatement = DataBaseManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, username);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {

@@ -4,20 +4,27 @@ import java.sql.*;
 
 public class DataBaseManager {
 
-    static URL dbUrl = DataBaseManager.class.getResource("/database/DataBase.db");
-    static String dbPath = dbUrl.toExternalForm().replaceAll(" ", "%20");
-    static String connectionString = "jdbc:sqlite:" + dbPath;
 
-    private static final String DB_URL = "jdbc:sqlite:/database/DataBase.db"; //percorso del DB
+    static String connectionString = "jdbc:sqlite:DataBase.db" ;
+
+
+
     private static Connection connection;
     //per stabilire una connessione al db:
 
 
-    public static Connection getConnection() throws SQLException {
-        connection = DriverManager.getConnection(connectionString);
-        connection.setAutoCommit(true);
+    public static Connection getConnection() {
+        try {
+            connection = DriverManager.getConnection(connectionString);
+        } catch (SQLException e) {
+            System.err.println("An error occurred: " + e.getMessage());
+            throw new RuntimeException(e);
+
+        }
         return connection;
     }
+
+
 
 
     //metodo per eseguire le query
