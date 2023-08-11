@@ -15,8 +15,10 @@ public class DataBaseManager {
 
     public static Connection getConnection() throws SQLException {
         connection = DriverManager.getConnection(connectionString);
+        connection.setAutoCommit(true);
         return connection;
     }
+
 
     //metodo per eseguire le query
     public ResultSet executeQuery(String query) throws SQLException {
