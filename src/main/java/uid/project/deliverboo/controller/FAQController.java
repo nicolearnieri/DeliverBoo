@@ -29,6 +29,12 @@ public class FAQController {
     private MenuButton menuButton;
 
     @FXML
+    private ToggleGroup languageGroup;
+
+    @FXML
+    private ToggleGroup themeGroup;
+
+    @FXML
     private Menu menuLanguage;
 
     @FXML
@@ -60,12 +66,14 @@ public class FAQController {
     @FXML
     private void handleItalian(){
         localizationManager.setLanguage(Locale.ITALIAN);
+        languageGroup.selectToggle(italianButton);
         updateTexts();
     }
 
     @FXML
     private  void handleEnglish(){
         localizationManager.setLanguage(Locale.ENGLISH);
+        languageGroup.selectToggle(englishButton);
         updateTexts();
     }
 
@@ -84,18 +92,23 @@ public class FAQController {
         }
 
     public void setLightMode() {SceneHandler.getInstance().changeTheme("LightTheme");
+        themeGroup.selectToggle(lightButton);
     }
 
     public void setParadiseTheme() {SceneHandler.getInstance().changeTheme("ParadiseTheme");
+        themeGroup.selectToggle(light2Button);
     }
 
     public void setDeliverBooTheme() {SceneHandler.getInstance().changeTheme("DeliverBooTheme");
+        themeGroup.selectToggle(deliverbooButton);
     }
 
     public void setDarkTheme() {SceneHandler.getInstance().changeTheme("DarkTheme");
+        themeGroup.selectToggle(darkButton);
     }
 
     public void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
+        themeGroup.selectToggle(minimalistButton);
     }
 
     }

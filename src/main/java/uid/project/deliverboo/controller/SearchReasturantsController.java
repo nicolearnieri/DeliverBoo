@@ -69,6 +69,13 @@ public class SearchReasturantsController {
     @FXML
     private Menu menuTheme;
 
+
+    @FXML
+    private ToggleGroup languageGroup;
+
+    @FXML
+    private ToggleGroup themeGroup;
+
     @FXML
     private RadioMenuItem englishButton;
 
@@ -111,12 +118,14 @@ public class SearchReasturantsController {
     @FXML
     private void handleItalian(){
         localizationManager.setLanguage(Locale.ITALIAN);
+        languageGroup.selectToggle(italianButton);
         updateTexts();
     }
 
     @FXML
     private  void handleEnglish(){
         localizationManager.setLanguage(Locale.ENGLISH);
+        languageGroup.selectToggle(englishButton);
         updateTexts();
     }
 
@@ -146,6 +155,10 @@ public class SearchReasturantsController {
         light2Button.setText(localizationManager.getLocalizedString("radionemuitem.light2"));
         deliverBooThemeButton.setText(localizationManager.getLocalizedString("radiomenuitem.deliverbooTheme"));
         minimalistButton.setText(localizationManager.getLocalizedString("radiomenuitem.minimalistTheme"));
+        searchButton.setText(localizationManager.getLocalizedString("button.searchButton"));
+
+        //qua va messo l'if
+        userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));
 
 
 
@@ -153,18 +166,23 @@ public class SearchReasturantsController {
 
     public void setLightMode() {
         SceneHandler.getInstance().changeTheme("LightTheme");
+        themeGroup.selectToggle(lightButton);
     }
 
     public void setParadiseTheme() {SceneHandler.getInstance().changeTheme("ParadiseTheme");
+        themeGroup.selectToggle(light2Button);
     }
 
     public void setDeliverBooTheme() {SceneHandler.getInstance().changeTheme("DeliverBooTheme");
+        themeGroup.selectToggle(deliverBooThemeButton);
     }
 
     public void setDarkTheme() {SceneHandler.getInstance().changeTheme("DarkTheme");
+        themeGroup.selectToggle(darkButton);
     }
 
     public void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
+        themeGroup.selectToggle(minimalistButton);
     }
 
 

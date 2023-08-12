@@ -49,6 +49,7 @@ public class SceneHandler {
         return instance;
     }
     public void setHomeInterface() throws Exception {
+        if(stage!=null) {stage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
         scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
@@ -65,6 +66,7 @@ public class SceneHandler {
     }
 
     public void setSearchRestaurants() throws Exception {
+        if(stage!=null) {stage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
         scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
@@ -108,6 +110,7 @@ public class SceneHandler {
     }
 
     public void setFaq() throws Exception {
+        if(stage!=null) {stage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "FAQ.fxml"));
         scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
