@@ -52,7 +52,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="93.0" prefWidth="374.0">
                      <children>
-                        <Button fx:id="accessButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="70.0" text="Accedi" />
+                        <Button fx:id="accessButton" mnemonicParsing="false" onAction="#logInUser" prefHeight="34.0" prefWidth="70.0" text="Accedi" />
                      </children>
                   </HBox>
                </children>

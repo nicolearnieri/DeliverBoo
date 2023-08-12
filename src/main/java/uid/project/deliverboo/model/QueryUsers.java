@@ -16,8 +16,7 @@ public class QueryUsers {
 
 
     public static boolean insertUser(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono) {
-        try
-        {
+        try {
             PreparedStatement insertQuery = getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, indirizzoPredefinito, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?, ?)");
             insertQuery.setString(1, username);
             insertQuery.setString(2, nome);
@@ -30,12 +29,10 @@ public class QueryUsers {
             int rowsAffected = insertQuery.executeUpdate();
             return rowsAffected > 0;
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Errore durante l'inserimento dell'utente: " + e.getMessage());
             return false;
-        }
-        finally {
+        } finally {
             DataBaseManager.closeConnection();
         }
 
@@ -44,26 +41,22 @@ public class QueryUsers {
     public static boolean deleteUser(int userId) {
         String query = "DELETE FROM utenti WHERE nomeUtente = ?";
 
-        try
-        {
+        try {
             PreparedStatement deleteQuery = getConnection().prepareStatement(query);
             deleteQuery.setInt(1, userId);
 
             int rowsAffected = deleteQuery.executeUpdate();
             return rowsAffected > 0;
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             DataBaseManager.closeConnection();
         }
     }
 
     public static boolean searchUserByEmailOrUsername(String searchTerm) {
         String query = "SELECT COUNT(*) FROM utenti WHERE email LIKE ? OR nomeUtente LIKE ?";
-        boolean isEmail = searchTerm.contains("@"); // Controlla se il termine di ricerca sembra un'email
+        boolean isEmail = ValidatorUtility.isValidEmail(searchTerm); // Controlla se il termine di ricerca sembra un'email
 
         try {
             PreparedStatement selectQuery = getConnection().prepareStatement(query);
@@ -79,8 +72,7 @@ public class QueryUsers {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             DataBaseManager.closeConnection();
         }
     }
@@ -100,8 +92,7 @@ public class QueryUsers {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
-        finally {
+        } finally {
             DataBaseManager.closeConnection();
         }
 
@@ -109,9 +100,48 @@ public class QueryUsers {
     }
 
 
+    public static boolean emailNotExists(String email) {
+        String query = "SELECT COUNT(*) FROM utenti WHERE email = ?";
 
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1, email);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count == 0;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DataBaseManager.closeConnection();
+        }
+
+        return true;
+    }
+
+    public static String getPassword(String param) {
+        String query = "SELECT password FROM utenti WHERE nomeUtente = ? or email = ?";
+
+
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1, param);
+            preparedStatement.setString(2, param);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next())
+            {
+                return resultSet.getString("password");
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DataBaseManager.closeConnection();
+        }
+        return "";
+    }
 }
-
-
-
 

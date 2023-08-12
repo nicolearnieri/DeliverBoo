@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import uid.project.deliverboo.model.DataBaseManager;
 import uid.project.deliverboo.model.EmailSender;
 import uid.project.deliverboo.model.QueryUsers;
+import uid.project.deliverboo.model.ValidatorUtility;
 import uid.project.deliverboo.view.SceneHandler;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -93,6 +94,14 @@ public class SignUpController {
         alert.showAndWait();
     }
 
+    private void showEmailError(String content) {
+        // Mostra un messaggio di errore all'utente
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore di registrazione");
+        alert.setHeaderText("Email non disponibile");
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
     private void showPasswordError (){
 
         // Mostra un messaggio di errore all'utente
@@ -104,6 +113,16 @@ public class SignUpController {
 
     }
 
+    private void genericError (){
+
+        // Mostra un messaggio di errore all'utente
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Errore");
+        alert.setHeaderText("Errore nella registrazione");
+        alert.setContentText("Qualcosa è andato storto. Ti invitiamo a riprovare, completando tutti i campi. Se il problema persiste, attendi qualche minuto.");
+        alert.showAndWait();
+
+    }
     private void regSuccess(){
 
         // Mostra un messaggio di errore all'utente
@@ -131,20 +150,25 @@ public class SignUpController {
         String password = GetPassword(passwordField);
         String repPassword = GetPassword(rPasswordField);
         boolean eqPasswords = false;
+        boolean emailOk = false;
         boolean usernameOk = false;
 
         try {
             //controllo username valido: non dev'essere ripetuto nelle query
-            if (QueryUsers.usernameNotExists(username))
-            {
-                usernameOk = true;
-            }
+            if (QueryUsers.usernameNotExists(username)) { usernameOk = true; }
             else {showUsernameError();}
+
+            if ( ValidatorUtility.isValidEmail(email)){
+                if (QueryUsers.emailNotExists(email)) {emailOk = true;}
+                else { showEmailError("L'email inserita risulta già registrata. Si prega di sceglierne un'altra o di effettuare l'accesso."); }
+            }
+            else { showEmailError("L'email inserita non è valida. Si prega di sceglierne una nel formato example@gmail.com"); }
+
 
             if (password.equals(repPassword) ) {eqPasswords = true;}
             else {showPasswordError();}
 
-            if (eqPasswords && usernameOk)
+            if (eqPasswords && usernameOk && emailOk)
             {
                 //CODIFICA PASSWORD SALE
                 String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
@@ -154,6 +178,7 @@ public class SignUpController {
                     regSuccess();
                 }
             }
+            else {genericError();}
 
         }
         catch (Exception exc) {

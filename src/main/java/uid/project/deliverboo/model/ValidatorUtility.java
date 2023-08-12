@@ -8,7 +8,7 @@ public class ValidatorUtility {
     private static final Pattern passwordPattern = Pattern.compile(PASSWORD_PATTERN); //crea una pattern a partire dalla stringa con la regex
 
     // Pattern per gli indirizzi email
-    private static final String EMAIL_PATTERN = "^[A-Za-z0-9+_.-]+@(.+)$";
+    private static final String EMAIL_PATTERN = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
     private static final Pattern emailPattern = Pattern.compile(EMAIL_PATTERN);
 
     // Metodo per verificare se una password è valida
