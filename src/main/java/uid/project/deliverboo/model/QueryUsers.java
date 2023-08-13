@@ -125,7 +125,6 @@ public class QueryUsers {
     public static String getPassword(String param) {
         String query = "SELECT password FROM utenti WHERE nomeUtente = ? or email = ?";
 
-
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, param);
@@ -143,5 +142,70 @@ public class QueryUsers {
         }
         return "";
     }
+
+    public static boolean updateOnUser(String user, String name, String surname, String phone, String address )
+    {
+        String query = "UPDATE utenti SET nome = ?, cognome = ?, numeroTelefonico = ?, indirizzoPredefinito = ? WHERE nomeUtente = ?";
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, surname);
+            preparedStatement.setString(3, phone);
+            preparedStatement.setString(4, address);
+            preparedStatement.setString(5, user);
+            preparedStatement.executeUpdate();
+            return true;
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DataBaseManager.closeConnection();
+        }
+
+    }
+
+    public static String getUsername (String email) {
+        String query = "SELECT nomeUtente FROM utenti WHERE email = ?";
+
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1, email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next())
+            {
+                return resultSet.getString("nomeUtente");
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DataBaseManager.closeConnection();
+        }
+        return "";
+    }
+
+    public static String getEmail (String username) {
+        String query = "SELECT email FROM utenti WHERE nomeUtente = ?";
+
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next())
+            {
+                return resultSet.getString("email");
+            }
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DataBaseManager.closeConnection();
+        }
+        return "";
+    }
 }
+
+
 
