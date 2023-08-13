@@ -94,3 +94,13 @@
 
     -fx-background-color: #1f132b;
 }
+
+.text-area {
+    -fx-text-fill: #acacad; /* Colore del testo */
+    -fx-font-size : 16px;
+}
+
+.text-area .content {
+  -fx-background-color: #393340;
+
+}

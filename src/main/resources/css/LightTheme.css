@@ -101,3 +101,14 @@
 
     -fx-background-color: #cfaef5;
 }
+
+
+.text-area {
+    -fx-text-fill: #2c0938; /* Colore del testo */
+    -fx-font-size : 16px;
+}
+
+.text-area .content {
+  -fx-background-color: E0DAF7;
+
+}

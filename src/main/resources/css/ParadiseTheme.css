@@ -100,3 +100,15 @@
 .context-menu {
     -fx-background-color: #daf7f7;
 }
+
+
+
+.text-area {
+    -fx-text-fill: #131f1e; /* Colore del testo */
+    -fx-font-size : 16px;
+}
+
+.text-area .content {
+  -fx-background-color: #D6F8F8;
+
+}

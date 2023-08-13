@@ -94,3 +94,14 @@
 .context-menu {
     -fx-background-color: #4c385c;
 }
+
+
+.text-area {
+    -fx-text-fill: #f0f0f0; /* Colore del testo */
+    -fx-font-size : 16px;
+}
+
+.text-area .content {
+  -fx-background-color: #391146;
+
+}
