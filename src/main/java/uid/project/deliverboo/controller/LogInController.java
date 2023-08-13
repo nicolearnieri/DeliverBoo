@@ -42,12 +42,12 @@ public class LogInController {
         updateTexts();
     }
 
-    private void signUpError (String message){
+    private void logInError (String message){
 
         // Mostra un messaggio di errore all'utente
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText("Errore nell'accesso");
+        alert.setTitle(localizationManager.getLocalizedString("title.error"));
+        alert.setHeaderText(localizationManager.getLocalizedString("header.errorLogIn"));
         alert.setContentText(message);
         alert.showAndWait();
 
@@ -57,9 +57,9 @@ public class LogInController {
 
         // Mostra un messaggio di errore all'utente
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Accesso");
-        alert.setHeaderText("Accesso completato");
-        alert.setContentText("L'accesso al tuo account è stato effettuato con successo.");
+        alert.setTitle(localizationManager.getLocalizedString("title.logIn"));
+        alert.setHeaderText(localizationManager.getLocalizedString("header.logIn"));
+        alert.setContentText(localizationManager.getLocalizedString("content.logIn"));
         alert.showAndWait();
     }
 
@@ -72,11 +72,11 @@ public class LogInController {
 
         if (email) {
             if (QueryUsers.emailNotExists(user))
-                signUpError("Non esiste nessun utente associato a quest'indirizzo email.");
+                logInError(localizationManager.getLocalizedString("error.email"));
             else userExists = true;
         } else {
             if (QueryUsers.usernameNotExists(user))
-                signUpError("Il nome utente da te inserito non è associato a nessun account esistente.");
+                logInError(localizationManager.getLocalizedString("error.user"));
             else userExists = true;
         }
 
@@ -87,7 +87,7 @@ public class LogInController {
                 //facimm ancuna cos tu rimember de iuser
                 logSuccess();
             }
-            else signUpError("La password da te inserita potrebbe essere errata.");
+            else logInError(localizationManager.getLocalizedString("error.password"));
         }
 
     }

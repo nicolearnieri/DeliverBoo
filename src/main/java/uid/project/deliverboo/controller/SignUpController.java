@@ -88,17 +88,17 @@ public class SignUpController {
     private void showUsernameError() {
         // Mostra un messaggio di errore all'utente
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore di registrazione");
-        alert.setHeaderText("Nome utente non disponibile");
-        alert.setContentText("Il nome utente inserito esiste già. Si prega di scegliere un nome utente diverso.");
+        alert.setTitle(localizationManager.getLocalizedString("title.errorSignUp"));
+        alert.setHeaderText(localizationManager.getLocalizedString("header.errorUser"));
+        alert.setContentText(localizationManager.getLocalizedString("content.errorUser"));
         alert.showAndWait();
     }
 
     private void showEmailError(String content) {
         // Mostra un messaggio di errore all'utente
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore di registrazione");
-        alert.setHeaderText("Email non disponibile");
+        alert.setTitle(localizationManager.getLocalizedString("title.errorSignUp"));
+        alert.setHeaderText(localizationManager.getLocalizedString("header.errorEmail"));
         alert.setContentText(content);
         alert.showAndWait();
     }
@@ -106,9 +106,9 @@ public class SignUpController {
 
         // Mostra un messaggio di errore all'utente
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore di registrazione");
-        alert.setHeaderText("Le password non corrispondono");
-        alert.setContentText("Le due password inserite non corrispondono. Si prega di reinserirle.");
+        alert.setTitle(localizationManager.getLocalizedString("title.errorSignUp"));
+        alert.setHeaderText(localizationManager.getLocalizedString("header.errorPassword"));
+        alert.setContentText(localizationManager.getLocalizedString("content.errorPassword"));
         alert.showAndWait();
 
     }
@@ -117,9 +117,9 @@ public class SignUpController {
 
         // Mostra un messaggio di errore all'utente
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Errore");
-        alert.setHeaderText("Errore nella registrazione");
-        alert.setContentText("Qualcosa è andato storto. Ti invitiamo a riprovare, completando tutti i campi. Se il problema persiste, attendi qualche minuto.");
+        alert.setTitle(localizationManager.getLocalizedString("title.error"));
+        alert.setHeaderText(localizationManager.getLocalizedString("header.error"));
+        alert.setContentText(localizationManager.getLocalizedString("content.error"));
         alert.showAndWait();
 
     }
@@ -127,9 +127,9 @@ public class SignUpController {
 
         // Mostra un messaggio di errore all'utente
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Registrazione");
-        alert.setHeaderText("Registrazione terminata con successo");
-        alert.setContentText("La registrazione è stata effettuata. Riceverai a breve un'email di conferma all'indirizzo specificato");
+        alert.setTitle(localizationManager.getLocalizedString("title.singUp"));
+        alert.setHeaderText(localizationManager.getLocalizedString("header.signUp"));
+        alert.setContentText(localizationManager.getLocalizedString("content.signUp"));
         alert.showAndWait();
 
     }
@@ -160,9 +160,9 @@ public class SignUpController {
 
             if ( ValidatorUtility.isValidEmail(email)){
                 if (QueryUsers.emailNotExists(email)) {emailOk = true;}
-                else { showEmailError("L'email inserita risulta già registrata. Si prega di sceglierne un'altra o di effettuare l'accesso."); }
+                else { showEmailError(localizationManager.getLocalizedString("error.emailExist")); }
             }
-            else { showEmailError("L'email inserita non è valida. Si prega di sceglierne una nel formato example@gmail.com"); }
+            else { showEmailError(localizationManager.getLocalizedString("error.emailInvalid")); }
 
 
             if (password.equals(repPassword) ) {eqPasswords = true;}
@@ -174,7 +174,7 @@ public class SignUpController {
                 String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
                 if (QueryUsers.insertUser(username, "","", email, passwordEncoded, "", "" ))
                 { //messaggio avviso che la registrazione è andata a buon fine e il profilo può essere completato da impostazioni
-                    EmailSender.sendEmail(email, "Registrazione completata","Registrazione avvenuta con successo! Ti ringraziamo di esserti iscritto a DeliverBoo.");
+                    EmailSender.sendEmail(email, localizationManager.getLocalizedString("email.subject"),localizationManager.getLocalizedString("email.body"));
                     regSuccess();
                 }
             }
