@@ -115,7 +115,7 @@ public class LogInController {
         userOrEmailLabel.setText(localizationManager.getLocalizedString("label.labelUserOrEmail"));
         messageLabel.setText(localizationManager.getLocalizedString("label.messageLabelAc"));
         passwordLabel.setText(localizationManager.getLocalizedString("label.labelPassword"));
-        signUpButton.setText(localizationManager.getLocalizedString("title.singUp"));
+        signUpButton.setText(localizationManager.getLocalizedString("button.signUp"));
     }
 
 }
