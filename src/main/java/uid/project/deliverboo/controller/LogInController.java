@@ -3,6 +3,7 @@ package uid.project.deliverboo.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.QueryUsers;
@@ -46,6 +47,7 @@ public class LogInController {
 
         updateTexts();
     }
+
 
     public  void openSignUp() throws Exception {
         SceneHandler.getInstance().setSignUp();

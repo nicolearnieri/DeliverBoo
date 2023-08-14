@@ -19,10 +19,15 @@ public class SceneHandler {
     private final static String FXML_PATH = "/SceneBuilder/";
     private Scene scene;
     private Stage stage;
+
+
+    private Stage logInOrSignUpStage;
+
     private String theme = "ParadiseTheme";
     private static SceneHandler instance = null;
 
     private LocalizationManager localizationManager;
+
 
     private SceneHandler() {}
 
@@ -83,42 +88,46 @@ public class SceneHandler {
     }
 
     public void setLogIn() throws Exception {
-        stage = new Stage();
+        if(logInOrSignUpStage!=null){logInOrSignUpStage.close();}
+        logInOrSignUpStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
         scene = new Scene(loader.load(), 600, 500); //v:larghezza, v1:altezza
 
 
-        stage.initModality(Modality.APPLICATION_MODAL);
+        logInOrSignUpStage.initModality(Modality.APPLICATION_MODAL);
 
 
         LogInController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
         setCSSForScene(scene);
-        stage.setTitle("DeliverBoo");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.showAndWait();
+        logInOrSignUpStage.setTitle("DeliverBoo");
+        logInOrSignUpStage.setScene(scene);
+        logInOrSignUpStage.setResizable(false);
+        logInOrSignUpStage.showAndWait();
     }
 
 
+
     public void setSignUp() throws Exception {
-        stage = new Stage();
+        if(logInOrSignUpStage!=null){logInOrSignUpStage.close();}
+        logInOrSignUpStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SignUp.fxml"));
         scene = new Scene(loader.load(), 600, 500); //v:larghezza, v1:altezza
 
-        stage.initModality(Modality.APPLICATION_MODAL);
+        logInOrSignUpStage.initModality(Modality.APPLICATION_MODAL);
 
 
         SignUpController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
         setCSSForScene(scene);
-        stage.setTitle("DeliverBoo");
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.showAndWait();
+        logInOrSignUpStage.setTitle("DeliverBoo");
+        logInOrSignUpStage.setScene(scene);
+        logInOrSignUpStage.setResizable(false);
+        logInOrSignUpStage.showAndWait();
     }
+
 
     public void setFaq() throws Exception {
         if(stage!=null) {stage.close();}

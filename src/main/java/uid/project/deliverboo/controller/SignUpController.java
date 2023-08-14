@@ -5,12 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import uid.project.deliverboo.model.DataBaseManager;
 import uid.project.deliverboo.model.EmailSender;
 import uid.project.deliverboo.model.QueryUsers;
 import uid.project.deliverboo.model.ValidatorUtility;
 import uid.project.deliverboo.view.SceneHandler;
 import org.mindrot.jbcrypt.BCrypt;
+import uid.project.deliverboo.controller.HomeController;
 
 import java.util.Locale;
 
@@ -88,6 +90,7 @@ public class SignUpController {
     {
         return f.getText();
     }
+
 
     public void openLogIn() throws Exception {
         SceneHandler.getInstance().setLogIn();
@@ -199,6 +202,7 @@ public class SignUpController {
 
     @FXML
     void openLogIn(ActionEvent event) throws Exception {
+
         SceneHandler.getInstance().setLogIn();
     }
 
@@ -212,6 +216,7 @@ public class SignUpController {
         labelUsername.setText(localizationManager.getLocalizedString("label.labelUsername"));
         messageLabel.setText(localizationManager.getLocalizedString("label.massageLabelSU"));
         logInButton.setText(localizationManager.getLocalizedString("button.accessButtonAc"));
+        passwordSuggestions.setText(localizationManager.getLocalizedString("label.passwordSuggestion"));
 
 
     }
