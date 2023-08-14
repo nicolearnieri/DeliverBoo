@@ -55,6 +55,11 @@ public class SignUpController {
     @FXML
     private HBox passwordSuggestionBox;
 
+    @FXML
+    private Button logInButton;
+
+    private LocalizationManager localizationManager;
+
     public void initialize() {
 
         passwordSuggestionBox.setManaged(false);
@@ -82,6 +87,10 @@ public class SignUpController {
     private String GetPassword(PasswordField f) //metodo generico per prendere le password
     {
         return f.getText();
+    }
+
+    public void openLogIn() throws Exception {
+        SceneHandler.getInstance().setLogIn();
     }
 
 
@@ -133,7 +142,7 @@ public class SignUpController {
         alert.showAndWait();
 
     }
-    private LocalizationManager localizationManager;
+
 
 
     public void setLocalizationManager(LocalizationManager localizationManager){
@@ -194,6 +203,7 @@ public class SignUpController {
         labelRPassword.setText(localizationManager.getLocalizedString("label.labelRPassword"));
         labelUsername.setText(localizationManager.getLocalizedString("label.labelUsername"));
         messageLabel.setText(localizationManager.getLocalizedString("label.massageLabelSU"));
+        logInButton.setText(localizationManager.getLocalizedString("button.accessButtonAc"));
 
 
     }

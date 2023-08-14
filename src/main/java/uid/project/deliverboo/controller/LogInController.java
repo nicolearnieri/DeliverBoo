@@ -7,6 +7,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.QueryUsers;
 import uid.project.deliverboo.model.ValidatorUtility;
+import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
 
@@ -34,6 +35,9 @@ public class LogInController {
     @FXML
     private TextField userEmailField;
 
+    @FXML
+    private Button signUpButton;
+
     private  LocalizationManager localizationManager;
 
 
@@ -41,6 +45,10 @@ public class LogInController {
         this.localizationManager = localizationManager;
 
         updateTexts();
+    }
+
+    public  void openSignUp() throws Exception {
+        SceneHandler.getInstance().setSignUp();
     }
 
     private void logInError (String message){
@@ -107,6 +115,7 @@ public class LogInController {
         userOrEmailLabel.setText(localizationManager.getLocalizedString("label.labelUserOrEmail"));
         messageLabel.setText(localizationManager.getLocalizedString("label.messageLabelAc"));
         passwordLabel.setText(localizationManager.getLocalizedString("label.labelPassword"));
+        signUpButton.setText(localizationManager.getLocalizedString("title.singUp"));
     }
 
 }
