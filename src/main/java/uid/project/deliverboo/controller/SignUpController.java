@@ -198,11 +198,4 @@ public class SignUpController {
 
     }
 
-    public void setLightMode(){
-        SceneHandler.getInstance().changeTheme("LightTheme");}
-    public void setDarkTheme(){SceneHandler.getInstance().changeTheme("DarkTheme");}
-    public void setParadiseTheme(){SceneHandler.getInstance().changeTheme("ParadiseTheme");}
-    public void setDeliverBooTheme(){SceneHandler.getInstance().changeTheme("DeliverBooTheme");}
-
-    public void setObsidianTheme(){SceneHandler.getInstance().changeTheme("ObsidianTheme");}
 }
