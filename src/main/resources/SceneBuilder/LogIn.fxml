@@ -63,7 +63,7 @@
             </VBox>
          </center>
          <left>
-            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#openSignUp" prefHeight="39.0" prefWidth="79.0" text="Button" BorderPane.alignment="BOTTOM_LEFT">
+            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#openSignUp" prefHeight="51.0" prefWidth="110.0" text="Button" BorderPane.alignment="BOTTOM_LEFT">
                <BorderPane.margin>
                   <Insets bottom="20.0" left="15.0" />
                </BorderPane.margin>

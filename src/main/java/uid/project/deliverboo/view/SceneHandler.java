@@ -83,30 +83,41 @@ public class SceneHandler {
     }
 
     public void setLogIn() throws Exception {
+        stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);// nuova finestra con cui interagire obbligatoriamente
-        Scene scene = new Scene(loader.load(), 300, 500);
+        scene = new Scene(loader.load(), 500, 400); //v:larghezza, v1:altezza
 
-        LogInController controller=loader.getController();
-        controller.setLocalizationManager(localizationManager);
 
-        setCSSForScene(scene);
-        stage.setScene(scene);
-        //stage.showAndWait();// a fine operazione non si chiude, lo deve fare l'utente
-    }
-    public void setSignUp() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SignUp.fxml"));
-        Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        Scene scene = new Scene(loader.load(), 300, 500);
 
-        SignUpController controller=loader.getController();
+
+        LogInController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
         setCSSForScene(scene);
+        stage.setTitle("DeliverBoo");
         stage.setScene(scene);
-        //stage.showAndWait();
+        stage.setResizable(false);
+        stage.showAndWait();
+    }
+
+
+    public void setSignUp() throws Exception {
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SignUp.fxml"));
+        scene = new Scene(loader.load(), 500, 400); //v:larghezza, v1:altezza
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+
+        SignUpController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
+        setCSSForScene(scene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.showAndWait();
     }
 
     public void setFaq() throws Exception {
