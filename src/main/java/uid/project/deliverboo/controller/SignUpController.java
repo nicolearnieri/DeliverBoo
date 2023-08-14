@@ -212,6 +212,7 @@ public class SignUpController {
         labelUsername.setText(localizationManager.getLocalizedString("label.labelUsername"));
         messageLabel.setText(localizationManager.getLocalizedString("label.massageLabelSU"));
         logInButton.setText(localizationManager.getLocalizedString("button.accessButtonAc"));
+        passwordSuggestions.setText(localizationManager.getLocalizedString("label.passwordSuggestion"));
 
 
     }
