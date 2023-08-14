@@ -54,6 +54,8 @@ public class QueryUsers {
         }
     }
 
+
+    //teoricamente non serve!! help
     public static boolean searchUserByEmailOrUsername(String searchTerm) {
         String query = "SELECT COUNT(*) FROM utenti WHERE email LIKE ? OR nomeUtente LIKE ?";
         boolean isEmail = ValidatorUtility.isValidEmail(searchTerm); // Controlla se il termine di ricerca sembra un'email

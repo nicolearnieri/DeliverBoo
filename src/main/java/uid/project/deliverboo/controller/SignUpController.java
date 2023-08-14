@@ -195,6 +195,12 @@ public class SignUpController {
 
     }
 
+    @FXML
+    void openLogIn(ActionEvent event) throws Exception {
+        SceneHandler.getInstance().setLogIn();
+    }
+
+
     private void updateTexts(){
         buttonSend.setText(localizationManager.getLocalizedString("button.buttonSend"));
         labelEmail.setText(localizationManager.getLocalizedString("label.labelEmail"));
