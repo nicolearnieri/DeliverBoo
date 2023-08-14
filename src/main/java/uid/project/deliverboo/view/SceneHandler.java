@@ -28,6 +28,7 @@ public class SceneHandler {
 
     private LocalizationManager localizationManager;
 
+
     private SceneHandler() {}
 
     public void init(Stage primaryStage) throws Exception { //metodo che può generare eccezione
@@ -107,6 +108,7 @@ public class SceneHandler {
     }
 
 
+
     public void setSignUp() throws Exception {
         if(logInOrSignUpStage!=null){logInOrSignUpStage.close();}
         logInOrSignUpStage = new Stage();
@@ -125,6 +127,7 @@ public class SceneHandler {
         logInOrSignUpStage.setResizable(false);
         logInOrSignUpStage.showAndWait();
     }
+
 
     public void setFaq() throws Exception {
         if(stage!=null) {stage.close();}

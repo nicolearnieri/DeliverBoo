@@ -3,11 +3,15 @@ package uid.project.deliverboo.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import uid.project.deliverboo.view.SceneHandler;
 //import uid.project.deliverboo.view.SceneHandler;
 
+
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+
 
 public class HomeController {
     @FXML
@@ -68,11 +72,16 @@ public class HomeController {
     private  LocalizationManager localizationManager;
 
 
-    public void openLogIn(ActionEvent event) throws Exception{
+
+
+
+    public void openLogIn() throws Exception{
         SceneHandler.getInstance().setLogIn();
+
     }
 
-    public void openFAQ(ActionEvent event) throws Exception {
+
+    public void openFAQ() throws Exception {
         SceneHandler.getInstance().setFaq();
     }
 
