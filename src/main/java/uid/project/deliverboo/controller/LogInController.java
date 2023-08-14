@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import org.mindrot.jbcrypt.BCrypt;
+import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.QueryUsers;
 import uid.project.deliverboo.model.ValidatorUtility;
 
@@ -85,6 +86,15 @@ public class LogInController {
             boolean check = BCrypt.checkpw(QueryUsers.getPassword(user), password);
             if (check) {
                 //facimm ancuna cos tu rimember de iuser
+                CurrentUser cU = CurrentUser.getInstance();
+                if (email) {
+                    cU.setEmail(user);
+                    cU.setNomeUtente(QueryUsers.getUsername(user));
+                }
+                else {
+                    cU.setNomeUtente(user);
+                    cU.setEmail(QueryUsers.getEmail(user));
+                }
                 logSuccess();
             }
             else logInError(localizationManager.getLocalizedString("error.password"));

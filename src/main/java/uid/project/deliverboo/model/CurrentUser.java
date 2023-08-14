@@ -23,7 +23,7 @@ public class CurrentUser
     public static CurrentUser getInstance() {
         if (instance == null)
             instance = new CurrentUser();
-            return instance;
+        return instance;
     }
 
     public void logOut ()
