@@ -199,6 +199,7 @@ public class SignUpController {
 
     @FXML
     void openLogIn(ActionEvent event) throws Exception {
+
         SceneHandler.getInstance().setLogIn();
     }
 
