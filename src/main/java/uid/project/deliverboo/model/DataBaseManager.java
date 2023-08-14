@@ -46,10 +46,10 @@ public class DataBaseManager {
         try {
             if (connection != null) {
                 connection.close();
-                System.out.println("Connessione al database chiusa.");
+                System.out.println("Connection to database closed.");
             }
         } catch (SQLException e) {
-            System.err.println("Errore durante la chiusura della connessione.");
+            System.err.println("Error with database closure.");
             e.printStackTrace(); //fa risalire agli errori
         }
     }
