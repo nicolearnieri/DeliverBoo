@@ -10,11 +10,15 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SceneBuilder/SignUp.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SceneBuilder/HomeInterface.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 700);
         stage.setTitle("DeliverBoo");
-        String css = getClass().getResource("/css/LightTheme.css").toExternalForm();
+        String css = getClass().getResource("/css/DarkTheme.css").toExternalForm();
+
+        String font = getClass().getResource("/css/FontDyslexic.css").toExternalForm();
+
         scene.getStylesheets().add(css);
+        scene.getStylesheets().add(font);
         stage.setScene(scene);
         stage.show();
     }
