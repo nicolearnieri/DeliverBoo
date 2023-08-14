@@ -48,7 +48,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2">
                <children>
-                  <Button fx:id="buttonSend" mnemonicParsing="false" onAction="#registration" prefHeight="34.0" prefWidth="70.0" text="Invia" />
+                  <Button fx:id="buttonSend" mnemonicParsing="false" onAction="#registration" prefHeight="34.0" prefWidth="80.0" text="Invia" />
                </children>
             </HBox>
          </children>
@@ -63,8 +63,8 @@
    <bottom>
       <HBox prefHeight="48.0" prefWidth="347.0" spacing="15.0" BorderPane.alignment="BOTTOM_LEFT">
          <children>
-            <Label alignment="CENTER" prefWidth="145.0" text="Hai già un account?" textAlignment="CENTER" />
-            <Button fx:id="logInButton" mnemonicParsing="false" onAction="#openLogIn" prefHeight="34.0" prefWidth="74.0" />
+            <Label alignment="CENTER" prefWidth="150.0" text="Hai già un account?" textAlignment="CENTER" />
+            <Button fx:id="logInButton" mnemonicParsing="false" onAction="#openLogIn" prefHeight="34.0" prefWidth="95.0" />
          </children>
       </HBox>
    </bottom>
