@@ -55,9 +55,9 @@
       </VBox>
    </center>
    <top>
-      <ImageView fx:id="logo" fitHeight="46.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+      <ImageView fx:id="logo" fitHeight="56.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="@../Icone/logo2.png" />
+            <Image url="@../Icone/logoOf.png" />
          </image></ImageView>
    </top>
 </BorderPane>
