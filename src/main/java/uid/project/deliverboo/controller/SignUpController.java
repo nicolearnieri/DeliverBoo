@@ -159,6 +159,7 @@ public class SignUpController {
         String password = GetPassword(passwordField);
         String repPassword = GetPassword(rPasswordField);
         boolean eqPasswords = false;
+        boolean passwordOk = false;
         boolean emailOk = false;
         boolean usernameOk = false;
 
@@ -173,11 +174,12 @@ public class SignUpController {
             }
             else { showEmailError(localizationManager.getLocalizedString("error.emailInvalid")); }
 
+            if (ValidatorUtility.isValidPassword(password)) passwordOk= true;
 
             if (password.equals(repPassword) ) {eqPasswords = true;}
             else {showPasswordError();}
 
-            if (eqPasswords && usernameOk && emailOk)
+            if (eqPasswords && usernameOk && emailOk && passwordOk)
             {
                 //CODIFICA PASSWORD SALE
                 String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
