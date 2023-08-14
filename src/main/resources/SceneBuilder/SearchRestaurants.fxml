@@ -73,6 +73,12 @@
                         <RadioMenuItem fx:id="minimalistButton" mnemonicParsing="false" onAction="#setObsidianTheme" text="Unspecified Action" toggleGroup="$themeGroup" />
                      </items>
                   </Menu>
+                  <Menu mnemonicParsing="false" text="Font">
+                    <items>
+                        <RadioMenuItem fx:id="fontBase" mnemonicParsing="false" onAction="#setFontMontserrat" text="Deliverboo classic (Montserrat)" />
+                        <RadioMenuItem fx:id="fontDyslexia" mnemonicParsing="false" onAction="#setFontDyslexia" text="Migliore leggibilità (OpenDyslexia)" />
+                    </items>
+                  </Menu>
                   <Menu fx:id="menuLanguage" mnemonicParsing="false" text="Lingua">
                      <items>
                         <RadioMenuItem fx:id="italianButton" mnemonicParsing="false" onAction="#handleItalian" text="Unspecified Action">
@@ -82,6 +88,7 @@
                         <RadioMenuItem fx:id="englishButton" mnemonicParsing="false" onAction="#handleEnglish" text="Unspecified Action" toggleGroup="$languageGroup" />
                      </items>
                   </Menu>
+                  <MenuItem fx:id="profileItem" mnemonicParsing="false" onAction="#menuProfile" text="Gestione Profilo" />
                </items>
                <HBox.margin>
                   <Insets bottom="10.0" right="10.0" top="15.0" />

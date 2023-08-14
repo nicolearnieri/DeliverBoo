@@ -85,6 +85,12 @@ public class HomeController {
         SceneHandler.getInstance().setFaq();
     }
 
+
+    private void menuProfile() throws Exception {
+        SceneHandler.getInstance().setProfile();
+    }
+
+
     public void openSearchRestaurants(ActionEvent event) {
         try {
             //qua ci vuole l'if se l'inidirzzo è corretto (sarà un bool ritornato da un altro metodo)
@@ -115,6 +121,22 @@ public class HomeController {
     }
 
 
+    //DA FARE OOO
+
+    @FXML
+    void setFontDyslexia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setFontMontserrat(ActionEvent event) {
+
+    }
+
+    @FXML
+    void menuProfile(ActionEvent event) {
+
+    }
 
     private void updateTexts(){
         accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));

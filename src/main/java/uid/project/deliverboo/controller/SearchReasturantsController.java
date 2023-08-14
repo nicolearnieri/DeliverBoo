@@ -131,6 +131,21 @@ public class SearchReasturantsController {
 
 
 
+    @FXML
+    void setFontDyslexia(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setFontMontserrat(ActionEvent event) {
+
+    }
+
+    @FXML
+    void menuProfile(ActionEvent event) throws Exception {
+        SceneHandler.getInstance().setProfile();
+    }
+
     private void updateTexts(){
         bars.setText(localizationManager.getLocalizedString("button.bar"));
         breadType.setText(localizationManager.getLocalizedString("button.breadType"));

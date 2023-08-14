@@ -128,6 +128,22 @@ public class SceneHandler {
         logInOrSignUpStage.showAndWait();
     }
 
+    public void setProfile() throws Exception {
+        if(stage!=null) {stage.close();}
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Profile.fxml"));
+        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
+        //loadFonts();
+
+
+        ProfileController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
+        setCSSForScene(scene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public void setFaq() throws Exception {
         if(stage!=null) {stage.close();}
