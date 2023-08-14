@@ -85,7 +85,7 @@ public class SceneHandler {
     public void setLogIn() throws Exception {
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
-        scene = new Scene(loader.load(), 500, 400); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 600, 500); //v:larghezza, v1:altezza
 
 
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -105,7 +105,7 @@ public class SceneHandler {
     public void setSignUp() throws Exception {
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SignUp.fxml"));
-        scene = new Scene(loader.load(), 500, 400); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 600, 500); //v:larghezza, v1:altezza
 
         stage.initModality(Modality.APPLICATION_MODAL);
 
