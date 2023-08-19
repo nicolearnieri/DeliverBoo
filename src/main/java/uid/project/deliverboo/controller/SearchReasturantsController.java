@@ -3,6 +3,7 @@ package uid.project.deliverboo.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
@@ -22,7 +23,7 @@ public class SearchReasturantsController {
     private Button cart;
 
     @FXML
-    private ListView<?> centerListView;
+    private AnchorPane restaurantsListPane;
 
     @FXML
     private Button fastFood;
