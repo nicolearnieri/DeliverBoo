@@ -3,6 +3,7 @@ package uid.project.deliverboo.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import uid.project.deliverboo.controller.*;
@@ -15,7 +16,7 @@ public class SceneHandler {
     private final static String RESOURCE_PATH = "/src/main/resources/";
     private final static String CSS_PATH = "/css/";
 
-    //private final static String FONTS_PATH = RESOURCE_PATH + "fonts/";
+    private final static String FONTS_PATH = CSS_PATH + "fonts/";
     private final static String FXML_PATH = "/SceneBuilder/";
     private Scene scene;
     private Stage stage;
@@ -24,6 +25,7 @@ public class SceneHandler {
     private Stage logInOrSignUpStage;
 
     private String theme = "ParadiseTheme";
+    private String font = "FontMontserrat";
     private static SceneHandler instance = null;
 
     private LocalizationManager localizationManager;
@@ -37,7 +39,6 @@ public class SceneHandler {
         stage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
         scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
-        //loadFonts();
 
         localizationManager= new LocalizationManager();
         HomeController controller= loader.getController();
@@ -161,19 +162,42 @@ public class SceneHandler {
         stage.setScene(scene);
         stage.show();
     }
-    private String loadCSS() {
-        try{
-            String style= CSS_PATH + theme + ".css";
-            return Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm();}
+    private List<String> loadCSS() {
+        try {
+            List<String> resources = new ArrayList<>();
+            for (String style : List.of(CSS_PATH + theme + ".css", CSS_PATH + font + ".css")) {
+                String resource = Objects.requireNonNull(SceneHandler.class.getResource(style)).toExternalForm();
+                resources.add(resource);
+            }
+            return resources;
+        }
         catch(NullPointerException e){
             e.printStackTrace();
-            return "";}
+            return new ArrayList<>();}
 
+    }
+    private void loadMontserrat() {
+        for (String font : List.of(FONTS_PATH + "Montserrat-Regular.ttf")) {
+            Font.loadFont(Objects.requireNonNull(SceneHandler.class.getResource(font)).toExternalForm(), 12);
+        }
+    }
+    private void loadOpenDyslexic() {
+        for (String font : List.of(FONTS_PATH + "OpenDyslexic-Regular.otf")) {
+            Font.loadFont(Objects.requireNonNull(SceneHandler.class.getResource(font)).toExternalForm(), 12);
+        }
     }
     private void setCSSForScene(Scene scene) { //in base a theme setta i css per la scena
         Objects.requireNonNull(scene);
+        List<String> resources = loadCSS();
         scene.getStylesheets().clear();
-        scene.getStylesheets().add(loadCSS());
+        for(String resource : resources)
+            scene.getStylesheets().add(resource);
+
+        if (font.equals("FontMontserrat")) {
+            loadMontserrat();
+        } else {
+            loadOpenDyslexic();
+        }
     }
     private void setCurrentRoot(String filename) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + filename));
@@ -181,6 +205,10 @@ public class SceneHandler {
     }
     public void changeTheme(String newTheme) {
         theme=newTheme;
+        setCSSForScene(scene);
+    }
+    public void changeFont(String newFont) {
+        font= newFont;
         setCSSForScene(scene);
     }
 

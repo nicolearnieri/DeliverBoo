@@ -44,7 +44,11 @@ public class HomeController {
     @FXML
     private RadioMenuItem italianButton;
 
+    @FXML
+    private RadioMenuItem fontBase;
 
+    @FXML
+    private RadioMenuItem fontDyslexia;
 
     @FXML
     private MenuButton menu;
@@ -66,6 +70,8 @@ public class HomeController {
 
     @FXML
     private ToggleGroup themeGroup;
+    @FXML
+    private ToggleGroup fontGroup;
 
 
 
@@ -178,6 +184,10 @@ public class HomeController {
     public void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
         themeGroup.selectToggle(minimalistButton);
     }
-
-
+    public void setFontDyslexia() {SceneHandler.getInstance().changeFont("FontDyslexic");
+        fontGroup.selectToggle(fontDyslexia);
+    }
+    public void setFontMontserrat() {SceneHandler.getInstance().changeFont("FontMontserrat");
+        fontGroup.selectToggle(fontBase);
+    }
 }
