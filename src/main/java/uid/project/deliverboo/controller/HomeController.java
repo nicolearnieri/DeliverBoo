@@ -132,18 +132,6 @@ public class HomeController {
     }
 
 
-    //DA FARE OOO
-
-    @FXML
-    void setFontDyslexia(ActionEvent event) {
-        fontGroup.selectToggle(fontDyslexia);
-    }
-
-    @FXML
-    void setFontMontserrat(ActionEvent event) {
-        fontGroup.selectToggle(fontBase);
-    }
-
 
     private void updateTexts(){
         accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));
