@@ -43,6 +43,8 @@ public class HomeController {
 
     @FXML
     private RadioMenuItem italianButton;
+    @FXML
+    private Menu menuFont;
 
     @FXML
     private RadioMenuItem fontBase;
@@ -73,6 +75,9 @@ public class HomeController {
     @FXML
     private ToggleGroup fontGroup;
 
+    @FXML
+    private MenuItem profileItem;
+
 
 
     private  LocalizationManager localizationManager;
@@ -92,7 +97,7 @@ public class HomeController {
     }
 
 
-    private void menuProfile() throws Exception {
+    public void menuProfile() throws Exception {
         SceneHandler.getInstance().setProfile();
     }
 
@@ -131,18 +136,14 @@ public class HomeController {
 
     @FXML
     void setFontDyslexia(ActionEvent event) {
-
+        fontGroup.selectToggle(fontDyslexia);
     }
 
     @FXML
     void setFontMontserrat(ActionEvent event) {
-
+        fontGroup.selectToggle(fontBase);
     }
 
-    @FXML
-    void menuProfile(ActionEvent event) {
-
-    }
 
     private void updateTexts(){
         accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));
@@ -159,6 +160,11 @@ public class HomeController {
         menu.setText(localizationManager.getLocalizedString("menubutton.menu"));
         menuTheme.setText(localizationManager.getLocalizedString("menu.menuTheme"));
         searchButton.setText(localizationManager.getLocalizedString("button.searchButton"));
+        menuFont.setText(localizationManager.getLocalizedString("menu.menuFont"));
+        fontBase.setText(localizationManager.getLocalizedString("radiomenuitem.fontBase"));
+        fontDyslexia.setText(localizationManager.getLocalizedString("radiomenuitem.fontDislexya"));
+        profileItem.setText(localizationManager.getLocalizedString("menuitem.profileItem"));
+
 
 
     }

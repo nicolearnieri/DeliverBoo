@@ -71,5 +71,15 @@ public class ProfileController {
     }
 
     public void setLocalizationManager(LocalizationManager localizationManager) {
+        usernameLabel.setText(localizationManager.getLocalizedString("label.usernameLabel"));
+        nameLabel.setText(localizationManager.getLocalizedString("label.nameLabel"));
+        surnameLabel.setText(localizationManager.getLocalizedString("label.surnameLabel"));
+        addressLabel.setText(localizationManager.getLocalizedString("label.addressLabel"));
+        phoneLabel.setText(localizationManager.getLocalizedString("label.phoneLabel"));
+        emailLabel.setText(localizationManager.getLocalizedString("label.emailLabel"));
+        saveButton.setText(localizationManager.getLocalizedString("button.saveButton"));
+        otherwiseLabel.setText(localizationManager.getLocalizedString("label.otherwiseLabel"));
+        deleteLabel.setText(localizationManager.getLocalizedString("label.deleteLabel"));
+        deleteButton.setText(localizationManager.getLocalizedString("button.deleteButton"));
     }
 }
