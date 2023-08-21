@@ -11,13 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="370.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.ProfileController">
-   <top>
-      <ImageView fx:id="logo" fitHeight="56.0" fitWidth="237.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@../Icone/logoOf.png" />
-         </image>
-      </ImageView>
-   </top>
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -74,11 +67,25 @@
                </VBox.margin></Label>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="deleteLabel" prefWidth="140.0" text="Elimina il tuo profilo : " />
+                  <Label fx:id="deleteLabel" prefHeight="17.0" prefWidth="187.0" text="Elimina il tuo profilo : " />
                   <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#deleteAccount" prefHeight="34.0" prefWidth="80.0" text="Elimina" />
                </children>
             </HBox>
          </children>
       </VBox>
    </bottom>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="67.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <image>
+                  <Image url="@../Icone/logoOf.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

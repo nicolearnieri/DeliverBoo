@@ -75,7 +75,7 @@ public class SceneHandler {
         if(stage!=null) {stage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
-        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
         //loadFonts();
 
 
@@ -130,10 +130,11 @@ public class SceneHandler {
     }
 
     public void setProfile() throws Exception {
-        if(stage!=null) {stage.close();}
         stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Profile.fxml"));
-        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 500, 700); //v:larghezza, v1:altezza
         //loadFonts();
 
 

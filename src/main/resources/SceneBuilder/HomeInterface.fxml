@@ -157,7 +157,7 @@
                               <Insets left="50.0" top="100.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#openSearchRestaurants" prefHeight="38.0" prefWidth="64.0">
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#openSearchRestaurants" prefHeight="37.0" prefWidth="88.0">
                            <HBox.margin>
                               <Insets left="50.0" top="100.0" />
                            </HBox.margin>
