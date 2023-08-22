@@ -1,12 +1,9 @@
 package uid.project.deliverboo.view;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import uid.project.deliverboo.controller.RestaurantItemController;
-import uid.project.deliverboo.controller.RestaurantsListController;
 import uid.project.deliverboo.model.QuerySearch;
 
 public class RestaurantItem extends StackPane {
