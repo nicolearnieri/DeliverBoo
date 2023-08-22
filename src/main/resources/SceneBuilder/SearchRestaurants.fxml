@@ -37,7 +37,7 @@
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></TextField>
-                  <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="cerca">
+                  <Button fx:id="searchButton" mnemonicParsing="false" onAction="#loadRestaurantsList" prefHeight="26.0" prefWidth="74.0" text="cerca">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>
@@ -184,6 +184,6 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane fx:id="restaurantsListPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane fx:id="restaurantsListPane" maxWidth="1000.0" prefHeight="1000.0" prefWidth="800.0" BorderPane.alignment="TOP_LEFT" />
    </center>
 </BorderPane>
