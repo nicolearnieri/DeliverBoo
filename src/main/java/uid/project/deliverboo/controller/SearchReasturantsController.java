@@ -2,10 +2,13 @@ package uid.project.deliverboo.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import uid.project.deliverboo.view.SceneHandler;
 
+import java.io.IOException;
 import java.util.Locale;
 
 public class SearchReasturantsController {
@@ -98,7 +101,18 @@ public class SearchReasturantsController {
     @FXML
     private RadioMenuItem minimalistButton;
 
+
     private LocalizationManager localizationManager;
+
+    public void loadRestaurantsList(){
+        try{
+            FXMLLoader loader= new FXMLLoader((getClass().getResource("/SceneBuilder/RestaurantsList.fxml")));
+            Parent parent=loader.load();
+
+            restaurantsListPane.getChildren().setAll(parent);
+
+        }catch (IOException e){e.printStackTrace();}
+    }
 
     @FXML
     public void openFAQ(ActionEvent event) throws Exception {

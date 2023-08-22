@@ -112,3 +112,7 @@
   -fx-background-color: #D6F8F8;
 
 }
+
+.list-view {
+    -fx-background-color: lightblue;
+}

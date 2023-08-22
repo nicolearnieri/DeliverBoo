@@ -1,24 +1,29 @@
 package uid.project.deliverboo.view;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import uid.project.deliverboo.controller.RestaurantItemController;
 import uid.project.deliverboo.controller.RestaurantsListController;
 import uid.project.deliverboo.model.QuerySearch;
 
-public class RestaurantsList extends StackPane {
+public class RestaurantItem extends StackPane {
 
     private QuerySearch querySearch;
 
-    public RestaurantsList(QuerySearch querySearch){
+
+    public RestaurantItem(QuerySearch querySearch){
         this.querySearch=querySearch;
-        FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/RestaurantsList.fxml"));
+        FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/RestaurantItem.fxml"));
         try{
             AnchorPane root= loader.load();
-            RestaurantsListController controller= loader.getController();
+            RestaurantItemController controller= loader.getController();
             this.getChildren().add(root);
             root.prefWidthProperty().bind(this.widthProperty());
         }catch (Exception ignoredException){}
     }
+
 
 }
