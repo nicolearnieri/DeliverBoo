@@ -13,7 +13,7 @@ public class RestaurantItem extends StackPane {
 
     public RestaurantItem(QuerySearch querySearch){
         this.querySearch=querySearch;
-        FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/RestaurantItem.fxml"));
+        FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/restaurantItem.fxml"));
         try{
             AnchorPane root= loader.load();
             RestaurantItemController controller= loader.getController();
