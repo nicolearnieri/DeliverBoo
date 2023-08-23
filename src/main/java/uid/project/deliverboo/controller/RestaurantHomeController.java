@@ -5,6 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import uid.project.deliverboo.view.Cart;
+
 
 public class RestaurantHomeController {
 
@@ -23,4 +25,14 @@ public class RestaurantHomeController {
     @FXML
     private Label restaurantNameLabel;
 
+    private Cart cart;
+
+    public void initialize(){
+        cart=new Cart();
+        cart.loadCart();
+
+    }
+
 }
+
+

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import uid.project.deliverboo.view.RestaurantsList;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.io.IOException;
@@ -103,15 +104,11 @@ public class SearchReasturantsController {
 
 
     private LocalizationManager localizationManager;
+    private RestaurantsList restaurantsList;
 
     public void loadRestaurantsList(){
-        try{
-            FXMLLoader loader= new FXMLLoader((getClass().getResource("/SceneBuilder/RestaurantsList.fxml")));
-            Parent parent=loader.load();
-
-            restaurantsListPane.getChildren().setAll(parent);
-
-        }catch (IOException e){e.printStackTrace();}
+        restaurantsList=new RestaurantsList();
+        restaurantsList.loadRestaurantsList(restaurantsListPane);
     }
 
     @FXML
