@@ -11,6 +11,7 @@ import uid.project.deliverboo.controller.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.kordamp.ikonli.javafx.FontIcon;
 
 public class SceneHandler {
     private final static String RESOURCE_PATH = "/src/main/resources/";
@@ -18,6 +19,8 @@ public class SceneHandler {
 
     private final static String FONTS_PATH = CSS_PATH + "fonts/";
     private final static String FXML_PATH = "/SceneBuilder/";
+    private final Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+    private final Alert alertError = new Alert(Alert.AlertType.ERROR);
     private Scene scene;
     private Stage stage;
 
@@ -44,7 +47,7 @@ public class SceneHandler {
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        setCSSForScene(scene);
+        changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -65,7 +68,7 @@ public class SceneHandler {
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        setCSSForScene(scene);
+        changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -82,7 +85,7 @@ public class SceneHandler {
         SearchReasturantsController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        setCSSForScene(scene);
+        changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -101,7 +104,7 @@ public class SceneHandler {
         LogInController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        setCSSForScene(scene);
+        changedTheme();
         logInOrSignUpStage.setTitle("DeliverBoo");
         logInOrSignUpStage.setScene(scene);
         logInOrSignUpStage.setResizable(false);
@@ -122,7 +125,7 @@ public class SceneHandler {
         SignUpController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        setCSSForScene(scene);
+        changedTheme();
         logInOrSignUpStage.setTitle("DeliverBoo");
         logInOrSignUpStage.setScene(scene);
         logInOrSignUpStage.setResizable(false);
@@ -141,7 +144,7 @@ public class SceneHandler {
         ProfileController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        setCSSForScene(scene);
+        changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -158,7 +161,7 @@ public class SceneHandler {
         FAQController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        setCSSForScene(scene);
+        changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -187,6 +190,7 @@ public class SceneHandler {
             Font.loadFont(Objects.requireNonNull(SceneHandler.class.getResource(font)).toExternalForm(), 12);
         }
     }
+
     private void setCSSForScene(Scene scene) { //in base a theme setta i css per la scena
         Objects.requireNonNull(scene);
         List<String> resources = loadCSS();
@@ -200,17 +204,46 @@ public class SceneHandler {
             loadOpenDyslexic();
         }
     }
+
+    private void setCSSForAlert(Alert alert) {
+        Objects.requireNonNull(alert, "Alert cannot be null");
+        List<String> resources = loadCSS();
+        alert.getDialogPane().getStylesheets().clear();
+        for (String resource : resources)
+            alert.getDialogPane().getStylesheets().add(resource);
+    }
+
+    private void changedTheme() {
+        setCSSForScene(scene);
+        setCSSForAlert(alertError);
+        setCSSForAlert(alertInfo);
+    }
+
     private void setCurrentRoot(String filename) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + filename));
         scene.setRoot(loader.load());
     }
+
     public void changeTheme(String newTheme) {
         theme=newTheme;
-        setCSSForScene(scene);
-    }
-    public void changeFont(String newFont) {
-        font= newFont;
-        setCSSForScene(scene);
+        changedTheme();
     }
 
+    public void changeFont(String newFont) {
+        font= newFont;
+        changedTheme();
+    }
+    public void showError(String message) {
+        alertError.setTitle("Error");
+        alertError.setHeaderText("");
+        alertError.setContentText(message);
+        alertError.show();
+    }
+
+    public void showInfo(String message) {
+        alertError.setTitle("Info");
+        alertError.setHeaderText("");
+        alertError.setContentText(message);
+        alertError.show();
+    }
 }

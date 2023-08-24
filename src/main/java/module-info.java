@@ -6,6 +6,7 @@ module uid.project.deliverboo {
     requires org.simplejavamail;
     requires jbcrypt;
     requires org.json;
+    requires org.kordamp.ikonli.javafx;
 
 
     opens uid.project.deliverboo to javafx.fxml;

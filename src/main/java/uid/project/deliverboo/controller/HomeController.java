@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import uid.project.deliverboo.Message;
+import uid.project.deliverboo.model.AddressVerifier;
 import uid.project.deliverboo.view.SceneHandler;
 
 
@@ -102,12 +104,15 @@ public class HomeController {
     }
 
 
-    public void openSearchRestaurants(ActionEvent event) {
+    public void openSearchRestaurants(ActionEvent event){
         try {
             //qua ci vuole l'if se l'inidirzzo è corretto (sarà un bool ritornato da un altro metodo)
-            SceneHandler.getInstance().setSearchRestaurants();
-        } catch (Exception e) {
-            //qua ci vuole il messaggio di errore
+            if (AddressVerifier.getInstance().validAddress(addressField.getText())) {
+                SceneHandler.getInstance().setSearchRestaurants();
+            } else {
+                SceneHandler.getInstance().showError(Message.ADDRESS_NOT_VALID);
+            }
+        }catch (Exception e){SceneHandler.getInstance().showError(Message.ADDRESS_NOT_VALID);
         }
     }
 
