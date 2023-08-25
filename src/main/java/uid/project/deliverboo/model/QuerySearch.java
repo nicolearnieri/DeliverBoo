@@ -22,8 +22,8 @@ public class QuerySearch {
         String query = "SELECT codice FROM Ristoranti WHERE tipologia LIKE ? and codice IN (" ;
         for (int i = 0; i < prevResults.size(); i++) {
             query += (i == 0 ? "?" : ", ?");  //se i è 0 appende ?, altrimenti , ?
-            query += ")";
         }
+        query += ")";
 
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
@@ -55,8 +55,8 @@ public class QuerySearch {
         String query = "SELECT codice FROM Ristoranti WHERE nome LIKE ? and codice IN (" ;
         for (int i = 0; i < prevResults.size(); i++) {
             query += (i == 0 ? "?" : ", ?");  //se i è 0 appende ?, altrimenti , ?
-            query += ")";
         }
+        query += ")";
 
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
