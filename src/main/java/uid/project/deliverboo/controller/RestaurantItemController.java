@@ -17,5 +17,5 @@ public class RestaurantItemController {
 
     @FXML
     private ImageView restaurantImage;
-
+    //qui si potrà usare HomeController.getAddress() per prendere l'indirizzo dell'utente e calcolare la distanza dal ristorante
 }

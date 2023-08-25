@@ -12,6 +12,8 @@ public class AddressVerifier {
     private static String formattedAddress ;
     private static double latitude;
     private static double longitude;
+    private static String city;
+    private static final double EARTH_RADIUS_KM = 6371.0;
     private static AddressVerifier instance = null;
     private AddressVerifier (){}
     public static AddressVerifier getInstance() {
@@ -46,6 +48,11 @@ public class AddressVerifier {
                     System.out.println(formattedAddress);
                     latitude = result.getDouble("lat");
                     longitude = result.getDouble("lon");
+                    String[] addressParts = formattedAddress.split(", ");
+                    if (addressParts.length >= 4) {
+                        city = addressParts[1]; // La città dovrebbe essere il secondo elemento
+                    } else {return false;}
+                    System.out.println(city);
                     return true;
                 } else {
                     return false;
@@ -58,13 +65,34 @@ public class AddressVerifier {
         }
         return false;
     }
-    public static double getLatitude() {
-        return latitude;
+    public static double getLatitude(String temporaryAddress) {
+        validAddress(temporaryAddress);
+        return latitude;}
+    public static double getLongitude(String temporaryAddress) {
+        validAddress(temporaryAddress);
+        return longitude;}
+    public static String getFormattedAddress(String temporaryAddress) {
+        validAddress(temporaryAddress);
+        return formattedAddress;}
+
+    public static String getCity(String temporaryAddress) {
+        validAddress(temporaryAddress);
+        return city;}
+
+    public static double getDistance(String firstAddress, String secondAddress) {
+        double lat1 = Math.toRadians(getLatitude(firstAddress));
+        double lon1 = Math.toRadians(getLongitude(firstAddress));
+        double lat2 = Math.toRadians(getLatitude(secondAddress));
+        double lon2 = Math.toRadians(getLongitude(secondAddress));
+
+        double dlon = lon2 - lon1;
+        double dlat = lat2 - lat1;
+
+        double a = Math.pow(Math.sin(dlat / 2), 2)
+                + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return EARTH_RADIUS_KM * c;
     }
-    public static double getLongitude() {
-        return longitude;
-    }
-    public static String getFormattedAddress() {
-        return formattedAddress;
-    }// cercando "via don minzoni cosenza": Via Don Minzoni, Roges, Rende, Cosenza, Calabria, 87036, Italia
 }
+// cercando "via don minzoni cosenza": Via Don Minzoni, Roges, Rende, Cosenza, Calabria, 87036, Italia

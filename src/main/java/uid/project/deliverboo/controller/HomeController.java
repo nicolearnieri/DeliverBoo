@@ -189,4 +189,8 @@ public class HomeController {
     public void setFontMontserrat() {SceneHandler.getInstance().changeFont("FontMontserrat");
         fontGroup.selectToggle(fontBase);
     }
+
+    public String getAddress() {
+        return accessButton.getText();
+    }
 }
