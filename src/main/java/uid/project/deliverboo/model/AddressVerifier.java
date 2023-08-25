@@ -20,7 +20,8 @@ public class AddressVerifier {
         return instance;
     }
     public static boolean validAddress(String address) {
-        String nominatimEndpoint = "https://nominatim.openstreetmap.org/search?q=" + address + "&format=json";
+        String replacedAddress = address.replace(" ", "+");
+        String nominatimEndpoint = "https://nominatim.openstreetmap.org/search?q=" + replacedAddress + "&format=json";
 
         try {
             URL url = new URL(nominatimEndpoint);
@@ -42,6 +43,7 @@ public class AddressVerifier {
                 if (jsonArray.length() > 0) { //se l'array non è vuoto
                     JSONObject result = jsonArray.getJSONObject(0); //prende il JSONObject
                     formattedAddress = result.getString("display_name"); //oltre a lat lon e display_name si può avere place_id, country, state, city, license, class e type (Classificazione e tipo del luogo)
+                    System.out.println(formattedAddress);
                     latitude = result.getDouble("lat");
                     longitude = result.getDouble("lon");
                     return true;
@@ -64,5 +66,5 @@ public class AddressVerifier {
     }
     public static String getFormattedAddress() {
         return formattedAddress;
-    }
+    }// cercando "via don minzoni cosenza": Via Don Minzoni, Roges, Rende, Cosenza, Calabria, 87036, Italia
 }
