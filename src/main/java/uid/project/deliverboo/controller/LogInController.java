@@ -54,18 +54,11 @@ public class LogInController {
     }
 
     private void logInError (String message){
-
         // Mostra un messaggio di errore all'utente
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(localizationManager.getLocalizedString("title.error"));
-        alert.setHeaderText(localizationManager.getLocalizedString("header.errorLogIn"));
-        alert.setContentText(message);
-        alert.showAndWait();
-
+        SceneHandler.getInstance().showError(message, localizationManager.getLocalizedString("title.error"));
     }
 
     private void logSuccess() {
-        // Mostra un messaggio di errore all'utente
         SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.logIn"),localizationManager.getLocalizedString("title.logIn"));
     }
 

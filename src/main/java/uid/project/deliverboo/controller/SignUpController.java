@@ -87,10 +87,7 @@ public class SignUpController {
 
     @FXML
     private String GetPassword(PasswordField f) //metodo generico per prendere le password
-    {
-        return f.getText();
-    }
-
+    { return f.getText(); }
 
     public void openLogIn() throws Exception {
         SceneHandler.getInstance().setLogIn();
@@ -99,53 +96,24 @@ public class SignUpController {
 
     private void showUsernameError() {
         // Mostra un messaggio di errore all'utente
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(localizationManager.getLocalizedString("title.errorSignUp"));
-        alert.setHeaderText(localizationManager.getLocalizedString("header.errorUser"));
-        alert.setContentText(localizationManager.getLocalizedString("content.errorUser"));
-        alert.showAndWait();
+        SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.errorUser"),localizationManager.getLocalizedString("title.errorSignUp"));
     }
 
     private void showEmailError(String content) {
-        // Mostra un messaggio di errore all'utente
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(localizationManager.getLocalizedString("title.errorSignUp"));
-        alert.setHeaderText(localizationManager.getLocalizedString("header.errorEmail"));
-        alert.setContentText(content);
-        alert.showAndWait();
+        // Mostra un messaggio di errore all'utente, passato come parametro
+        SceneHandler.getInstance().showError(content,localizationManager.getLocalizedString("title.errorSignUp"));
     }
     private void showPasswordError (){
-
-        // Mostra un messaggio di errore all'utente
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(localizationManager.getLocalizedString("title.errorSignUp"));
-        alert.setHeaderText(localizationManager.getLocalizedString("header.errorPassword"));
-        alert.setContentText(localizationManager.getLocalizedString("content.errorPassword"));
-        alert.showAndWait();
-
+        // Mostra un messaggio di errore all'utente riguardante la Password errata
+        SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.errorPassword"),localizationManager.getLocalizedString("title.errorSignUp"));
     }
 
     private void genericError (){
-
-        // Mostra un messaggio di errore all'utente
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(localizationManager.getLocalizedString("title.error"));
-        alert.setHeaderText(localizationManager.getLocalizedString("header.error"));
-        alert.setContentText(localizationManager.getLocalizedString("content.error"));
-        alert.showAndWait();
-
+        SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.error"),localizationManager.getLocalizedString("title.error"));
     }
     private void regSuccess(){
-
-        // Mostra un messaggio di errore all'utente
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(localizationManager.getLocalizedString("title.singUp"));
-        alert.setHeaderText(localizationManager.getLocalizedString("header.signUp"));
-        alert.setContentText(localizationManager.getLocalizedString("content.signUp"));
-        alert.showAndWait();
-
+        SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.signUp"),localizationManager.getLocalizedString("title.signUp"));
     }
-
 
 
     public void setLocalizationManager(LocalizationManager localizationManager){
@@ -193,7 +161,6 @@ public class SignUpController {
                 }
             }
             else {genericError();}
-
         }
         catch (Exception exc) {
             exc.printStackTrace(); }
