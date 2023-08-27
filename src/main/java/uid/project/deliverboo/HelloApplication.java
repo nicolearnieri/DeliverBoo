@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 900, 700);
         stage.setTitle("DeliverBoo");
         String css = getClass().getResource("/css/DarkTheme.css").toExternalForm();
-        String font = getClass().getResource("/css/FontDyslexic.css").toExternalForm();
+        String font = getClass().getResource("/css/FontMontserrat.css").toExternalForm();
 
         scene.getStylesheets().add(css);
         scene.getStylesheets().add(font);
