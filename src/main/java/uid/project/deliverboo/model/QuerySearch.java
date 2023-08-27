@@ -19,17 +19,17 @@ public class QuerySearch {
     public static List<Integer> searchByType (String type, List<Integer> prevResults)
     {
         Vector<Integer> queryResults = new Vector<Integer>();
-        String query = "SELECT codice FROM Ristoranti WHERE tipologia LIKE ? and codice IN (" ;
+        StringBuilder query = new StringBuilder("SELECT codice FROM Ristoranti WHERE tipologia LIKE ? and codice IN (");
         for (int i = 0; i < prevResults.size(); i++) {
-            query += (i == 0 ? "?" : ", ?");  //se i è 0 appende ?, altrimenti , ?
+            query.append(i == 0 ? "?" : ", ?");  //se i è 0 appende ?, altrimenti , ?
         }
-        query += ")";
+        query.append(")");
 
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query.toString());
             preparedStatement.setString(1, type);
             for (int i = 0; i <prevResults.size(); i++) {
-                preparedStatement.setInt(i + 2, prevResults.get(i)); //tutti i ?, da 2 in poi (1 è la tipologia)
+                preparedStatement.setInt(i + 2, prevResults.get(i)); //tutti i ?, da 2 in poi (1 è la tipologia); imposta tutti i parametri dei codici con i valori in posizione i di prevResults
             }
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -52,14 +52,14 @@ public class QuerySearch {
     public static List<Integer> searchByName (String name, List<Integer> prevResults)
     {
         Vector<Integer> queryResults = new Vector<Integer>();
-        String query = "SELECT codice FROM Ristoranti WHERE nome LIKE ? and codice IN (" ;
+        StringBuilder query = new StringBuilder("SELECT codice FROM Ristoranti WHERE nome LIKE ? and codice IN (");
         for (int i = 0; i < prevResults.size(); i++) {
-            query += (i == 0 ? "?" : ", ?");  //se i è 0 appende ?, altrimenti , ?
+            query.append(i == 0 ? "?" : ", ?");  //se i è 0 appende ?, altrimenti , ?
         }
-        query += ")";
+        query.append(")");
 
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(query.toString());
             preparedStatement.setString(1, name);
             for (int i = 0; i <prevResults.size(); i++) {
                 preparedStatement.setInt(i + 2, prevResults.get(i)); //tutti i ?, da 2 in poi (1 è la tipologia)
