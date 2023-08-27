@@ -110,9 +110,9 @@ public class HomeController {
             if (AddressVerifier.getInstance().validAddress(addressField.getText())) {
                 SceneHandler.getInstance().setSearchRestaurants();
             } else {
-                SceneHandler.getInstance().showError(Message.ADDRESS_NOT_VALID);
+                SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
             }
-        }catch (Exception e){SceneHandler.getInstance().showError(Message.ADDRESS_NOT_VALID);
+        }catch (Exception e){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
         }
     }
 

@@ -233,17 +233,25 @@ public class SceneHandler {
         font= newFont;
         changedTheme();
     }
-    public void showError(String message) {
-        alertError.setTitle("Error");
+    public void showError(String message, String title) {
+        FontIcon icon = new FontIcon("mdi2a-alert");
+        icon.getStyleClass().add("icons-color");//da aggiungere nei css
+        icon.setIconSize(40);
+        alertError.setGraphic(icon);
+        alertError.setTitle(title);
         alertError.setHeaderText("");
         alertError.setContentText(message);
         alertError.show();
     }
 
-    public void showInfo(String message) {
-        alertError.setTitle("Info");
-        alertError.setHeaderText("");
-        alertError.setContentText(message);
-        alertError.show();
+    public void showInfo(String message, String title) {
+        FontIcon icon = new FontIcon("mdi2i-information-outline");
+        icon.getStyleClass().add("icons-color"); //da aggiungere nei css
+        icon.setIconSize(40);
+        alertInfo.setGraphic(icon);
+        alertInfo.setTitle(title);
+        alertInfo.setHeaderText("");
+        alertInfo.setContentText(message);
+        alertInfo.show();
     }
 }

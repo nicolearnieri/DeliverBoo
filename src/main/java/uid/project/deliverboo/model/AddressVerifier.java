@@ -52,7 +52,6 @@ public class AddressVerifier {
                     if (addressParts.length >= 4) {
                         city = addressParts[1]; // La città dovrebbe essere il secondo elemento
                     } else {return false;}
-                    System.out.println(city);
                     return true;
                 } else {
                     return false;

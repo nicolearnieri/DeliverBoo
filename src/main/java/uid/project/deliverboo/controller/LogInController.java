@@ -65,13 +65,8 @@ public class LogInController {
     }
 
     private void logSuccess() {
-
         // Mostra un messaggio di errore all'utente
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(localizationManager.getLocalizedString("title.logIn"));
-        alert.setHeaderText(localizationManager.getLocalizedString("header.logIn"));
-        alert.setContentText(localizationManager.getLocalizedString("content.logIn"));
-        alert.showAndWait();
+        SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.logIn"),localizationManager.getLocalizedString("title.logIn"));
     }
 
     @FXML
