@@ -7,6 +7,7 @@ module uid.project.deliverboo {
     requires jbcrypt;
     requires org.json;
     requires org.kordamp.ikonli.javafx;
+    requires org.controlsfx.controls;
 
 
     opens uid.project.deliverboo to javafx.fxml;

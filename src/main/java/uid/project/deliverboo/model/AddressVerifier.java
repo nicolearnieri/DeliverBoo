@@ -6,14 +6,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import uid.project.deliverboo.controller.LocalizationManager;
 import uid.project.deliverboo.view.SceneHandler;
 
 public class AddressVerifier {
+    private static JSONArray jsonArray;
     private static String formattedAddress ;
     private static double latitude;
     private static double longitude;
     private static String city;
     private static final double EARTH_RADIUS_KM = 6371.0;
+    private static LocalizationManager localizationManager = new LocalizationManager();
     private static AddressVerifier instance = null;
     private AddressVerifier (){}
     public static AddressVerifier getInstance() {
@@ -41,9 +44,10 @@ public class AddressVerifier {
                 }
                 in.close();
 
-                JSONArray jsonArray = new JSONArray(response.toString());
-                if (jsonArray.length() > 0) { //se l'array non è vuoto
-                    JSONObject result = jsonArray.getJSONObject(0); //prende il JSONObject
+                jsonArray = new JSONArray(response.toString());
+                int correctIndex=correctAddressIndex(jsonArray);
+                if (jsonArray.length() > 0 && correctIndex>=0) { //se l'array non è vuoto
+                    JSONObject result = jsonArray.getJSONObject(correctIndex); //prende il JSONObject
                     formattedAddress = result.getString("display_name"); //oltre a lat lon e display_name si può avere place_id, country, state, city, license, class e type (Classificazione e tipo del luogo)
                     System.out.println(formattedAddress);
                     latitude = result.getDouble("lat");
@@ -54,7 +58,7 @@ public class AddressVerifier {
                     } else {return false;}
                     return true;
                 } else {
-                    return false;
+                    return false;//se finisco qui l'indirizzo che cerco non è nell'array
                 }
             } else {
                 System.out.println("HTTP Request Failed with error code: " + responseCode); //restituisce il codice di errore
@@ -92,6 +96,19 @@ public class AddressVerifier {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         return EARTH_RADIUS_KM * c;
+    }
+    //funzione che, data jsonArray, restituisce l'indice del JSONObject giusto, altrimenti return -1
+    public static int correctAddressIndex(JSONArray jsonArray) {
+        for (int cont = 0; cont < jsonArray.length(); cont++) {
+            JSONObject obj = jsonArray.getJSONObject(cont);//prende il JSONObject in posizione cont
+            formattedAddress = obj.getString("display_name");
+
+            String message = localizationManager.getLocalizedString("address.confirmationMessage") + formattedAddress;
+            String title = localizationManager.getLocalizedString("address.errorTitle");
+
+            if (SceneHandler.getInstance().showConfirmation(message, title)) {return cont;}
+        }
+        return -1;
     }
 }
 // cercando "via don minzoni cosenza": Via Don Minzoni, Roges, Rende, Cosenza, Calabria, 87036, Italia

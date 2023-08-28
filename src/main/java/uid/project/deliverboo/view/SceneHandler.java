@@ -12,7 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.kordamp.ikonli.javafx.FontIcon;
+import org.controlsfx.control.Notifications;
+import org.controlsfx.control.action.Action;
 
+import javafx.scene.control.ButtonType;
 public class SceneHandler {
     private final static String RESOURCE_PATH = "/src/main/resources/";
     private final static String CSS_PATH = "/css/";
@@ -21,6 +24,7 @@ public class SceneHandler {
     private final static String FXML_PATH = "/SceneBuilder/";
     private final Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     private final Alert alertError = new Alert(Alert.AlertType.ERROR);
+    private final Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION);
     private Scene scene;
     private Stage stage;
 
@@ -253,5 +257,19 @@ public class SceneHandler {
         alertInfo.setHeaderText("");
         alertInfo.setContentText(message);
         alertInfo.show();
+    }
+    public boolean showConfirmation(String message, String title) {
+        alertConfirmation.setTitle(title);
+        alertConfirmation.setHeaderText("");
+        alertConfirmation.setContentText(message);
+
+        ButtonType buttonTypeYes = new ButtonType(localizationManager.getLocalizedString("address.yes"));
+        ButtonType buttonTypeNo = new ButtonType(localizationManager.getLocalizedString("address.no"));
+
+        alertConfirmation.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        ButtonType response = alertConfirmation.showAndWait().orElse(buttonTypeYes); //defaul se l'utente non preme ne su SI ne su NO
+
+        return response == buttonTypeYes;
     }
 }
