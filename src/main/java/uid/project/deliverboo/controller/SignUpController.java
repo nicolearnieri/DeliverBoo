@@ -78,7 +78,6 @@ public class SignUpController {
     }
 
 
-
     @FXML
     private String GetFromTextField(TextField t)
     {
@@ -89,36 +88,28 @@ public class SignUpController {
     private String GetPassword(PasswordField f) //metodo generico per prendere le password
     { return f.getText(); }
 
-    public void openLogIn() throws Exception {
-        SceneHandler.getInstance().setLogIn();
-    }
-
+    public void openLogIn() throws Exception { SceneHandler.getInstance().setLogIn(); }
 
     private void showUsernameError() {
-        // Mostra un messaggio di errore all'utente
+        // Mostra un messaggio di errore all'utente per l'username che non va bene
         SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.errorUser"),localizationManager.getLocalizedString("title.errorSignUp"));
     }
 
     private void showEmailError(String content) {
         // Mostra un messaggio di errore all'utente, passato come parametro
-        SceneHandler.getInstance().showError(content,localizationManager.getLocalizedString("title.errorSignUp"));
-    }
+        SceneHandler.getInstance().showError(content,localizationManager.getLocalizedString("title.errorSignUp")); }
     private void showPasswordError (){
         // Mostra un messaggio di errore all'utente riguardante la Password errata
-        SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.errorPassword"),localizationManager.getLocalizedString("title.errorSignUp"));
-    }
+        SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.errorPassword"),localizationManager.getLocalizedString("title.errorSignUp")); }
 
-    private void genericError (){
-        SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.error"),localizationManager.getLocalizedString("title.error"));
-    }
-    private void regSuccess(){
-        SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.signUp"),localizationManager.getLocalizedString("title.signUp"));
-    }
+    private void genericError ()
+    { SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.error"),localizationManager.getLocalizedString("title.error")); }
+    private void regSuccess()
+    { SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.signUp"),localizationManager.getLocalizedString("title.signUp")); }
 
 
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
-
         updateTexts();
     }
 
@@ -164,12 +155,10 @@ public class SignUpController {
         }
         catch (Exception exc) {
             exc.printStackTrace(); }
-
     }
 
     @FXML
     void openLogIn(ActionEvent event) throws Exception {
-
         SceneHandler.getInstance().setLogIn();
     }
 
@@ -184,7 +173,6 @@ public class SignUpController {
         messageLabel.setText(localizationManager.getLocalizedString("label.massageLabelSU"));
         logInButton.setText(localizationManager.getLocalizedString("button.accessButtonAc"));
         passwordSuggestions.setText(localizationManager.getLocalizedString("label.passwordSuggestion"));
-
 
     }
 

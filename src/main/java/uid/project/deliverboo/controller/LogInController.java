@@ -49,6 +49,7 @@ public class LogInController {
     }
 
 
+   @FXML
     public  void openSignUp() throws Exception {
         SceneHandler.getInstance().setSignUp();
     }
