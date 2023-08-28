@@ -31,7 +31,7 @@ public class SceneHandler {
 
     private Stage logInOrSignUpStage;
 
-    private String theme = "ParadiseTheme";
+    private String theme = "DarkTheme";
     private String font = "FontMontserrat";
     private static SceneHandler instance = null;
 
