@@ -245,6 +245,7 @@ public class SceneHandler {
         alertError.setTitle(title);
         alertError.setHeaderText("");
         alertError.setContentText(message);
+        alertError.getDialogPane().setPrefWidth(500);
         alertError.show();
     }
 
@@ -256,19 +257,21 @@ public class SceneHandler {
         alertInfo.setTitle(title);
         alertInfo.setHeaderText("");
         alertInfo.setContentText(message);
+        alertInfo.getDialogPane().setPrefWidth(500);
         alertInfo.show();
     }
     public boolean showConfirmation(String message, String title) {
         alertConfirmation.setTitle(title);
         alertConfirmation.setHeaderText("");
         alertConfirmation.setContentText(message);
+        alertConfirmation.getDialogPane().setPrefWidth(500);
 
         ButtonType buttonTypeYes = new ButtonType(localizationManager.getLocalizedString("address.yes"));
         ButtonType buttonTypeNo = new ButtonType(localizationManager.getLocalizedString("address.no"));
 
         alertConfirmation.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
 
-        ButtonType response = alertConfirmation.showAndWait().orElse(buttonTypeYes); //defaul se l'utente non preme ne su SI ne su NO
+        ButtonType response = alertConfirmation.showAndWait().orElse(buttonTypeYes); //default se l'utente non preme ne su SI ne su NO
 
         return response == buttonTypeYes;
     }
