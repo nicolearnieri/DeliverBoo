@@ -80,6 +80,9 @@ public class HomeController {
     @FXML
     private MenuItem profileItem;
 
+    @FXML
+    private Label punLine;
+
 
 
     private  LocalizationManager localizationManager;
@@ -157,7 +160,7 @@ public class HomeController {
         fontBase.setText(localizationManager.getLocalizedString("radiomenuitem.fontBase"));
         fontDyslexia.setText(localizationManager.getLocalizedString("radiomenuitem.fontDislexya"));
         profileItem.setText(localizationManager.getLocalizedString("menuitem.profileItem"));
-
+        punLine.setText(localizationManager.getLocalizedString("punLine.title"));
 
 
     }
