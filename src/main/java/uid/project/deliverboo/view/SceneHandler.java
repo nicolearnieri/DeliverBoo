@@ -112,7 +112,7 @@ public class SceneHandler {
         logInOrSignUpStage.setTitle("DeliverBoo");
         logInOrSignUpStage.setScene(scene);
         logInOrSignUpStage.setResizable(false);
-        logInOrSignUpStage.showAndWait();
+        logInOrSignUpStage.show();
     }
 
 
@@ -133,7 +133,7 @@ public class SceneHandler {
         logInOrSignUpStage.setTitle("DeliverBoo");
         logInOrSignUpStage.setScene(scene);
         logInOrSignUpStage.setResizable(false);
-        logInOrSignUpStage.showAndWait();
+        logInOrSignUpStage.show();
     }
 
     public void setProfile() throws Exception {
@@ -221,6 +221,7 @@ public class SceneHandler {
         setCSSForScene(scene);
         setCSSForAlert(alertError);
         setCSSForAlert(alertInfo);
+        setCSSForAlert(alertConfirmation);
     }
 
     private void setCurrentRoot(String filename) throws Exception {
@@ -261,10 +262,14 @@ public class SceneHandler {
         alertInfo.show();
     }
     public boolean showConfirmation(String message, String title) {
+        FontIcon icon = new FontIcon("mdi2h-home-map-marker");
+        icon.getStyleClass().add("icons-color");
+        icon.setIconSize(40);
+        alertConfirmation.setGraphic(icon);
         alertConfirmation.setTitle(title);
         alertConfirmation.setHeaderText("");
         alertConfirmation.setContentText(message);
-        alertConfirmation.getDialogPane().setPrefWidth(500);
+        alertConfirmation.getDialogPane().setPrefWidth(600);
 
         ButtonType buttonTypeYes = new ButtonType(localizationManager.getLocalizedString("address.yes"));
         ButtonType buttonTypeNo = new ButtonType(localizationManager.getLocalizedString("address.no"));
