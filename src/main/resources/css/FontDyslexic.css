@@ -1,8 +1,4 @@
-@font-face {
-    font-family: 'OpenDyslexic';
-    src: url('fonts/OpenDyslexic-Regular.otf');
-}
-
-.root {
+* {
     -fx-font-family: 'OpenDyslexic';
+    -fx-font-size : 14px;
 }
