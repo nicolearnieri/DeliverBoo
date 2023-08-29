@@ -1,0 +1,47 @@
+<component name="ArtifactManager">
+  <artifact name="DeliverBoo:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/DeliverBoo_jar2</output-path>
+    <root id="root">
+      <element id="archive" name="DeliverBoo.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$USER_HOME$/Desktop/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="DeliverBoo" />
+      </element>
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:19" />
+      <element id="library" level="project" name="Maven: com.sanctionco.jmail:jmail:1.2.1" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-jcl:6.0.11" />
+      <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.32" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-expression:6.0.11" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:19" />
+      <element id="library" level="project" name="Maven: org.simplejavamail:core-module:7.5.0" />
+      <element id="library" level="project" name="Maven: io.micrometer:micrometer-observation:1.10.9" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:19" />
+      <element id="library" level="project" name="Maven: com.sun.mail:jakarta.mail:2.0.1" />
+      <element id="library" level="project" name="Maven: com.github.bbottema:jetbrains-runtime-annotations:1.0.1" />
+      <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-core:12.3.1" />
+      <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-materialdesign2-pack:12.3.1" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:19" />
+      <element id="library" level="project" name="Maven: com.sun.activation:jakarta.activation:2.0.1" />
+      <element id="library" level="project" name="Maven: org.json:json:20210307" />
+      <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:6.1.2" />
+      <element id="library" level="project" name="Maven: org.kordamp.ikonli:ikonli-javafx:12.3.1" />
+      <element id="library" level="project" name="Maven: org.controlsfx:controlsfx:11.1.0" />
+      <element id="library" level="project" name="Maven: org.simplejavamail:simple-java-mail:7.5.0" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-core:6.0.11" />
+      <element id="library" level="project" name="Maven: org.springframework.security:spring-security-crypto:6.1.2" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-beans:6.0.11" />
+      <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.42.0.0" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:19" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:19" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-aop:6.0.11" />
+      <element id="library" level="project" name="Maven: org.springframework:spring-context:6.0.11" />
+      <element id="library" level="project" name="Maven: ch.qos.logback:logback-classic:1.2.9" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:19" />
+      <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.9" />
+      <element id="library" level="project" name="Maven: io.micrometer:micrometer-commons:1.10.9" />
+      <element id="library" level="project" name="Maven: org.mindrot:jbcrypt:0.4" />
+    </root>
+  </artifact>
+</component>

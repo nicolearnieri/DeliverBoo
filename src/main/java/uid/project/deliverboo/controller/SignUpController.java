@@ -90,19 +90,19 @@ public class SignUpController {
 
     public void openLogIn() throws Exception { SceneHandler.getInstance().setLogIn(); }
 
-    private void showUsernameError() {
+    public void showUsernameError() {
         // Mostra un messaggio di errore all'utente per l'username che non va bene
         SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.errorUser"),localizationManager.getLocalizedString("title.errorSignUp"));
     }
 
-    private void showEmailError(String content) {
+    public void showEmailError(String content) {
         // Mostra un messaggio di errore all'utente, passato come parametro
         SceneHandler.getInstance().showError(content,localizationManager.getLocalizedString("title.errorSignUp")); }
-    private void showPasswordError (){
+    public void showPasswordError (){
         // Mostra un messaggio di errore all'utente riguardante la Password errata
         SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.errorPassword"),localizationManager.getLocalizedString("title.errorSignUp")); }
 
-    private void genericError ()
+    public void genericError ()
     { SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.error"),localizationManager.getLocalizedString("title.error")); }
     private void regSuccess()
     { SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.signUp"),localizationManager.getLocalizedString("title.signUp")); }
@@ -128,7 +128,9 @@ public class SignUpController {
         try {
             //controllo username valido: non dev'essere ripetuto nelle query
             if (QueryUsers.usernameNotExists(username)) { usernameOk = true; }
-            else {showUsernameError();}
+            else {
+                System.out.println("ciao bebe");
+                showUsernameError();}
 
             if ( ValidatorUtility.isValidEmail(email)){
                 if (QueryUsers.emailNotExists(email)) {emailOk = true;}

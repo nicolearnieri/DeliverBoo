@@ -247,7 +247,7 @@ public class SceneHandler {
         alertError.setHeaderText("");
         alertError.setContentText(message);
         alertError.getDialogPane().setPrefWidth(500);
-        alertError.show();
+        alertError.showAndWait();
     }
 
     public void showInfo(String message, String title) {
