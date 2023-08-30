@@ -6,6 +6,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import uid.project.deliverboo.Message;
 import uid.project.deliverboo.model.AddressVerifier;
+import uid.project.deliverboo.model.CurrentUser;
+import uid.project.deliverboo.model.QueryUsers;
 import uid.project.deliverboo.view.SceneHandler;
 
 
@@ -89,7 +91,10 @@ public class HomeController {
 
 
 
-
+    public void openLogInOrProfile() throws Exception{
+        if(CurrentUser.getInstance().getAccess()){menuProfile();}
+        else{openLogIn();}
+    }
 
     public void openLogIn() throws Exception{
         SceneHandler.getInstance().setLogIn();
@@ -195,5 +200,10 @@ public class HomeController {
 
     public String getAddress() {
         return accessButton.getText();
+    }
+
+    public void changeLabel(boolean profile){
+        if(profile){accessButton.setText(localizationManager.getLocalizedString("button.profileButton"));}
+        else{accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));}
     }
 }
