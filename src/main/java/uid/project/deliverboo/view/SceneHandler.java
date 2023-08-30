@@ -16,6 +16,8 @@ import org.controlsfx.control.Notifications;
 import org.controlsfx.control.action.Action;
 
 import javafx.scene.control.ButtonType;
+import uid.project.deliverboo.model.CurrentUser;
+
 public class SceneHandler {
     private final static String RESOURCE_PATH = "/src/main/resources/";
     private final static String CSS_PATH = "/css/";
@@ -66,11 +68,11 @@ public class SceneHandler {
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
         scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
-        //loadFonts();
 
 
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
+        controller.changeLabel(CurrentUser.getInstance().getAccess());
 
         changedTheme();
         stage.setTitle("DeliverBoo");

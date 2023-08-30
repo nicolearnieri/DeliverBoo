@@ -42,7 +42,7 @@
                         <Insets />
                      </opaqueInsets>
                   </HBox>
-                  <Button fx:id="accessButton" alignment="CENTER" mnemonicParsing="false" onAction="#openLogIn" prefHeight="60.0" prefWidth="234.0">
+                  <Button fx:id="accessButton" alignment="CENTER" mnemonicParsing="false" onAction="#openLogInOrProfile" prefHeight="60.0" prefWidth="234.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

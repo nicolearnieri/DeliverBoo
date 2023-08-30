@@ -69,6 +69,7 @@ public class LogInController {
         String password = passwordFieldSU.getText();
         boolean email = ValidatorUtility.isValidEmail(user);
         boolean userExists = false;
+        boolean logInSucceded=false;
 
         if (email) {
             if (QueryUsers.emailNotExists(user))
@@ -84,6 +85,7 @@ public class LogInController {
         {
             boolean check = BCrypt.checkpw(password, QueryUsers.getPassword(user));
             if (check) {
+                logInSucceded=true;
                 //facimm ancuna cos tu rimember de iuser
                 CurrentUser cU = CurrentUser.getInstance();
                 if (email) {
@@ -97,6 +99,14 @@ public class LogInController {
                 logSuccess();
             }
             else logInError(localizationManager.getLocalizedString("error.password"));
+        }
+        System.out.println(CurrentUser.getInstance().getAccess());//dà false, problema
+        if (CurrentUser.getInstance().getAccess() && logInSucceded){
+            try {
+                SceneHandler.getInstance().setHomeInterface();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
