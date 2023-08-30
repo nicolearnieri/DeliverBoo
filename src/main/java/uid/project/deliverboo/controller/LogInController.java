@@ -82,7 +82,7 @@ public class LogInController {
 
         if (userExists)
         {
-            boolean check = BCrypt.checkpw(QueryUsers.getPassword(user), password);
+            boolean check = BCrypt.checkpw(password, QueryUsers.getPassword(user));
             if (check) {
                 //facimm ancuna cos tu rimember de iuser
                 CurrentUser cU = CurrentUser.getInstance();

@@ -145,7 +145,7 @@ public class SignUpController {
 
             if (eqPasswords && usernameOk && emailOk && passwordOk)
             {
-                //CODIFICA PASSWORD SALE
+                //CODIFICA PASSWORD
                 String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
                 if (QueryUsers.insertUser(username, "","", email, passwordEncoded, "", "" ))
                 { //messaggio avviso che la registrazione è andata a buon fine e il profilo può essere completato da impostazioni
