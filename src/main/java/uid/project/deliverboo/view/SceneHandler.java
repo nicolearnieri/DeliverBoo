@@ -192,14 +192,11 @@ public class SceneHandler {
 
     }
     private void loadMontserrat() {
-        for (String font : List.of(FONTS_PATH + "Montserrat-Regular.ttf")) {
-            Font.loadFont(Objects.requireNonNull(SceneHandler.class.getResource(font)).toExternalForm(), 12);
-        }
+        Font.loadFont(getClass().getResourceAsStream("/css/fonts/Montserrat-Regular.ttf"), 12);
+        //System.out.println(myfont.getFamily());
     }
     private void loadOpenDyslexic() {
-        for (String font : List.of(FONTS_PATH + "OpenDyslexic-Regular.otf")) {
-            Font.loadFont(Objects.requireNonNull(SceneHandler.class.getResource(font)).toExternalForm(), 12);
-        }
+        Font.loadFont(getClass().getResourceAsStream("/css/fonts/OpenDyslexic-Regular.otf"), 12);
     }
 
     private void setCSSForScene(Scene scene) { //in base a theme setta i css per la scena
