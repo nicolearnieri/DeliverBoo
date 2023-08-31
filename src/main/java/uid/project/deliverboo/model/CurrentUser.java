@@ -16,7 +16,10 @@ public class CurrentUser
 
     public void setEmail(String email) {this.email = email;}
 
-    public boolean getAccess() { return access; }
+    public boolean getAccess() {
+        if (nomeUtente != null && email != null) return true;
+        else return false;
+    }
 
     public void setAccess(boolean value) {this.access = value;}
 

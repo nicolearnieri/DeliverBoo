@@ -46,7 +46,7 @@
                   <Insets />
                </opaqueInsets>
             </HBox>
-            <Button fx:id="userLogged" mnemonicParsing="false" prefHeight="46.0" prefWidth="235.0" text="Utente">
+            <Button fx:id="userLogged" mnemonicParsing="false" onAction="#openLogInOrProfile" prefHeight="46.0" prefWidth="235.0" text="Utente">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>

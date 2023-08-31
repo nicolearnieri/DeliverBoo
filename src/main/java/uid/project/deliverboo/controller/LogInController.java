@@ -1,5 +1,6 @@
 package uid.project.deliverboo.controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -100,13 +101,15 @@ public class LogInController {
             }
             else logInError(localizationManager.getLocalizedString("error.password"));
         }
-        System.out.println(CurrentUser.getInstance().getAccess());//dà false, problema
         if (CurrentUser.getInstance().getAccess() && logInSucceded){
-            try {
-                SceneHandler.getInstance().setHomeInterface();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            Platform.runLater(() -> {
+                try {
+                    if(SceneHandler.getInstance().getSearchRestaurantsIsVisible()){SceneHandler.getInstance().setSearchRestaurants();}
+                    else{SceneHandler.getInstance().setHomeInterface();}
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
         }
 
     }

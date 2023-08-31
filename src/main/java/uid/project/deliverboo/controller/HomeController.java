@@ -2,6 +2,7 @@ package uid.project.deliverboo.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import uid.project.deliverboo.Message;
@@ -114,8 +115,13 @@ public class HomeController {
 
     public void openSearchRestaurants(ActionEvent event){
         try {
-            //qua ci vuole l'if se l'inidirzzo è corretto (sarà un bool ritornato da un altro metodo)
             if (AddressVerifier.getInstance().validAddress(addressField.getText())) {
+                Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                // Chiudi la finestra corrente
+                currentStage.close();
+
+                // Apri la schermata di ricerca dei ristoranti
                 SceneHandler.getInstance().setSearchRestaurants();
             } else {
                 SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));

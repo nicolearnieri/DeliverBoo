@@ -30,7 +30,7 @@ public class SceneHandler {
     private Scene scene;
     private Stage stage;
 
-
+    private boolean searchRestaurantsIsVisible=false;
     private Stage logInOrSignUpStage;
 
     private String theme = "DarkTheme";
@@ -73,11 +73,13 @@ public class SceneHandler {
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
         controller.changeLabel(CurrentUser.getInstance().getAccess());
+        searchRestaurantsIsVisible=false;
 
         changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
+        stage.toBack();
     }
 
     public void setSearchRestaurants() throws Exception {
@@ -90,13 +92,16 @@ public class SceneHandler {
 
         SearchReasturantsController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
+        controller.changeLabel(CurrentUser.getInstance().getAccess());
+        searchRestaurantsIsVisible=true;
 
         changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
+        stage.toBack();
     }
-
+    public boolean getSearchRestaurantsIsVisible(){return searchRestaurantsIsVisible;}
     public void setLogIn() throws Exception {
         if(logInOrSignUpStage!=null){logInOrSignUpStage.close();}
         logInOrSignUpStage = new Stage();

@@ -3,9 +3,12 @@ package uid.project.deliverboo.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.view.RestaurantsList;
 import uid.project.deliverboo.view.SceneHandler;
 
@@ -117,6 +120,10 @@ public class SearchReasturantsController {
     }
 
     public void openHome(ActionEvent event) throws Exception{
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        currentStage.close();
+
         SceneHandler.getInstance().setHomeInterface();
     }
 
@@ -157,7 +164,10 @@ public class SearchReasturantsController {
     void menuProfile(ActionEvent event) throws Exception {
         SceneHandler.getInstance().setProfile();
     }
-
+    public void openLogInOrProfile() throws Exception{
+        if(CurrentUser.getInstance().getAccess()){SceneHandler.getInstance().setProfile();;}
+        else{SceneHandler.getInstance().setLogIn();;}
+    }
     private void updateTexts(){
         bars.setText(localizationManager.getLocalizedString("button.bar"));
         breadType.setText(localizationManager.getLocalizedString("button.breadType"));
@@ -212,7 +222,10 @@ public class SearchReasturantsController {
         themeGroup.selectToggle(minimalistButton);
     }
 
-
+    public void changeLabel(boolean profile){
+        if(profile){userLogged.setText(localizationManager.getLocalizedString("button.profileButton"));}
+        else{userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));}
+    }
 
 }
 
