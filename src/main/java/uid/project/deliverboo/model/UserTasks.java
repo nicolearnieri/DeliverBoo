@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import static uid.project.deliverboo.model.DataBaseManager.getConnection;
 
 class InsertUserTask extends Task<Boolean> {
     private String username, nome, cognome, email, password, indirizzo, numeroTelefono;
