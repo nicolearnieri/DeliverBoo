@@ -93,18 +93,28 @@ public class LogInController {
 
         if (userExists)
         {
-            boolean check = BCrypt.checkpw(password, QueryUsers.getPassword(user));
+            Callable<String> getPwCallable = TaskCreator.createGetPassword(user);
+            Future<String> resultP = executor.submit(getPwCallable);
+            String resP = resultP.get();
+            boolean check = BCrypt.checkpw(password, resP);
+
             if (check) {
                 logInSucceded=true;
                 //facimm ancuna cos tu rimember de iuser
                 CurrentUser cU = CurrentUser.getInstance();
                 if (email) {
                     cU.setEmail(user);
-                    cU.setNomeUtente(QueryUsers.getUsername(user));
+                    Callable<String> getUserCallable = TaskCreator.createGetUsername(user);
+                    Future<String> result = executor.submit(getUserCallable);
+                    String resS = result.get();
+                    cU.setNomeUtente(resS);
                 }
                 else {
                     cU.setNomeUtente(user);
-                    cU.setEmail(QueryUsers.getEmail(user));
+                    Callable<String> getEmailCallable = TaskCreator.createGetEmail(user);
+                    Future<String> result = executor.submit(getEmailCallable);
+                    String resE= result.get();
+                    cU.setEmail(resE);
                 }
                 logSuccess();
             }
