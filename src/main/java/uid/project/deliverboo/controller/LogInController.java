@@ -6,12 +6,14 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
-import uid.project.deliverboo.model.CurrentUser;
-import uid.project.deliverboo.model.QueryUsers;
-import uid.project.deliverboo.model.ValidatorUtility;
+import uid.project.deliverboo.model.*;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class LogInController {
 
@@ -41,6 +43,7 @@ public class LogInController {
     private Button signUpButton;
 
     private  LocalizationManager localizationManager;
+    private ExecutorService executor = ExecutorProvider.getExecutor();
 
 
     public void setLocalizationManager(LocalizationManager localizationManager){
@@ -65,7 +68,7 @@ public class LogInController {
     }
 
     @FXML
-    public void logInUser () {
+    public void logInUser () throws ExecutionException, InterruptedException {
         String user = userEmailField.getText();
         String password = passwordFieldSU.getText();
         boolean email = ValidatorUtility.isValidEmail(user);
@@ -73,11 +76,17 @@ public class LogInController {
         boolean logInSucceded=false;
 
         if (email) {
-            if (QueryUsers.emailNotExists(user))
+            Callable<Boolean> emailCallable = TaskCreator.createEmailNotExists(user);
+            Future<Boolean> result = executor.submit(emailCallable);
+            Boolean res = result.get();
+            if (res)
                 logInError(localizationManager.getLocalizedString("error.email"));
             else userExists = true;
         } else {
-            if (QueryUsers.usernameNotExists(user))
+            Callable<Boolean> userCallable = TaskCreator.createUsernameNotExists(user);
+            Future<Boolean> result = executor.submit(userCallable);
+            Boolean res = result.get();
+            if (res)
                 logInError(localizationManager.getLocalizedString("error.user"));
             else userExists = true;
         }
