@@ -1,5 +1,6 @@
 package uid.project.deliverboo.controller;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,6 +13,10 @@ import org.mindrot.jbcrypt.BCrypt;
 import uid.project.deliverboo.controller.HomeController;
 
 import java.util.Locale;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 public class SignUpController {
 
@@ -58,6 +63,8 @@ public class SignUpController {
     private Button logInButton;
 
     private LocalizationManager localizationManager;
+
+    private ExecutorService executor = ExecutorProvider.getExecutor();
 
     public void initialize() {
 
@@ -123,14 +130,23 @@ public class SignUpController {
         boolean usernameOk = false;
 
         try {
+            Callable<Boolean> userCallable = TaskCreator.createUsernameNotExists(username);
+            Future<Boolean> result = executor.submit(userCallable);//oggetto prodotto da un'operazione asincrona
+            Boolean res = result.get();
             //controllo username valido: non dev'essere ripetuto nelle query
-            if (QueryUsers.usernameNotExists(username)) { usernameOk = true; }
+            if (res) { usernameOk = true; }
             else {
                 System.out.println("ciao bebe");
                 showUsernameError();}
 
-            if ( ValidatorUtility.isValidEmail(email)){
-                if (QueryUsers.emailNotExists(email)) {emailOk = true;}
+
+            if ( ValidatorUtility.isValidEmail(email))
+            {
+                Callable<Boolean> emailCallable = TaskCreator.createEmailNotExists(email);
+                result = executor.submit(userCallable);//oggetto prodotto da un'operazione asincrona
+                res = result.get();
+
+                if (res) {emailOk = true;}
                 else { showEmailError(localizationManager.getLocalizedString("error.emailExist")); }
             }
             else { showEmailError(localizationManager.getLocalizedString("error.emailInvalid")); }
@@ -142,9 +158,12 @@ public class SignUpController {
 
             if (eqPasswords && usernameOk && emailOk && passwordOk)
             {
-                //CODIFICA PASSWORD
-                String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12));
-                if (QueryUsers.insertUser(username, "","", email, passwordEncoded, "", "" ))
+
+                String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12)); //CODIFICA PASSWORD
+                Callable<Boolean> insTask = TaskCreator.createInsertUser(username, "", "", email, passwordEncoded, "", "");
+                Future<Boolean> insRes = executor.submit(insTask);//oggetto prodotto da un'operazione asincrona
+                res = insRes.get();
+                if (res)
                 { //messaggio avviso che la registrazione è andata a buon fine e il profilo può essere completato da impostazioni
                     EmailSender.sendEmail(email, localizationManager.getLocalizedString("email.subject"),localizationManager.getLocalizedString("email.body"));
                     regSuccess();

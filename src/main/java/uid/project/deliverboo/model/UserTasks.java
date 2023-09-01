@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
+import java.util.concurrent.Callable;
 
-class InsertUserTask extends Task<Boolean> {
+import static uid.project.deliverboo.model.DataBaseManager.getConnection;
+
+class InsertUserTask implements Callable<Boolean> {
     private String username, nome, cognome, email, password, indirizzo, numeroTelefono;
 
     public InsertUserTask(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono) {
@@ -19,10 +22,9 @@ class InsertUserTask extends Task<Boolean> {
     }
 
     @Override
-    protected Boolean call() throws Exception {
-        try (
-                Connection conn = DataBaseManager.getConnection();
-             PreparedStatement insertQuery = conn.prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, indirizzoPredefinito, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+    public Boolean call() throws Exception {
+        try {
+            PreparedStatement insertQuery = getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, indirizzoPredefinito, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?, ?)");
             insertQuery.setString(1, username);
             insertQuery.setString(2, nome);
             insertQuery.setString(3, cognome);
@@ -32,6 +34,7 @@ class InsertUserTask extends Task<Boolean> {
             insertQuery.setString(7, numeroTelefono);
 
             int rowsAffected = insertQuery.executeUpdate();
+            System.out.println("sto eseguendo");
             return rowsAffected > 0;
 
         } catch (Exception e) {
@@ -43,18 +46,18 @@ class InsertUserTask extends Task<Boolean> {
     }
 }
 
-class DeleteUserTask extends Task<Boolean> {
-    private int userId;
+class DeleteUserTask implements Callable<Boolean> {
+    private String userId;
 
-    public DeleteUserTask(int userId) {
+    public DeleteUserTask(String userId) {
         this.userId = userId;
     }
 
     @Override
-    protected Boolean call() throws Exception {
-        try (Connection conn = DataBaseManager.getConnection();
+    public Boolean call() throws Exception {
+        try (Connection conn = getConnection();
              PreparedStatement deleteQuery = conn.prepareStatement("DELETE FROM utenti WHERE nomeUtente = ?")) {
-            deleteQuery.setInt(1, userId);
+            deleteQuery.setString(1, userId);
 
             int rowsAffected = deleteQuery.executeUpdate();
             return rowsAffected > 0;
@@ -68,7 +71,7 @@ class DeleteUserTask extends Task<Boolean> {
 
 
 
-class UsernameNotExistsTask extends Task<Boolean> {
+class UsernameNotExistsTask implements Callable<Boolean> {
     private String username;
 
     public UsernameNotExistsTask(String username) {
@@ -76,9 +79,9 @@ class UsernameNotExistsTask extends Task<Boolean> {
     }
 
     @Override
-    protected Boolean call() throws Exception {
+    public Boolean call() throws Exception {
         String query = "SELECT COUNT(*) FROM utenti WHERE nomeUtente = ?";
-        try (Connection conn = DataBaseManager.getConnection();
+        try (Connection conn = getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -94,7 +97,7 @@ class UsernameNotExistsTask extends Task<Boolean> {
         return true;
     }
 }
-class EmailNotExistsTask extends Task<Boolean> {
+class EmailNotExistsTask implements Callable<Boolean> {
     private String email;
 
     public EmailNotExistsTask(String email) {
@@ -102,9 +105,9 @@ class EmailNotExistsTask extends Task<Boolean> {
     }
 
     @Override
-    protected Boolean call() throws Exception {
+    public Boolean call() throws Exception {
         String query = "SELECT COUNT(*) FROM utenti WHERE email = ?";
-        try (Connection conn = DataBaseManager.getConnection();
+        try (Connection conn = getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setString(1, email);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -119,7 +122,7 @@ class EmailNotExistsTask extends Task<Boolean> {
 }
 
 
-class GetPasswordTask extends Task<String> {
+class GetPasswordTask implements Callable<String> {
     private String param;
 
     public GetPasswordTask(String param) {
@@ -127,9 +130,9 @@ class GetPasswordTask extends Task<String> {
     }
 
     @Override
-    protected String call() throws Exception {
+    public String call() throws Exception {
         String query = "SELECT password FROM utenti WHERE nomeUtente = ? or email = ?";
-        try (Connection conn = DataBaseManager.getConnection();
+        try (Connection conn = getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setString(1, param);
             preparedStatement.setString(2, param);
@@ -142,7 +145,7 @@ class GetPasswordTask extends Task<String> {
         return "";
     }
 }
-class GetUsernameTask extends Task<String> {
+class GetUsernameTask implements Callable<String>  {
     private String email;
 
     public GetUsernameTask(String email) {
@@ -150,9 +153,9 @@ class GetUsernameTask extends Task<String> {
     }
 
     @Override
-    protected String call() throws Exception {
+    public String call() throws Exception {
         String query = "SELECT nomeUtente FROM utenti WHERE email = ?";
-        try (Connection conn = DataBaseManager.getConnection();
+        try (Connection conn = getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setString(1, email);
 
@@ -167,7 +170,7 @@ class GetUsernameTask extends Task<String> {
         }
     }
 }
-class GetEmailTask extends Task<String> {
+class GetEmailTask implements Callable<String>  {
     private String username;
 
     public GetEmailTask(String username) {
@@ -175,9 +178,9 @@ class GetEmailTask extends Task<String> {
     }
 
     @Override
-    protected String call() throws Exception {
+    public String call() throws Exception {
         String query = "SELECT email FROM utenti WHERE nomeUtente = ?";
-        try (Connection conn = DataBaseManager.getConnection();
+        try (Connection conn = getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query)) {
             preparedStatement.setString(1, username);
 
@@ -195,7 +198,7 @@ class GetEmailTask extends Task<String> {
 
 
 
- class UpdateOnUserTask extends Task<Boolean> {
+ class UpdateOnUserTask implements Callable<Boolean>  {
      private String user, name, surname, phone, address;
 
      public UpdateOnUserTask(String user, String name, String surname, String phone, String address) {
@@ -207,9 +210,9 @@ class GetEmailTask extends Task<String> {
      }
 
      @Override
-     protected Boolean call() throws Exception {
+     public Boolean call() throws Exception {
          String query = "UPDATE utenti SET nome = ?, cognome = ?, numeroTelefonico = ?, indirizzoPredefinito = ? WHERE nomeUtente = ?";
-         try (Connection conn = DataBaseManager.getConnection();
+         try (Connection conn = getConnection();
               PreparedStatement preparedStatement = conn.prepareStatement(query)) {
              preparedStatement.setString(1, name);
              preparedStatement.setString(2, surname);

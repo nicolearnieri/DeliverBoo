@@ -38,12 +38,12 @@ public class QueryUsers {
 
     }
 
-    public static boolean deleteUser(int userId) {
+    public static boolean deleteUser(String userId) {
         String query = "DELETE FROM utenti WHERE nomeUtente = ?";
 
         try {
             PreparedStatement deleteQuery = getConnection().prepareStatement(query);
-            deleteQuery.setInt(1, userId);
+            deleteQuery.setString(1, userId);
 
             int rowsAffected = deleteQuery.executeUpdate();
             return rowsAffected > 0;

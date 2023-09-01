@@ -1,5 +1,5 @@
 package uid.project.deliverboo.model;
-import javafx.concurrent.Task;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -8,8 +8,9 @@ import java.sql.ResultSet;
 
 import java.util.List;
 import java.util.Vector;
+import java.util.concurrent.Callable;
 
-class SearchByTypeTask extends Task<List<Integer>> {
+class SearchByTypeTask implements Callable<List<Integer>> {
     private String type;
     private List<Integer> prevResults;
 
@@ -19,7 +20,7 @@ class SearchByTypeTask extends Task<List<Integer>> {
     }
 
     @Override
-    protected List<Integer> call() throws Exception {
+    public List<Integer> call() throws Exception {
         Vector<Integer> queryResults = new Vector<Integer>();
         StringBuilder query = new StringBuilder("SELECT codice FROM Ristoranti WHERE tipologia LIKE ? and codice IN (");
         for (int i = 0; i < prevResults.size(); i++) {
@@ -45,7 +46,7 @@ class SearchByTypeTask extends Task<List<Integer>> {
 }
 
 
-class SearchByNameTask extends Task<List<Integer>> {
+class SearchByNameTask implements Callable<List<Integer>> {
     private String name;
     private List<Integer> prevResults;
 
@@ -55,7 +56,7 @@ class SearchByNameTask extends Task<List<Integer>> {
     }
 
     @Override
-    protected List<Integer> call() throws Exception {
+    public List<Integer> call() throws Exception {
         Vector<Integer> queryResults = new Vector<Integer>();
         StringBuilder query = new StringBuilder("SELECT codice FROM Ristoranti WHERE nome LIKE ? and codice IN (");
         for (int i = 0; i < prevResults.size(); i++) {
@@ -80,7 +81,7 @@ class SearchByNameTask extends Task<List<Integer>> {
     }
 }
 
-class SearchByCityTask extends Task<List<Integer>> {
+class SearchByCityTask implements Callable<List<Integer>> {
     private String city;
 
 
@@ -89,7 +90,7 @@ class SearchByCityTask extends Task<List<Integer>> {
     }
 
     @Override
-    protected List<Integer> call() throws Exception {
+    public List<Integer> call() throws Exception {
         Vector<Integer> queryResults = new Vector<Integer>();
         String query ="SELECT codice FROM Ristoranti WHERE citta LIKE ?";
 

@@ -2,7 +2,6 @@ package uid.project.deliverboo;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import uid.project.deliverboo.model.QueryThread;
 import uid.project.deliverboo.view.SceneHandler;
 
 import static javafx.application.Application.launch;
@@ -19,9 +18,6 @@ public class MainApplication extends Application {
 
     public static void main(String[] args)
     {
-        QueryThread queryThread = new QueryThread();
-        queryThread.setDaemon(true);
-        queryThread.start();
         launch(args);
     }
 }
