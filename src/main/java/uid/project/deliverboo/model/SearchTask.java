@@ -81,23 +81,23 @@ class SearchByNameTask implements Callable<List<Integer>> {
     }
 }
 
-class SearchByCityTask implements Callable<List<Integer>> {
-    private String city;
+class SearchByAddressTask implements Callable<List<Integer>> {
+    private String address;
 
 
-    public SearchByCityTask(String city) {
-        this.city = city;
+    public SearchByAddressTask(String address) {
+        this.address = address;
     }
 
     @Override
     public List<Integer> call() throws Exception {
         Vector<Integer> queryResults = new Vector<Integer>();
-        String query ="SELECT codice FROM Ristoranti WHERE citta LIKE ?";
+        String query = "SELECT codice FROM Ristoranti WHERE indirizzo LIKE ?";
 
 
         try (Connection conn = DataBaseManager.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(query.toString())) {
-            preparedStatement.setString(1, city);
+            preparedStatement.setString(1, address);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
@@ -108,3 +108,36 @@ class SearchByCityTask implements Callable<List<Integer>> {
         }
     }
 }
+
+class ReturnAddressTask implements Callable<List<Integer>> {
+
+
+    private String addressToCheck;
+
+    public ReturnAddressTask(String addressToCheck) {
+        this.addressToCheck = addressToCheck; 
+    }
+
+    @Override
+    public List<Integer> call() throws Exception {
+        Vector<Integer> queryResults = new Vector<Integer>();
+        String query ="SELECT indirizzo, codice FROM Ristoranti";
+
+
+        try (Connection conn = DataBaseManager.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query.toString())) {
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    String indirizzo = resultSet.getString("indirizzo");
+                    if (AddressVerifier.getDistance(addressToCheck, indirizzo)<=10)
+                        queryResults.add(resultSet.getInt("codice"));
+                }
+            }
+            return queryResults;
+        }
+    }
+
+
+
+    }

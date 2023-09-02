@@ -8,13 +8,19 @@ import javafx.stage.Stage;
 import uid.project.deliverboo.Message;
 import uid.project.deliverboo.model.AddressVerifier;
 import uid.project.deliverboo.model.CurrentUser;
-import uid.project.deliverboo.model.QueryUsers;
+import uid.project.deliverboo.model.ExecutorProvider;
+import uid.project.deliverboo.model.TaskCreator;
 import uid.project.deliverboo.view.SceneHandler;
 
 
-
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Vector;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+
 
 
 
@@ -90,7 +96,7 @@ public class HomeController {
 
     private  LocalizationManager localizationManager;
 
-
+    private ExecutorService executor = ExecutorProvider.getExecutor();
 
     public void openLogInOrProfile() throws Exception{
         if(CurrentUser.getInstance().getAccess()){menuProfile();}
@@ -123,6 +129,15 @@ public class HomeController {
 
                 // Apri la schermata di ricerca dei ristoranti
                 SceneHandler.getInstance().setSearchRestaurants();
+
+                //Query
+                Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress(addressField.getText()));
+                Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
+                List<Integer> queryResults = result.get();
+
+
+
+
             } else {
                 SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
             }
@@ -204,9 +219,6 @@ public class HomeController {
         fontGroup.selectToggle(fontBase);
     }
 
-    public String getAddress() {
-        return accessButton.getText();
-    }
 
     public void changeLabel(boolean profile){
         if(profile){accessButton.setText(localizationManager.getLocalizedString("button.profileButton"));}

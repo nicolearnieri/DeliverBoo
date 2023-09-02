@@ -69,7 +69,12 @@ public class TaskCreator
 
     public static  Callable<List<Integer>> CreateSearchByCity (String city)
     {
-        SearchByCityTask task = new SearchByCityTask(city);
+        SearchByAddressTask task = new SearchByAddressTask(city);
+        return task;
+    }
+public static  Callable<List<Integer>> ReturnAddressTask (String addressToCheck)
+    {
+        ReturnAddressTask task = new ReturnAddressTask(addressToCheck);
         return task;
     }
 

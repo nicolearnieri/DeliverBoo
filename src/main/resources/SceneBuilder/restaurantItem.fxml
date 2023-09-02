@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" prefWidth="539.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="restaurantImage" fitHeight="95.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
@@ -35,7 +34,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="openingTimeLabel" maxWidth="1.7976931348623157E308" text="Opnening time">
+                  <Label fx:id="openingTimeLabel" maxWidth="1.7976931348623157E308" text="Opening time">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

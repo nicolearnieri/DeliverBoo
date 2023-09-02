@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import uid.project.deliverboo.controller.RestaurantsListController;
-import uid.project.deliverboo.model.QuerySearch;
+
 
 public class RestaurantsList extends AnchorPane {
 
