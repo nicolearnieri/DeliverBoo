@@ -141,7 +141,9 @@ public class HomeController {
             } else {
                 SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
             }
-        }catch (Exception e){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
+        }catch (Exception e){
+            System.out.println("errore");
+            SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
         }
     }
 
