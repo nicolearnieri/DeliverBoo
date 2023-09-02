@@ -130,7 +130,7 @@ class ReturnAddressTask implements Callable<List<Integer>> {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     String indirizzo = resultSet.getString("indirizzo");
-                    if (AddressVerifier.getDistance(addressToCheck, indirizzo)<=10)
+                    if (AddressVerifier.getDistance(indirizzo)<=10)
                         queryResults.add(resultSet.getInt("codice"));
                 }
             }

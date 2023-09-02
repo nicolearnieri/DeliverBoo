@@ -11,10 +11,8 @@ import uid.project.deliverboo.view.SceneHandler;
 
 public class AddressVerifier {
     private static JSONArray jsonArray;
-    private static String formattedAddress ;
-    private static double latitude;
-    private static double longitude;
-    private static String city;
+    private static JSONObject jsonObject;
+    private static JSONObject restaurant ;
     private static final double EARTH_RADIUS_KM = 6371.0;
     private static LocalizationManager localizationManager = new LocalizationManager();
     private static AddressVerifier instance = null;
@@ -47,15 +45,7 @@ public class AddressVerifier {
                 jsonArray = new JSONArray(response.toString());
                 int correctIndex=correctAddressIndex(jsonArray);
                 if (jsonArray.length() > 0 && correctIndex>=0) { //se l'array non è vuoto
-                    JSONObject result = jsonArray.getJSONObject(correctIndex); //prende il JSONObject
-                    formattedAddress = result.getString("display_name"); //oltre a lat lon e display_name si può avere place_id, country, state, city, license, class e type (Classificazione e tipo del luogo)
-                    System.out.println(formattedAddress);
-                    latitude = result.getDouble("lat");
-                    longitude = result.getDouble("lon");
-                    String[] addressParts = formattedAddress.split(", ");
-                    if (addressParts.length >= 4) {
-                        city = addressParts[1]; // La città dovrebbe essere il secondo elemento
-                    } else {return false;}
+                    jsonObject = jsonArray.getJSONObject(correctIndex); //prende il JSONObject
                     return true;
                 } else {
                     return false;//se finisco qui l'indirizzo che cerco non è nell'array
@@ -68,25 +58,65 @@ public class AddressVerifier {
         }
         return false;
     }
-    public static double getLatitude(String temporaryAddress) {
-        validAddress(temporaryAddress);
-        return latitude;}
-    public static double getLongitude(String temporaryAddress) {
-        validAddress(temporaryAddress);
-        return longitude;}
-    public static String getFormattedAddress(String temporaryAddress) {
-        validAddress(temporaryAddress);
-        return formattedAddress;}
 
+    public static boolean isValid(String address) {
+        String replacedAddress = address.replace(" ", "+");
+        String nominatimEndpoint = "https://nominatim.openstreetmap.org/search?q=" + replacedAddress + "&format=json";
+
+        try {
+            URL url = new URL(nominatimEndpoint);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //crea un connessione con l'endpoint
+            connection.setRequestMethod("GET"); //in lettura
+
+            int responseCode = connection.getResponseCode(); //prende il responso della connessione
+            if (responseCode == HttpURLConnection.HTTP_OK) { //se la connessione è andata a buon fine (codice 200, es 404 quando manca la risorsa)
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+
+                JSONArray array = new JSONArray(response.toString());
+                int correctIndex = correctAddressIndex(array);
+                if (array.length() > 0 && correctIndex >= 0) { //se l'array non è vuoto
+                    restaurant = array.getJSONObject(correctIndex); //prende il JSONObject
+                    return true;
+                } else {
+                    return false;//se finisco qui l'indirizzo che cerco non è nell'array
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static double getLatitude() {
+        return jsonObject.getDouble("lat");}
+    public static double getLongitude() {
+        return jsonObject.getDouble("lon");}
+    public static String getFormattedAddress() {
+        return jsonObject.getString("display_name"); //oltre a lat lon e display_name si può avere place_id, country, state, city, license, class e type (Classificazione e tipo del luogo)
+        }
+    private static double getRestaurantLatitude(String address) {return restaurant.getDouble("lat");}
+    private static double getRestaurantLongitude(String address) {return restaurant.getDouble("lon");}
     public static String getCity(String temporaryAddress) {
-        validAddress(temporaryAddress);
-        return city;}
+        String city="";
+        String[] addressParts = getFormattedAddress().split(", ");
+        if (addressParts.length >= 4) {
+            city = addressParts[1]; // La città dovrebbe essere il secondo elemento
+        }
+        return city;
+    }
 
-    public static double getDistance(String firstAddress, String secondAddress) {
-        double lat1 = Math.toRadians(getLatitude(firstAddress));
-        double lon1 = Math.toRadians(getLongitude(firstAddress));
-        double lat2 = Math.toRadians(getLatitude(secondAddress));
-        double lon2 = Math.toRadians(getLongitude(secondAddress));
+    public static double getDistance (String restaurantAddress) {
+        double lat1 = Math.toRadians(getLatitude());
+        double lon1 = Math.toRadians(getLongitude());
+        double lat2 = Math.toRadians(getRestaurantLatitude(restaurantAddress));
+        double lon2 = Math.toRadians(getRestaurantLongitude(restaurantAddress));
 
         double dlon = lon2 - lon1;
         double dlat = lat2 - lat1;
@@ -97,13 +127,14 @@ public class AddressVerifier {
 
         return EARTH_RADIUS_KM * c;
     }
+
     //funzione che, data jsonArray, restituisce l'indice del JSONObject giusto, altrimenti return -1
     public static int correctAddressIndex(JSONArray jsonArray) {
         for (int cont = 0; cont < jsonArray.length(); cont++) {
             JSONObject obj = jsonArray.getJSONObject(cont);//prende il JSONObject in posizione cont
-            formattedAddress = obj.getString("display_name");
+            String address = obj.getString("display_name");
 
-            String message = localizationManager.getLocalizedString("address.confirmationMessage") + formattedAddress;
+            String message = localizationManager.getLocalizedString("address.confirmationMessage") + address;
             String title = localizationManager.getLocalizedString("address.errorTitle");
 
             if (SceneHandler.getInstance().showConfirmation(message, title)) {return cont;}
