@@ -131,7 +131,8 @@ public class HomeController {
                 SceneHandler.getInstance().setSearchRestaurants();
 
                 //Query
-                Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress(addressField.getText()));
+                String add = AddressVerifier.getFormattedAddress(addressField.getText());
+                Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(add);
                 Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
                 List<Integer> queryResults = result.get();
 
