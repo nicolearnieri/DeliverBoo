@@ -35,11 +35,11 @@ class ReturnFoodInfoCallable implements Callable<Boolean> {
                     food.setPath(resultSet.getString("pathImm"));
                     food.setPrice(resultSet.getDouble("prezzo"));
 
-
+/*
                     hjbswjbdhjbdhjbdhjbds
 
 
-                   /* if (SearchReasturantsController.addToVector(food))
+                    if (SearchReasturantsController.addToVector(food))
                         return true; */
                 }
             }
