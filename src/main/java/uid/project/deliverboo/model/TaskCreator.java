@@ -84,5 +84,12 @@ public static Callable<Boolean> ReturnRestInfoTask (int code)
         return task;
     }
 
+public static Callable<Boolean> ReturnFoodInfoCallable (int code)
+{
+    ReturnFoodInfoCallable call = new ReturnFoodInfoCallable(code);
+    return call;
+}
+
+
 }
 

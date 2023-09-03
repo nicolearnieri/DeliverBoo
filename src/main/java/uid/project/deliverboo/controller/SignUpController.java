@@ -136,7 +136,6 @@ public class SignUpController {
             //controllo username valido: non dev'essere ripetuto nelle query
             if (res) { usernameOk = true; }
             else {
-                System.out.println("ciao bebe");
                 showUsernameError();}
 
 
