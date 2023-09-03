@@ -14,7 +14,6 @@ public class AddressVerifier {
     private static JSONObject jsonObject;
     private static JSONObject restaurant ;
     private static final double EARTH_RADIUS_KM = 6371.0;
-    private static LocalizationManager localizationManager = new LocalizationManager();
     private static AddressVerifier instance = null;
     private AddressVerifier (){}
     public static AddressVerifier getInstance() {
@@ -22,7 +21,7 @@ public class AddressVerifier {
             instance = new AddressVerifier();
         return instance;
     }
-    public static boolean validAddress(String address) {
+    public static boolean userValidAddress(String address, LocalizationManager localizationManager) {
         String replacedAddress = address.replace(" ", "+");
         String nominatimEndpoint = "https://nominatim.openstreetmap.org/search?q=" + replacedAddress + "&format=json";
 
@@ -43,7 +42,7 @@ public class AddressVerifier {
                 in.close();
 
                 jsonArray = new JSONArray(response.toString());
-                int correctIndex=correctAddressIndex(jsonArray);
+                int correctIndex=correctAddressIndex(jsonArray, localizationManager);
                 if (jsonArray.length() > 0 && correctIndex>=0) { //se l'array non è vuoto
                     jsonObject = jsonArray.getJSONObject(correctIndex); //prende il JSONObject
                     return true;
@@ -80,9 +79,8 @@ public class AddressVerifier {
                 in.close();
 
                 JSONArray array = new JSONArray(response.toString());
-                int correctIndex = correctAddressIndex(array);
-                if (array.length() > 0 && correctIndex >= 0) { //se l'array non è vuoto
-                    restaurant = array.getJSONObject(correctIndex); //prende il JSONObject
+                if (array.length() > 0) { //se l'array non è vuoto
+                    restaurant = array.getJSONObject(0); //prende il JSONObject
                     return true;
                 } else {
                     return false;//se finisco qui l'indirizzo che cerco non è nell'array
@@ -101,8 +99,8 @@ public class AddressVerifier {
     public static String getFormattedAddress() {
         return jsonObject.getString("display_name"); //oltre a lat lon e display_name si può avere place_id, country, state, city, license, class e type (Classificazione e tipo del luogo)
         }
-    private static double getRestaurantLatitude(String address) {return restaurant.getDouble("lat");}
-    private static double getRestaurantLongitude(String address) {return restaurant.getDouble("lon");}
+    private static double getRestaurantLatitude() {return restaurant.getDouble("lat");}
+    private static double getRestaurantLongitude() {return restaurant.getDouble("lon");}
     public static String getCity(String temporaryAddress) {
         String city="";
         String[] addressParts = getFormattedAddress().split(", ");
@@ -115,8 +113,9 @@ public class AddressVerifier {
     public static double getDistance (String restaurantAddress) {
         double lat1 = Math.toRadians(getLatitude());
         double lon1 = Math.toRadians(getLongitude());
-        double lat2 = Math.toRadians(getRestaurantLatitude(restaurantAddress));
-        double lon2 = Math.toRadians(getRestaurantLongitude(restaurantAddress));
+        isValid(restaurantAddress);
+        double lat2 = Math.toRadians(getRestaurantLatitude());
+        double lon2 = Math.toRadians(getRestaurantLongitude());
 
         double dlon = lon2 - lon1;
         double dlat = lat2 - lat1;
@@ -129,7 +128,7 @@ public class AddressVerifier {
     }
 
     //funzione che, data jsonArray, restituisce l'indice del JSONObject giusto, altrimenti return -1
-    public static int correctAddressIndex(JSONArray jsonArray) {
+    public static int correctAddressIndex(JSONArray jsonArray, LocalizationManager localizationManager) {
         for (int cont = 0; cont < jsonArray.length(); cont++) {
             JSONObject obj = jsonArray.getJSONObject(cont);//prende il JSONObject in posizione cont
             String address = obj.getString("display_name");
