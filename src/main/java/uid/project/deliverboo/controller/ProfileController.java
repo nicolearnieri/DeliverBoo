@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import uid.project.deliverboo.model.CurrentUser;
 
 public class ProfileController {
 
@@ -57,9 +58,15 @@ public class ProfileController {
     @FXML
     private TextField usernameField;
 
+
     @FXML
     private Label usernameLabel;
 
+    public void initialize ()
+    {
+        usernameField.setText(CurrentUser.getInstance().getNomeUtente());
+        emailField.setText(CurrentUser.getInstance().getEmail());
+    }
     @FXML
     void deleteAccount(ActionEvent event) {
 

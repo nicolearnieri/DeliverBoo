@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 public class PaymentController {
 
@@ -42,6 +44,31 @@ public class PaymentController {
     @FXML
     private Label securityCodeLabel;
 
+
+    @FXML
+    private Label securityLabel;
+
+    @FXML
+    private ImageView questionMark;
+
+    @FXML
+    private HBox securityCodeBox;
+
+    public void initialize() {
+
+        securityCodeBox.setManaged(false);
+
+        questionMark.setOnMouseEntered(e -> {
+            securityCodeBox.setVisible(true);
+            securityCodeBox.setManaged(true);
+        });
+
+        questionMark.setOnMouseExited(e -> {
+            securityCodeBox.setVisible(false);
+            securityCodeBox.setManaged(false);
+        });
+    }
+
     @FXML
     void confirmPayment(ActionEvent event) {
 
@@ -51,5 +78,7 @@ public class PaymentController {
     void goBack(ActionEvent event) {
 
     }
+
+
 
 }

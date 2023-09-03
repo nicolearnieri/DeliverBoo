@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="453.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.PaymentController">
    <children>
       <BorderPane layoutX="51.0" layoutY="1.0" prefHeight="88.0" prefWidth="174.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -50,19 +49,35 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="0.0" spacing="15.0">
                      <children>
-                        <Label fx:id="securityCodeLabel" alignment="CENTER" prefWidth="171.0" text="Codice di sicurezza della carta" textAlignment="CENTER" />
+                        <Label fx:id="securityCodeLabel" alignment="CENTER" prefHeight="18.0" prefWidth="208.0" text="Codice di sicurezza della carta" textAlignment="CENTER" />
                         <TextField fx:id="securityCodeField" prefWidth="165.0" />
+                        <ImageView fx:id="questionMark" fitHeight="28.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icone/question.png" />
+                           </image></ImageView>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="454.0" spacing="145.0">
+                  <HBox fx:id="securityCodeBox" alignment="CENTER" prefHeight="105.0" prefWidth="454.0" spacing="30.0">
                      <children>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="80.0" text="annulla" />
-                        <Button fx:id="confirmationButton" mnemonicParsing="false" onAction="#confirmPayment" prefHeight="30.0" prefWidth="80.0" text="conferma" />
+                        <Label fx:id="SecurityLabel" prefHeight="52.0" prefWidth="241.0" text="Il Codice di Sicurezza o Verifica (CVV o CVC) è il codice di 3 o 4 cifre che trovi sul retro della carta." />
+                        <ImageView fitHeight="75.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../usedImages/cvv.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </HBox>
                </children>
             </VBox>
          </center>
+         <bottom>
+            <HBox alignment="CENTER" prefHeight="75.0" prefWidth="454.0" spacing="145.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="80.0" text="annulla" />
+                  <Button fx:id="confirmationButton" mnemonicParsing="false" onAction="#confirmPayment" prefHeight="30.0" prefWidth="80.0" text="conferma" />
+               </children>
+            </HBox>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>
