@@ -9,11 +9,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import uid.project.deliverboo.model.CurrentUser;
+import uid.project.deliverboo.model.Restaurant;
 import uid.project.deliverboo.view.RestaurantsList;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
+import java.util.Vector;
 
 public class SearchReasturantsController {
 
@@ -108,6 +111,8 @@ public class SearchReasturantsController {
 
     private LocalizationManager localizationManager;
     private RestaurantsList restaurantsList;
+
+    private static Vector<Restaurant> restaurants = new Vector<>();
 
     public void loadRestaurantsList(){
         restaurantsList=new RestaurantsList();
@@ -227,6 +232,10 @@ public class SearchReasturantsController {
         else{userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));}
     }
 
+    public static boolean addToVector (Restaurant rest)
+    {
+        return restaurants.add(rest);
+    }
 }
 
 

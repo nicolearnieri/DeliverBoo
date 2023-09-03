@@ -1,5 +1,7 @@
 package uid.project.deliverboo.model;
 
+import uid.project.deliverboo.controller.SearchReasturantsController;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -115,13 +117,13 @@ class ReturnAddressTask implements Callable<List<Integer>> {
     private String addressToCheck;
 
     public ReturnAddressTask(String addressToCheck) {
-        this.addressToCheck = addressToCheck; 
+        this.addressToCheck = addressToCheck;
     }
 
     @Override
     public List<Integer> call() throws Exception {
         Vector<Integer> queryResults = new Vector<Integer>();
-        String query ="SELECT indirizzo, codice FROM Ristoranti";
+        String query = "SELECT indirizzo, codice FROM Ristoranti";
 
 
         try (Connection conn = DataBaseManager.getConnection();
@@ -130,14 +132,54 @@ class ReturnAddressTask implements Callable<List<Integer>> {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     String indirizzo = resultSet.getString("indirizzo");
-                    if (AddressVerifier.getDistance(indirizzo)<=10)
+                    if (AddressVerifier.getDistance(indirizzo) <= 10)
                         queryResults.add(resultSet.getInt("codice"));
                 }
             }
             return queryResults;
         }
     }
+}
+
+    class ReturnRestInfoTask implements Callable<Boolean> {
+
+        private int code;
+
+        public ReturnRestInfoTask(int code) {
+            this.code = code;
+        }
+
+        @Override
+        public Boolean call() throws Exception {
+
+            String query = "SELECT nome, indirizzo, citta, tipologia, path1 FROM Ristoranti WHERE codice LIKE ?";
 
 
+            Restaurant rest = null;
+            try (Connection conn = DataBaseManager.getConnection();
+                 PreparedStatement preparedStatement = conn.prepareStatement(query.toString())) {
+                preparedStatement.setInt(1, code);
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        rest = new Restaurant();
+                        rest.setAddress(resultSet.getString("indirizzo"));
+                        rest.setCity(resultSet.getString("citta"));
+                        rest.setName(resultSet.getString("nome"));
+                        rest.setCode(code);
+                        rest.setPath1(resultSet.getString("path1"));
+                        rest.setType(resultSet.getString("tipologia"));
+
+                        if (SearchReasturantsController.addToVector(rest))
+                            return true;
+                    }
+                }
+            }
+            return false;
+
+        }
 
     }
+
+
+

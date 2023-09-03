@@ -78,4 +78,11 @@ public static  Callable<List<Integer>> ReturnAddressTask (String addressToCheck)
         return task;
     }
 
+public static Callable<Boolean> ReturnRestInfoTask (int code)
+    {
+        ReturnRestInfoTask task = new ReturnRestInfoTask(code);
+        return task;
+    }
+
 }
+

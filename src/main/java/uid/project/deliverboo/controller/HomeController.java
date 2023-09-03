@@ -136,8 +136,6 @@ public class HomeController {
                 List<Integer> queryResults = result.get();
 
 
-
-
             } else {
                 SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
             }

@@ -1,8 +1,11 @@
 package uid.project.deliverboo.model;
 
+import java.util.List;
+
 public class Restaurant {
 
-    private String name, address, city, code, type, path1;
+    private String name, address, city, type, path1;
+    private int  code;
 
     public Restaurant() {}
 
@@ -30,11 +33,11 @@ public class Restaurant {
         this.city = city;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 
