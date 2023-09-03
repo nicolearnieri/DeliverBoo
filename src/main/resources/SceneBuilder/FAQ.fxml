@@ -35,7 +35,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="127.0">
+                  <MenuButton fx:id="menuButton" alignment="CENTER" mnemonicParsing="false" prefHeight="55.0" prefWidth="190.0">
                     <items>
                         <Menu fx:id="menuTheme" mnemonicParsing="false" text="Theme">
                           <items>

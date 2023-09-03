@@ -44,6 +44,10 @@ public class SignUpController {
     @FXML
     private Label messageLabel;
 
+
+    @FXML
+    private Label questionAccountLabel;
+
     @FXML
     private PasswordField passwordField;
 
@@ -190,6 +194,8 @@ public class SignUpController {
         messageLabel.setText(localizationManager.getLocalizedString("label.massageLabelSU"));
         logInButton.setText(localizationManager.getLocalizedString("button.accessButtonAc"));
         passwordSuggestions.setText(localizationManager.getLocalizedString("label.passwordSuggestion"));
+        questionAccountLabel.setText(localizationManager.getLocalizedString("label.questionAccount"));
+
 
     }
 

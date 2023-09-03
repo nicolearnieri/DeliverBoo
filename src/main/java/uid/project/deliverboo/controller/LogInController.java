@@ -36,6 +36,10 @@ public class LogInController {
     @FXML
     private Label passwordLabel;
 
+
+    @FXML
+    private Label questionAccountLabel;
+
     @FXML
     private TextField userEmailField;
 
@@ -139,6 +143,7 @@ public class LogInController {
         messageLabel.setText(localizationManager.getLocalizedString("label.messageLabelAc"));
         passwordLabel.setText(localizationManager.getLocalizedString("label.labelPassword"));
         signUpButton.setText(localizationManager.getLocalizedString("button.signUp"));
+        questionAccountLabel.setText(localizationManager.getLocalizedString("label.questionAccount2"));
     }
 
 }

@@ -65,7 +65,7 @@
          <bottom>
             <HBox prefHeight="48.0" prefWidth="374.0" spacing="15.0" BorderPane.alignment="BOTTOM_LEFT">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="150.0" text="Non hai un account?" />
+                  <Label fx:id="questionAccountLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="210.0" text="Non hai un account?" />
                   <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#openSignUp" prefHeight="34.0" prefWidth="95.0" text="Registrati" />
                </children>
             </HBox>
