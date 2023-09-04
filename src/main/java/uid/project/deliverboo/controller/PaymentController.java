@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import uid.project.deliverboo.view.SceneHandler;
 
 public class PaymentController {
 
@@ -54,6 +55,8 @@ public class PaymentController {
     @FXML
     private HBox securityCodeBox;
 
+    private LocalizationManager localizationManager;
+
     public void initialize() {
 
         securityCodeBox.setManaged(false);
@@ -71,12 +74,18 @@ public class PaymentController {
 
     @FXML
     void confirmPayment(ActionEvent event) {
-
+        SceneHandler.getInstance().showConfirmation(localizationManager.getLocalizedString("content.PaymentOk"), localizationManager.getLocalizedString("title.PaymentOk"));
     }
 
     @FXML
     void goBack(ActionEvent event) {
 
+    }
+
+
+    public void setLocalizationManager(LocalizationManager localizationManager){
+        this.localizationManager = localizationManager;
+        //updateTexts();
     }
 
 
