@@ -1,4 +1,3 @@
-/* light-mode.css */
 
 /* Imposta il colore di sfondo per l'intera applicazione */
 .root {
@@ -11,7 +10,7 @@
 }
 
 /* Stile per i pulsanti non altrimenti definiti */
-.button {
+.button, .combo-box {
     -fx-background-color: #6dd0ce; /* Colore dello sfondo */
     -fx-text-fill: #131f1e; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
@@ -26,7 +25,10 @@
     -fx-background-color: #368786 ;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
     }
-}
+.combo-box: hover {
+     -fx-background-color: #368786 ;
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+ }
 
 #homeButton {
     -fx-background-color: transparent ;
@@ -88,11 +90,16 @@
 }
 
 /* Stile per gli elementi di menu */
-.menu-item {
+.menu-item, .combo-box-popup > .list-view {
     -fx-background-color: #daf7f7;
     -fx-text-fill: #131f1e; /* Colore del testo */
 }
 .menu-item: hover
+{
+    -fx-background-color: #4daba9;
+}
+
+.combo-box-popup > .list-view: hover
 {
     -fx-background-color: #4daba9;
 }

@@ -5,7 +5,7 @@
 }
 
 /* Stile per i pulsanti non altrimenti definiti */
-.button {
+.button, .combo-box{
     -fx-background-color: transparent; /* Colore dello sfondo */
     -fx-text-fill: #050505; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
@@ -19,6 +19,10 @@
 .button: hover {
     -fx-background-color: #050505 ;
     -fx-text-fill: #e1e5eb;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    }
+
+.combo-box: hover {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
     }
 
@@ -86,11 +90,18 @@
 
 
 /* Stile per gli elementi di menu */
-.menu-item {
+.menu-item, .combo-box-popup > .list-view: hover
+{
     -fx-background-color: #e1e5eb;
     -fx-text-fill: #050505; /* Colore del testo */
 }
+
 .menu-item: hover
+{
+    -fx-background-color: #b8c0cc;
+}
+
+.combo-box-popup > .list-view: hover
 {
     -fx-background-color: #b8c0cc;
 }

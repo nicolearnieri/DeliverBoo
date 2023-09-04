@@ -9,7 +9,7 @@
 }
 
 /* Stile per i pulsanti generici */
-.button {
+.button, .combo-box {
     -fx-background-color: #2c0938; /* Colore dello sfondo */
     -fx-text-fill: #f0f0f0; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
@@ -23,6 +23,12 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
     -fx-border-width : 1.65px;
     }
+
+.combo-box: hover {
+-fx-background-color: #7847ad ;
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+-fx-border-width : 1.65px;
+}
 
 /* per mettere lo sfondo del button eliminare questa parte, eliminando l'hover si mette la sfumatura al logo */
 #homeButton {
@@ -68,12 +74,17 @@
 
 
 /* Stile per gli elementi di menu */
-.menu-item {
+.menu-item, .combo-box-popup > .list-view {
     -fx-background-color:  #4c385c; /* Colore dello sfondo */
     -fx-text-fill: #2c0938; /* Colore del testo */
     -fx-transition-duration: 0.3s; /* transizione hover */
 }
 .menu-item: hover
+{
+    -fx-background-color:#3c274d;
+}
+
+.combo-box-popup > .list-view: hover
 {
     -fx-background-color:#3c274d;
 }

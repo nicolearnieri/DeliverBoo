@@ -11,7 +11,7 @@
 }
 
 /* Stile per i pulsanti non altrimenti definiti */
-.button {
+.button, .combo-box {
     -fx-background-color: #af77ed; /* Colore dello sfondo */
     -fx-text-fill: #2c0938; /* Colore del testo */
     -fx-font-size: 14px; /* Dimensione del testo */
@@ -26,7 +26,11 @@
     -fx-background-color: #7847ad ;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
     }
-}
+
+.combo-box: hover {
+    -fx-background-color: #7847ad ;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    }
 
 #homeButton {
     -fx-background-color: transparent ;
@@ -85,7 +89,7 @@
 }
 
 /* Stile per gli elementi di menu */
-.menu-item {
+.menu-item, .combo-box-popup > .list-view {
     -fx-background-color: #cfaef5;
     -fx-text-fill: #cfaef5; /* Colore del testo */
     -fx-border-color: #cfaef5;
@@ -97,8 +101,13 @@
 
 }
 
-.context-menu {
+.combo-box-popup > .list-view: hover
+{
+ -fx-background-color: #9d74cc;
+}
 
+
+.context-menu {
     -fx-background-color: #cfaef5;
 }
 
