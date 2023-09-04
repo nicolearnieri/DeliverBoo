@@ -2,6 +2,7 @@ package uid.project.deliverboo.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import uid.project.deliverboo.model.Restaurant;
 
@@ -24,7 +25,7 @@ public class RestaurantItemController {
         nameLabel.setText(restaurant.getName());
         evaluationLabel.setText(restaurant.getEvaluation());
         cityLabel.setText(restaurant.getCity());
-        restaurantImage= new ImageView(restaurant.getPath1());
+        restaurantImage.setImage(new Image(restaurant.getPath1()));
 
     }
 }
