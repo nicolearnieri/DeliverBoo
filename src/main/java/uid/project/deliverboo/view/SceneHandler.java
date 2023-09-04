@@ -90,7 +90,7 @@ public class SceneHandler {
         //loadFonts();
 
 
-        SearchReasturantsController controller= loader.getController();
+        SearchRestaurantsController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
         controller.changeLabel(CurrentUser.getInstance().getAccess());
         searchRestaurantsIsVisible=true;

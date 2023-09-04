@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.SearchReasturantsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.SearchRestaurantsController">
    <top>
       <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
@@ -88,7 +88,6 @@
                         <RadioMenuItem fx:id="englishButton" mnemonicParsing="false" onAction="#handleEnglish" text="Unspecified Action" toggleGroup="$languageGroup" />
                      </items>
                   </Menu>
-                  <MenuItem fx:id="profileItem" mnemonicParsing="false" onAction="#menuProfile" text="Gestione Profilo" />
                </items>
                <HBox.margin>
                   <Insets bottom="10.0" right="10.0" top="15.0" />
@@ -109,11 +108,11 @@
          <children>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button fx:id="japanese" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="giapponese">
+                  <Button fx:id="japanese" alignment="CENTER" mnemonicParsing="false" onAction="#searchJapanese" prefHeight="38.0" prefWidth="139.0" text="giapponese">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="mexican" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="messicano">
+                  <Button fx:id="mexican" mnemonicParsing="false" onAction="#searchMexican" prefHeight="38.0" prefWidth="139.0" text="messicano">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
@@ -121,11 +120,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button fx:id="gourmet" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="gourmet">
+                  <Button fx:id="gourmet" mnemonicParsing="false" onAction="#searchGourmet" prefHeight="38.0" prefWidth="139.0" text="gourmet">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="patisserie" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="pasticceria">
+                  <Button fx:id="patisserie" mnemonicParsing="false" onAction="#searchPastries" prefHeight="38.0" prefWidth="139.0" text="pasticceria">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
@@ -133,11 +132,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button fx:id="fastFood" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="fast food">
+                  <Button fx:id="fastFood" mnemonicParsing="false" onAction="#searchFastFood" prefHeight="38.0" prefWidth="139.0" text="fast food">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="breadType" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="farinacei">
+                  <Button fx:id="breadType" mnemonicParsing="false" onAction="#searchBread" prefHeight="38.0" prefWidth="139.0" text="farinacei">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
@@ -145,11 +144,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button fx:id="poke" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="pokè">
+                  <Button fx:id="poke" mnemonicParsing="false" onAction="#searchPoke" prefHeight="38.0" prefWidth="139.0" text="pokè">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="cafes" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="caffetteria">
+                  <Button fx:id="cafes" mnemonicParsing="false" onAction="#searchCoffee" prefHeight="38.0" prefWidth="139.0" text="caffetteria">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
@@ -157,11 +156,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button fx:id="bars" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="bar">
+                  <Button fx:id="bars" mnemonicParsing="false" onAction="#searchBar" prefHeight="38.0" prefWidth="139.0" text="bar">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>
-                  <Button fx:id="pub" mnemonicParsing="false" prefHeight="38.0" prefWidth="139.0" text="pub">
+                  <Button fx:id="pub" mnemonicParsing="false" onAction="#searchPub" prefHeight="38.0" prefWidth="139.0" text="pub">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Button>
@@ -169,7 +168,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="cart" mnemonicParsing="false" text="carrello">
+                  <Button fx:id="cart" mnemonicParsing="false" onAction="#openCart" text="carrello">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>

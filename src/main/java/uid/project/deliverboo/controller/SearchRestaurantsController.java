@@ -18,7 +18,7 @@ import java.util.Locale;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 
-public class SearchReasturantsController {
+public class SearchRestaurantsController {
 
     @FXML
     private Button bars;
@@ -126,6 +126,60 @@ public class SearchReasturantsController {
 
     }
 
+    @FXML
+    void searchBar(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchBread(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchCoffee(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchFastFood(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchGourmet(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchJapanese(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchMexican(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchPastries(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchPoke(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchPub(ActionEvent event) {
+
+    }
+
+    @FXML
+    void openCart(ActionEvent event) {
+
+    }
 
 
     @FXML
