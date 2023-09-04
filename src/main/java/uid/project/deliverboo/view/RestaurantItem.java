@@ -10,6 +10,7 @@ import uid.project.deliverboo.model.Restaurant;
 public class RestaurantItem extends StackPane {
 
 
+
     public RestaurantItem(Restaurant restaurant){
 
         FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/restaurantItem.fxml"));

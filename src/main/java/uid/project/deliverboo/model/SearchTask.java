@@ -1,7 +1,7 @@
 package uid.project.deliverboo.model;
 
 import uid.project.deliverboo.controller.RestaurantsListController;
-import uid.project.deliverboo.controller.SearchReasturantsController;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -153,13 +153,18 @@ class ReturnAddressTask implements Callable<List<Integer>> {
         @Override
         public Boolean call() throws Exception {
 
+            System.out.println("Query 1");
+
             String query = "SELECT nome, indirizzo, citta, tipologia, path1 FROM Ristoranti WHERE codice LIKE ?";
 
+            System.out.println("Query 2");
 
             Restaurant rest = null;
+            System.out.println("Query 3");
             try (Connection conn = DataBaseManager.getConnection();
+
                  PreparedStatement preparedStatement = conn.prepareStatement(query.toString())) {
-                preparedStatement.setInt(1, code);
+                    preparedStatement.setInt(1, code);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
@@ -171,8 +176,10 @@ class ReturnAddressTask implements Callable<List<Integer>> {
                         rest.setPath1(resultSet.getString("path1"));
                         rest.setType(resultSet.getString("tipologia"));
 
-                        if (RestaurantsListController.addToVector(rest))
-                            return true;
+                        System.out.println("Query 4");
+                        if (RestaurantsListController.addToVector(rest)){
+                            System.out.println("Query 5");
+                            return true;}
                     }
                 }
             }

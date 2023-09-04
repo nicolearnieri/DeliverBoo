@@ -6,17 +6,19 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import uid.project.deliverboo.model.CurrentUser;
-import uid.project.deliverboo.model.Restaurant;
-import uid.project.deliverboo.model.TaskCreator;
+import uid.project.deliverboo.model.*;
 import uid.project.deliverboo.view.RestaurantsList;
 import uid.project.deliverboo.view.SceneHandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class SearchRestaurantsController {
 
@@ -114,14 +116,39 @@ public class SearchRestaurantsController {
 
     private HomeController homeController= new HomeController(); //questo non ci deve essere
 
+    private ExecutorService executor = ExecutorProvider.getExecutor();
+
+
+
     private List<Integer> queryResults= new ArrayList<Integer>();
 
 
 
-    public void loadRestaurantsList(){
-        queryResults=homeController.getQueryResults(); //query results da home controller va messo qua
+    public void loadRestaurantsList() throws IOException {
+        //Query
+        System.out.println("Qua arrivo 1");
+        Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
+        System.out.println("Qua arrivo 2");
+        Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
+        System.out.println("Qua arrivo 3");
+        try {
+            System.out.println("Qua arrivo 4");
+            queryResults = result.get();
+            System.out.println("Qua arrivo 5");
+        } catch (InterruptedException e) {
+            System.out.println("Qua arrivo 6");
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            System.out.println("Qua arrivo 7");
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Qua arrivo 8");
+
         restaurantsList=new RestaurantsList();
+        System.out.println("Qua arrivo 9");
         restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults);
+        System.out.println("Qua arrivo 10");
 
 
     }

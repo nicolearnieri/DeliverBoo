@@ -94,11 +94,7 @@ public class HomeController {
 
     private  LocalizationManager localizationManager;
 
-    private ExecutorService executor = ExecutorProvider.getExecutor();
 
-    private RestaurantsListController restaurantsListController= new RestaurantsListController();
-
-    private List<Integer> queryResults= new ArrayList<Integer>();
 
     public void openLogInOrProfile() throws Exception{
         if(CurrentUser.getInstance().getAccess()){menuProfile();}
@@ -136,10 +132,7 @@ public class HomeController {
                 SceneHandler.getInstance().setSearchRestaurants();
                 System.out.println("Sono arrivato");
 
-                //Query
-                Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
-                Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
-                queryResults = result.get();
+
 
 
 
@@ -154,9 +147,7 @@ public class HomeController {
         }
     }
 
-    public List<Integer> getQueryResults(){
-        return queryResults;
-    }
+
 
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
