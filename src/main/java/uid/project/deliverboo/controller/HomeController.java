@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import uid.project.deliverboo.Message;
 import uid.project.deliverboo.model.AddressVerifier;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.ExecutorProvider;
@@ -13,13 +12,12 @@ import uid.project.deliverboo.model.TaskCreator;
 import uid.project.deliverboo.view.SceneHandler;
 
 
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
+
+
 
 
 
@@ -98,6 +96,10 @@ public class HomeController {
 
     private ExecutorService executor = ExecutorProvider.getExecutor();
 
+    private RestaurantsListController restaurantsListController= new RestaurantsListController();
+
+    private List<Integer> queryResults= new ArrayList<Integer>();
+
     public void openLogInOrProfile() throws Exception{
         if(CurrentUser.getInstance().getAccess()){menuProfile();}
         else{openLogIn();}
@@ -122,18 +124,26 @@ public class HomeController {
     public void openSearchRestaurants(ActionEvent event){
         try {
             if (AddressVerifier.getInstance().userValidAddress(addressField.getText(),localizationManager)) {
+                System.out.println("Sono arrivato1");
                 Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                System.out.println("Sono arrivato2");
 
                 // Chiudi la finestra corrente
                 currentStage.close();
+                System.out.println("Sono arrivato3");
 
                 // Apri la schermata di ricerca dei ristoranti
                 SceneHandler.getInstance().setSearchRestaurants();
+                System.out.println("Sono arrivato");
 
                 //Query
                 Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
                 Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
-                List<Integer> queryResults = result.get();
+                queryResults = result.get();
+
+
+
+
 
 
             } else {
@@ -142,6 +152,10 @@ public class HomeController {
         }catch (Exception e){
             SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
         }
+    }
+
+    public List<Integer> getQueryResults(){
+        return queryResults;
     }
 
     public void setLocalizationManager(LocalizationManager localizationManager){

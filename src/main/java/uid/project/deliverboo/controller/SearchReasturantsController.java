@@ -2,21 +2,21 @@ package uid.project.deliverboo.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.Restaurant;
+import uid.project.deliverboo.model.TaskCreator;
 import uid.project.deliverboo.view.RestaurantsList;
 import uid.project.deliverboo.view.SceneHandler;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
+import java.util.concurrent.Callable;
 
 public class SearchReasturantsController {
 
@@ -112,12 +112,21 @@ public class SearchReasturantsController {
     private LocalizationManager localizationManager;
     private RestaurantsList restaurantsList;
 
-    private static Vector<Restaurant> restaurants = new Vector<>();
+    private HomeController homeController= new HomeController(); //questo non ci deve essere
+
+    private List<Integer> queryResults= new ArrayList<Integer>();
+
+
 
     public void loadRestaurantsList(){
+        queryResults=homeController.getQueryResults(); //query results da home controller va messo qua
         restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane);
+        restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults);
+
+
     }
+
+
 
     @FXML
     public void openFAQ(ActionEvent event) throws Exception {
@@ -232,10 +241,11 @@ public class SearchReasturantsController {
         else{userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));}
     }
 
-    public static boolean addToVector (Restaurant rest)
-    {
-        return restaurants.add(rest);
-    }
+
+
+
 }
+
+
 
 

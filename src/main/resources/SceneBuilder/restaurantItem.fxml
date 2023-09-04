@@ -34,7 +34,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="openingTimeLabel" maxWidth="1.7976931348623157E308" text="Opening time">
+                  <Label fx:id="cityLabel" maxWidth="1.7976931348623157E308" text="City">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

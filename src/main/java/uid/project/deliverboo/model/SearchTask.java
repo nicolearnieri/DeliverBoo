@@ -1,5 +1,6 @@
 package uid.project.deliverboo.model;
 
+import uid.project.deliverboo.controller.RestaurantsListController;
 import uid.project.deliverboo.controller.SearchReasturantsController;
 
 import java.sql.Connection;
@@ -170,7 +171,7 @@ class ReturnAddressTask implements Callable<List<Integer>> {
                         rest.setPath1(resultSet.getString("path1"));
                         rest.setType(resultSet.getString("tipologia"));
 
-                        if (SearchReasturantsController.addToVector(rest))
+                        if (RestaurantsListController.addToVector(rest))
                             return true;
                     }
                 }
