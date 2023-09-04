@@ -30,18 +30,17 @@ public class RestaurantsListController {
 
 
 
-
-    public void createList(List<Integer> queryResults)  {
+    public void createList(List<Integer> queryResults) {
         System.out.println("Controller 1");
         //restaurants.clear();
         System.out.println("Controller 2");
-        for(Integer element: queryResults) {
+        for (Integer element : queryResults) {
             System.out.println("Controller 3");
             Callable<Boolean> verifyCallable = TaskCreator.ReturnRestInfoTask(element);
             Future<Boolean> result = executor.submit(verifyCallable);
             try {
                 System.out.println("Controller try");
-                Boolean flag= result.get();
+                Boolean flag = result.get();
             } catch (InterruptedException e) {
                 System.out.println("Controller catch1");
                 throw new RuntimeException(e);
@@ -61,27 +60,31 @@ public class RestaurantsListController {
         restaurantsListView.getItems().clear();
 
         System.out.println("Controller 5");
-        for(Restaurant restaurant: restaurants){
+        for (Restaurant restaurant : restaurants) {
             System.out.println("Controller 6");
-            RestaurantItem restaurantItem= new RestaurantItem(restaurant);
+            RestaurantItem restaurantItem = new RestaurantItem(restaurant);
             System.out.println("Controller 7");
-            if(restaurantsListView.getItems().add(restaurantItem)){
+            if (restaurantsListView.getItems().add(restaurantItem)) {
                 System.out.println("Aggiunto alla lista view");
+                System.out.println("Contenuto della ListView:");
+                for (RestaurantItem item : restaurantsListView.getItems()) {
+                    System.out.println(item);
+                }
+                restaurantItem.prefWidthProperty().bind(restaurantsListView.widthProperty().subtract(40.0));
+                System.out.println("Controller 8");
             }
-            restaurantItem.prefWidthProperty().bind(restaurantsListView.widthProperty().subtract(40.0));
-            System.out.println("Controller 8");
+
+            restaurantsListView.refresh();
+
         }
 
-        restaurantsListView.refresh();
-
     }
-
-    public static boolean addToVector (Restaurant rest)
-    {
+    public static boolean addToVector(Restaurant rest) {
         System.out.println("Aggiunge al vector");
         return restaurants.add(rest);
-
     }
+
+
 
 
 
