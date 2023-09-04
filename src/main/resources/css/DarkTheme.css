@@ -57,7 +57,6 @@
 }
 
 
-
 /* Stile per i menu */
 .menu {
     -fx-background-color: #1f132b; /* Colore dello sfondo */
@@ -65,13 +64,13 @@
     -fx-transition-duration: 0.3s; /* transizione hover */
 }
 
-
 /* Stile per gli elementi di menu */
 .menu-item {
     -fx-background-color:  #1f132b; /* Colore dello sfondo */
     -fx-text-fill: #acacad; /* Colore del testo */
     -fx-transition-duration: 0.3s; /* transizione hover */
 }
+
 .menu-item: hover
 {
     -fx-background-color:#432d5c;
@@ -104,3 +103,54 @@
   -fx-background-color: #393340;
 
 }
+
+
+
+.date-picker {
+    -fx-background-color: #5c4575; /* Colore dello sfondo */
+    -fx-text-fill: #acacad; /* Colore del testo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+    -fx-background-radius: 15px; /* smussatura angoli */
+
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: #453457;
+    -fx-background-radius: 15px; /* smussatura angoli */
+}
+
+.date-picker > .arrow-button > .arrow {
+    -fx-background-color: #acacad;
+    }
+
+.date-picker > .arrow-button:hover {
+    -fx-border-color: #342247;
+    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+
+.date-picker > .text-field: hover {
+    -fx-border-color: #5c4575;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0), 0, 0, 0, 0);
+}
+
+.date-picker-popup > .calendar-grid
+{
+    -fx-background-color: #1f132b; /* Colore dello sfondo */
+    -fx-text-fill: #acacad; /* Colore del testo */
+}
+
+.date-cell {
+    -fx-background-color: #271d33;
+    }
+
+.date-cell:hover {
+    -fx-background-color: #5c4575;
+}
+
+.date-picker-popup > .month-year-pane {
+     -fx-background-color: #5c4575;
+        -fx-text-fill: #acacad;
+}
+

@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/SceneBuilder/Payment.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 700);
         stage.setTitle("DeliverBoo");
-        String css = getClass().getResource("/css/LightTheme.css").toExternalForm();
+        String css = getClass().getResource("/css/DarkTheme.css").toExternalForm();
         //String font = getClass().getResource("/css/FontMontserrat.css").toExternalForm();
 
         scene.getStylesheets().add(css);

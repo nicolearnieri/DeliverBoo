@@ -90,7 +90,6 @@
                               <RadioMenuItem fx:id="englishButton" mnemonicParsing="false" onAction="#handleEnglish" text="Unspecified Action" toggleGroup="$languageGroup" />
                            </items>
                         </Menu>
-                        <MenuItem fx:id="profileItem" mnemonicParsing="false" onAction="#menuProfile" text="Gestione Profilo" />
                      </items>
                      <graphic>
                         <ImageView fitHeight="47.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">

@@ -1,7 +1,7 @@
 package uid.project.deliverboo.model;
 
 import uid.project.deliverboo.controller.RestaurantsListController;
-import uid.project.deliverboo.controller.SearchReasturantsController;
+import uid.project.deliverboo.controller.SearchRestaurantsController;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
