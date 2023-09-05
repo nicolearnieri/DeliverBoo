@@ -133,11 +133,6 @@ public class HomeController {
 
 
 
-
-
-
-
-
             } else {
                 SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
             }
