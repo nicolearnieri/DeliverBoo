@@ -299,7 +299,7 @@ public class SearchRestaurantsController {
         breadType.setText(localizationManager.getLocalizedString("button.breadType"));
         cafes.setText(localizationManager.getLocalizedString("button.cafe"));
         cart.setText(localizationManager.getLocalizedString("button.cart"));
-        pizzeria.setText(localizationManager.getLocalizedString("button.fastfood"));
+        pizzeria.setText(localizationManager.getLocalizedString("button.pizzeria"));
         gourmet.setText(localizationManager.getLocalizedString("button.gourmet"));
         japanese.setText(localizationManager.getLocalizedString("button.japanese"));
         mexican.setText(localizationManager.getLocalizedString("button.mexican"));

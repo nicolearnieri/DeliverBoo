@@ -116,8 +116,8 @@ public class HomeController {
     }
 
 
-    public void openSearchRestaurants(ActionEvent event){
-        try {
+    public void openSearchRestaurants(ActionEvent event) throws Exception{
+        //try {
             if (AddressVerifier.getInstance().userValidAddress(addressField.getText(),localizationManager)) {
                 System.out.println("Sono arrivato1");
                 Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -136,9 +136,9 @@ public class HomeController {
             } else {
                 SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
             }
-        }catch (Exception e){
+       /* }catch (Exception e){
             SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
-        }
+        }*/
     }
 
 
