@@ -33,10 +33,11 @@ public class RestaurantsListController {
 
     public void createList(List<Integer> queryResults) throws IOException {
         System.out.println("Controller 1");
-        //restaurants.clear();
+        clearRestaurants();
         System.out.println("Controller 2");
         for (Integer element : queryResults) {
             System.out.println("Controller 3");
+
             Callable<Boolean> verifyCallable = TaskCreator.ReturnRestInfoTask(element);
             Future<Boolean> result = executor.submit(verifyCallable);
             try {

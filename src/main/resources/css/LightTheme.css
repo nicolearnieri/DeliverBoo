@@ -122,3 +122,23 @@
 
 }
 
+.list-view, .scroll-bar: vertical .thumb
+{
+    -fx-background-color: #E0CAF9;
+}
+
+.list-cell
+{
+    -fx-background-color: #EADCFB;
+}
+
+.scroll-bar
+{
+    -fx-background-color: #C59EF4;
+}
+
+.list-cell: hover, .scroll-bar:vertical .thumb: hover
+{
+    -fx-background-color: #9d74cc;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
