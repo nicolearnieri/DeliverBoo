@@ -29,9 +29,13 @@ public class SceneHandler {
     private final Alert alertError = new Alert(Alert.AlertType.ERROR);
     private final Alert alertConfirmation = new Alert(Alert.AlertType.CONFIRMATION);
     private Scene scene;
+
+    private Scene logInScene;
     private Stage stage;
 
     private Stage logInOrSignUpStage;
+
+    private Stage secondStage;
 
     private String theme = "DarkTheme";
     private String font = "FontMontserrat";
@@ -53,7 +57,7 @@ public class SceneHandler {
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        changedTheme();
+        changedTheme(scene);
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -75,7 +79,7 @@ public class SceneHandler {
 
 
 
-        changedTheme();
+        changedTheme(scene);
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -92,32 +96,32 @@ public class SceneHandler {
 
 
 
-        changedTheme();
+        changedTheme(scene);
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
     }
 
     public void setRestaurantHome(Restaurant restaurant) throws Exception{
-        stage = new Stage();
+        secondStage= new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RestaurantHome.fxml"));
-        scene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
+        Scene secondScene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
 
-       stage.initModality(Modality.APPLICATION_MODAL);
+        secondStage.initModality(Modality.APPLICATION_MODAL);
        RestaurantHomeController controller= loader.getController();
-       controller.initialize(restaurant);
+       controller.initialize(restaurant, stage, secondStage);
 
 
-        changedTheme();
-        stage.setTitle("DeliverBoo");
-        stage.setScene(scene);
-        stage.show();
+        changedTheme(secondScene);
+        secondStage.setTitle("DeliverBoo");
+        secondStage.setScene(secondScene);
+        secondStage.show();
     }
     public void setLogIn() throws Exception {
         if(logInOrSignUpStage!=null){logInOrSignUpStage.close();}
         logInOrSignUpStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "LogIn.fxml"));
-        scene = new Scene(loader.load(), 600, 500); //v:larghezza, v1:altezza
+        logInScene = new Scene(loader.load(), 600, 500); //v:larghezza, v1:altezza
 
 
         logInOrSignUpStage.initModality(Modality.APPLICATION_MODAL);
@@ -126,9 +130,9 @@ public class SceneHandler {
         LogInController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        changedTheme();
+        changedTheme(logInScene);
         logInOrSignUpStage.setTitle("DeliverBoo");
-        logInOrSignUpStage.setScene(scene);
+        logInOrSignUpStage.setScene(logInScene);
         logInOrSignUpStage.setResizable(false);
         logInOrSignUpStage.show();
     }
@@ -139,7 +143,7 @@ public class SceneHandler {
         if(logInOrSignUpStage!=null){logInOrSignUpStage.close();}
         logInOrSignUpStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SignUp.fxml"));
-        scene = new Scene(loader.load(), 600, 500); //v:larghezza, v1:altezza
+        logInScene = new Scene(loader.load(), 600, 500); //v:larghezza, v1:altezza
 
         logInOrSignUpStage.initModality(Modality.APPLICATION_MODAL);
 
@@ -147,9 +151,9 @@ public class SceneHandler {
         SignUpController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        changedTheme();
+        changedTheme(logInScene);
         logInOrSignUpStage.setTitle("DeliverBoo");
-        logInOrSignUpStage.setScene(scene);
+        logInOrSignUpStage.setScene(logInScene);
         logInOrSignUpStage.setResizable(false);
         logInOrSignUpStage.show();
     }
@@ -159,15 +163,15 @@ public class SceneHandler {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Profile.fxml"));
-        scene = new Scene(loader.load(), 500, 700); //v:larghezza, v1:altezza
+        logInScene = new Scene(loader.load(), 500, 700); //v:larghezza, v1:altezza
 
 
         ProfileController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        changedTheme();
+        changedTheme(logInScene);
         stage.setTitle("DeliverBoo");
-        stage.setScene(scene);
+        stage.setScene(logInScene);
         stage.show();
     }
 
@@ -181,7 +185,7 @@ public class SceneHandler {
         FAQController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-        changedTheme();
+        changedTheme(scene);
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -230,7 +234,7 @@ public class SceneHandler {
             alert.getDialogPane().getStylesheets().add(resource);
     }
 
-    private void changedTheme() {
+    private void changedTheme(Scene scene) {
         setCSSForScene(scene);
         setCSSForAlert(alertError);
         setCSSForAlert(alertInfo);
@@ -244,12 +248,12 @@ public class SceneHandler {
 
     public void changeTheme(String newTheme) {
         theme=newTheme;
-        changedTheme();
+        changedTheme(scene);
     }
 
     public void changeFont(String newFont) {
         font= newFont;
-        changedTheme();
+        changedTheme(scene);
     }
     public void showError(String message, String title) {
         FontIcon icon = new FontIcon("mdi2a-alert");

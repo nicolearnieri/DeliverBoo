@@ -6,6 +6,7 @@
 
 /* Stile per il testo */
 .text {
+    /*-fx-font-size : 14px;*/
     -fx-fill: #131f1e; /* Colore del testo */
 }
 
@@ -108,7 +109,11 @@
     -fx-background-color: #daf7f7;
 }
 
-
+#restaurantNameLabel
+{
+    -fx-font-size : 30px;
+    -fx-font-weight: bold;
+}
 
 .text-area {
     -fx-text-fill: #131f1e; /* Colore del testo */
@@ -120,6 +125,27 @@
 
 }
 
-.list-view {
-    -fx-background-color: lightblue;
+.list-view, .scroll-bar: vertical .thumb
+{
+    -fx-background-color: #88E5E5;
 }
+
+.scroll-bar: vertical .thumb
+{
+    -fx-pref-height: 5px;
+}
+
+.list-cell, .scroll-bar
+{
+    -fx-background-color: #6DDFDF;
+}
+
+
+
+.list-cell: hover, .scroll-bar:vertical .thumb: hover
+{
+    -fx-background-color: #37ABA9;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+

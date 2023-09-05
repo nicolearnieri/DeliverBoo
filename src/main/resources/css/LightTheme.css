@@ -2,11 +2,13 @@
 
 /* Imposta il colore di sfondo per l'intera applicazione */
 .root {
+
     -fx-background-color: #f0f0f0;
 }
 
-/* Stile per il testo */
+
 .text {
+    -fx-font-size : 14px;
     -fx-fill: #2c0938; /* Colore del testo */
 }
 
@@ -127,6 +129,11 @@
     -fx-background-color: #E0CAF9;
 }
 
+.scroll-bar: vertical .thumb
+{
+    -fx-pref-width: 10px;
+}
+
 .list-cell
 {
     -fx-background-color: #EADCFB;
@@ -141,4 +148,10 @@
 {
     -fx-background-color: #9d74cc;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+#restaurantNameLabel
+{
+    -fx-font-size : 30px;
+    -fx-font-weight: bold;
 }

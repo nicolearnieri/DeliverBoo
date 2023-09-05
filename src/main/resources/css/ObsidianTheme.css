@@ -1,8 +1,13 @@
 
 /* Imposta il colore di sfondo per l'intera applicazione */
 .root {
+
     -fx-background-color: #e1e5eb;
 }
+
+.text {
+    -fx-font-size : 14px;
+    }
 
 /* Stile per i pulsanti non altrimenti definiti */
 .button, .combo-box{
@@ -121,4 +126,43 @@
 .text-area .content {
   -fx-background-color: #E9ECF0;
 
+}
+
+
+
+.list-view, .scroll-bar: vertical .thumb
+{
+    -fx-background-color:  #99A7BA;
+}
+
+.scroll-bar: vertical .thumb
+{
+    -fx-pref-height: 5px;
+}
+
+.list-cell
+{
+    -fx-background-color: #C1CAD5;
+}
+
+.scroll-bar
+{
+    -fx-background-color: #586981;
+}
+
+.list-cell: hover
+{
+    -fx-background-color: #99A7BA;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+.scroll-bar:vertical .thumb: hover
+{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}
+
+#restaurantNameLabel
+{
+    -fx-font-size : 30px;
+    -fx-font-weight: bold;
 }

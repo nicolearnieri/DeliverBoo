@@ -17,12 +17,12 @@
          <top>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#getBack">
                      <VBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </VBox.margin>
                      <graphic>
-                        <ImageView fx:id="backButton" fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="backButtonImg" fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
                   <HBox alignment="CENTER" prefHeight="129.0" prefWidth="643.0">
