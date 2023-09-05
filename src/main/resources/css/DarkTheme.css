@@ -5,6 +5,7 @@
 
 /* testo */
 .text {
+    -fx-font-size : 14px;
     -fx-fill: #acacad;
 }
 
@@ -117,4 +118,35 @@
 }
 
 
+#restaurantNameLabel
+{
+    -fx-font-size : 30px;
+    -fx-font-weight: bold;
+}
 
+
+.list-view, .scroll-bar: vertical .thumb
+{
+    -fx-background-color: #1f132b;
+}
+
+.scroll-bar: vertical .thumb
+{
+    -fx-pref-width: 10px;
+}
+
+.list-cell
+{
+    -fx-background-color: #1f132b;
+}
+
+.scroll-bar
+{
+    -fx-background-color: #37214C;
+}
+
+.list-cell: hover, .scroll-bar:vertical .thumb: hover
+{
+    -fx-background-color: #432d5c;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+}

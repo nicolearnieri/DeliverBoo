@@ -81,7 +81,7 @@ public class RestaurantsListController {
 
         }
 
-        restaurantsListView.setOnMousePressed(mouseEvent -> {
+        restaurantsListView.setOnMousePressed(event -> {
             RestaurantItem restaurantItem=restaurantsListView.getSelectionModel().getSelectedItem();
             if(restaurantItem!= null){
                 try {

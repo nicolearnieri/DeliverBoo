@@ -186,6 +186,6 @@
       </VBox>
    </left>
    <center>
-      <AnchorPane fx:id="restaurantsListPane" maxWidth="1000.0" prefHeight="1000.0" prefWidth="800.0" BorderPane.alignment="TOP_LEFT" />
+      <AnchorPane fx:id="restaurantsListPane" maxWidth="1000.0" prefHeight="373.0" prefWidth="433.0" BorderPane.alignment="TOP_LEFT" />
    </center>
 </BorderPane>
