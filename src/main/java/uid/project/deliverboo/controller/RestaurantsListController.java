@@ -76,6 +76,7 @@ public class RestaurantsListController {
             }
 
             restaurantsListView.refresh();
+            System.out.println("Numero di elementi dopo il refresh: " + restaurantsListView.getItems().size());
 
         }
 
