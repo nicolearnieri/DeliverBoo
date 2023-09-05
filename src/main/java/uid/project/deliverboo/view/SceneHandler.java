@@ -17,6 +17,7 @@ import org.controlsfx.control.action.Action;
 
 import javafx.scene.control.ButtonType;
 import uid.project.deliverboo.model.CurrentUser;
+import uid.project.deliverboo.model.Restaurant;
 
 public class SceneHandler {
     private final static String RESOURCE_PATH = "/src/main/resources/";
@@ -89,6 +90,22 @@ public class SceneHandler {
         SearchRestaurantsController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
+
+
+        changedTheme();
+        stage.setTitle("DeliverBoo");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void setRestaurantHome(Restaurant restaurant) throws Exception{
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RestaurantHome.fxml"));
+        scene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
+
+       stage.initModality(Modality.APPLICATION_MODAL);
+       RestaurantHomeController controller= loader.getController();
+       controller.initialize(restaurant);
 
 
         changedTheme();

@@ -81,7 +81,21 @@ public class RestaurantsListController {
 
         }
 
+        restaurantsListView.setOnMousePressed(mouseEvent -> {
+            RestaurantItem restaurantItem=restaurantsListView.getSelectionModel().getSelectedItem();
+            if(restaurantItem!= null){
+                try {
+                    Restaurant restaurant= RestaurantItem.getRestaurant();
+                    SceneHandler.getInstance().setRestaurantHome(restaurant);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
     }
+
+
     public static boolean addToVector(Restaurant rest) {
         System.out.println("Aggiunge al vector");
         return restaurants.add(rest);
