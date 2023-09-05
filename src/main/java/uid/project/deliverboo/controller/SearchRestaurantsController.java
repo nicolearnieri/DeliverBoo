@@ -1,5 +1,6 @@
 package uid.project.deliverboo.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -334,9 +335,14 @@ public class SearchRestaurantsController {
         minimalistButton.setText(localizationManager.getLocalizedString("radiomenuitem.minimalistTheme"));
         searchButton.setText(localizationManager.getLocalizedString("button.searchButton"));
 
-        if(CurrentUser.getInstance().getAccess()){userLogged.setText(localizationManager.getLocalizedString("button.userLogged"));
-            System.out.println(CurrentUser.getInstance().getAccess());}
-        else{userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));}
+        //if(CurrentUser.getInstance().getAccess()){userLogged.setText(localizationManager.getLocalizedString("button.userLogged"));
+            System.out.println(CurrentUser.getInstance().getAccess());
+            System.out.println(localizationManager.getLocalizedString("button.userLogged"));
+            System.out.println("ci sono entrata pd");
+
+        //}
+       // else{userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));
+        //    System.out.println("sono entrata anche qua");}
 
 
     }
