@@ -154,7 +154,7 @@ class ReturnAddressTask implements Callable<List<Integer>> {
         @Override
         public Boolean call() throws Exception {
 
-            String query = "SELECT nome, indirizzo, citta, tipologia, path1 FROM Ristoranti WHERE codice LIKE ?";
+            String query = "SELECT nome, indirizzo, citta, tipologia, path1, path2, valutazione FROM Ristoranti WHERE codice LIKE ?";
 
             Restaurant rest = null;
             try (Connection conn = DataBaseManager.getConnection();
@@ -171,6 +171,8 @@ class ReturnAddressTask implements Callable<List<Integer>> {
                         rest.setCode(code);
                         rest.setPath1(resultSet.getString("path1"));
                         rest.setType(resultSet.getString("tipologia"));
+                        rest.setPath2(resultSet.getString("path2"));
+                        rest.setEvaluation(resultSet.getString("valutazione"));
 
                         if (RestaurantsListController.addToVector(rest))
                             return true;

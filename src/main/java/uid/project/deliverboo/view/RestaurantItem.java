@@ -12,10 +12,12 @@ import java.io.IOException;
 
 public class RestaurantItem extends StackPane {
 
+    private static Restaurant restaurant;
+
 
 
     public RestaurantItem(Restaurant restaurant) throws IOException {
-
+        this.restaurant=restaurant;
         FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/restaurantItem.fxml"));
         //try{
             HBox root= loader.load();
@@ -24,6 +26,10 @@ public class RestaurantItem extends StackPane {
             this.getChildren().add(root);
             root.prefWidthProperty().bind(this.widthProperty());
         //}catch (Exception ignoredException){System.out.println("Catch di restaurant item");}
+    }
+
+    public static Restaurant getRestaurant(){
+        return restaurant;
     }
 
 

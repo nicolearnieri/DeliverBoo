@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Restaurant {
 
-    private String name, address, city, type, path1, evaluation;
+    private String name, address, city, type, path1, path2, evaluation;
     private int  code;
 
     public Restaurant() {}
@@ -63,5 +63,13 @@ public class Restaurant {
 
     public void setEvaluation(String evaluation) {
         this.evaluation = evaluation;
+    }
+
+    public String getPath2() {
+        return path2;
+    }
+
+    public void setPath2(String path2) {
+        this.path2 = path2;
     }
 }
