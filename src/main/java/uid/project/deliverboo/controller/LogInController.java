@@ -125,15 +125,12 @@ public class LogInController {
             else logInError(localizationManager.getLocalizedString("error.password"));
         }
         if (CurrentUser.getInstance().getAccess() && logInSucceded){
-            Platform.runLater(() -> {
-                try {
-                    if(SceneHandler.getInstance().getSearchRestaurantsIsVisible()){SceneHandler.getInstance().setSearchRestaurants();}
-                    else{SceneHandler.getInstance().setHomeInterface();}
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
+            try {
+                if(SceneHandler.getInstance().getSearchRestaurantsIsVisible()){SceneHandler.getInstance().updateButtonLabel();}
+                else{SceneHandler.getInstance().setHomeInterface();}
+            } catch (Exception e) {e.printStackTrace();}
         }
+
 
     }
 
