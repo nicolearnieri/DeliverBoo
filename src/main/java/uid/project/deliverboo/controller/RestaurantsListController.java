@@ -10,6 +10,7 @@ import uid.project.deliverboo.view.MenuItem;
 import uid.project.deliverboo.view.RestaurantItem;
 import uid.project.deliverboo.view.SceneHandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -30,7 +31,7 @@ public class RestaurantsListController {
 
 
 
-    public void createList(List<Integer> queryResults) {
+    public void createList(List<Integer> queryResults) throws IOException {
         System.out.println("Controller 1");
         //restaurants.clear();
         System.out.println("Controller 2");

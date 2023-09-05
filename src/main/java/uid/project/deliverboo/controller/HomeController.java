@@ -189,7 +189,7 @@ public class HomeController {
         menuFont.setText(localizationManager.getLocalizedString("menu.menuFont"));
         fontBase.setText(localizationManager.getLocalizedString("radiomenuitem.fontBase"));
         fontDyslexia.setText(localizationManager.getLocalizedString("radiomenuitem.fontDislexya"));
-        profileItem.setText(localizationManager.getLocalizedString("menuitem.profileItem"));
+        //profileItem.setText(localizationManager.getLocalizedString("menuitem.profileItem"));
         punLine.setText(localizationManager.getLocalizedString("punLine.title"));
 
 
