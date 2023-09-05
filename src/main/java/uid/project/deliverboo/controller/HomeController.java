@@ -166,7 +166,7 @@ public class HomeController {
 
 
     private void updateTexts(){
-        accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));
+        accessButton.setText(localizationManager.getLocalizedString("button.userLogged"));
         addressField.setPromptText(localizationManager.getLocalizedString("textfield.addressField"));
         darkButton.setText(localizationManager.getLocalizedString("radiomenuitem.dark"));
         lightButton.setText(localizationManager.getLocalizedString("radiomenuitem.light"));
@@ -217,8 +217,4 @@ public class HomeController {
     }
 
 
-    public void changeLabel(boolean profile){
-        if(profile){accessButton.setText(localizationManager.getLocalizedString("button.profileButton"));}
-        else{accessButton.setText(localizationManager.getLocalizedString("button.accessButton"));}
-    }
 }

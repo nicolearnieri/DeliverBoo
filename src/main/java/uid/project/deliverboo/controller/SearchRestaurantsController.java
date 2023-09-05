@@ -334,15 +334,7 @@ public class SearchRestaurantsController {
         deliverBooThemeButton.setText(localizationManager.getLocalizedString("radiomenuitem.deliverbooTheme"));
         minimalistButton.setText(localizationManager.getLocalizedString("radiomenuitem.minimalistTheme"));
         searchButton.setText(localizationManager.getLocalizedString("button.searchButton"));
-
-        //if(CurrentUser.getInstance().getAccess()){userLogged.setText(localizationManager.getLocalizedString("button.userLogged"));
-            System.out.println(CurrentUser.getInstance().getAccess());
-            System.out.println(localizationManager.getLocalizedString("button.userLogged"));
-            System.out.println("ci sono entrata pd");
-
-        //}
-       // else{userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));
-        //    System.out.println("sono entrata anche qua");}
+        userLogged.setText(localizationManager.getLocalizedString("button.userLogged"));
 
 
     }
@@ -371,10 +363,6 @@ public class SearchRestaurantsController {
     public void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
         themeGroup.selectToggle(minimalistButton);
         RestaurantItemController.setObsidianTheme();
-    }
-
-    public void changeLabel(){
-        setLocalizationManager(localizationManager);
     }
 
 
