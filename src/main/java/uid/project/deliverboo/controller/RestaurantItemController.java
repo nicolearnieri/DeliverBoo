@@ -28,6 +28,7 @@ public class RestaurantItemController {
         cityLabel.setText(restaurant.getCity());
         //restaurantImage.setImage(new Image(restaurant.getPath1()));
 
+
     }
 
     public static void setLightMode() {
