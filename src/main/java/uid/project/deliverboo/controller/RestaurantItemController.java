@@ -26,7 +26,7 @@ public class RestaurantItemController {
         nameLabel.setText(restaurant.getName());
         evaluationLabel.setText(restaurant.getEvaluation());
         cityLabel.setText(restaurant.getCity());
-        //restaurantImage.setImage(new Image(restaurant.getPath1()));
+        restaurantImage.setImage(new Image(restaurant.getPath1()));
 
 
     }
