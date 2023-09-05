@@ -75,7 +75,10 @@
                   </Menu>
                   <Menu mnemonicParsing="false" text="Font">
                     <items>
-                        <RadioMenuItem fx:id="fontBase" mnemonicParsing="false" onAction="#setFontMontserrat" text="Deliverboo classic (Montserrat)" />
+                        <RadioMenuItem fx:id="fontBase" mnemonicParsing="false" onAction="#setFontMontserrat" text="Deliverboo classic (Montserrat)">
+                       <toggleGroup>
+                          <ToggleGroup fx:id="fontGroup" />
+                       </toggleGroup></RadioMenuItem>
                         <RadioMenuItem fx:id="fontDyslexia" mnemonicParsing="false" onAction="#setFontDyslexia" text="Migliore leggibilità (OpenDyslexia)" />
                     </items>
                   </Menu>
