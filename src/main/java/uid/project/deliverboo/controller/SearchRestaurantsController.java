@@ -299,22 +299,27 @@ public class SearchRestaurantsController {
     public void setLightMode() {
         SceneHandler.getInstance().changeTheme("LightTheme");
         themeGroup.selectToggle(lightButton);
+        RestaurantItemController.setLightMode();
     }
 
     public void setParadiseTheme() {SceneHandler.getInstance().changeTheme("ParadiseTheme");
         themeGroup.selectToggle(light2Button);
+        RestaurantItemController.setParadiseTheme();
     }
 
     public void setDeliverBooTheme() {SceneHandler.getInstance().changeTheme("DeliverBooTheme");
         themeGroup.selectToggle(deliverBooThemeButton);
+        RestaurantItemController.setDeliverBooTheme();
     }
 
     public void setDarkTheme() {SceneHandler.getInstance().changeTheme("DarkTheme");
         themeGroup.selectToggle(darkButton);
+        RestaurantItemController.setDarkTheme();
     }
 
     public void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
         themeGroup.selectToggle(minimalistButton);
+        RestaurantItemController.setObsidianTheme();
     }
 
     public void changeLabel(boolean profile){

@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import uid.project.deliverboo.model.Restaurant;
+import uid.project.deliverboo.view.SceneHandler;
 
 public class RestaurantItemController {
 
@@ -25,7 +26,34 @@ public class RestaurantItemController {
         nameLabel.setText(restaurant.getName());
         evaluationLabel.setText(restaurant.getEvaluation());
         cityLabel.setText(restaurant.getCity());
-        restaurantImage.setImage(new Image(restaurant.getPath1()));
+        //restaurantImage.setImage(new Image(restaurant.getPath1()));
+
+    }
+
+    public static void setLightMode() {
+        SceneHandler.getInstance().changeTheme("LightTheme");
+
+    }
+
+    public static void setParadiseTheme() {SceneHandler.getInstance().changeTheme("ParadiseTheme");
+
+    }
+
+    public static void setDeliverBooTheme() {SceneHandler.getInstance().changeTheme("DeliverBooTheme");
+
+    }
+
+    public static void setDarkTheme() {SceneHandler.getInstance().changeTheme("DarkTheme");
+
+    }
+
+    public static void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
+
+    }
+    public static void setFontDyslexia() {SceneHandler.getInstance().changeFont("FontDyslexic");
+
+    }
+    public static void setFontMontserrat() {SceneHandler.getInstance().changeFont("FontMontserrat");
 
     }
 }
