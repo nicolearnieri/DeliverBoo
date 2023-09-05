@@ -7,6 +7,9 @@ import javafx.scene.image.ImageView;
 import uid.project.deliverboo.model.Restaurant;
 import uid.project.deliverboo.view.SceneHandler;
 
+import java.io.IOException;
+import java.util.Objects;
+
 public class RestaurantItemController {
 
     @FXML
@@ -22,13 +25,13 @@ public class RestaurantItemController {
     private ImageView restaurantImage;
     //qui si potrà usare HomeController.getAddress() per prendere l'indirizzo dell'utente e calcolare la distanza dal ristorante
 
-    public void init(Restaurant restaurant){
+    public void init(Restaurant restaurant) throws IOException {
         nameLabel.setText(restaurant.getName());
         evaluationLabel.setText(restaurant.getEvaluation());
         cityLabel.setText(restaurant.getCity());
-        restaurantImage.setImage(new Image(restaurant.getPath1()));
+        restaurantImage.setImage(new Image(Objects.requireNonNull(getClass().getResource(restaurant.getPath1())).toExternalForm()));
 
-
+//        restaurantImage.setImage(new Image(Objects.requireNonNull(getClass().getResource("/usedImages/Restaurants/bakery12.jpg")).toExternalForm()));
     }
 
     public static void setLightMode() {
