@@ -4,8 +4,10 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import uid.project.deliverboo.model.*;
 import uid.project.deliverboo.view.SceneHandler;
@@ -13,6 +15,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import uid.project.deliverboo.controller.HomeController;
 
 import java.util.Locale;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -27,6 +30,12 @@ public class SignUpController {
     private TextField emailField;
 
     @FXML
+    private ImageView eyeImage;
+
+    @FXML
+    private ImageView eyeImageR;
+
+    @FXML
     private Label labelEmail;
 
     @FXML
@@ -39,36 +48,50 @@ public class SignUpController {
     private Label labelUsername;
 
     @FXML
+    private Button logInButton;
+
+    @FXML
     private ImageView logo;
 
     @FXML
     private Label messageLabel;
 
-
-    @FXML
-    private Label questionAccountLabel;
-
     @FXML
     private PasswordField passwordField;
-
-    @FXML
-    private PasswordField rPasswordField;
-
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private Label passwordSuggestions;
 
     @FXML
     private HBox passwordSuggestionBox;
 
     @FXML
-    private Button logInButton;
+    private Label passwordSuggestions;
 
+    @FXML
+    private Label questionAccountLabel;
+
+    @FXML
+    private PasswordField rPasswordField;
+
+    @FXML
+    private TextField rSeePasswordField;
+
+    @FXML
+    private TextField seePasswordField;
+
+    @FXML
+    private StackPane stackPassword;
+
+    @FXML
+    private TextField usernameField;
     private LocalizationManager localizationManager;
 
     private ExecutorService executor = ExecutorProvider.getExecutor();
+
+    Image openEye = new Image(Objects.requireNonNull(getClass().getResource("/Icone/eye.png")).toExternalForm());
+    Image eyeOff = new Image(Objects.requireNonNull(getClass().getResource("/Icone/eye-off.png")).toExternalForm());
+
+
+
+
 
     public void initialize() {
 
@@ -83,8 +106,49 @@ public class SignUpController {
             passwordSuggestionBox.setVisible(false);
             passwordSuggestionBox.setManaged(false);
         });
+
+        passwordFields();
+
     }
 
+    private void passwordFields()
+    {
+        rPasswordField.textProperty().bindBidirectional(rSeePasswordField.textProperty());
+        passwordField.textProperty().bindBidirectional(seePasswordField.textProperty());
+        eyeImage.setImage(openEye);
+        eyeImageR.setImage(openEye);
+
+
+        eyeImage.setOnMouseClicked(event -> {
+            if (eyeImage.getImage() == openEye) {
+                eyeImage.setImage(eyeOff);
+                seePasswordField.setVisible(true);
+                passwordField.setVisible(false);
+
+            } else {
+                eyeImage.setImage(openEye);
+                seePasswordField.setVisible(false);
+                passwordField.setVisible(true);
+
+            }
+        });
+
+        eyeImageR.setOnMouseClicked(event -> {
+            if (eyeImageR.getImage() == openEye) {
+                eyeImageR.setImage(eyeOff);
+                rSeePasswordField.setVisible(true);
+                rPasswordField.setVisible(false);
+            } else {
+                eyeImageR.setImage(openEye);
+                rSeePasswordField.setVisible(false);
+                rPasswordField.setVisible(true);
+            }
+        });
+
+
+
+
+    }
 
     @FXML
     private String GetFromTextField(TextField t)

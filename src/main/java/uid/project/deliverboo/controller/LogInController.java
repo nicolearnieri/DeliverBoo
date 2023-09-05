@@ -3,6 +3,7 @@ package uid.project.deliverboo.controller;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
@@ -10,6 +11,7 @@ import uid.project.deliverboo.model.*;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -19,10 +21,10 @@ public class LogInController {
 
 
     @FXML
-    private Label userOrEmailLabel;
+    private Button accessButton;
 
     @FXML
-    private Button accessButton;
+    private ImageView eyeImage;
 
     @FXML
     private ImageView logo;
@@ -36,18 +38,54 @@ public class LogInController {
     @FXML
     private Label passwordLabel;
 
-
     @FXML
     private Label questionAccountLabel;
+
+    @FXML
+    private TextField seePasswordFieldSU;
+
+    @FXML
+    private Button signUpButton;
 
     @FXML
     private TextField userEmailField;
 
     @FXML
-    private Button signUpButton;
+    private Label userOrEmailLabel;
+
 
     private  LocalizationManager localizationManager;
     private ExecutorService executor = ExecutorProvider.getExecutor();
+
+    Image openEye = new Image(Objects.requireNonNull(getClass().getResource("/Icone/eye.png")).toExternalForm());
+    Image eyeOff = new Image(Objects.requireNonNull(getClass().getResource("/Icone/eye-off.png")).toExternalForm());
+
+
+    public void initialize()
+    {
+        passwordFields();
+    }
+    private void passwordFields() {
+
+        passwordFieldSU.textProperty().bindBidirectional(seePasswordFieldSU.textProperty());
+        eyeImage.setImage(openEye);
+
+
+
+        eyeImage.setOnMouseClicked(event -> {
+            if (eyeImage.getImage() == openEye) {
+                eyeImage.setImage(eyeOff);
+                seePasswordFieldSU.setVisible(true);
+                passwordFieldSU.setVisible(false);
+
+            } else {
+                eyeImage.setImage(openEye);
+                seePasswordFieldSU.setVisible(false);
+                passwordFieldSU.setVisible(true);
+
+            }
+        });
+    }
 
 
     public void setLocalizationManager(LocalizationManager localizationManager){

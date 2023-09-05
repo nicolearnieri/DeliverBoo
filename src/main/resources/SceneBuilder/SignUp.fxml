@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane prefHeight="427.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.SignUpController">
@@ -27,10 +29,19 @@
                   <TextField fx:id="emailField" promptText="example@gmail.com" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
+            <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2">
                <children>
-                  <Label fx:id="labelPassword" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="Password" textAlignment="CENTER" />
-                  <PasswordField fx:id="passwordField" />
+                  <Label fx:id="labelPassword" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="Password" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Label>
+                  <StackPane fx:id="stackPassword" prefHeight="58.0" prefWidth="170.0">
+                     <children>
+                        <TextField fx:id="seePasswordField" prefHeight="26.0" prefWidth="145.0" />
+                        <PasswordField fx:id="passwordField" prefHeight="26.0" prefWidth="144.0" />
+                     </children>
+                  </StackPane>
+                  <ImageView fx:id="eyeImage" fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </HBox>
 
@@ -40,10 +51,23 @@
                </children>
             </HBox>
 
-            <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
+            <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2">
                <children>
-                  <Label fx:id="labelRPassword" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="Ripeti password" textAlignment="CENTER" />
-                  <PasswordField fx:id="rPasswordField" />
+                  <Label fx:id="labelRPassword" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="Ripeti password" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Label>
+                  <StackPane prefHeight="58.0" prefWidth="170.0">
+                     <children>
+                        <TextField fx:id="rSeePasswordField" prefHeight="26.0" prefWidth="149.0" />
+                        <PasswordField fx:id="rPasswordField" prefHeight="26.0" prefWidth="158.0" />
+                     </children>
+                  </StackPane>
+                  <ImageView fx:id="eyeImageR" fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ImageView>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2">

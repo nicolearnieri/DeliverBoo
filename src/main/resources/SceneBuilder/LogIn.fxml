@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -45,10 +46,19 @@
                         <TextField fx:id="userEmailField" prefHeight="26.0" prefWidth="180.0" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="77.0" prefWidth="374.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="77.0" prefWidth="374.0">
                      <children>
                         <Label fx:id="passwordLabel" alignment="CENTER" prefHeight="20.0" prefWidth="150.0" text="Password" />
-                        <PasswordField fx:id="passwordFieldSU" prefHeight="26.0" prefWidth="180.0" />
+                        <StackPane prefHeight="74.0" prefWidth="146.0">
+                           <children>
+                              <TextField fx:id="seePasswordFieldSU" />
+                              <PasswordField fx:id="passwordFieldSU" prefHeight="26.0" prefWidth="154.0">
+                                 <StackPane.margin>
+                                    <Insets />
+                                 </StackPane.margin></PasswordField>
+                           </children>
+                        </StackPane>
+                        <ImageView fx:id="eyeImage" fitHeight="27.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="93.0" prefWidth="374.0">
