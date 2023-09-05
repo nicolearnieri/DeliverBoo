@@ -112,7 +112,7 @@ public class SearchRestaurantsController {
 
 
     private LocalizationManager localizationManager;
-    @FXML
+
     private RestaurantsList restaurantsList;
 
     private HomeController homeController= new HomeController(); //questo non ci deve essere
