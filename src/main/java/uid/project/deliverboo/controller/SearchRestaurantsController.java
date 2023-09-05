@@ -164,6 +164,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Bar", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
@@ -172,6 +173,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Forno", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
@@ -180,6 +182,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Caffetteria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
@@ -188,6 +191,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Pizzeria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
@@ -196,6 +200,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Gourmet", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
@@ -204,7 +209,9 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Giapponese", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+        System.out.println("ma io sono ziaponese");
     }
 
     @FXML
@@ -212,6 +219,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Messicano", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
@@ -220,6 +228,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Pasticceria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
@@ -228,6 +237,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Poke", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
@@ -236,6 +246,7 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Paninoteca", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 

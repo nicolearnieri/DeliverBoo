@@ -43,8 +43,9 @@ class SearchByTypeCallable implements Callable<List<Integer>> {
                     queryResults.add(resultSet.getInt("codice"));
                 }
             }
-            return queryResults;
+
         }
+        return queryResults;
     }
 }
 
