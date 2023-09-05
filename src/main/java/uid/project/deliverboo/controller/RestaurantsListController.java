@@ -85,11 +85,8 @@ public class RestaurantsListController {
         return restaurants.add(rest);
     }
 
-
-
-
-
-
-
-
+    public static boolean clearRestaurants() {
+        restaurants.clear();
+        return true;
+    }
 }
