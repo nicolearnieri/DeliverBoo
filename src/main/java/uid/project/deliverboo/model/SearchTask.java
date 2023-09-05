@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 
-class SearchByTypeTask implements Callable<List<Integer>> {
+class SearchByTypeCallable implements Callable<List<Integer>> {
     private String type;
     private List<Integer> prevResults;
 
-    public SearchByTypeTask(String type, List<Integer> prevResults) {
+    public SearchByTypeCallable(String type, List<Integer> prevResults) {
         this.type = type;
         this.prevResults = prevResults;
     }

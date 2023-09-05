@@ -55,10 +55,10 @@ public class TaskCreator
         return task;
     }
 
-    public static  Callable<List<Integer>> CreateSearchByType (String type, List<Integer> prevResults)
+    public static  Callable<List<Integer>> createSearchByType (String type, List<Integer> prevResults)
     {
-        SearchByTypeTask task = new SearchByTypeTask(type, prevResults);
-        return task;
+        SearchByTypeCallable callable = new SearchByTypeCallable(type, prevResults);
+        return callable;
     }
 
     public static  Callable<List<Integer>> CreateSearchByName (String name, List<Integer> prevResults)

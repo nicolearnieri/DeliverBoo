@@ -38,7 +38,7 @@ public class SearchRestaurantsController {
     private AnchorPane restaurantsListPane;
 
     @FXML
-    private Button fastFood;
+    private Button pizzeria;
 
     @FXML
     private Button gourmet;
@@ -112,6 +112,7 @@ public class SearchRestaurantsController {
 
 
     private LocalizationManager localizationManager;
+    @FXML
     private RestaurantsList restaurantsList;
 
     private HomeController homeController= new HomeController(); //questo non ci deve essere
@@ -154,53 +155,83 @@ public class SearchRestaurantsController {
     }
 
     @FXML
-    void searchBar(ActionEvent event) {
-
+    void searchBar(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Bar", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchBread(ActionEvent event) {
-
+    void searchBread(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Forno", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchCoffee(ActionEvent event) {
-
+    void searchCoffee(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Caffetteria", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchFastFood(ActionEvent event) {
-
+    void searchPizza(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Pizzeria", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchGourmet(ActionEvent event) {
-
+    void searchGourmet(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Gourmet", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchJapanese(ActionEvent event) {
-
+    void searchJapanese(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Giapponese", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchMexican(ActionEvent event) {
-
+    void searchMexican(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Messicano", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchPastries(ActionEvent event) {
-
+    void searchPastries(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Pasticceria", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchPoke(ActionEvent event) {
-
+    void searchPoke(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Poke", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
-    void searchPub(ActionEvent event) {
-
+    void searchPub(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Paninoteca", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
     }
 
     @FXML
@@ -268,7 +299,7 @@ public class SearchRestaurantsController {
         breadType.setText(localizationManager.getLocalizedString("button.breadType"));
         cafes.setText(localizationManager.getLocalizedString("button.cafe"));
         cart.setText(localizationManager.getLocalizedString("button.cart"));
-        fastFood.setText(localizationManager.getLocalizedString("button.fastfood"));
+        pizzeria.setText(localizationManager.getLocalizedString("button.fastfood"));
         gourmet.setText(localizationManager.getLocalizedString("button.gourmet"));
         japanese.setText(localizationManager.getLocalizedString("button.japanese"));
         mexican.setText(localizationManager.getLocalizedString("button.mexican"));

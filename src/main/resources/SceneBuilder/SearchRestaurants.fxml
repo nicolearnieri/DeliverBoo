@@ -132,7 +132,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button fx:id="fastFood" mnemonicParsing="false" onAction="#searchFastFood" prefHeight="38.0" prefWidth="139.0" text="fast food">
+                  <Button fx:id="pizzeria" mnemonicParsing="false" onAction="#searchPizza" prefHeight="38.0" prefWidth="139.0" text="pizzeria">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>
