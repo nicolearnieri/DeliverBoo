@@ -92,7 +92,7 @@ public class SceneHandler {
 
         SearchRestaurantsController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
-        controller.changeLabel(CurrentUser.getInstance().getAccess());
+        controller.changeLabel();
         searchRestaurantsIsVisible=true;
 
         changedTheme();
@@ -100,6 +100,16 @@ public class SceneHandler {
         stage.setScene(scene);
         stage.show();
         stage.toBack();
+    }
+
+    public void updateButtonLabel() throws Exception {
+        if (searchRestaurantsIsVisible) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
+            scene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
+            SearchRestaurantsController controller = loader.getController();
+            controller.setLocalizationManager(localizationManager);
+
+        }
     }
     public boolean getSearchRestaurantsIsVisible(){return searchRestaurantsIsVisible;}
     public void setLogIn() throws Exception {

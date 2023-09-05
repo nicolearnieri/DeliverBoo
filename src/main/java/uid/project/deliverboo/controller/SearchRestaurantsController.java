@@ -323,9 +323,9 @@ public class SearchRestaurantsController {
         minimalistButton.setText(localizationManager.getLocalizedString("radiomenuitem.minimalistTheme"));
         searchButton.setText(localizationManager.getLocalizedString("button.searchButton"));
 
-        //qua va messo l'if
-        userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));
-
+        if(CurrentUser.getInstance().getAccess()){userLogged.setText(localizationManager.getLocalizedString("button.userLogged"));
+            System.out.println(CurrentUser.getInstance().getAccess());}
+        else{userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));}
 
 
     }
@@ -356,9 +356,8 @@ public class SearchRestaurantsController {
         RestaurantItemController.setObsidianTheme();
     }
 
-    public void changeLabel(boolean profile){
-        if(profile){userLogged.setText(localizationManager.getLocalizedString("button.profileButton"));}
-        else{userLogged.setText(localizationManager.getLocalizedString("button.accessButton"));}
+    public void changeLabel(){
+        setLocalizationManager(localizationManager);
     }
 
 
