@@ -156,13 +156,13 @@ class ReturnAddressTask implements Callable<List<Integer>> {
 
             String query = "SELECT nome, indirizzo, citta, tipologia, path1 FROM Ristoranti WHERE codice LIKE ?";
 
-
             Restaurant rest = null;
             try (Connection conn = DataBaseManager.getConnection();
                  PreparedStatement preparedStatement = conn.prepareStatement(query.toString())) {
                 preparedStatement.setInt(1, code);
 
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
+
                     while (resultSet.next()) {
                         rest = new Restaurant();
                         rest.setAddress(resultSet.getString("indirizzo"));
