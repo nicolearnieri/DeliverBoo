@@ -109,7 +109,12 @@ public class SearchRestaurantsController {
 
     @FXML
     private RadioMenuItem minimalistButton;
-
+    @FXML
+    private ToggleGroup fontGroup;
+    @FXML
+    private RadioMenuItem fontBase;
+    @FXML
+    private RadioMenuItem fontDyslexia;
 
     private LocalizationManager localizationManager;
 
@@ -277,13 +282,11 @@ public class SearchRestaurantsController {
 
 
     @FXML
-    void setFontDyslexia(ActionEvent event) {
-
+    public void setFontDyslexia() {SceneHandler.getInstance().changeFont("FontDyslexic");
+        fontGroup.selectToggle(fontDyslexia);
     }
-
-    @FXML
-    void setFontMontserrat(ActionEvent event) {
-
+    public void setFontMontserrat() {SceneHandler.getInstance().changeFont("FontMontserrat");
+        fontGroup.selectToggle(fontBase);
     }
 
     @FXML
