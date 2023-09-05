@@ -30,7 +30,6 @@ public class SceneHandler {
     private Scene scene;
     private Stage stage;
 
-    private boolean searchRestaurantsIsVisible=false;
     private Stage logInOrSignUpStage;
 
     private String theme = "DarkTheme";
@@ -72,14 +71,13 @@ public class SceneHandler {
 
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
-        controller.changeLabel(CurrentUser.getInstance().getAccess());
-        searchRestaurantsIsVisible=false;
+
+
 
         changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
-        stage.toBack();
     }
 
     public void setSearchRestaurants() throws Exception {
@@ -87,31 +85,17 @@ public class SceneHandler {
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
         scene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
-        //loadFonts();
-
 
         SearchRestaurantsController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
-        controller.changeLabel();
-        searchRestaurantsIsVisible=true;
+
+
 
         changedTheme();
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
-        stage.toBack();
     }
-
-    public void updateButtonLabel() throws Exception {
-        if (searchRestaurantsIsVisible) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
-            scene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
-            SearchRestaurantsController controller = loader.getController();
-            controller.setLocalizationManager(localizationManager);
-
-        }
-    }
-    public boolean getSearchRestaurantsIsVisible(){return searchRestaurantsIsVisible;}
     public void setLogIn() throws Exception {
         if(logInOrSignUpStage!=null){logInOrSignUpStage.close();}
         logInOrSignUpStage = new Stage();
@@ -159,7 +143,6 @@ public class SceneHandler {
         stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Profile.fxml"));
         scene = new Scene(loader.load(), 500, 700); //v:larghezza, v1:altezza
-        //loadFonts();
 
 
         ProfileController controller= loader.getController();
@@ -176,7 +159,6 @@ public class SceneHandler {
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "FAQ.fxml"));
         scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
-        //loadFonts();
 
 
         FAQController controller= loader.getController();
