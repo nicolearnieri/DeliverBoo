@@ -131,7 +131,7 @@ public class SearchRestaurantsController {
 
 
 
-    public void loadRestaurantsList() throws IOException {
+    public void initialize() throws IOException {
         //Query
         System.out.println("Qua arrivo 1");
         Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());

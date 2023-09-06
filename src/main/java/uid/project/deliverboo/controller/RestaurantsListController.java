@@ -83,11 +83,9 @@ public class RestaurantsListController {
 
         restaurantsListView.setOnMousePressed(event -> {
             RestaurantItem restaurantItem=restaurantsListView.getSelectionModel().getSelectedItem();
-            System.out.println(restaurantItem);
             if(restaurantItem!= null){
                 try {
                     Restaurant restaurant= restaurantItem.getRestaurant();
-                    System.out.println(restaurant.getName());
                     SceneHandler.getInstance().setRestaurantHome(restaurant);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
