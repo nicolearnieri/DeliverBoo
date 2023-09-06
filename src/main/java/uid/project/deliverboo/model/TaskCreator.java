@@ -61,7 +61,7 @@ public class TaskCreator
         return callable;
     }
 
-    public static  Callable<List<Integer>> CreateSearchByName (String name, List<Integer> prevResults)
+    public static  Callable<List<Integer>> createSearchByName (String name, List<Integer> prevResults)
     {
         SearchByNameTask task = new SearchByNameTask(name, prevResults);
         return task;

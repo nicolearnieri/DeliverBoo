@@ -160,6 +160,7 @@ public class SearchRestaurantsController {
 
     }
 
+
     @FXML
     void searchBar(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Bar", queryResults );
@@ -167,6 +168,17 @@ public class SearchRestaurantsController {
         List<Integer> results = executeSBT.get();
         restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+    }
+
+    @FXML
+    void searchByName(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
+        String name = searchBar.getText();
+        Callable<List<Integer>> sBN = TaskCreator.createSearchByName(name, queryResults );
+        Future<List<Integer>> executeSBN = executor.submit(sBN);
+        List<Integer> results = executeSBN.get();
+        restaurantsList=new RestaurantsList();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
     }
 
     @FXML
