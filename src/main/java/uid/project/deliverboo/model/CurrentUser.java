@@ -3,8 +3,19 @@ package uid.project.deliverboo.model;
 public class CurrentUser
 {
     private static  CurrentUser instance;
-    private String nomeUtente;
-    private String email;
+    private String nomeUtente, email, phoneNumber, name, surname;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+
+
+
     private boolean access = false;
 
     private CurrentUser() {}
@@ -33,5 +44,6 @@ public class CurrentUser
     {
         this.email = null;
         this.nomeUtente = null;
+        this.phoneNumber = null;
         this.access= false; }
 }
