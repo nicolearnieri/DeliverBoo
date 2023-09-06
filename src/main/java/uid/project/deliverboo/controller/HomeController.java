@@ -122,17 +122,17 @@ public class HomeController {
     public void openSearchRestaurants(Event event) throws Exception{
         //try {
             if (AddressVerifier.getInstance().userValidAddress(addressField.getText(),localizationManager)) {
-                System.out.println("Sono arrivato1");
+
                 Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                System.out.println("Sono arrivato2");
+
 
                 // Chiudi la finestra corrente
                 currentStage.close();
-                System.out.println("Sono arrivato3");
+
 
                 // Apri la schermata di ricerca dei ristoranti
                 SceneHandler.getInstance().setSearchRestaurants();
-                System.out.println("Sono arrivato");
+
 
 
 

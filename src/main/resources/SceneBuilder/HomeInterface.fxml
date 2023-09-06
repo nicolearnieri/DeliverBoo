@@ -163,7 +163,7 @@
                   </HBox>
                   <HBox prefHeight="107.0" prefWidth="928.0">
                      <children>
-                        <TextField fx:id="addressField" onKeyPressed="#sendKeyPress" prefHeight="40.0" prefWidth="422.0">
+                        <TextField fx:id="addressField" onKeyPressed="#sendKeyPress" prefHeight="40.0" prefWidth="506.0">
                            <HBox.margin>
                               <Insets left="50.0" top="100.0" />
                            </HBox.margin>

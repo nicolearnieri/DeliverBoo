@@ -30,7 +30,6 @@ class ReturnFoodInfoCallable implements Callable<Boolean> {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     Food food = new Food();
-                    System.out.println("food creato nella query");
                     food.setItName(resultSet.getString("nomeIta"));
                     food.setEngName(resultSet.getString("nomeEng"));
                     food.setItDescr(resultSet.getString("descrizioneIta"));
