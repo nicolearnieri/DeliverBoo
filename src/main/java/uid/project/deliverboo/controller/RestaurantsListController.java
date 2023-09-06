@@ -2,6 +2,7 @@ package uid.project.deliverboo.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import uid.project.deliverboo.model.AddressVerifier;
 import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.Restaurant;
@@ -21,8 +22,16 @@ import java.util.concurrent.Future;
 
 public class RestaurantsListController {
 
+
+
     @FXML
     private ListView<RestaurantItem> restaurantsListView;
+
+    private ScrollPane scrollPane = new ScrollPane(restaurantsListView);
+
+
+
+
 
     private static Vector<Restaurant> restaurants = new Vector<>();
     private ExecutorService executor = ExecutorProvider.getExecutor();
@@ -32,6 +41,7 @@ public class RestaurantsListController {
 
 
     public void createList(List<Integer> queryResults) throws IOException {
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         System.out.println("Controller 1");
         clearRestaurants();
         System.out.println("Controller 2");
