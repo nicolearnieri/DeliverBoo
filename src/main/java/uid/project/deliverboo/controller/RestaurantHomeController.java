@@ -61,34 +61,32 @@ public class RestaurantHomeController {
         stage.hide();
         restaurantNameLabel.setText(restaurant.getName());
 
-        System.out.println("pos1");
+
         //imageRestaurant.setImage(new Image(Objects.requireNonNull(getClass().getResource(restaurant.getPath2())).toExternalForm()));
 
         Callable<Boolean> verifyCallable = TaskCreator.ReturnFoodInfoCallable(restaurant.getCode());
 
         Future<Boolean> result = executor.submit(verifyCallable);
         try {
-            System.out.println("Controller try");
+
             Boolean flag = result.get();
         } catch (InterruptedException e) {
-            System.out.println("Controller catch1");
+
             throw new RuntimeException(e);
         } catch (ExecutionException e) {
-            System.out.println("Controller catch2");
+
             throw new RuntimeException(e);
         }
 
 
-        System.out.println("prima di creare il menu");
+
         menuList.getItems().clear();
         for(Food food: menu){
-            System.out.println("crea menuItem");
+
             MenuItem menuItem= new MenuItem(food, localizationManager);
-            System.out.println("aggiunge a menuList");
+
             menuList.getItems().add(menuItem);
-            for(MenuItem menuIt: menuList.getItems()){
-                System.out.println(menuIt);
-            }
+
         }
 
         menuList.refresh();
@@ -105,10 +103,7 @@ public class RestaurantHomeController {
     }
 
     public static boolean addToVector(Food food) {
-        System.out.println("Aggiunge al menu");
-        for(Food cibo: menu){
-            System.out.println(cibo);
-        }
+
         return menu.add(food);
     }
 
