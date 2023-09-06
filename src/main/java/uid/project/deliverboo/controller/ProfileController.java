@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.TaskCreator;
+import uid.project.deliverboo.model.ValidatorUtility;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.concurrent.Callable;
@@ -67,6 +68,7 @@ public class ProfileController {
     private Label usernameLabel;
 
     private ExecutorService executor = ExecutorProvider.getExecutor();
+    private LocalizationManager localizationManager;
 
 
     public void initialize ()
@@ -79,9 +81,9 @@ public class ProfileController {
     }
 
     @FXML
-    void deleteAccount(ActionEvent event) {
+    void deleteAccount(ActionEvent event) throws Exception {
 
-        //open the new interface
+        SceneHandler.getInstance().setPasswordConfirmation();
 
     }
 
@@ -90,13 +92,21 @@ public class ProfileController {
         String newName = nameField.getText();
         String newSurname = surnameField.getText();
         String newPhone = phoneField.getText();
-        Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getName(), newName, newSurname, newPhone);
-        Future<Boolean> exec = executor.submit(update);
-        if (exec.get())
+        if (ValidatorUtility.isValidPhoneNumber(newPhone))
         {
+            Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getNomeUtente(), newName, newSurname, newPhone);
+            Future<Boolean> exec = executor.submit(update);
+            if (exec.get()) {
 
-            //va messo Localization manager ok
-            SceneHandler.getInstance().showConfirmation("Modifica effettuata con successo", "Modifica");
+                SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("saveInfo.text"), localizationManager.getLocalizedString("saveInfo.title"));
+                CurrentUser.getInstance().setName(newName);
+                CurrentUser.getInstance().setSurname(newSurname);
+                CurrentUser.getInstance().setPhoneNumber(newPhone);
+            }
+        }
+        else
+        {
+            SceneHandler.getInstance().showError(localizationManager.getLocalizedString("phoneError.text"), localizationManager.getLocalizedString("phoneError.title"));
         }
 
     }
@@ -108,7 +118,13 @@ public class ProfileController {
 
     }
 
-    public void setLocalizationManager(LocalizationManager localizationManager) {
+    public void setLocalizationManager(LocalizationManager localizationManager){
+        this.localizationManager = localizationManager;
+
+        updateTexts();
+    }
+
+    public void updateTexts() {
         usernameLabel.setText(localizationManager.getLocalizedString("label.usernameLabel"));
         nameLabel.setText(localizationManager.getLocalizedString("label.nameLabel"));
         surnameLabel.setText(localizationManager.getLocalizedString("label.surnameLabel"));

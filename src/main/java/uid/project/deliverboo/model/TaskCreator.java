@@ -3,13 +3,14 @@ package uid.project.deliverboo.model;
 
 
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.Callable;
 
 public class TaskCreator
 {
-    public static Callable<Boolean> createInsertUser(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono)
+    public static Callable<Boolean> createInsertUser(String username, String nome, String cognome, String email, String password, String numeroTelefono)
     {
-        InsertUserTask task = new InsertUserTask(username,nome,cognome, email, password, indirizzo, numeroTelefono);
+        InsertUserTask task = new InsertUserTask(username,nome,cognome, email, password,numeroTelefono);
         return task;
     }
 
@@ -90,6 +91,11 @@ public static Callable<Boolean> ReturnFoodInfoCallable (int code)
     return call;
 }
 
+public static Callable<Vector<String>> returnUserInfoCallable(String value)
+{
+    GetInfoCallable call = new GetInfoCallable(value);
+    return call;
+}
 
 }
 

@@ -107,9 +107,8 @@ public class SceneHandler {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RestaurantHome.fxml"));
         Scene secondScene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
 
-        secondStage.initModality(Modality.APPLICATION_MODAL);
        RestaurantHomeController controller= loader.getController();
-       controller.initialize(restaurant, stage, secondStage);
+       controller.initialize(restaurant, stage, secondStage, localizationManager);
 
 
         changedTheme(secondScene);
@@ -117,6 +116,8 @@ public class SceneHandler {
         secondStage.setScene(secondScene);
         secondStage.show();
     }
+
+
     public void setLogIn() throws Exception {
         if(logInOrSignUpStage!=null){logInOrSignUpStage.close();}
         logInOrSignUpStage = new Stage();
@@ -167,6 +168,23 @@ public class SceneHandler {
 
 
         ProfileController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
+        changedTheme(logInScene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(logInScene);
+        stage.show();
+    }
+
+    public void setPasswordConfirmation() throws Exception {
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Password.fxml"));
+        logInScene = new Scene(loader.load(), 600, 400); //v:larghezza, v1:altezza
+
+
+        PasswordController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
         changedTheme(logInScene);

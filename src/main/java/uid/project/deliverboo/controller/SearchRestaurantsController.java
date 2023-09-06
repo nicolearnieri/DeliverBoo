@@ -133,29 +133,25 @@ public class SearchRestaurantsController {
 
     public void initialize() throws IOException {
         //Query
-        System.out.println("Qua arrivo 1");
+
         Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
-        System.out.println("Qua arrivo 2");
+
         Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
-        System.out.println("Qua arrivo 3");
+
         try {
-            System.out.println("Qua arrivo 4");
             queryResults = result.get();
-            System.out.println("Qua arrivo 5");
         } catch (InterruptedException e) {
-            System.out.println("Qua arrivo 6");
             throw new RuntimeException(e);
         } catch (ExecutionException e) {
-            System.out.println("Qua arrivo 7");
             throw new RuntimeException(e);
         }
 
-        System.out.println("Qua arrivo 8");
+
 
         restaurantsList=new RestaurantsList();
-        System.out.println("Qua arrivo 9");
+
         restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults);
-        System.out.println("Qua arrivo 10");
+
 
 
     }

@@ -12,6 +12,7 @@ import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Vector;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -150,6 +151,7 @@ public class LogInController {
                     Future<String> result = executor.submit(getUserCallable);
                     String resS = result.get();
                     cU.setNomeUtente(resS);
+
                 }
                 else {
                     cU.setNomeUtente(user);
@@ -159,6 +161,15 @@ public class LogInController {
                     cU.setEmail(resE);
                 }
                 logSuccess();
+                Callable<Vector<String>> info = TaskCreator.returnUserInfoCallable(user);
+                Future<Vector<String>> exec = executor.submit(info);
+                Vector<String> res = exec.get();
+                if (res.size() ==3) {
+                    cU.setName(res.get(0));
+                    cU.setSurname(res.get(1));
+                    cU.setPhoneNumber(res.get(2));
+                }
+
             }
             else logInError(localizationManager.getLocalizedString("error.password"));
         }

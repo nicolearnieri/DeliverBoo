@@ -227,7 +227,7 @@ public class SignUpController {
             {
 
                 String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12)); //CODIFICA PASSWORD
-                Callable<Boolean> insTask = TaskCreator.createInsertUser(username, "", "", email, passwordEncoded, "", "");
+                Callable<Boolean> insTask = TaskCreator.createInsertUser(username, "", "", email, passwordEncoded, "");
                 Future<Boolean> insRes = executor.submit(insTask);//oggetto prodotto da un'operazione asincrona
                 res = insRes.get();
                 if (res)

@@ -4,34 +4,33 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
+import java.util.Vector;
 import java.util.concurrent.Callable;
 
 import static uid.project.deliverboo.model.DataBaseManager.getConnection;
 
 class InsertUserTask implements Callable<Boolean> {
-    private String username, nome, cognome, email, password, indirizzo, numeroTelefono;
+    private String username, nome, cognome, email, password, numeroTelefono;
 
-    public InsertUserTask(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono) {
+    public InsertUserTask(String username, String nome, String cognome, String email, String password, String numeroTelefono) {
         this.username = username;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.password = password;
-        this.indirizzo = indirizzo;
         this.numeroTelefono = numeroTelefono;
     }
 
     @Override
     public Boolean call() throws Exception {
         try {
-            PreparedStatement insertQuery = getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, indirizzoPredefinito, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement insertQuery = getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?)");
             insertQuery.setString(1, username);
             insertQuery.setString(2, nome);
             insertQuery.setString(3, cognome);
             insertQuery.setString(4, email);
             insertQuery.setString(5, password);
-            insertQuery.setString(6, indirizzo);
-            insertQuery.setString(7, numeroTelefono);
+            insertQuery.setString(6, numeroTelefono);
 
             int rowsAffected = insertQuery.executeUpdate();
             System.out.println("sto eseguendo");
@@ -195,6 +194,35 @@ class GetEmailTask implements Callable<String>  {
         }
     }
 }
+class GetInfoCallable implements Callable<Vector<String>>  {
+    private String value;
+
+    public GetInfoCallable(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public Vector<String> call() throws Exception {
+        Vector<String> result = new Vector<>();
+        String query = "SELECT nome, cognome, numeroTelefonico FROM utenti WHERE nomeUtente = ? or email = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+            preparedStatement.setString(1, value);
+            preparedStatement.setString(2, value);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    result.add(resultSet.getString("nome"));
+                    result.add(resultSet.getString("cognome"));
+                    result.add(resultSet.getString("numeroTelefonico"));
+                }
+            } finally {
+                DataBaseManager.closeConnection();
+            }
+            return result;
+        }
+    }
+}
 
 
 
@@ -210,7 +238,7 @@ class GetEmailTask implements Callable<String>  {
 
      @Override
      public Boolean call() throws Exception {
-         String query = "UPDATE utenti SET nome = ?, cognome = ?, numeroTelefonico = ?, WHERE nomeUtente = ?";
+         String query = "UPDATE utenti SET nome = ?, cognome = ?, numeroTelefonico = ? WHERE nomeUtente = ?";
          try (Connection conn = getConnection();
               PreparedStatement preparedStatement = conn.prepareStatement(query)) {
              preparedStatement.setString(1, name);
@@ -218,6 +246,7 @@ class GetEmailTask implements Callable<String>  {
              preparedStatement.setString(3, phone);
              preparedStatement.setString(4, user);
              preparedStatement.executeUpdate();
+             System.out.println(preparedStatement.executeUpdate() + " rows updated");
              return true;
          } finally {
              DataBaseManager.closeConnection();

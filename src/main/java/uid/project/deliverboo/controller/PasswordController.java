@@ -44,13 +44,15 @@ public class PasswordController {
     @FXML
     private Label warningLabel;
 
+    private  LocalizationManager localizationManager;
+
 
     Image openEye = new Image(Objects.requireNonNull(getClass().getResource("/Icone/eye.png")).toExternalForm());
     Image eyeOff = new Image(Objects.requireNonNull(getClass().getResource("/Icone/eye-off.png")).toExternalForm());
 
     private ExecutorService executor = ExecutorProvider.getExecutor();
 
-    void initialize(){
+    public void initialize(){
 
      password.textProperty().bindBidirectional(seePassword.textProperty());
         eyeImage.setImage(openEye);
@@ -88,12 +90,25 @@ public class PasswordController {
             Future<Boolean> exec = executor.submit(delete);
 
             if (exec.get())
-                SceneHandler.getInstance().showConfirmation("o", "o");
+                SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.delete"), localizationManager.getLocalizedString("title.delete"));
         }
 
 
+    }
 
+    public void setLocalizationManager(LocalizationManager localizationManager){
+        this.localizationManager = localizationManager;
+
+        updateTexts();
+    }
+
+    private void updateTexts(){
+        confirmationButton.setText(localizationManager.getLocalizedString("confirmDelete.button"));
+        infoLabel.setText(localizationManager.getLocalizedString("infoText.label"));
+        warningLabel.setText(localizationManager.getLocalizedString("warningText.label"));
 
     }
+
+
 
 }
