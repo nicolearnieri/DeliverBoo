@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class RestaurantItem extends StackPane {
 
-    private static Restaurant restaurant;
+    private Restaurant restaurant;
 
 
 
@@ -28,7 +28,7 @@ public class RestaurantItem extends StackPane {
         //}catch (Exception ignoredException){System.out.println("Catch di restaurant item");}
     }
 
-    public static Restaurant getRestaurant(){
+    public  Restaurant getRestaurant(){
         return restaurant;
     }
 
