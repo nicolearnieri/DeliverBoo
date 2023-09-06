@@ -89,7 +89,7 @@ public class SceneHandler {
         if(stage!=null) {stage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
-        scene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
 
         SearchRestaurantsController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
