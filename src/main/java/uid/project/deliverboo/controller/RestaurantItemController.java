@@ -25,7 +25,7 @@ public class RestaurantItemController {
     private ImageView restaurantImage;
     //qui si potrà usare HomeController.getAddress() per prendere l'indirizzo dell'utente e calcolare la distanza dal ristorante
 
-    public void init(Restaurant restaurant) throws IOException {
+    public void init(Restaurant restaurant) {
         nameLabel.setText(restaurant.getName());
         evaluationLabel.setText(restaurant.getEvaluation());
         cityLabel.setText(restaurant.getCity());

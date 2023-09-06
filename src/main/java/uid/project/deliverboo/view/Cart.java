@@ -13,6 +13,7 @@ public class Cart extends AnchorPane {
         try {
             AnchorPane root=loader.load();
             CartController controller=loader.getController();
+            controller.init();
             this.getChildren().add(root);
         }catch (Exception ignoredException){}
     }
