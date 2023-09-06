@@ -7,14 +7,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import uid.project.deliverboo.model.CurrentUser;
+import uid.project.deliverboo.model.ExecutorProvider;
+import uid.project.deliverboo.model.TaskCreator;
+import uid.project.deliverboo.view.SceneHandler;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
 
 public class ProfileController {
-
-    @FXML
-    private TextField addressField;
-
-    @FXML
-    private Label addressLabel;
 
     @FXML
     private Button deleteButton;
@@ -29,7 +31,10 @@ public class ProfileController {
     private Label emailLabel;
 
     @FXML
-    private ImageView logo;
+    private Button logOutButton;
+
+    @FXML
+    private Label logOutLabel;
 
     @FXML
     private TextField nameField;
@@ -58,22 +63,48 @@ public class ProfileController {
     @FXML
     private TextField usernameField;
 
-
     @FXML
     private Label usernameLabel;
+
+    private ExecutorService executor = ExecutorProvider.getExecutor();
+
 
     public void initialize ()
     {
         usernameField.setText(CurrentUser.getInstance().getNomeUtente());
         emailField.setText(CurrentUser.getInstance().getEmail());
+        nameField.setText(CurrentUser.getInstance().getName());
+        surnameField.setText(CurrentUser.getInstance().getSurname());
+        phoneField.setText(CurrentUser.getInstance().getPhoneNumber());
     }
+
     @FXML
     void deleteAccount(ActionEvent event) {
 
+        //open the new interface
+
     }
 
     @FXML
-    void saveChanges(ActionEvent event) {
+    void saveChanges(ActionEvent event) throws ExecutionException, InterruptedException {
+        String newName = nameField.getText();
+        String newSurname = surnameField.getText();
+        String newPhone = phoneField.getText();
+        Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getName(), newName, newSurname, newPhone);
+        Future<Boolean> exec = executor.submit(update);
+        if (exec.get())
+        {
+
+            //va messo Localization manager ok
+            SceneHandler.getInstance().showConfirmation("Modifica effettuata con successo", "Modifica");
+        }
+
+    }
+
+    @FXML
+    void logOut(ActionEvent event) {
+
+        CurrentUser.getInstance().logOut();
 
     }
 
@@ -81,7 +112,6 @@ public class ProfileController {
         usernameLabel.setText(localizationManager.getLocalizedString("label.usernameLabel"));
         nameLabel.setText(localizationManager.getLocalizedString("label.nameLabel"));
         surnameLabel.setText(localizationManager.getLocalizedString("label.surnameLabel"));
-        addressLabel.setText(localizationManager.getLocalizedString("label.addressLabel"));
         phoneLabel.setText(localizationManager.getLocalizedString("label.phoneLabel"));
         emailLabel.setText(localizationManager.getLocalizedString("label.emailLabel"));
         saveButton.setText(localizationManager.getLocalizedString("button.saveButton"));
