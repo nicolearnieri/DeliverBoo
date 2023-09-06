@@ -7,9 +7,9 @@ import java.util.concurrent.Callable;
 
 public class TaskCreator
 {
-    public static Callable<Boolean> createInsertUser(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono)
+    public static Callable<Boolean> createInsertUser(String username, String nome, String cognome, String email, String password, String numeroTelefono)
     {
-        InsertUserTask task = new InsertUserTask(username,nome,cognome, email, password, indirizzo, numeroTelefono);
+        InsertUserTask task = new InsertUserTask(username,nome,cognome, email, password,numeroTelefono);
         return task;
     }
 

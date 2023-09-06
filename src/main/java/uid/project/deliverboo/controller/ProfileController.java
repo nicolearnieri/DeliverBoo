@@ -79,9 +79,9 @@ public class ProfileController {
     }
 
     @FXML
-    void deleteAccount(ActionEvent event) {
+    void deleteAccount(ActionEvent event) throws Exception {
 
-        //open the new interface
+        SceneHandler.getInstance().setPasswordConfirmation();
 
     }
 

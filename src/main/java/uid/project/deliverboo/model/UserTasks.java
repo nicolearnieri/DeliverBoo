@@ -9,29 +9,27 @@ import java.util.concurrent.Callable;
 import static uid.project.deliverboo.model.DataBaseManager.getConnection;
 
 class InsertUserTask implements Callable<Boolean> {
-    private String username, nome, cognome, email, password, indirizzo, numeroTelefono;
+    private String username, nome, cognome, email, password, numeroTelefono;
 
-    public InsertUserTask(String username, String nome, String cognome, String email, String password, String indirizzo, String numeroTelefono) {
+    public InsertUserTask(String username, String nome, String cognome, String email, String password, String numeroTelefono) {
         this.username = username;
         this.nome = nome;
         this.cognome = cognome;
         this.email = email;
         this.password = password;
-        this.indirizzo = indirizzo;
         this.numeroTelefono = numeroTelefono;
     }
 
     @Override
     public Boolean call() throws Exception {
         try {
-            PreparedStatement insertQuery = getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, indirizzoPredefinito, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement insertQuery = getConnection().prepareStatement("INSERT INTO utenti (nomeUtente, nome, cognome, email, password, numeroTelefonico) VALUES (?, ?, ?, ?, ?, ?)");
             insertQuery.setString(1, username);
             insertQuery.setString(2, nome);
             insertQuery.setString(3, cognome);
             insertQuery.setString(4, email);
             insertQuery.setString(5, password);
-            insertQuery.setString(6, indirizzo);
-            insertQuery.setString(7, numeroTelefono);
+            insertQuery.setString(6, numeroTelefono);
 
             int rowsAffected = insertQuery.executeUpdate();
             System.out.println("sto eseguendo");
@@ -210,7 +208,7 @@ class GetEmailTask implements Callable<String>  {
 
      @Override
      public Boolean call() throws Exception {
-         String query = "UPDATE utenti SET nome = ?, cognome = ?, numeroTelefonico = ?, WHERE nomeUtente = ?";
+         String query = "UPDATE utenti SET nome = ?, cognome = ?, numeroTelefonico = ? WHERE nomeUtente = ?";
          try (Connection conn = getConnection();
               PreparedStatement preparedStatement = conn.prepareStatement(query)) {
              preparedStatement.setString(1, name);

@@ -175,6 +175,23 @@ public class SceneHandler {
         stage.show();
     }
 
+    public void setPasswordConfirmation() throws Exception {
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Password.fxml"));
+        logInScene = new Scene(loader.load(), 600, 400); //v:larghezza, v1:altezza
+
+
+        PasswordController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
+        changedTheme(logInScene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(logInScene);
+        stage.show();
+    }
+
     public void setFaq() throws Exception {
         if(stage!=null) {stage.close();}
         stage = new Stage();
