@@ -199,26 +199,24 @@ class GetEmailTask implements Callable<String>  {
 
 
  class UpdateOnUserTask implements Callable<Boolean>  {
-     private String user, name, surname, phone, address;
+     private String user, name, surname, phone;
 
-     public UpdateOnUserTask(String user, String name, String surname, String phone, String address) {
+     public UpdateOnUserTask(String user, String name, String surname, String phone) {
          this.user = user;
          this.name = name;
          this.surname = surname;
          this.phone = phone;
-         this.address = address;
      }
 
      @Override
      public Boolean call() throws Exception {
-         String query = "UPDATE utenti SET nome = ?, cognome = ?, numeroTelefonico = ?, indirizzoPredefinito = ? WHERE nomeUtente = ?";
+         String query = "UPDATE utenti SET nome = ?, cognome = ?, numeroTelefonico = ?, WHERE nomeUtente = ?";
          try (Connection conn = getConnection();
               PreparedStatement preparedStatement = conn.prepareStatement(query)) {
              preparedStatement.setString(1, name);
              preparedStatement.setString(2, surname);
              preparedStatement.setString(3, phone);
-             preparedStatement.setString(4, address);
-             preparedStatement.setString(5, user);
+             preparedStatement.setString(4, user);
              preparedStatement.executeUpdate();
              return true;
          } finally {

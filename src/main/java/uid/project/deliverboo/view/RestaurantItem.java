@@ -1,7 +1,6 @@
 package uid.project.deliverboo.view;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import uid.project.deliverboo.controller.RestaurantItemController;
@@ -18,7 +17,7 @@ public class RestaurantItem extends StackPane {
 
     public RestaurantItem(Restaurant restaurant) throws IOException {
         this.restaurant=restaurant;
-        FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/restaurantItem.fxml"));
+        FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/RestaurantItem.fxml"));
         //try{
             HBox root= loader.load();
             RestaurantItemController controller= loader.getController();

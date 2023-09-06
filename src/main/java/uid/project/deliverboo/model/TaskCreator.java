@@ -49,9 +49,9 @@ public class TaskCreator
         return task;
     }
 
-    public static  Callable<Boolean> createUpdateOnUser(String username, String nome, String cognome, String indirizzo, String numeroTelefono)
+    public static  Callable<Boolean> createUpdateOnUser(String username, String nome, String cognome, String numeroTelefono)
     {
-        UpdateOnUserTask task = new UpdateOnUserTask(username,nome,cognome, numeroTelefono, indirizzo);
+        UpdateOnUserTask task = new UpdateOnUserTask(username,nome,cognome, numeroTelefono);
         return task;
     }
 
