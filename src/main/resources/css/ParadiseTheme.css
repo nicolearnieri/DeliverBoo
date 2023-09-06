@@ -127,7 +127,7 @@
 
 .list-view, .scroll-bar: vertical .thumb
 {
-    -fx-background-color: #88E5E5;
+    -fx-background-color: #5FDCDC;
 }
 
 .scroll-bar: vertical .thumb
@@ -137,7 +137,7 @@
 
 .list-cell, .scroll-bar
 {
-    -fx-background-color: #6DDFDF;
+    -fx-background-color: #8CE6E6;
 }
 
 

@@ -96,7 +96,7 @@
     -fx-background-radius: 15px; /* smussatura angoli */
 }
 .menu-button: hover {
-    -fx-background-color:#432d5c;
+    -fx-background-color: #432d5c;
     -fx-border-color: #2c0938;
     -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
@@ -127,7 +127,7 @@
 
 .list-view, .scroll-bar: vertical .thumb
 {
-    -fx-background-color: #1f132b;
+    -fx-background-color: #2F1C41;
 }
 
 .scroll-bar: vertical .thumb
@@ -137,7 +137,7 @@
 
 .list-cell
 {
-    -fx-background-color: #1f132b;
+    -fx-background-color: #352049;
 }
 
 .scroll-bar
