@@ -52,7 +52,7 @@ public class PasswordController {
 
     private ExecutorService executor = ExecutorProvider.getExecutor();
 
-    void initialize(){
+    public void initialize(){
 
      password.textProperty().bindBidirectional(seePassword.textProperty());
         eyeImage.setImage(openEye);
@@ -90,7 +90,7 @@ public class PasswordController {
             Future<Boolean> exec = executor.submit(delete);
 
             if (exec.get())
-                SceneHandler.getInstance().showInfo("o", "o");
+                SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.delete"), localizationManager.getLocalizedString("title.delete"));
         }
 
 
@@ -103,6 +103,9 @@ public class PasswordController {
     }
 
     private void updateTexts(){
+        confirmationButton.setText(localizationManager.getLocalizedString("confirmDelete.button"));
+        infoLabel.setText(localizationManager.getLocalizedString("infoText.label"));
+        warningLabel.setText(localizationManager.getLocalizedString("warningText.label"));
 
     }
 

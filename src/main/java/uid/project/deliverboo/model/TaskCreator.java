@@ -3,6 +3,7 @@ package uid.project.deliverboo.model;
 
 
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.Callable;
 
 public class TaskCreator
@@ -90,6 +91,11 @@ public static Callable<Boolean> ReturnFoodInfoCallable (int code)
     return call;
 }
 
+public static Callable<Vector<String>> returnUserInfoCallable(String value)
+{
+    GetInfoCallable call = new GetInfoCallable(value);
+    return call;
+}
 
 }
 

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
+import java.util.Vector;
 import java.util.concurrent.Callable;
 
 import static uid.project.deliverboo.model.DataBaseManager.getConnection;
@@ -190,6 +191,35 @@ class GetEmailTask implements Callable<String>  {
                 DataBaseManager.closeConnection();
             }
             return "";
+        }
+    }
+}
+class GetInfoCallable implements Callable<Vector<String>>  {
+    private String value;
+
+    public GetInfoCallable(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public Vector<String> call() throws Exception {
+        Vector<String> result = new Vector<>();
+        String query = "SELECT nome, cognome, numeroTelefonico FROM utenti WHERE nomeUtente = ? or email = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+            preparedStatement.setString(1, value);
+            preparedStatement.setString(2, value);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    result.add(resultSet.getString("nome"));
+                    result.add(resultSet.getString("cognome"));
+                    result.add(resultSet.getString("numeroTelefonico"));
+                }
+            } finally {
+                DataBaseManager.closeConnection();
+            }
+            return result;
         }
     }
 }

@@ -68,6 +68,7 @@ public class ProfileController {
     private Label usernameLabel;
 
     private ExecutorService executor = ExecutorProvider.getExecutor();
+    private LocalizationManager localizationManager;
 
 
     public void initialize ()
@@ -97,15 +98,15 @@ public class ProfileController {
             Future<Boolean> exec = executor.submit(update);
             if (exec.get()) {
 
-                //va messo Localization manager ok
-                SceneHandler.getInstance().showInfo("Modifica effettuata con successo", "Modifica");
+                SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("saveInfo.text"), localizationManager.getLocalizedString("saveInfo.title"));
                 CurrentUser.getInstance().setName(newName);
                 CurrentUser.getInstance().setSurname(newSurname);
+                CurrentUser.getInstance().setPhoneNumber(newPhone);
             }
         }
         else
         {
-            SceneHandler.getInstance().showError("erro", "re");
+            SceneHandler.getInstance().showError(localizationManager.getLocalizedString("phoneError.text"), localizationManager.getLocalizedString("phoneError.title"));
         }
 
     }
@@ -117,7 +118,13 @@ public class ProfileController {
 
     }
 
-    public void setLocalizationManager(LocalizationManager localizationManager) {
+    public void setLocalizationManager(LocalizationManager localizationManager){
+        this.localizationManager = localizationManager;
+
+        updateTexts();
+    }
+
+    public void updateTexts() {
         usernameLabel.setText(localizationManager.getLocalizedString("label.usernameLabel"));
         nameLabel.setText(localizationManager.getLocalizedString("label.nameLabel"));
         surnameLabel.setText(localizationManager.getLocalizedString("label.surnameLabel"));
