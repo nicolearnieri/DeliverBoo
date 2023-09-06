@@ -1,9 +1,12 @@
 package uid.project.deliverboo.controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import uid.project.deliverboo.model.AddressVerifier;
 import uid.project.deliverboo.model.CurrentUser;
@@ -116,7 +119,7 @@ public class HomeController {
     }
 
 
-    public void openSearchRestaurants(ActionEvent event) throws Exception{
+    public void openSearchRestaurants(Event event) throws Exception{
         //try {
             if (AddressVerifier.getInstance().userValidAddress(addressField.getText(),localizationManager)) {
                 System.out.println("Sono arrivato1");
@@ -141,6 +144,14 @@ public class HomeController {
         }*/
     }
 
+
+    @FXML
+    void sendKeyPress(KeyEvent event) throws Exception {
+        if (event.getCode() == KeyCode.ENTER)
+        {
+                openSearchRestaurants(event);
+        }
+    }
 
 
     public void setLocalizationManager(LocalizationManager localizationManager){
