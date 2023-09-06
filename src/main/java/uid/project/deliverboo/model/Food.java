@@ -45,8 +45,9 @@ public class Food {
         this.path = path;
     }
 
-    public double getPrice() {
-        return price;
+    public String getPrice() {
+        String priceS= Double.toString(price);
+        return priceS;
     }
 
     public void setPrice(double price) {

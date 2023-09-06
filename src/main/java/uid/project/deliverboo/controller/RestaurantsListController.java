@@ -82,7 +82,7 @@ public class RestaurantsListController {
                 for (RestaurantItem item : restaurantsListView.getItems()) {
                     System.out.println(item);
                 }
-                restaurantItem.prefWidthProperty().bind(restaurantsListView.widthProperty().subtract(40.0));
+                //restaurantItem.prefWidthProperty().bind(restaurantsListView.widthProperty().subtract(40.0));
                 System.out.println("Controller 8");
             }
 

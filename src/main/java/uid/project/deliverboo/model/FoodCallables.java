@@ -1,6 +1,8 @@
 package uid.project.deliverboo.model;
 
 
+import uid.project.deliverboo.controller.RestaurantHomeController;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +19,7 @@ class ReturnFoodInfoCallable implements Callable<Boolean> {
     @Override
     public Boolean call() throws Exception {
 
-        String query = "SELECT nomeIta, nomeEng, descrizioneIta, decrizioneEng, pathImm, prezzo FROM menu WHERE codiceRest LIKE ?";
+        String query = "SELECT nomeIta, nomeEng, descrizioneIta, descrizioneEng, pathImm, prezzo FROM menu WHERE codiceRest LIKE ?";
 
 
 
@@ -28,6 +30,7 @@ class ReturnFoodInfoCallable implements Callable<Boolean> {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     Food food = new Food();
+                    System.out.println("food creato nella query");
                     food.setItName(resultSet.getString("nomeIta"));
                     food.setEngName(resultSet.getString("nomeEng"));
                     food.setItDescr(resultSet.getString("descrizioneIta"));
@@ -35,16 +38,15 @@ class ReturnFoodInfoCallable implements Callable<Boolean> {
                     food.setPath(resultSet.getString("pathImm"));
                     food.setPrice(resultSet.getDouble("prezzo"));
 
-/*
-                    hjbswjbdhjbdhjbdhjbds
 
 
-                    if (SearchReasturantsController.addToVector(food))
-                        return true; */
+
+                    RestaurantHomeController.addToVector(food);
+
                 }
+                return true;
             }
         }
-        return false;
 
     }
 
