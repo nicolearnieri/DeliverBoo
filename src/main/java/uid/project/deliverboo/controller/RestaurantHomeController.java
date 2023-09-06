@@ -60,7 +60,7 @@ public class RestaurantHomeController {
         cart.loadCart();
         stage.hide();
         restaurantNameLabel.setText(restaurant.getName());
-
+        menu.clear();
 
         //imageRestaurant.setImage(new Image(Objects.requireNonNull(getClass().getResource(restaurant.getPath2())).toExternalForm()));
 
@@ -81,6 +81,7 @@ public class RestaurantHomeController {
 
 
         menuList.getItems().clear();
+
         for(Food food: menu){
 
             MenuItem menuItem= new MenuItem(food, localizationManager);
