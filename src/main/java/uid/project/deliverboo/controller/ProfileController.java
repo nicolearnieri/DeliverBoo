@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.TaskCreator;
+import uid.project.deliverboo.model.ValidatorUtility;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.concurrent.Callable;
@@ -90,13 +91,21 @@ public class ProfileController {
         String newName = nameField.getText();
         String newSurname = surnameField.getText();
         String newPhone = phoneField.getText();
-        Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getNomeUtente(), newName, newSurname, newPhone);
-        Future<Boolean> exec = executor.submit(update);
-        if (exec.get())
+        if (ValidatorUtility.isValidPhoneNumber(newPhone))
         {
+            Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getNomeUtente(), newName, newSurname, newPhone);
+            Future<Boolean> exec = executor.submit(update);
+            if (exec.get()) {
 
-            //va messo Localization manager ok
-            SceneHandler.getInstance().showInfo("Modifica effettuata con successo", "Modifica");
+                //va messo Localization manager ok
+                SceneHandler.getInstance().showInfo("Modifica effettuata con successo", "Modifica");
+                CurrentUser.getInstance().setName(newName);
+                CurrentUser.getInstance().setSurname(newSurname);
+            }
+        }
+        else
+        {
+            SceneHandler.getInstance().showError("erro", "re");
         }
 
     }
