@@ -117,9 +117,13 @@ class ReturnAddressTask implements Callable<List<Integer>> {
 
 
     private String addressToCheck;
+    //private ProgressListener listener;
 
+
+    //public ReturnAddressTask(String addressToCheck,ProgressListener listener) {
     public ReturnAddressTask(String addressToCheck) {
         this.addressToCheck = addressToCheck;
+        //this.listener = listener;
     }
 
     @Override
@@ -136,6 +140,7 @@ class ReturnAddressTask implements Callable<List<Integer>> {
                     String indirizzo = resultSet.getString("indirizzo");
                     if (AddressVerifier.getDistance(indirizzo) <= 10)
                         queryResults.add(resultSet.getInt("codice"));
+                    //listener.onProgressUpdate(0.8);
                 }
             }
             return queryResults;

@@ -75,6 +75,7 @@ public class TaskCreator
     }
 public static  Callable<List<Integer>> ReturnAddressTask (String addressToCheck)
     {
+        //ReturnAddressTask task = new ReturnAddressTask(addressToCheck, listener);
         ReturnAddressTask task = new ReturnAddressTask(addressToCheck);
         return task;
     }

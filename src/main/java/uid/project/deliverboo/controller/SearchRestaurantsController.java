@@ -127,13 +127,24 @@ public class SearchRestaurantsController {
 
 
 
+
+
     private List<Integer> queryResults= new ArrayList<Integer>();
 
 
 
     public void initialize() throws IOException {
         //Query
+        /*ProgressListener listener = new ProgressListener() {
+            @Override
+            public void onProgressUpdate(double progress) {
+                SearchingProgressController.progress.setProgress(progress);
+            }
+        };
+        /*
+         */
 
+        //Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress(), listener);
         Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
 
         Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
