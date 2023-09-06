@@ -216,6 +216,7 @@ class GetEmailTask implements Callable<String>  {
              preparedStatement.setString(3, phone);
              preparedStatement.setString(4, user);
              preparedStatement.executeUpdate();
+             System.out.println(preparedStatement.executeUpdate() + " rows updated");
              return true;
          } finally {
              DataBaseManager.closeConnection();

@@ -90,13 +90,13 @@ public class ProfileController {
         String newName = nameField.getText();
         String newSurname = surnameField.getText();
         String newPhone = phoneField.getText();
-        Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getName(), newName, newSurname, newPhone);
+        Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getNomeUtente(), newName, newSurname, newPhone);
         Future<Boolean> exec = executor.submit(update);
         if (exec.get())
         {
 
             //va messo Localization manager ok
-            SceneHandler.getInstance().showConfirmation("Modifica effettuata con successo", "Modifica");
+            SceneHandler.getInstance().showInfo("Modifica effettuata con successo", "Modifica");
         }
 
     }
