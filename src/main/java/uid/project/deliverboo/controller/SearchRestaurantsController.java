@@ -167,16 +167,6 @@ public class SearchRestaurantsController {
 
     }
 
-
-    @FXML
-    void searchBar(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Bar", queryResults );
-        Future<List<Integer>> executeSBT = executor.submit(sBT);
-        List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
-    }
-
     @FXML
     void searchByName(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
         String name = searchBar.getText();
@@ -187,6 +177,16 @@ public class SearchRestaurantsController {
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
 
     }
+    @FXML
+    void searchGelateria(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Gelateria", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+    }
+
+
 
     @FXML
     void searchBread(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
@@ -225,13 +225,12 @@ public class SearchRestaurantsController {
     }
 
     @FXML
-    void searchJapanese(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Giapponese", queryResults );
+    void searchAsian(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Asiatico", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
         restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
-        System.out.println("ma io sono ziaponese");
     }
 
     @FXML
