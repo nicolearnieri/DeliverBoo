@@ -128,7 +128,7 @@ public class HomeController {
 
                 // Chiudi la finestra corrente
                 currentStage.close();
-
+                SceneHandler.getInstance().setSearchingProgress();
                 // Apri la schermata di ricerca dei ristoranti
                 SceneHandler.getInstance().setSearchRestaurants();
 

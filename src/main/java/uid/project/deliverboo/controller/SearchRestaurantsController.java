@@ -137,7 +137,7 @@ public class SearchRestaurantsController {
     public void initialize() throws Exception {
         //Query
 
-        if (SceneHandler.isLoadingVisible()) {
+
             Callable<List<Integer>> verifyCallable = TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
             Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
 
@@ -151,7 +151,7 @@ public class SearchRestaurantsController {
 
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults);
-        }
+
 
     }
 

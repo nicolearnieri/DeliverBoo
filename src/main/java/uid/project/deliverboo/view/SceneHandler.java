@@ -38,6 +38,8 @@ public class SceneHandler {
 
     private Stage secondStage;
 
+    private Scene searchScene;
+
     private String theme = "DarkTheme";
     private String font = "FontMontserrat";
     private static SceneHandler instance = null;
@@ -91,7 +93,6 @@ public class SceneHandler {
     }
 
     public void setSearchRestaurants() throws Exception {
-        SceneHandler.getInstance().setSearchingProgress();
         if(stage!=null) {stage.close();}
         //if(chargingStage!=null) {chargingStage.close();}
         stage = new Stage();
@@ -114,17 +115,17 @@ public class SceneHandler {
 
         chargingStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchingProgress.fxml"));
-        scene = new Scene(loader.load(), 360, 215); //v:larghezza, v1:altezza
+        searchScene = new Scene(loader.load(), 360, 215); //v:larghezza, v1:altezza
 
         SearchingProgressController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
 
 
-        changedTheme(scene);
+        changedTheme(searchScene);
         chargingStage.setTitle("DeliverBoo");
         //stage.setResizable(false);
-        chargingStage.setScene(scene);
+        chargingStage.setScene(searchScene);
         chargingStage.show();
         loadingVisible = true;
     }
