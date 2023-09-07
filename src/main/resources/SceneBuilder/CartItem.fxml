@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.CartItemController">
+<HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.CartItemController">
    <children>
       <VBox prefHeight="400.0" prefWidth="308.0">
          <children>
@@ -37,7 +37,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Label fx:id="quantitylabel" text="Quantity">
+                  <Label fx:id="quantitylabel" alignment="CENTER" prefHeight="18.0" prefWidth="49.0" text="Quantity">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

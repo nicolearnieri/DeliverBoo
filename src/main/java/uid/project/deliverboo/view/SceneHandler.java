@@ -159,7 +159,7 @@ public class SceneHandler {
         Scene secondScene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
 
        RestaurantHomeController controller= loader.getController();
-       controller.initialize(restaurant, stage, secondStage, localizationManager);
+       controller.initialize(restaurant, stage, secondStage, localizationManager, controller);
 
 
         changedTheme(secondScene);

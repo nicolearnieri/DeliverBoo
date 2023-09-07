@@ -42,7 +42,7 @@ public class CartItemController {
             descriptionLabel.setText(food.getEngDescr());
         }
 
-        priceLabel.setText(food.getPrice());
+        priceLabel.setText(food.getPrice()+"€");
         quantitylabel.setText(Integer.toString(cont));
 
     }
@@ -51,8 +51,22 @@ public class CartItemController {
         if(food.equals(f)){
             cont+=1;
             quantitylabel.setText(Integer.toString(cont));
+
         }
 
     }
+
+    public int deductFood(Food f){
+        if(food.equals(f)){
+            cont-=1;
+            quantitylabel.setText(Integer.toString(cont));
+
+            return cont;
+        }
+        return -1;
+    }
+
+
+
 
 }

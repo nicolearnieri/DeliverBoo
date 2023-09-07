@@ -6,15 +6,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import uid.project.deliverboo.controller.LocalizationManager;
 import uid.project.deliverboo.controller.MenuItemController;
+import uid.project.deliverboo.controller.RestaurantHomeController;
 import uid.project.deliverboo.model.Food;
 
 public class MenuItem extends StackPane {
-    public MenuItem(Food food, LocalizationManager localizationManager){
+    public MenuItem(Food food, LocalizationManager localizationManager, RestaurantHomeController rController){
         FXMLLoader loader=new FXMLLoader(MenuItem.class.getResource("/SceneBuilder/ProductOrder.fxml"));
         try {
             BorderPane root= loader.load();
             MenuItemController controller=loader.getController();
-            controller.init(food, localizationManager);
+            controller.init(food, localizationManager, rController);
             this.getChildren().add(root);
 
         }catch (Exception ignoredExeption){}
