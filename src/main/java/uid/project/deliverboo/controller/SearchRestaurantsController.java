@@ -24,7 +24,7 @@ import java.util.concurrent.Future;
 public class SearchRestaurantsController {
 
     @FXML
-    private Button bars;
+    private Button gelateria;
 
     @FXML
     private Button breadType;
@@ -48,7 +48,7 @@ public class SearchRestaurantsController {
     private Button homeButton;
 
     @FXML
-    private Button japanese;
+    private Button asian;
 
     @FXML
     private Button mexican;
@@ -328,13 +328,13 @@ public class SearchRestaurantsController {
         else{SceneHandler.getInstance().setLogIn();;}
     }
     private void updateTexts(){
-        bars.setText(localizationManager.getLocalizedString("button.bar"));
+        gelateria.setText(localizationManager.getLocalizedString("button.gelateria"));
         breadType.setText(localizationManager.getLocalizedString("button.breadType"));
         cafes.setText(localizationManager.getLocalizedString("button.cafe"));
         cart.setText(localizationManager.getLocalizedString("button.cart"));
         pizzeria.setText(localizationManager.getLocalizedString("button.pizzeria"));
         gourmet.setText(localizationManager.getLocalizedString("button.gourmet"));
-        japanese.setText(localizationManager.getLocalizedString("button.japanese"));
+        asian.setText(localizationManager.getLocalizedString("button.asian"));
         mexican.setText(localizationManager.getLocalizedString("button.mexican"));
         patisserie.setText(localizationManager.getLocalizedString("button.patisserie"));
         poke.setText(localizationManager.getLocalizedString("button.poke"));
