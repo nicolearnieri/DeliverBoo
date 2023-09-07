@@ -12,4 +12,16 @@ public class SearchingProgressController {
     @FXML
     private Label researchLabel;
 
+    private LocalizationManager localizationManager;
+
+    public void setLocalizationManager(LocalizationManager localizationManager){
+        this.localizationManager = localizationManager;
+        updateTexts();
+    }
+
+    private void updateTexts(){
+        researchLabel.setText(localizationManager.getLocalizedString("wait.label"));
+
+
+    }
 }

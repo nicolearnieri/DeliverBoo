@@ -5,9 +5,7 @@
     -fx-background-color: #e1e5eb;
 }
 
-.text {
-    -fx-font-size : 14px;
-    }
+
 
 /* Stile per i pulsanti non altrimenti definiti */
 .button, .combo-box{
@@ -165,4 +163,15 @@
 {
     -fx-font-size : 30px;
     -fx-font-weight: bold;
+}
+
+#restaurantNameLabel
+{
+    -fx-font-size : 30px;
+    -fx-font-weight: bold;
+}
+
+#punLine
+{
+    -fx-font-size : 16px;
 }

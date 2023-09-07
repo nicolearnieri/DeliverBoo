@@ -111,7 +111,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button fx:id="japanese" alignment="CENTER" mnemonicParsing="false" onAction="#searchJapanese" prefHeight="38.0" prefWidth="139.0" text="giapponese">
+                  <Button fx:id="asian" alignment="CENTER" mnemonicParsing="false" onAction="#searchAsian" prefHeight="38.0" prefWidth="139.0" text="giapponese">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>
@@ -159,7 +159,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="232.0" spacing="20.0">
                <children>
-                  <Button fx:id="bars" mnemonicParsing="false" onAction="#searchBar" prefHeight="38.0" prefWidth="139.0" text="bar">
+                  <Button fx:id="gelateria" mnemonicParsing="false" onAction="#searchGelateria" prefHeight="38.0" prefWidth="139.0" text="bar">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></Button>

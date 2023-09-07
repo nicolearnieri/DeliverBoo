@@ -6,7 +6,6 @@
 
 /* Stile per il testo */
 .text {
-    /*-fx-font-size : 14px;*/
     -fx-fill: #131f1e; /* Colore del testo */
 }
 
@@ -22,20 +21,18 @@
     -fx-transition-duration: 0.3s;
 }
 
-.button: hover {
+.button: hover, combo-box: hover {
     -fx-background-color: #368786 ;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
     }
-.combo-box: hover {
-     -fx-background-color: #368786 ;
-     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
- }
+
 
 #homeButton {
     -fx-background-color: transparent ;
     -fx-transition-duration: 0.3s;
     -fx-border-color: transparent;
 }
+
 /*
 #homeButton: hover {
     -fx-background-color: #6dd0ce ;
@@ -44,19 +41,18 @@
 */
 
 
-/* Stile per le caselle di testo */
 .text-field {
-    -fx-background-color: #a3e6e4; /* Colore dello sfondo */
-    -fx-text-fill: #131f1e; /* Colore del testo */
-    -fx-font-size: 14px; /* Dimensione del testo */
-    -fx-background-radius: 15px; /* smussatura angoli */
+    -fx-background-color: #a3e6e4;
+    -fx-text-fill: #131f1e;
+    -fx-font-size: 14px;
+    -fx-background-radius: 15px;
     -fx-prompt-text-fill: #336666;
 }
 
 .text-field: hover
 {
     -fx-border-color: #368786;
-    -fx-border-radius: 15px; /* Raggio degli angoli dei bordi */
+    -fx-border-radius: 15px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
 
@@ -64,7 +60,7 @@
 /* Stile per le etichette (Label) */
 .label {
     -fx-text-fill: #131f1e; /* Colore del testo */
-    -fx-font-size: 14px; /* Dimensione del testo */
+    -fx-font-size: 15px; /* Dimensione del testo */
 }
 
 .menu-button {
@@ -95,15 +91,11 @@
     -fx-background-color: #daf7f7;
     -fx-text-fill: #131f1e; /* Colore del testo */
 }
-.menu-item: hover
+.menu-item: hover, .combo-box-popup > .list-view: hover
 {
     -fx-background-color: #4daba9;
 }
 
-.combo-box-popup > .list-view: hover
-{
-    -fx-background-color: #4daba9;
-}
 
 .context-menu {
     -fx-background-color: #daf7f7;
@@ -141,11 +133,13 @@
 }
 
 
-
 .list-cell: hover, .scroll-bar:vertical .thumb: hover
 {
     -fx-background-color: #37ABA9;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
 
-
+#punLine
+{
+    -fx-font-size : 16px;
+}

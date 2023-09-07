@@ -24,7 +24,7 @@ import java.util.concurrent.Future;
 public class SearchRestaurantsController {
 
     @FXML
-    private Button bars;
+    private Button gelateria;
 
     @FXML
     private Button breadType;
@@ -48,7 +48,7 @@ public class SearchRestaurantsController {
     private Button homeButton;
 
     @FXML
-    private Button japanese;
+    private Button asian;
 
     @FXML
     private Button mexican;
@@ -167,16 +167,6 @@ public class SearchRestaurantsController {
 
     }
 
-
-    @FXML
-    void searchBar(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Bar", queryResults );
-        Future<List<Integer>> executeSBT = executor.submit(sBT);
-        List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
-    }
-
     @FXML
     void searchByName(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
         String name = searchBar.getText();
@@ -187,6 +177,16 @@ public class SearchRestaurantsController {
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
 
     }
+    @FXML
+    void searchGelateria(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Gelateria", queryResults );
+        Future<List<Integer>> executeSBT = executor.submit(sBT);
+        List<Integer> results = executeSBT.get();
+        restaurantsList=new RestaurantsList();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+    }
+
+
 
     @FXML
     void searchBread(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
@@ -225,13 +225,12 @@ public class SearchRestaurantsController {
     }
 
     @FXML
-    void searchJapanese(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Giapponese", queryResults );
+    void searchAsian(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
+        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Asiatico", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
         restaurantsList=new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, results);
-        System.out.println("ma io sono ziaponese");
     }
 
     @FXML
@@ -329,13 +328,13 @@ public class SearchRestaurantsController {
         else{SceneHandler.getInstance().setLogIn();;}
     }
     private void updateTexts(){
-        bars.setText(localizationManager.getLocalizedString("button.bar"));
+        gelateria.setText(localizationManager.getLocalizedString("button.gelateria"));
         breadType.setText(localizationManager.getLocalizedString("button.breadType"));
         cafes.setText(localizationManager.getLocalizedString("button.cafe"));
         cart.setText(localizationManager.getLocalizedString("button.cart"));
         pizzeria.setText(localizationManager.getLocalizedString("button.pizzeria"));
         gourmet.setText(localizationManager.getLocalizedString("button.gourmet"));
-        japanese.setText(localizationManager.getLocalizedString("button.japanese"));
+        asian.setText(localizationManager.getLocalizedString("button.asian"));
         mexican.setText(localizationManager.getLocalizedString("button.mexican"));
         patisserie.setText(localizationManager.getLocalizedString("button.patisserie"));
         poke.setText(localizationManager.getLocalizedString("button.poke"));
