@@ -102,6 +102,23 @@ public class SceneHandler {
         stage.show();
     }
 
+    public void setSearchingProgress() throws Exception {
+        if(stage!=null) {stage.close();}
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchingProgress.fxml"));
+        scene = new Scene(loader.load(), 360, 215); //v:larghezza, v1:altezza
+
+        SearchingProgressController controller= loader.getController();
+        controller.setLocalizationManager(localizationManager);
+
+
+
+        changedTheme(scene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void setRestaurantHome(Restaurant restaurant) throws Exception{
         secondStage= new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RestaurantHome.fxml"));
