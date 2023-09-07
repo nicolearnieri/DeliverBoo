@@ -34,12 +34,19 @@ public class SceneHandler {
     private Stage stage;
 
     private Stage logInOrSignUpStage;
+    private Stage chargingStage;
 
     private Stage secondStage;
 
     private String theme = "DarkTheme";
     private String font = "FontMontserrat";
     private static SceneHandler instance = null;
+
+    public static boolean isLoadingVisible() {
+        return loadingVisible;
+    }
+
+    private static boolean loadingVisible = false;
 
     private LocalizationManager localizationManager;
 
@@ -77,8 +84,6 @@ public class SceneHandler {
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
 
-
-
         changedTheme(scene);
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
@@ -86,7 +91,9 @@ public class SceneHandler {
     }
 
     public void setSearchRestaurants() throws Exception {
+        SceneHandler.getInstance().setSearchingProgress();
         if(stage!=null) {stage.close();}
+        //if(chargingStage!=null) {chargingStage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
         scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
@@ -104,7 +111,8 @@ public class SceneHandler {
 
     public void setSearchingProgress() throws Exception {
         if(stage!=null) {stage.close();}
-        stage = new Stage();
+
+        chargingStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchingProgress.fxml"));
         scene = new Scene(loader.load(), 360, 215); //v:larghezza, v1:altezza
 
@@ -114,9 +122,11 @@ public class SceneHandler {
 
 
         changedTheme(scene);
-        stage.setTitle("DeliverBoo");
-        stage.setScene(scene);
-        stage.show();
+        chargingStage.setTitle("DeliverBoo");
+        //stage.setResizable(false);
+        chargingStage.setScene(scene);
+        chargingStage.show();
+        loadingVisible = true;
     }
 
     public void setRestaurantHome(Restaurant restaurant) throws Exception{

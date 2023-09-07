@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -133,37 +134,24 @@ public class SearchRestaurantsController {
 
 
 
-    public void initialize() throws IOException {
+    public void initialize() throws Exception {
         //Query
-        /*ProgressListener listener = new ProgressListener() {
-            @Override
-            public void onProgressUpdate(double progress) {
-                SearchingProgressController.progress.setProgress(progress);
+
+        if (SceneHandler.isLoadingVisible()) {
+            Callable<List<Integer>> verifyCallable = TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
+            Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
+
+            try {
+                queryResults = result.get();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } catch (ExecutionException e) {
+                throw new RuntimeException(e);
             }
-        };
-        /*
-         */
 
-        //Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress(), listener);
-        Callable<List<Integer>> verifyCallable =  TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
-
-        Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
-
-        try {
-            queryResults = result.get();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        } catch (ExecutionException e) {
-            throw new RuntimeException(e);
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults);
         }
-
-
-
-        restaurantsList=new RestaurantsList();
-
-        restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults);
-
-
 
     }
 
