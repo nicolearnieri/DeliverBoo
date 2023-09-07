@@ -27,7 +27,7 @@ public class RestaurantsListController {
 
 
 
-    private Label emptyListView;
+
 
 
 

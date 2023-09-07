@@ -49,7 +49,27 @@
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ListView fx:id="menuList" HBox.hgrow="ALWAYS" />
-                  <AnchorPane fx:id="cartSpace" HBox.hgrow="ALWAYS" />
+                  <BorderPane prefWidth="400.0">
+                     <center>
+                        <ListView fx:id="cartList" prefHeight="198.0" prefWidth="248.0" BorderPane.alignment="CENTER" />
+                     </center>
+                     <bottom>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label fx:id="totalLabel" prefHeight="18.0" prefWidth="73.0" text="Total">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Button fx:id="paymentButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Go to payment">
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </bottom>
+                  </BorderPane>
                </children>
             </HBox>
          </center>

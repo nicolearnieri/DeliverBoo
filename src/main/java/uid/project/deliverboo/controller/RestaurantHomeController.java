@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -12,11 +11,11 @@ import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.Food;
 import uid.project.deliverboo.model.Restaurant;
 import uid.project.deliverboo.model.TaskCreator;
-import uid.project.deliverboo.view.Cart;
+import uid.project.deliverboo.view.CartItem;
 import uid.project.deliverboo.view.MenuItem;
-import uid.project.deliverboo.view.SceneHandler;
 
-import java.util.Objects;
+import java.io.IOException;
+import java.util.Locale;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -44,8 +43,6 @@ public class RestaurantHomeController {
     @FXML
     private Label restaurantNameLabel;
 
-    private Cart cart;
-
     private Stage searchRestaurant;
 
     private Stage ownStage;
@@ -53,12 +50,39 @@ public class RestaurantHomeController {
     private static Vector<Food> menu = new Vector<>();
     private ExecutorService executor = ExecutorProvider.getExecutor();
 
-    public void initialize(Restaurant restaurant, Stage stage, Stage secondStage, LocalizationManager localizationManager){
+    @FXML
+    private ListView<CartItem> cartList;
+
+    @FXML
+    private Label totalLabel;
+
+    private double tot;
+
+    @FXML
+    private Button paymentButton;
+
+    private Label cartEmpty= new Label();
+
+    private Label total= new Label();
+
+    public void initialize(Restaurant restaurant, Stage stage, Stage secondStage, LocalizationManager localizationManager) throws IOException {
         this.searchRestaurant=stage;
         this.ownStage=secondStage;
-        cart=new Cart();
-        cart.loadCart();
+        tot=0.0;
         stage.hide();
+        if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
+            cartEmpty.setText("Carrello vuoto");
+            total.setText("Totale: ");
+            paymentButton.setText("Vai al pagamento");
+        }else{
+            cartEmpty.setText("Cart empty");
+            total.setText("Total: ");
+            paymentButton.setText("Go to payment");
+        }
+        totalLabel.setText(total.getText()+tot);
+
+
+        cartList.setPlaceholder(cartEmpty);
         restaurantNameLabel.setText(restaurant.getName());
         menu.clear();
 
