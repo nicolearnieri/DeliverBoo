@@ -36,12 +36,20 @@ public class RestaurantsListController {
     private static Vector<Restaurant> restaurants = new Vector<>();
     private ExecutorService executor = ExecutorProvider.getExecutor();
 
+    private Label listEmpty= new Label();
 
 
 
-    public void createList(List<Integer> queryResults) throws IOException {
+
+    public void createList(List<Integer> queryResults, LocalizationManager localizationManager) throws IOException {
 
         clearRestaurants();
+
+        if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
+            listEmpty.setText("Nessun ristorante trovato");
+        }else{
+            listEmpty.setText("Restaurants not found.");
+        }
 
         for (Integer element : queryResults) {
 
@@ -84,6 +92,8 @@ public class RestaurantsListController {
 
         }
 
+        restaurantsListView.setPlaceholder(listEmpty);
+
 
 
         restaurantsListView.setOnMousePressed(event -> {
@@ -110,4 +120,6 @@ public class RestaurantsListController {
         restaurants.clear();
         return true;
     }
+
+
 }

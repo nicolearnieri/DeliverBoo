@@ -9,6 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.controlsfx.control.PropertySheet;
 import uid.project.deliverboo.model.Food;
+
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -46,12 +48,15 @@ public class MenuItemController{
 
     private Food food;
 
+    private RestaurantHomeController controller;
 
 
 
 
-    public void init(Food food, LocalizationManager localizationManager){
+
+    public void init(Food food, LocalizationManager localizationManager, RestaurantHomeController controller){
         this.food=food;
+        this.controller=controller;
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
             productName.setText(food.getItName());
             productDescription.setText(food.getItDescr());
@@ -69,16 +74,18 @@ public class MenuItemController{
     }
 
 
-    public void addFood(){
+    public void addFood() throws IOException {
         cont+=1;
         quantityOfProduct.setText(Integer.toString(cont));
-        //CartController.addProduct(food);
+        controller.addFoodInCart(food);
     }
 
-    public void deductFood(){
+    public void deductFood() throws IOException {
         if(cont>0){
             cont-=1;
             quantityOfProduct.setText(Integer.toString(cont));
+            controller.deductFoodInCart(food);
+
         }
     }
 

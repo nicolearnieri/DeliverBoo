@@ -16,7 +16,7 @@ public class RestaurantsList extends AnchorPane {
     public RestaurantsList(){}
 
 
-    public void loadRestaurantsList(AnchorPane restaurantsListPane, List<Integer> queryResults) throws IOException {
+    public void loadRestaurantsList(AnchorPane restaurantsListPane, List<Integer> queryResults, LocalizationManager localizationManager) throws IOException {
 
         FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/RestaurantsList.fxml"));
 
@@ -26,7 +26,7 @@ public class RestaurantsList extends AnchorPane {
 
             RestaurantsListController controller= loader.getController();
 
-            controller.createList(queryResults);
+            controller.createList(queryResults, localizationManager);
 
 
             restaurantsListPane.getChildren().clear();
