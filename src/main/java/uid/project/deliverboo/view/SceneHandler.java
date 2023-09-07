@@ -108,7 +108,12 @@ public class SceneHandler {
                 }
 
                 SearchRestaurantsController controller= loader.getController();
-                controller.setLocalizationManager(localizationManager);
+                try {
+                    controller.init(localizationManager);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                //controller.setLocalizationManager(localizationManager);
                 changedTheme(scene);
                 stage.setTitle("DeliverBoo");
                 stage.setScene(scene);
