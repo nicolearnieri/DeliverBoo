@@ -20,7 +20,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="70.0" prefWidth="418.0">
                <children>
-                  <Label fx:id="researchLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="171.0" text="Ricerca in corso, attendi ..." textAlignment="CENTER" />
+                  <Label fx:id="researchLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="303.0" text="Ricerca in corso, attendi ..." textAlignment="CENTER" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="88.0" prefWidth="418.0">
