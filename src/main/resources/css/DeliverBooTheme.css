@@ -5,7 +5,6 @@
 
 /* testo */
 .text {
-    -fx-font-size : 14px;
     -fx-fill: #f0f0f0;
 }
 
@@ -153,4 +152,13 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
 
+#restaurantNameLabel
+{
+    -fx-font-size : 30px;
+    -fx-font-weight: bold;
+}
 
+#punLine
+{
+    -fx-font-size : 16px;
+}
