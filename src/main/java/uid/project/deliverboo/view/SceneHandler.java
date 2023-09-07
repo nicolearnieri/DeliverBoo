@@ -227,7 +227,12 @@ public class SceneHandler {
         stage.show();
     }
 
+    public Stage returnStage()
+    {
+        return stage;
+    }
     public void setPasswordConfirmation() throws Exception {
+        if (stage != null) stage.close();
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
@@ -259,6 +264,12 @@ public class SceneHandler {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void closeStage(Stage myStage)
+    {
+        myStage.close();
+    }
+
     private List<String> loadCSS() {
         try {
             List<String> resources = new ArrayList<>();

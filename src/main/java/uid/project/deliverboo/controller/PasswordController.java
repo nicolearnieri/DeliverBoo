@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.ExecutorProvider;
@@ -45,6 +46,7 @@ public class PasswordController {
     private Label warningLabel;
 
     private  LocalizationManager localizationManager;
+    public static boolean passwordCheck = false;
 
 
     Image openEye = new Image(Objects.requireNonNull(getClass().getResource("/Icone/eye.png")).toExternalForm());
@@ -77,6 +79,7 @@ public class PasswordController {
         String pw = password.getText();
         String userId = CurrentUser.getInstance().getNomeUtente();
 
+
         Callable<String> getPwCallable = TaskCreator.createGetPassword(userId);
         Future<String> resultP = executor.submit(getPwCallable);
 
@@ -84,6 +87,7 @@ public class PasswordController {
 
         if (passwordOk)
         {
+            passwordCheck = true;
             CurrentUser.getInstance().logOut();
 
             Callable<Boolean> delete = TaskCreator.createDeleteUser(userId);
@@ -91,6 +95,8 @@ public class PasswordController {
 
             if (exec.get())
                 SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.delete"), localizationManager.getLocalizedString("title.delete"));
+            SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnStage());
+
         }
 
 
