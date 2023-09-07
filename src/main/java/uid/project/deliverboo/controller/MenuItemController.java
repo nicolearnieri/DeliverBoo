@@ -44,9 +44,14 @@ public class MenuItemController{
 
     private int cont=0;
 
+    private Food food;
+
+
+
 
 
     public void init(Food food, LocalizationManager localizationManager){
+        this.food=food;
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
             productName.setText(food.getItName());
             productDescription.setText(food.getItDescr());
@@ -67,6 +72,7 @@ public class MenuItemController{
     public void addFood(){
         cont+=1;
         quantityOfProduct.setText(Integer.toString(cont));
+        //CartController.addProduct(food);
     }
 
     public void deductFood(){
