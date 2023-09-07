@@ -73,11 +73,12 @@
 }
 
 /* Stile per gli elementi di menu */
-.menu-item, .combo-box-popup > .list-view {
+.menu-item {
     -fx-background-color:  #1f132b; /* Colore dello sfondo */
     -fx-text-fill: #acacad; /* Colore del testo */
     -fx-transition-duration: 0.3s; /* transizione hover */
 }
+
 
 .menu-item: hover
 {
@@ -138,6 +139,7 @@
 .list-cell
 {
     -fx-background-color: #352049;
+     -fx-background-radius: 15px;
 }
 
 .scroll-bar
@@ -155,3 +157,9 @@
 {
     -fx-font-size : 16px;
 }
+
+.combo-box-popup .list-view {
+     -fx-background-color:  #352049; /* Colore dello sfondo */
+     -fx-text-fill: #acacad; /* Colore del testo */
+     -fx-transition-duration: 0.3s; /* transizione hover */
+ }

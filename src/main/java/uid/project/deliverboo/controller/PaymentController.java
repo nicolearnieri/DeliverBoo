@@ -1,16 +1,18 @@
 package uid.project.deliverboo.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import uid.project.deliverboo.view.SceneHandler;
 
 public class PaymentController {
+
+    @FXML
+    private Label SecurityLabel;
 
     @FXML
     private Button cancelButton;
@@ -34,20 +36,10 @@ public class PaymentController {
     private Label endDateLabel;
 
     @FXML
-    private DatePicker endDatePicker;
-
-    @FXML
     private Label messagePaymentLabel;
 
     @FXML
-    private TextField securityCodeField;
-
-    @FXML
-    private Label securityCodeLabel;
-
-
-    @FXML
-    private Label securityLabel;
+    private ComboBox<String> monthBox;
 
     @FXML
     private ImageView questionMark;
@@ -55,7 +47,17 @@ public class PaymentController {
     @FXML
     private HBox securityCodeBox;
 
+    @FXML
+    private TextField securityCodeField;
+
+    @FXML
+    private Label securityCodeLabel;
+
+    @FXML
+    private ComboBox<String> yearBox;
+
     private LocalizationManager localizationManager;
+
 
     public void initialize() {
 
@@ -70,6 +72,11 @@ public class PaymentController {
             securityCodeBox.setVisible(false);
             securityCodeBox.setManaged(false);
         });
+
+        ObservableList<String> months = FXCollections.observableArrayList("01", "02", "03", "04", "05", "06", "07", "08","09","10", "11", "12");
+        ObservableList<String> years = FXCollections.observableArrayList("2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030","2031","2032", "2033", "2034","2035","2036","2037","2038","2039","2040");
+        monthBox.setItems(months);
+        yearBox.setItems(years);
     }
 
     @FXML

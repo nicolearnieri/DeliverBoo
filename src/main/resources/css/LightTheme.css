@@ -8,7 +8,7 @@
 
 
 .text {
-
+    -fx-font-size : 14px;
     -fx-fill: #2c0938; /* Colore del testo */
 }
 
@@ -103,10 +103,6 @@
 
 }
 
-.combo-box-popup > .list-view: hover
-{
- -fx-background-color: #9d74cc;
-}
 
 
 .context-menu {
@@ -137,6 +133,7 @@
 .list-cell
 {
     -fx-background-color: #EADCFB;
+    -fx-background-radius: 15px;
 }
 
 .scroll-bar
@@ -156,13 +153,15 @@
     -fx-font-weight: bold;
 }
 
-#restaurantNameLabel
+
+.combo-box-popup .list-cell
 {
-    -fx-font-size : 30px;
-    -fx-font-weight: bold;
+     -fx-background-color: #cfaef5; /* Colore dello sfondo */
+     -fx-text-fill: #2c0938; /* Colore del testo */
+     -fx-font-size: 14px; /* Dimensione del testo */
 }
 
-#punLine
+.combo-box-popup .list-cell: hover
 {
-    -fx-font-size : 16px;
+    -fx-background-color: #9d74cc;
 }

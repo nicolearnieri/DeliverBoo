@@ -139,6 +139,7 @@
 .list-cell
 {
     -fx-background-color: #341447;
+    -fx-background-radius: 15px;
 }
 
 .scroll-bar
