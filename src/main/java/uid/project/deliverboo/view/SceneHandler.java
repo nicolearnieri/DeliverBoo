@@ -1,5 +1,6 @@
 package uid.project.deliverboo.view;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -8,6 +9,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import uid.project.deliverboo.controller.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -94,20 +96,33 @@ public class SceneHandler {
 
     public void setSearchRestaurants() throws Exception {
         if(stage!=null) {stage.close();}
-        //if(chargingStage!=null) {chargingStage.close();}
-        stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
-        scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
 
-        SearchRestaurantsController controller= loader.getController();
-        controller.setLocalizationManager(localizationManager);
+            // Carica la schermata di "Searching Progress" e visualizzala
+            Platform.runLater(() -> {
+                stage = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
+                try {
+                    scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                SearchRestaurantsController controller= loader.getController();
+                controller.setLocalizationManager(localizationManager);
+                changedTheme(scene);
+                stage.setTitle("DeliverBoo");
+                stage.setScene(scene);
+                stage.show();
+
+
+                chargingStage.close();
+            });
 
 
 
-        changedTheme(scene);
-        stage.setTitle("DeliverBoo");
-        stage.setScene(scene);
-        stage.show();
+
+
+        /*stage.show();*/
     }
 
     public void setSearchingProgress() throws Exception {
@@ -128,6 +143,9 @@ public class SceneHandler {
         chargingStage.setScene(searchScene);
         chargingStage.show();
         loadingVisible = true;
+
+
+
     }
 
     public void setRestaurantHome(Restaurant restaurant) throws Exception{

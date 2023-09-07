@@ -92,6 +92,8 @@ public class HomeController {
     @FXML
     private Label punLine;
 
+    private Stage chargingStage;
+
 
 
     private  LocalizationManager localizationManager;
@@ -129,6 +131,8 @@ public class HomeController {
                 // Chiudi la finestra corrente
                 currentStage.close();
                 SceneHandler.getInstance().setSearchingProgress();
+
+
                 // Apri la schermata di ricerca dei ristoranti
                 SceneHandler.getInstance().setSearchRestaurants();
 
