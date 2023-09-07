@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -13,12 +14,10 @@ import uid.project.deliverboo.model.Restaurant;
 import uid.project.deliverboo.model.TaskCreator;
 import uid.project.deliverboo.view.CartItem;
 import uid.project.deliverboo.view.MenuItem;
+import uid.project.deliverboo.view.SceneHandler;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Vector;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -98,9 +97,10 @@ public class RestaurantHomeController {
 
         cartList.setPlaceholder(cartEmpty);
         restaurantNameLabel.setText(restaurant.getName());
+
         menu.clear();
 
-        //imageRestaurant.setImage(new Image(Objects.requireNonNull(getClass().getResource(restaurant.getPath2())).toExternalForm()));
+        imageRestaurant.setImage(new Image(Objects.requireNonNull(getClass().getResource(restaurant.getPath2())).toExternalForm()));
 
         Callable<Boolean> verifyCallable = TaskCreator.ReturnFoodInfoCallable(restaurant.getCode());
 
@@ -137,8 +137,20 @@ public class RestaurantHomeController {
 
     public void getBack(){
         //qua va aggiunto l'if se la list del cart è vuoto
-        ownStage.close();
-        searchRestaurant.show();
+        if(cartList.getItems().isEmpty()==false){
+            Boolean flag= SceneHandler.getInstance().showConfirmation(localizationManager.getLocalizedString("cartInfo.text"), localizationManager.getLocalizedString("cartInfo.title"));
+            if(flag){
+                ownStage.close();
+                cartList.getItems().clear();
+
+                searchRestaurant.show();
+            }
+        }else{
+            ownStage.close();
+
+            searchRestaurant.show();
+        }
+
     }
 
     public static boolean addToVector(Food food) {

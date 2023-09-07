@@ -9,14 +9,14 @@
 
 <HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.CartItemController">
    <children>
-      <VBox prefHeight="400.0" prefWidth="308.0">
+      <VBox prefHeight="154.0" prefWidth="321.0">
          <children>
             <Label fx:id="nameLabel" text="Product's name">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="descriptionLabel" prefHeight="42.0" prefWidth="206.0" text="Description">
+            <Label fx:id="descriptionLabel" prefHeight="114.0" prefWidth="300.0" text="Description">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>

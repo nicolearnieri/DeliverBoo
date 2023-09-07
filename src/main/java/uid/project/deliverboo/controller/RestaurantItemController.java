@@ -31,7 +31,6 @@ public class RestaurantItemController {
         cityLabel.setText(restaurant.getCity());
         restaurantImage.setImage(new Image(Objects.requireNonNull(getClass().getResource(restaurant.getPath1())).toExternalForm()));
 
-//        restaurantImage.setImage(new Image(Objects.requireNonNull(getClass().getResource("/usedImages/Restaurants/bakery12.jpg")).toExternalForm()));
     }
 
     public static void setLightMode() {

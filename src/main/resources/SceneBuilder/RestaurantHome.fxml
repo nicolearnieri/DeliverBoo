@@ -49,9 +49,9 @@
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ListView fx:id="menuList" HBox.hgrow="ALWAYS" />
-                  <BorderPane prefWidth="400.0">
+                  <BorderPane prefWidth="450.0">
                      <center>
-                        <ListView fx:id="cartList" prefHeight="198.0" prefWidth="248.0" BorderPane.alignment="CENTER" />
+                        <ListView fx:id="cartList" prefHeight="198.0" prefWidth="300.0" BorderPane.alignment="CENTER" />
                      </center>
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" BorderPane.alignment="CENTER">
