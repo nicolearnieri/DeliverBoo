@@ -31,7 +31,7 @@
                   </Button>
                   <HBox alignment="CENTER" prefHeight="129.0" prefWidth="643.0">
                      <children>
-                        <ImageView fx:id="imageRestaurant" fitHeight="150.0" fitWidth="287.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageRestaurant" fitHeight="128.0" fitWidth="584.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </HBox>
                   <Label fx:id="restaurantNameLabel" text="Restaurant's name">
@@ -56,7 +56,7 @@
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Label fx:id="totalLabel" prefHeight="18.0" prefWidth="73.0" text="Total">
+                              <Label fx:id="totalLabel" prefHeight="18.0" prefWidth="126.0" text="Total">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>

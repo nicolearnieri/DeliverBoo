@@ -88,7 +88,7 @@
 
 /* Stile per gli elementi di menu */
 .menu-item, .combo-box-popup > .list-view {
-    -fx-background-color: #daf7f7;
+    -fx-background-color:#8CE6E6;
     -fx-text-fill: #131f1e; /* Colore del testo */
 }
 .menu-item: hover, .combo-box-popup > .list-view: hover
@@ -132,6 +132,10 @@
     -fx-background-color: #8CE6E6;
 }
 
+.list-cell
+{
+    -fx-background-radius: 15px;
+}
 
 .list-cell: hover, .scroll-bar:vertical .thumb: hover
 {

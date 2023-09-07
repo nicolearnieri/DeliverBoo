@@ -44,8 +44,8 @@
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="0.0" spacing="15.0">
                      <children>
                         <Label fx:id="endDateLabel" alignment="CENTER" prefWidth="171.0" text="Data Scadenza" textAlignment="CENTER" />
-                        <ComboBox fx:id="monthBox" prefHeight="26.0" prefWidth="85.0" promptText="MM" visibleRowCount="12" />
-                        <ComboBox fx:id="yearBox" prefHeight="26.0" prefWidth="85.0" promptText="YYYY" />
+                        <ComboBox fx:id="monthBox" prefHeight="30.0" prefWidth="85.0" promptText="MM" visibleRowCount="12" />
+                        <ComboBox fx:id="yearBox" prefHeight="30.0" prefWidth="85.0" promptText="YYYY" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="0.0" spacing="15.0">

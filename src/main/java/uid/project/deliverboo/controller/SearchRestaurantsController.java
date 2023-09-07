@@ -134,9 +134,10 @@ public class SearchRestaurantsController {
 
 
 
-    public void initialize() throws Exception {
-        //Query
+    public void init(LocalizationManager localizationManager) throws Exception {
 
+            this.localizationManager=localizationManager;
+            updateTexts();
 
             Callable<List<Integer>> verifyCallable = TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
             Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
@@ -149,11 +150,17 @@ public class SearchRestaurantsController {
                 throw new RuntimeException(e);
             }
 
+
             restaurantsList = new RestaurantsList();
-            restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults);
+            restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults, localizationManager);
+
+        }
 
 
-    }
+
+
+
+
 
     @FXML
     void searchByName(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
@@ -161,8 +168,9 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBN = TaskCreator.createSearchByName(name, queryResults );
         Future<List<Integer>> executeSBN = executor.submit(sBN);
         List<Integer> results = executeSBN.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
     }
     @FXML
@@ -170,8 +178,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Gelateria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
 
@@ -181,8 +192,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Forno", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
     @FXML
@@ -190,8 +204,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Caffetteria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
     @FXML
@@ -199,8 +216,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Pizzeria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
     @FXML
@@ -208,8 +228,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Gourmet", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
     @FXML
@@ -217,8 +240,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Asiatico", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
     @FXML
@@ -226,8 +252,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Messicano", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results,localizationManager);
+
+
     }
 
     @FXML
@@ -235,8 +264,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Pasticceria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
     @FXML
@@ -244,8 +276,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Poke", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
     @FXML
@@ -253,8 +288,11 @@ public class SearchRestaurantsController {
         Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Paninoteca", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
-        restaurantsList=new RestaurantsList();
-        restaurantsList.loadRestaurantsList(restaurantsListPane, results);
+
+            restaurantsList = new RestaurantsList();
+            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+
     }
 
     @FXML
@@ -277,11 +315,11 @@ public class SearchRestaurantsController {
     }
 
 
-    public void setLocalizationManager(LocalizationManager localizationManager){
+    /*public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
 
         updateTexts();
-    }
+    }*/
 
     @FXML
     private void handleItalian(){

@@ -108,7 +108,12 @@ public class SceneHandler {
                 }
 
                 SearchRestaurantsController controller= loader.getController();
-                controller.setLocalizationManager(localizationManager);
+                try {
+                    controller.init(localizationManager);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                //controller.setLocalizationManager(localizationManager);
                 changedTheme(scene);
                 stage.setTitle("DeliverBoo");
                 stage.setScene(scene);
@@ -154,7 +159,7 @@ public class SceneHandler {
         Scene secondScene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
 
        RestaurantHomeController controller= loader.getController();
-       controller.initialize(restaurant, stage, secondStage, localizationManager);
+       controller.initialize(restaurant, stage, secondStage, localizationManager, controller);
 
 
         changedTheme(secondScene);
@@ -222,7 +227,12 @@ public class SceneHandler {
         stage.show();
     }
 
+    public Stage returnStage()
+    {
+        return stage;
+    }
     public void setPasswordConfirmation() throws Exception {
+        if (stage != null) stage.close();
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
@@ -254,6 +264,12 @@ public class SceneHandler {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void closeStage(Stage myStage)
+    {
+        myStage.close();
+    }
+
     private List<String> loadCSS() {
         try {
             List<String> resources = new ArrayList<>();

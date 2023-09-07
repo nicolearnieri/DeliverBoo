@@ -1,23 +1,29 @@
 package uid.project.deliverboo.view;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import uid.project.deliverboo.controller.CartItemController;
 import uid.project.deliverboo.controller.LocalizationManager;
-import uid.project.deliverboo.controller.MenuItemController;
 import uid.project.deliverboo.model.Food;
 
+import java.io.IOException;
+
 public class CartItem extends StackPane {
-    public CartItem(Food food, LocalizationManager localizationManager) {
+
+    private CartItemController controller;
+    public CartItem (Food food, LocalizationManager localizationManager) throws IOException {
         FXMLLoader loader=new FXMLLoader(MenuItem.class.getResource("/SceneBuilder/CartItem.fxml"));
-        try {
+        //try {
             HBox root= loader.load();
-            CartItemController controller=loader.getController();
+            controller=loader.getController();
             controller.init(food, localizationManager);
             this.getChildren().add(root);
 
-        }catch (Exception ignoredExeption){}
+       // }catch (Exception ignoredExeption){}
+    }
+
+    public CartItemController returnCotroller(){
+        return controller;
     }
 }

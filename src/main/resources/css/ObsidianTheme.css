@@ -141,6 +141,7 @@
 .list-cell
 {
     -fx-background-color: #C1CAD5;
+    -fx-background-radius: 10px;
 }
 
 .scroll-bar
@@ -159,11 +160,6 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
 
-#restaurantNameLabel
-{
-    -fx-font-size : 30px;
-    -fx-font-weight: bold;
-}
 
 #restaurantNameLabel
 {

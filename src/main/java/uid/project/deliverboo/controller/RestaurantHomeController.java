@@ -15,6 +15,8 @@ import uid.project.deliverboo.view.CartItem;
 import uid.project.deliverboo.view.MenuItem;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
 import java.util.concurrent.Callable;
@@ -48,10 +50,13 @@ public class RestaurantHomeController {
     private Stage ownStage;
 
     private static Vector<Food> menu = new Vector<>();
+
+    private Vector<Food> foodInCart= new Vector<>();
     private ExecutorService executor = ExecutorProvider.getExecutor();
 
     @FXML
     private ListView<CartItem> cartList;
+
 
     @FXML
     private Label totalLabel;
@@ -65,9 +70,18 @@ public class RestaurantHomeController {
 
     private Label total= new Label();
 
-    public void initialize(Restaurant restaurant, Stage stage, Stage secondStage, LocalizationManager localizationManager) throws IOException {
+    private LocalizationManager localizationManager;
+
+    private RestaurantHomeController controller;
+
+    private int cont;
+
+    public void initialize(Restaurant restaurant, Stage stage, Stage secondStage, LocalizationManager localizationManager, RestaurantHomeController controller) throws IOException {
         this.searchRestaurant=stage;
         this.ownStage=secondStage;
+        this.localizationManager=localizationManager;
+        this.controller=controller;
+
         tot=0.0;
         stage.hide();
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
@@ -79,7 +93,7 @@ public class RestaurantHomeController {
             total.setText("Total: ");
             paymentButton.setText("Go to payment");
         }
-        totalLabel.setText(total.getText()+tot);
+        totalLabel.setText(total.getText()+tot+"€");
 
 
         cartList.setPlaceholder(cartEmpty);
@@ -108,7 +122,7 @@ public class RestaurantHomeController {
 
         for(Food food: menu){
 
-            MenuItem menuItem= new MenuItem(food, localizationManager);
+            MenuItem menuItem= new MenuItem(food, localizationManager, controller);
 
             menuList.getItems().add(menuItem);
 
@@ -131,6 +145,49 @@ public class RestaurantHomeController {
 
         return menu.add(food);
     }
+
+    public void addFoodInCart(Food f) throws IOException {
+        if(foodInCart.contains(f)) {
+            for (CartItem cartItem : cartList.getItems()) {
+                CartItemController controller = cartItem.returnCotroller();
+                controller.addFood(f);
+
+            }
+        }else{
+
+              CartItem cartItem=new CartItem(f, localizationManager);
+              cartList.getItems().add(cartItem);
+              foodInCart.add(f);
+            }
+        tot=tot+Double.parseDouble(f.getPrice());
+        totalLabel.setText(total.getText()+tot+"€");
+
+    }
+
+    public void deductFoodInCart(Food f) throws IOException {
+
+        List<CartItem> itemsToRemove = new ArrayList<>();
+
+        for (CartItem cartItem : cartList.getItems()) {
+            CartItemController controller = cartItem.returnCotroller();
+            cont = controller.deductFood(f);
+            if (cont == 0) {
+                itemsToRemove.add(cartItem); // Aggiungi l'elemento da rimuovere a una lista temporanea
+                foodInCart.remove(f);
+            }
+        }
+
+        tot=tot-Double.parseDouble(f.getPrice());
+        totalLabel.setText(total.getText()+tot+"€");
+
+
+        // Rimuovi gli elementi dalla ListView
+        cartList.getItems().removeAll(itemsToRemove);
+    }
+
+
+
+
 
 }
 
