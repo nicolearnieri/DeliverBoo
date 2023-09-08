@@ -35,7 +35,7 @@ public class RecapOrderController {
     @FXML
     private Label totalLabel;
 
-    private Stage stage
+    private Stage stage;
 
 
 
