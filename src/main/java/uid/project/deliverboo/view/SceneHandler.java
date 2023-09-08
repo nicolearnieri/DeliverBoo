@@ -8,16 +8,19 @@ import javafx.scene.control.ListView;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import uid.project.deliverboo.controller.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Vector;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import javafx.scene.control.ButtonType;
+import uid.project.deliverboo.model.Food;
 import uid.project.deliverboo.model.Restaurant;
 
 public class SceneHandler {
@@ -99,6 +102,7 @@ public class SceneHandler {
             // Carica la schermata di "Searching Progress" e visualizzala
             Platform.runLater(() -> {
                 stage = new Stage();
+                stage.initStyle(StageStyle.UNDECORATED);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
                 try {
                     scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
@@ -156,7 +160,7 @@ public class SceneHandler {
         secondStage= new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RestaurantHome.fxml"));
         Scene secondScene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
-
+        secondStage.initStyle(StageStyle.UNDECORATED);
        RestaurantHomeController controller= loader.getController();
        controller.initialize(restaurant, stage, secondStage, localizationManager, controller);
 
@@ -167,22 +171,24 @@ public class SceneHandler {
         secondStage.show();
     }
 
-    public void setRecapOrder(ListView<CartItem> cartList) throws Exception {
+    public void setRecapOrder(ListView<CartItem> cartList, String total) throws Exception {
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
         logInScene = new Scene(loader.load(), 500, 700); //v:larghezza, v1:altezza
 
-
+        stage.initStyle(StageStyle.UNDECORATED);
         RecapOrderController controller= loader.getController();
-        controller.init(localizationManager, cartList);
+        controller.init(localizationManager, cartList, total, stage);
 
         changedTheme(logInScene);
         stage.setTitle("DeliverBoo");
         stage.setScene(logInScene);
         stage.show();
     }
+
+
 
 
     public void setLogIn() throws Exception {

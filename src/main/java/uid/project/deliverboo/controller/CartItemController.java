@@ -64,11 +64,13 @@ public class CartItemController {
 
     }
 
-    public void deductFood(Food f, int cont){
+    public Boolean deductFood(Food f, int cont){
         if(food.equals(f)){
             quantitylabel.setText(Integer.toString(cont));
-
+            return true;
         }
+
+        return false;
 
     }
 
@@ -83,6 +85,10 @@ public class CartItemController {
         quantitylabel.setText(Integer.toString(cont));
         restaurantHomeController.deductFood(food, cont, cartItem);
 
+    }
+
+    public int getQuantity(){
+        return cont;
     }
 
 

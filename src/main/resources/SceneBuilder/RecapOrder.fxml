@@ -9,13 +9,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.RecapOrderController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.RecapOrderController">
    <center>
       <ListView fx:id="recapListView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
-      <VBox prefHeight="161.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="140.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="38.0">
                <VBox.margin>
@@ -31,7 +30,10 @@
             </Button>
             <VBox alignment="CENTER" prefHeight="104.0" prefWidth="600.0">
                <children>
-                  <ImageView fx:id="logoImg" fitHeight="104.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="logoImg" fitHeight="55.0" fitWidth="288.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Icone/logoOf.png" />
+                     </image></ImageView>
                   <Label fx:id="recapLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="160.0" text="Riepilogo dell'ordine">
                      <VBox.margin>
                         <Insets top="10.0" />

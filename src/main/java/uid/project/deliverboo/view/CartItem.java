@@ -13,8 +13,11 @@ import java.io.IOException;
 
 public class CartItem extends StackPane {
 
+    private Food food;
+
     private CartItemController controller;
     public CartItem (Food food, LocalizationManager localizationManager, RestaurantHomeController restaurantHomeController) throws IOException {
+        this.food=food;
         FXMLLoader loader=new FXMLLoader(MenuItem.class.getResource("/SceneBuilder/CartItem.fxml"));
         //try {
             HBox root= loader.load();
@@ -27,6 +30,14 @@ public class CartItem extends StackPane {
 
     public CartItemController returnCotroller(){
         return controller;
+    }
+
+    public Food getFood(){
+        return food;
+    }
+
+    public int getQuantity(){
+        return controller.getQuantity();
     }
 
 }

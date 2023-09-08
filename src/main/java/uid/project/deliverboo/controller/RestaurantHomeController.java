@@ -75,6 +75,8 @@ public class RestaurantHomeController {
 
     private int cont;
 
+    private List<Integer> listQuantity=new ArrayList<>();
+
     public void initialize(Restaurant restaurant, Stage stage, Stage secondStage, LocalizationManager localizationManager, RestaurantHomeController controller) throws IOException {
         this.searchRestaurant=stage;
         this.ownStage=secondStage;
@@ -192,12 +194,15 @@ public class RestaurantHomeController {
     public void ownDeductFoodInCart(Food f, int cont) throws IOException {
 
         List<CartItem> itemsToRemove = new ArrayList<>();
-        System.out.println(cont);
+
         for (CartItem cartItem : cartList.getItems()) {
+            Boolean flag=false;
             CartItemController controller = cartItem.returnCotroller();
-            controller.deductFood(f, cont);
-            if (cont == 0) {
+            flag=controller.deductFood(f, cont);
+            if (flag & cont == 0) {
+
                 itemsToRemove.add(cartItem); // Aggiungi l'elemento da rimuovere a una lista temporanea
+
                 foodInCart.remove(f);
             }
         }
@@ -230,7 +235,7 @@ public class RestaurantHomeController {
     }
 
     public void goToPayment() throws Exception {
-        SceneHandler.getInstance().setRecapOrder(cartList);
+        SceneHandler.getInstance().setRecapOrder(cartList, totalLabel.getText());
     }
 
 
