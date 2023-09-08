@@ -5,21 +5,24 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="573.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <VBox alignment="CENTER" prefHeight="128.0" prefWidth="574.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="92.0" prefWidth="574.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="backButton" mnemonicParsing="false">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="30.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Icone/back.png" />
+                           </image></ImageView>
                      </graphic>
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
@@ -27,7 +30,13 @@
                   </Button>
                </children>
             </HBox>
-            <ImageView fitHeight="60.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="60.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Icone/logoOf.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></ImageView>
          </children>
       </VBox>
    </top>
@@ -36,7 +45,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Nome">
+                  <Label fx:id="nameLabel" text="Nome">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -53,7 +62,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Cognome">
+                  <Label fx:id="surnameLabel" text="Cognome">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -67,7 +76,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Numero di teledono">
+                  <Label fx:id="numebrLabel" text="Numero di teledono">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
@@ -80,7 +89,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Email" />
+                  <Label fx:id="emailLabel" text="Email" />
                   <TextField>
                      <HBox.margin>
                         <Insets left="95.0" />
@@ -88,14 +97,22 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Indirizzo di consegna" />
-                  <TextField>
+                  <Label fx:id="houseNumberLabel" text="Numero civico">
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="150.0" />
+                     </HBox.margin></Label>
+                  <TextField prefHeight="26.0" prefWidth="40.0">
+                     <HBox.margin>
+                        <Insets left="50.0" />
                      </HBox.margin>
                   </TextField>
+                  <Label fx:id="addressLabel" alignment="CENTER" prefHeight="52.0" prefWidth="162.0" text="Label">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">

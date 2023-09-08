@@ -4,6 +4,7 @@ import uid.project.deliverboo.model.Food;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import uid.project.deliverboo.view.CartItem;
 
 import java.util.Locale;
 
@@ -31,8 +32,15 @@ public class CartItemController {
 
     private int cont=1;
 
-    public void init(Food food, LocalizationManager localizationManager){
+    private RestaurantHomeController restaurantHomeController;
+
+    private CartItem cartItem;
+
+
+    public void init(Food food, LocalizationManager localizationManager, RestaurantHomeController restaurantHomeController, CartItem cartItem){
         this.food=food;
+        this.cartItem=cartItem;
+        this.restaurantHomeController=restaurantHomeController;
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
             nameLabel.setText(food.getItName());
             descriptionLabel.setText(food.getItDescr());
@@ -56,15 +64,30 @@ public class CartItemController {
 
     }
 
-    public int deductFood(Food f){
+    public void deductFood(Food f, int cont){
         if(food.equals(f)){
-            cont-=1;
             quantitylabel.setText(Integer.toString(cont));
 
-            return cont;
         }
-        return -1;
+
     }
+
+    public void ownAddFood(){
+        cont+=1;
+        quantitylabel.setText(Integer.toString(cont));
+        restaurantHomeController.addFood(food, cont);
+    }
+
+    public void ownDeductFood(){
+        cont-=1;
+        quantitylabel.setText(Integer.toString(cont));
+        restaurantHomeController.deductFood(food, cont, cartItem);
+
+    }
+
+
+
+
 
 
 

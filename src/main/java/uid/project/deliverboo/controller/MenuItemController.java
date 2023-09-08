@@ -4,10 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import org.controlsfx.control.PropertySheet;
 import uid.project.deliverboo.model.Food;
 
 import java.io.IOException;
@@ -54,9 +52,12 @@ public class MenuItemController{
 
 
 
+
+
     public void init(Food food, LocalizationManager localizationManager, RestaurantHomeController controller){
         this.food=food;
         this.controller=controller;
+
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
             productName.setText(food.getItName());
             productDescription.setText(food.getItDescr());
@@ -74,19 +75,37 @@ public class MenuItemController{
     }
 
 
-    public void addFood() throws IOException {
+    public void ownAddFood() throws IOException {
         cont+=1;
         quantityOfProduct.setText(Integer.toString(cont));
-        controller.addFoodInCart(food);
+        controller.ownAddFoodInCart(food);
     }
 
-    public void deductFood() throws IOException {
+    public void ownDeductFood() throws IOException {
         if(cont>0){
             cont-=1;
             quantityOfProduct.setText(Integer.toString(cont));
-            controller.deductFoodInCart(food);
+            controller.ownDeductFoodInCart(food, cont);
 
         }
     }
+
+    public void addFood(Food f, int contCart){
+        if(food.equals(f)){
+            quantityOfProduct.setText(Integer.toString(contCart));
+            cont=contCart;
+        }
+    }
+
+    public void deductFood(Food f, int contCart){
+        if(food.equals(f)){
+            quantityOfProduct.setText(Integer.toString(contCart));
+            cont=contCart;
+            if(contCart==0) cont=0;
+
+        }
+
+    }
+
 
 }

@@ -32,7 +32,7 @@
             </Label>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="minusButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="-">
+                  <Button fx:id="minusButton" mnemonicParsing="false" onAction="#ownDeductFood" prefHeight="25.0" prefWidth="25.0" text="-">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -42,7 +42,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="plusButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="+">
+                  <Button fx:id="plusButton" mnemonicParsing="false" onAction="#ownAddFood" prefHeight="25.0" prefWidth="25.0" text="+">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

@@ -158,7 +158,7 @@ public class RestaurantHomeController {
         return menu.add(food);
     }
 
-    public void addFoodInCart(Food f) throws IOException {
+    public void ownAddFoodInCart(Food f) throws IOException {
         if(foodInCart.contains(f)) {
             for (CartItem cartItem : cartList.getItems()) {
                 CartItemController controller = cartItem.returnCotroller();
@@ -167,7 +167,7 @@ public class RestaurantHomeController {
             }
         }else{
 
-              CartItem cartItem=new CartItem(f, localizationManager);
+              CartItem cartItem=new CartItem(f, localizationManager, controller);
               cartList.getItems().add(cartItem);
               foodInCart.add(f);
             }
@@ -176,13 +176,26 @@ public class RestaurantHomeController {
 
     }
 
-    public void deductFoodInCart(Food f) throws IOException {
+    public void addFood(Food f, int cont){
+        for(MenuItem menuItem: menuList.getItems()){
+            MenuItemController menuItemController=menuItem.getController();
+            menuItemController.addFood(f, cont);
+        }
+        tot=tot+Double.parseDouble(f.getPrice());
+        totalLabel.setText(total.getText()+tot+"€");
+    }
+
+
+
+
+
+    public void ownDeductFoodInCart(Food f, int cont) throws IOException {
 
         List<CartItem> itemsToRemove = new ArrayList<>();
-
+        System.out.println(cont);
         for (CartItem cartItem : cartList.getItems()) {
             CartItemController controller = cartItem.returnCotroller();
-            cont = controller.deductFood(f);
+            controller.deductFood(f, cont);
             if (cont == 0) {
                 itemsToRemove.add(cartItem); // Aggiungi l'elemento da rimuovere a una lista temporanea
                 foodInCart.remove(f);
@@ -195,6 +208,29 @@ public class RestaurantHomeController {
 
         // Rimuovi gli elementi dalla ListView
         cartList.getItems().removeAll(itemsToRemove);
+        itemsToRemove.clear();
+    }
+
+    public void deductFood(Food f, int contCart, CartItem cartItem){
+        List<CartItem> itemsToRemove = new ArrayList<>();
+        for(MenuItem menuItem: menuList.getItems()){
+            MenuItemController menuItemController=menuItem.getController();
+            menuItemController.deductFood(f, contCart);
+            if(contCart==0){
+
+                itemsToRemove.add(cartItem); // Aggiungi l'elemento da rimuovere a una lista temporanea
+                foodInCart.remove(f);
+            }
+        }
+        tot=tot+Double.parseDouble(f.getPrice());
+        totalLabel.setText(total.getText()+tot+"€");
+
+        cartList.getItems().removeAll(itemsToRemove);
+        itemsToRemove.clear();
+    }
+
+    public void goToPayment() throws Exception {
+        SceneHandler.getInstance().setRecapOrder(cartList);
     }
 
 

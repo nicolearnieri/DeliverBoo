@@ -61,7 +61,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </Label>
-                              <Button fx:id="paymentButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" text="Go to payment">
+                              <Button fx:id="paymentButton" mnemonicParsing="false" onAction="#goToPayment" prefHeight="26.0" prefWidth="192.0" text="Go to payment">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>

@@ -5,6 +5,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import uid.project.deliverboo.controller.CartItemController;
 import uid.project.deliverboo.controller.LocalizationManager;
+import uid.project.deliverboo.controller.MenuItemController;
+import uid.project.deliverboo.controller.RestaurantHomeController;
 import uid.project.deliverboo.model.Food;
 
 import java.io.IOException;
@@ -12,12 +14,12 @@ import java.io.IOException;
 public class CartItem extends StackPane {
 
     private CartItemController controller;
-    public CartItem (Food food, LocalizationManager localizationManager) throws IOException {
+    public CartItem (Food food, LocalizationManager localizationManager, RestaurantHomeController restaurantHomeController) throws IOException {
         FXMLLoader loader=new FXMLLoader(MenuItem.class.getResource("/SceneBuilder/CartItem.fxml"));
         //try {
             HBox root= loader.load();
             controller=loader.getController();
-            controller.init(food, localizationManager);
+            controller.init(food, localizationManager, restaurantHomeController, this);
             this.getChildren().add(root);
 
        // }catch (Exception ignoredExeption){}
@@ -26,4 +28,5 @@ public class CartItem extends StackPane {
     public CartItemController returnCotroller(){
         return controller;
     }
+
 }
