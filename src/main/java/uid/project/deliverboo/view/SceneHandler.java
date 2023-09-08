@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -72,6 +73,8 @@ public class SceneHandler {
 
         changedTheme(scene);
         stage.setTitle("DeliverBoo");
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));// Carica l'immagine dell'icona dall'URL relativo nel tuo progetto
+        stage.getIcons().add(icon); // Imposta l'icona per la finestra
         stage.setScene(scene);
         stage.show();
     }
@@ -91,6 +94,8 @@ public class SceneHandler {
         controller.setLocalizationManager(localizationManager);
 
         changedTheme(scene);
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        stage.getIcons().add(icon); // Imposta l'icona per la finestra
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
@@ -125,11 +130,6 @@ public class SceneHandler {
 
                 chargingStage.close();
             });
-
-
-
-
-
         /*stage.show();*/
     }
 
@@ -152,9 +152,6 @@ public class SceneHandler {
         chargingStage.initStyle(StageStyle.UNDECORATED);
         chargingStage.show();
         loadingVisible = true;
-
-
-
     }
 
     public void setRestaurantHome(Restaurant restaurant) throws Exception{
@@ -185,6 +182,9 @@ public class SceneHandler {
 
         changedTheme(logInScene);
         stage.setTitle("DeliverBoo");
+        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        stage.getIcons().add(icon); // Imposta l'icona per la finestra
         stage.setScene(logInScene);
         stage.show();
     }
@@ -207,6 +207,11 @@ public class SceneHandler {
 
         changedTheme(logInScene);
         logInOrSignUpStage.setTitle("DeliverBoo");
+
+        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
+
         logInOrSignUpStage.setScene(logInScene);
         logInOrSignUpStage.setResizable(false);
         logInOrSignUpStage.show();
@@ -228,6 +233,11 @@ public class SceneHandler {
 
         changedTheme(logInScene);
         logInOrSignUpStage.setTitle("DeliverBoo");
+
+        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
+
         logInOrSignUpStage.setScene(logInScene);
         logInOrSignUpStage.setResizable(false);
         logInOrSignUpStage.show();
@@ -246,6 +256,11 @@ public class SceneHandler {
 
         changedTheme(logInScene);
         stage.setTitle("DeliverBoo");
+
+        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
+
         stage.setScene(logInScene);
         stage.show();
     }
@@ -268,6 +283,11 @@ public class SceneHandler {
 
         changedTheme(logInScene);
         stage.setTitle("DeliverBoo");
+
+        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
+
         stage.setScene(logInScene);
         stage.show();
     }
@@ -284,6 +304,11 @@ public class SceneHandler {
 
         changedTheme(scene);
         stage.setTitle("DeliverBoo");
+
+        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
+
         stage.setScene(scene);
         stage.show();
     }
