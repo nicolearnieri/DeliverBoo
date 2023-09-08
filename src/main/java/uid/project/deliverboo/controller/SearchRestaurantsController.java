@@ -184,6 +184,13 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
+
     }
 
     @FXML
@@ -202,6 +209,13 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
+       stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
+
 
     }
 
@@ -216,6 +230,13 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
+
 
     }
 
@@ -227,6 +248,13 @@ public class SearchRestaurantsController {
 
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
 
 
     }
@@ -240,6 +268,12 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
 
     }
 
@@ -251,6 +285,13 @@ public class SearchRestaurantsController {
 
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+       stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
 
 
     }
@@ -264,6 +305,13 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
+       stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
+
 
     }
 
@@ -275,6 +323,13 @@ public class SearchRestaurantsController {
 
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results,localizationManager);
+
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
 
 
     }
@@ -288,6 +343,13 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
+
 
     }
 
@@ -299,6 +361,13 @@ public class SearchRestaurantsController {
 
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+
+       stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
 
 
     }
@@ -312,6 +381,13 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
+
 
     }
 
@@ -319,6 +395,13 @@ public class SearchRestaurantsController {
     void openFullList(ActionEvent event) throws IOException {
         restaurantsList = new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults, localizationManager);
+
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+           RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
+        });
     }
 
 
@@ -336,11 +419,11 @@ public class SearchRestaurantsController {
     }
 
 
-    /*public void setLocalizationManager(LocalizationManager localizationManager){
+    public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
 
         updateTexts();
-    }*/
+    }
 
     @FXML
     private void handleItalian(){

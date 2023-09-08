@@ -41,6 +41,7 @@ public class RestaurantsListController {
         this.anchorPane=anchorPane;
        anchorPane.widthProperty().addListener((observable, oldValue, newValue) ->{
             listPane.setPrefWidth(newValue.doubleValue());
+           System.out.println("listener");
 
         });
 
@@ -75,7 +76,10 @@ public class RestaurantsListController {
 
         restaurantsListView.getItems().clear();
 
+
+
         for (Restaurant restaurant : restaurants) {
+
 
             RestaurantItem restaurantItem = new RestaurantItem(restaurant);
 
@@ -85,7 +89,10 @@ public class RestaurantsListController {
             restaurantsListView.refresh();
 
 
+
         }
+
+
 
         restaurantsListView.setPlaceholder(listEmpty);
 
@@ -111,14 +118,14 @@ public class RestaurantsListController {
         return restaurants.add(rest);
     }
 
-    public static boolean clearRestaurants() {
+    public static void clearRestaurants() {
         restaurants.clear();
-        return true;
     }
 
     public void refersh(Double newVal){
-
+        System.out.println(newVal-280);
         listPane.setPrefWidth(newVal-280);
+        System.out.println("setted");
 
 
     }
