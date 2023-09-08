@@ -20,25 +20,13 @@ import java.util.concurrent.Future;
 
 public class RestaurantsListController {
 
-
-
     @FXML
     private ListView<RestaurantItem> restaurantsListView;
-
-
-
-
-
-
-
-
 
     private static Vector<Restaurant> restaurants = new Vector<>();
     private ExecutorService executor = ExecutorProvider.getExecutor();
 
     private Label listEmpty= new Label();
-
-
 
 
     public void createList(List<Integer> queryResults, LocalizationManager localizationManager) throws IOException {
@@ -67,13 +55,9 @@ public class RestaurantsListController {
                 throw new RuntimeException(e);
             }
 
-
-
         }
 
-
         restaurantsListView.getItems().clear();
-
 
         for (Restaurant restaurant : restaurants) {
 
@@ -82,12 +66,7 @@ public class RestaurantsListController {
             restaurantsListView.getItems().add(restaurantItem);
 
 
-
-
-
             restaurantsListView.refresh();
-
-
 
 
         }

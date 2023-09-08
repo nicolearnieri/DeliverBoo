@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="573.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="573.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.OrderDetailsController">
    <top>
       <VBox alignment="CENTER" prefHeight="92.0" prefWidth="574.0" BorderPane.alignment="CENTER">
          <children>
@@ -50,7 +50,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="nameField">
                      <HBox.margin>
                         <Insets left="85.0" />
                      </HBox.margin>
@@ -67,7 +67,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="surnameField">
                      <HBox.margin>
                         <Insets left="75.0" />
                      </HBox.margin>
@@ -76,12 +76,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="numebrLabel" text="Numero di teledono">
+                  <Label fx:id="numberLabel" text="Numero di teledono">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField />
+                  <TextField fx:id="phoneNumberField" />
                </children>
                <VBox.margin>
                   <Insets />
@@ -90,7 +90,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label fx:id="emailLabel" text="Email" />
-                  <TextField>
+                  <TextField fx:id="emailField" editable="false">
                      <HBox.margin>
                         <Insets left="95.0" />
                      </HBox.margin>
@@ -103,7 +103,7 @@
                      <HBox.margin>
                         <Insets left="150.0" />
                      </HBox.margin></Label>
-                  <TextField prefHeight="26.0" prefWidth="40.0">
+                  <TextField fx:id="civicNumberField" prefHeight="26.0" prefWidth="40.0">
                      <HBox.margin>
                         <Insets left="50.0" />
                      </HBox.margin>
@@ -122,7 +122,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextArea prefHeight="82.0" prefWidth="404.0">
+                  <TextArea fx:id="notesArea" prefHeight="82.0" prefWidth="404.0">
                      <HBox.margin>
                         <Insets left="35.0" />
                      </HBox.margin>
