@@ -107,7 +107,6 @@ public class SceneHandler {
             // Carica la schermata di "Searching Progress" e visualizzala
             Platform.runLater(() -> {
                 stage = new Stage();
-                stage.initStyle(StageStyle.UNDECORATED);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
                 try {
                     scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
