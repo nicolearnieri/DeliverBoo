@@ -13,6 +13,8 @@ import java.util.List;
 
 public class RestaurantsList extends AnchorPane {
 
+    private RestaurantsListController controller;
+
     public RestaurantsList(){}
 
 
@@ -21,12 +23,11 @@ public class RestaurantsList extends AnchorPane {
         FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/RestaurantsList.fxml"));
 
 
-
             Parent root= loader.load();
 
-            RestaurantsListController controller= loader.getController();
+            controller= loader.getController();
 
-            controller.createList(queryResults, localizationManager);
+            controller.createList(queryResults, localizationManager, restaurantsListPane);
 
 
             restaurantsListPane.getChildren().clear();
@@ -35,6 +36,10 @@ public class RestaurantsList extends AnchorPane {
 
 
 
+    }
+
+    public RestaurantsListController getController(){
+        return controller;
     }
 
 }
