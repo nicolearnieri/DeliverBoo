@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -413,6 +414,26 @@ public class SceneHandler {
         FontIcon icon = new FontIcon("mdi2h-home-map-marker");
         icon.getStyleClass().add("icons-color");
         icon.setIconSize(40);
+        alertConfirmation.setGraphic(icon);
+        alertConfirmation.setTitle(title);
+        alertConfirmation.setHeaderText("");
+        alertConfirmation.setContentText(message);
+        alertConfirmation.getDialogPane().setPrefWidth(600);
+
+        ButtonType buttonTypeYes = new ButtonType(localizationManager.getLocalizedString("address.yes"));
+        ButtonType buttonTypeNo = new ButtonType(localizationManager.getLocalizedString("address.no"));
+
+        alertConfirmation.getButtonTypes().setAll(buttonTypeYes, buttonTypeNo);
+
+        ButtonType response = alertConfirmation.showAndWait().orElse(buttonTypeYes); //default se l'utente non preme ne su SI ne su NO
+
+        return response == buttonTypeYes;
+    }
+
+    public boolean showConfirmationCart(String message, String title) {
+        ImageView icon = new ImageView(new Image(Objects.requireNonNull(getClass().getResource("/Icone/cart.png").toExternalForm())));
+        icon.setFitWidth(90);
+        icon.setFitHeight(60);
         alertConfirmation.setGraphic(icon);
         alertConfirmation.setTitle(title);
         alertConfirmation.setHeaderText("");

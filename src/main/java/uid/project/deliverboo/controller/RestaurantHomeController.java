@@ -140,7 +140,7 @@ public class RestaurantHomeController {
     public void getBack(){
         //qua va aggiunto l'if se la list del cart è vuoto
         if(cartList.getItems().isEmpty()==false){
-            Boolean flag= SceneHandler.getInstance().showConfirmation(localizationManager.getLocalizedString("cartInfo.text"), localizationManager.getLocalizedString("cartInfo.title"));
+            Boolean flag= SceneHandler.getInstance().showConfirmationCart(localizationManager.getLocalizedString("cartInfo.text"), localizationManager.getLocalizedString("cartInfo.title"));
             if(flag){
                 SceneHandler.getInstance().closeStage(ownStage);
                 cartList.getItems().clear();
