@@ -72,5 +72,11 @@ public class RecapOrderController {
         SceneHandler.getInstance().closeStage(stage);
     }
 
+    public void proceed(){
+        SceneHandler.getInstance().closeStage(stage);
+    }
+
+
+
 
 }

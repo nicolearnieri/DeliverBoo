@@ -293,6 +293,10 @@ public class SceneHandler {
         myStage.close();
     }
 
+    public void hideStage(Stage myStage){myStage.hide();}
+
+    public void showStage(Stage myStage){myStage.show();}
+
     private List<String> loadCSS() {
         try {
             List<String> resources = new ArrayList<>();

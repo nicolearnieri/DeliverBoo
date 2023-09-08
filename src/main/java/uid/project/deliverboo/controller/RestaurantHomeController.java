@@ -84,7 +84,7 @@ public class RestaurantHomeController {
         this.controller=controller;
 
         tot=0.0;
-        stage.hide();
+        SceneHandler.getInstance().hideStage(searchRestaurant);
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
             cartEmpty.setText("Carrello vuoto");
             total.setText("Totale: ");
@@ -142,15 +142,15 @@ public class RestaurantHomeController {
         if(cartList.getItems().isEmpty()==false){
             Boolean flag= SceneHandler.getInstance().showConfirmation(localizationManager.getLocalizedString("cartInfo.text"), localizationManager.getLocalizedString("cartInfo.title"));
             if(flag){
-                ownStage.close();
+                SceneHandler.getInstance().closeStage(ownStage);
                 cartList.getItems().clear();
 
-                searchRestaurant.show();
+                SceneHandler.getInstance().showStage(searchRestaurant);
             }
         }else{
-            ownStage.close();
+            SceneHandler.getInstance().closeStage(ownStage);
 
-            searchRestaurant.show();
+            SceneHandler.getInstance().showStage(searchRestaurant);
         }
 
     }
@@ -235,7 +235,11 @@ public class RestaurantHomeController {
     }
 
     public void goToPayment() throws Exception {
-        SceneHandler.getInstance().setRecapOrder(cartList, totalLabel.getText());
+        if(cartList.getItems().isEmpty()){
+            SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("cartEmpty.text"), "cartEmpty.title");
+        }else {
+            SceneHandler.getInstance().setRecapOrder(cartList, totalLabel.getText());
+        }
     }
 
 
