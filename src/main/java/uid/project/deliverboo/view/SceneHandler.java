@@ -149,6 +149,7 @@ public class SceneHandler {
         chargingStage.setTitle("DeliverBoo");
         //stage.setResizable(false);
         chargingStage.setScene(searchScene);
+        chargingStage.initStyle(StageStyle.UNDECORATED);
         chargingStage.show();
         loadingVisible = true;
 
