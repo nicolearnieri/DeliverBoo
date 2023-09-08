@@ -2,10 +2,13 @@ package uid.project.deliverboo.controller;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.SceneAntialiasing;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import uid.project.deliverboo.model.*;
@@ -34,7 +37,7 @@ public class SearchRestaurantsController {
     private Button cafes;
 
     @FXML
-    private Button cart;
+    private Button fullList;
 
     @FXML
     private AnchorPane restaurantsListPane;
@@ -163,7 +166,7 @@ public class SearchRestaurantsController {
 
 
     @FXML
-    void searchByName(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
+    void searchByName(Event event) throws ExecutionException, InterruptedException, IOException {
         String name = searchBar.getText();
         Callable<List<Integer>> sBN = TaskCreator.createSearchByName(name, queryResults );
         Future<List<Integer>> executeSBN = executor.submit(sBN);
@@ -172,6 +175,14 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
+    }
+
+    @FXML
+    void sendByKey(KeyEvent event) throws IOException, ExecutionException, InterruptedException {
+        if (event.getCode() == KeyCode.ENTER)
+        {
+            searchByName(event);
+        }
     }
     @FXML
     void searchGelateria(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
@@ -296,8 +307,9 @@ public class SearchRestaurantsController {
     }
 
     @FXML
-    void openCart(ActionEvent event) {
-
+    void openFullList(ActionEvent event) throws IOException {
+        restaurantsList = new RestaurantsList();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults, localizationManager);
     }
 
 
@@ -357,7 +369,7 @@ public class SearchRestaurantsController {
         gelateria.setText(localizationManager.getLocalizedString("button.gelateria"));
         breadType.setText(localizationManager.getLocalizedString("button.breadType"));
         cafes.setText(localizationManager.getLocalizedString("button.cafe"));
-        cart.setText(localizationManager.getLocalizedString("button.cart"));
+        fullList.setText(localizationManager.getLocalizedString("button.list"));
         pizzeria.setText(localizationManager.getLocalizedString("button.pizzeria"));
         gourmet.setText(localizationManager.getLocalizedString("button.gourmet"));
         asian.setText(localizationManager.getLocalizedString("button.asian"));

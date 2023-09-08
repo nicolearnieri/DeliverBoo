@@ -33,7 +33,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <TextField fx:id="searchBar" prefHeight="26.0" prefWidth="282.0" promptText="nome del ristorante">
+                  <TextField fx:id="searchBar" onKeyPressed="#sendByKey" prefHeight="26.0" prefWidth="282.0" promptText="nome del ristorante">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></TextField>
@@ -171,15 +171,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="cart" mnemonicParsing="false" onAction="#openCart" text="carrello">
-                     <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Icone/cart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <Button fx:id="fullList" mnemonicParsing="false" onAction="#openFullList" prefHeight="38.0" prefWidth="139.0" text="mostra tutto" />
                </children>
             </HBox>
          </children>
