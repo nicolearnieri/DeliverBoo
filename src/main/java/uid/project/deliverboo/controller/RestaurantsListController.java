@@ -3,6 +3,7 @@ package uid.project.deliverboo.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.Restaurant;
 import uid.project.deliverboo.model.TaskCreator;
@@ -28,10 +29,23 @@ public class RestaurantsListController {
 
     private Label listEmpty= new Label();
 
+    @FXML
+    private AnchorPane listPane;
 
-    public void createList(List<Integer> queryResults, LocalizationManager localizationManager) throws IOException {
+    private AnchorPane anchorPane;
 
-        clearRestaurants();
+
+    public void createList(List<Integer> queryResults, LocalizationManager localizationManager, AnchorPane anchorPane) throws IOException {
+        this.anchorPane=anchorPane;
+        anchorPane.widthProperty().addListener((observable, oldValue, newValue) ->{
+            listPane.setPrefWidth(newValue.doubleValue());
+
+        });
+
+        anchorPane.heightProperty().addListener((observable, oldValue, newValue) -> {
+
+            listPane.setPrefHeight(newValue.doubleValue());
+        });
 
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
             listEmpty.setText("Nessun ristorante trovato");
@@ -98,6 +112,12 @@ public class RestaurantsListController {
     public static boolean clearRestaurants() {
         restaurants.clear();
         return true;
+    }
+
+    public void refersh(){
+        listPane.setPrefWidth(935);
+        listPane.setPrefHeight(610);
+
     }
 
 

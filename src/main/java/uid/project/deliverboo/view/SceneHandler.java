@@ -116,12 +116,14 @@ public class SceneHandler {
 
                 SearchRestaurantsController controller= loader.getController();
                 try {
-                    controller.init(localizationManager);
+                    controller.init(localizationManager, stage);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-                //controller.setLocalizationManager(localizationManager);
+
                 changedTheme(scene);
+                Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+                stage.getIcons().add(icon);
                 stage.setTitle("DeliverBoo");
                 stage.setScene(scene);
                 stage.show();

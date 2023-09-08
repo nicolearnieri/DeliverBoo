@@ -18,13 +18,13 @@ public class RestaurantItem extends StackPane {
     public RestaurantItem(Restaurant restaurant) throws IOException {
         this.restaurant=restaurant;
         FXMLLoader loader= new FXMLLoader(RestaurantsList.class.getResource("/SceneBuilder/RestaurantItem.fxml"));
-        //try{
+
             HBox root= loader.load();
             RestaurantItemController controller= loader.getController();
             controller.init(restaurant);
             this.getChildren().add(root);
-            root.prefWidthProperty().bind(this.widthProperty());
-        //}catch (Exception ignoredException){System.out.println("Catch di restaurant item");}
+
+
     }
 
     public  Restaurant getRestaurant(){

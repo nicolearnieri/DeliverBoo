@@ -135,10 +135,12 @@ public class SearchRestaurantsController {
 
     private List<Integer> queryResults= new ArrayList<Integer>();
 
+    private Stage stage;
 
 
-    public void init(LocalizationManager localizationManager) throws Exception {
 
+    public void init(LocalizationManager localizationManager, Stage stage) throws Exception {
+            this.stage=stage;
             this.localizationManager=localizationManager;
             updateTexts();
 
@@ -156,6 +158,11 @@ public class SearchRestaurantsController {
 
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults, localizationManager);
+
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController=restaurantsList.getController();
+            restaurantsListController.refersh();
+        });
 
         }
 
