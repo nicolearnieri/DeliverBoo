@@ -51,7 +51,7 @@
                   <ListView fx:id="menuList" HBox.hgrow="ALWAYS" />
                   <BorderPane prefWidth="450.0">
                      <center>
-                        <ListView fx:id="cartList" prefHeight="198.0" prefWidth="300.0" BorderPane.alignment="CENTER" />
+                        <ListView fx:id="cartList" prefWidth="300.0" BorderPane.alignment="CENTER" />
                      </center>
                      <bottom>
                         <HBox alignment="CENTER_RIGHT" prefHeight="50.0" BorderPane.alignment="CENTER">

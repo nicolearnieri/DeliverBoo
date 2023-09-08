@@ -163,3 +163,18 @@
      -fx-text-fill: #acacad; /* Colore del testo */
      -fx-transition-duration: 0.3s; /* transizione hover */
  }
+
+ #cartList .list-cell:empty{
+     -fx-background-color: transparent;
+     -fx-background-insets: 0;
+ }
+
+ #recapListView .list-cell:empty{
+     -fx-background-color: transparent;
+     -fx-background-insets: 0;
+ }
+
+ #restaurantsListView .list-cell:empty{
+     -fx-background-color: transparent;
+     -fx-background-insets: 0;
+ }

@@ -97,6 +97,22 @@
     -fx-border-color: #cfaef5;
     -fx-border-width: 0px;
 }
+
+#cartList .list-cell:empty{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+#recapListView .list-cell:empty{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+#restaurantsListView .list-cell:empty{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
 .menu-item: hover
 {
     -fx-background-color: #9d74cc;

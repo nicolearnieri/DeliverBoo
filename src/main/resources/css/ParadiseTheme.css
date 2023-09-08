@@ -147,3 +147,18 @@
 {
     -fx-font-size : 16px;
 }
+
+#cartList .list-cell:empty{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+#recapListView .list-cell:empty{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+#restaurantsListView .list-cell:empty{
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}

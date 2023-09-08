@@ -52,6 +52,8 @@ public class RecapOrderController {
 
         totalLabel.setText(total);
 
+
+
         for(CartItem cartItem: cartList.getItems()){
             Food food= cartItem.getFood();
             int quantity= cartItem.getQuantity();
