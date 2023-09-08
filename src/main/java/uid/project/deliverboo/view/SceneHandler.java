@@ -159,32 +159,34 @@ public class SceneHandler {
     public void setRestaurantHome(Restaurant restaurant) throws Exception{
         secondStage= new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RestaurantHome.fxml"));
-        Scene secondScene = new Scene(loader.load(), 1080, 700); //v:larghezza, v1:altezza
-        secondStage.initStyle(StageStyle.UNDECORATED);
+        Scene secondScene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
+
        RestaurantHomeController controller= loader.getController();
        controller.initialize(restaurant, stage, secondStage, localizationManager, controller);
 
 
         changedTheme(secondScene);
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        stage.getIcons().add(icon);
         secondStage.setTitle("DeliverBoo");
         secondStage.setScene(secondScene);
         secondStage.show();
     }
 
     public void setRecapOrder(ListView<CartItem> cartList, String total) throws Exception {
-        stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
+        secondStage = new Stage();
+        secondStage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
-        Scene secondScene = new Scene(loader.load(), 500, 700); //v:larghezza, v1:altezza
+        Scene secondScene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
 
-        stage.initStyle(StageStyle.UNDECORATED);
+        secondStage.initStyle(StageStyle.UNDECORATED);
         RecapOrderController controller= loader.getController();
-        controller.init(localizationManager, cartList, total, stage);
+        controller.init(localizationManager, cartList, total, secondStage);
 
         changedTheme(secondScene);
-        stage.setTitle("DeliverBoo");
-        stage.setScene(secondScene);
-        stage.show();
+        secondStage.setTitle("DeliverBoo");
+        secondStage.setScene(secondScene);
+        secondStage.show();
     }
 
     public void setOrderDetails() throws IOException {

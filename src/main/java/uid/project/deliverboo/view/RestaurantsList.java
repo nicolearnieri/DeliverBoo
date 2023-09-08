@@ -27,6 +27,8 @@ public class RestaurantsList extends AnchorPane {
 
             controller= loader.getController();
 
+            controller.clearRestaurants();
+
             controller.createList(queryResults, localizationManager, restaurantsListPane);
 
 
