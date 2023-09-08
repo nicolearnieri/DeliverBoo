@@ -34,10 +34,12 @@ public class RestaurantsListController {
 
     private AnchorPane anchorPane;
 
+    private Double newVal;
+
 
     public void createList(List<Integer> queryResults, LocalizationManager localizationManager, AnchorPane anchorPane) throws IOException {
         this.anchorPane=anchorPane;
-        anchorPane.widthProperty().addListener((observable, oldValue, newValue) ->{
+       anchorPane.widthProperty().addListener((observable, oldValue, newValue) ->{
             listPane.setPrefWidth(newValue.doubleValue());
 
         });
@@ -114,9 +116,10 @@ public class RestaurantsListController {
         return true;
     }
 
-    public void refersh(){
-        listPane.setPrefWidth(935);
-        listPane.setPrefHeight(610);
+    public void refersh(Double newVal){
+
+        listPane.setPrefWidth(newVal-280);
+
 
     }
 

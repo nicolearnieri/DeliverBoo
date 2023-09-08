@@ -160,8 +160,10 @@ public class SearchRestaurantsController {
             restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults, localizationManager);
 
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController=restaurantsList.getController();
-            restaurantsListController.refersh();
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refersh((Double) newVal);
+
+
         });
 
         }

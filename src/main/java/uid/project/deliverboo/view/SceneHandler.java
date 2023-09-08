@@ -174,13 +174,26 @@ public class SceneHandler {
     public void setRecapOrder(ListView<CartItem> cartList, String total) throws Exception {
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
-        logInScene = new Scene(loader.load(), 500, 700); //v:larghezza, v1:altezza
+        Scene secondScene = new Scene(loader.load(), 500, 700); //v:larghezza, v1:altezza
 
         stage.initStyle(StageStyle.UNDECORATED);
         RecapOrderController controller= loader.getController();
         controller.init(localizationManager, cartList, total, stage);
+
+        changedTheme(secondScene);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(secondScene);
+        stage.show();
+    }
+
+    public void setOrderDetails() throws IOException {
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
+        Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
+
+        OrderDetailsController controller= loader.getController();
+        //controller.init();
 
         changedTheme(logInScene);
         stage.setTitle("DeliverBoo");
