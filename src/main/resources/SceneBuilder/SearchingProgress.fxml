@@ -25,9 +25,9 @@
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="88.0" prefWidth="418.0">
                <children>
-                  <ImageView fitHeight="54.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="66.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../pngs/hotDog.gif" />
+                        <Image url="@../pngs/pizzaIcon.png" />
                      </image>
                   </ImageView>
                </children>
