@@ -62,6 +62,7 @@ public class PaymentController {
     public void initialize() {
 
         securityCodeBox.setManaged(false);
+        securityCodeBox.setVisible(false);
 
         questionMark.setOnMouseEntered(e -> {
             securityCodeBox.setVisible(true);
