@@ -41,12 +41,10 @@ public class RestaurantsListController {
         this.anchorPane=anchorPane;
        anchorPane.widthProperty().addListener((observable, oldValue, newValue) ->{
             listPane.setPrefWidth(newValue.doubleValue());
-           System.out.println("larghezza listener:"+newValue);
 
         });
 
         anchorPane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("altezza listener: "+newValue);
             listPane.setPrefHeight(newValue.doubleValue());
         });
 
@@ -124,17 +122,10 @@ public class RestaurantsListController {
 
     public void refershWidth(Double newVal){
         listPane.setPrefWidth(newVal-280);
-        //listPane.setPrefHeight(700);
-        System.out.println("setted:"+(newVal-280));
-
-
     }
 
     public void refershHeight(Double newVal){
         listPane.setPrefHeight(newVal-110);
-
-
-
     }
 
 
