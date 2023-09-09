@@ -7,7 +7,7 @@
 
 
 .text {
-    -fx-font-size : 14px;
+
     -fx-fill: #2c0938; /* Colore del testo */
 }
 
@@ -62,8 +62,7 @@
 /* Stile per le etichette (Label) */
 .label {
     -fx-text-fill: #2c0938; /* Colore del testo */
-    -fx-font-size: 14px; /* Dimensione del testo */
-}
+    }
 
 .menu-button {
     -fx-background-color:  #9a66d4; /* Colore dello sfondo */
@@ -179,4 +178,10 @@
 .combo-box-popup .list-cell: hover
 {
     -fx-background-color: #9d74cc;
+}
+
+
+#punLine
+{
+    -fx-font-size : 16px;
 }

@@ -232,8 +232,9 @@ public class SignUpController {
                 res = insRes.get();
                 if (res)
                 { //messaggio avviso che la registrazione è andata a buon fine e il profilo può essere completato da impostazioni
-                    EmailSender.sendEmail(email, localizationManager.getLocalizedString("email.subject"),localizationManager.getLocalizedString("email.body"));
                     regSuccess();
+                    EmailSender.sendEmail(email, localizationManager.getLocalizedString("email.subject"),localizationManager.getLocalizedString("email.body"));
+
                 }
             }
             else {genericError();}

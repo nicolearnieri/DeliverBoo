@@ -48,7 +48,10 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="77.0" prefWidth="374.0">
                      <children>
-                        <Label fx:id="passwordLabel" alignment="CENTER" prefHeight="20.0" prefWidth="150.0" text="Password" />
+                        <Label fx:id="passwordLabel" alignment="CENTER" prefHeight="20.0" prefWidth="150.0" text="Password">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin></Label>
                         <StackPane prefHeight="74.0" prefWidth="146.0">
                            <children>
                               <TextField fx:id="seePasswordFieldSU" />
