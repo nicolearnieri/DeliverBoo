@@ -341,7 +341,7 @@ public class SceneHandler {
 
         //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
+        stage.getIcons().add(icon); // Imposta l'icona per la finestra
 
         stage.setScene(scene);
         stage.show();
