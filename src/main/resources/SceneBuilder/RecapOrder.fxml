@@ -48,7 +48,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="proceedButton" alignment="CENTER" mnemonicParsing="false" onAction="#proceed" prefHeight="36.0" prefWidth="71.0" text="Avanti">
+            <Button fx:id="proceedButton" alignment="CENTER" mnemonicParsing="false" onAction="#proceed" prefHeight="36.0" prefWidth="99.0" text="Avanti">
                <VBox.margin>
                   <Insets right="30.0" top="10.0" />
                </VBox.margin>
