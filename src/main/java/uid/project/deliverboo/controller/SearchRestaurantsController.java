@@ -1,6 +1,7 @@
 package uid.project.deliverboo.controller;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -137,6 +138,11 @@ public class SearchRestaurantsController {
 
     private Stage stage;
 
+    private Number newWidth;
+
+    private Number newHeight;
+
+
 
 
     public void init(LocalizationManager localizationManager, Stage stage) throws Exception {
@@ -161,10 +167,23 @@ public class SearchRestaurantsController {
 
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
+            restaurantsListController.refershWidth((Double) newVal);
+
+            this.newWidth=newVal;
 
 
         });
+
+        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            RestaurantsListController restaurantsListController = restaurantsList.getController();
+            restaurantsListController.refershHeight((Double) newVal);
+
+            this.newHeight=newVal;
+
+
+        });
+
+
 
         }
 
@@ -183,13 +202,12 @@ public class SearchRestaurantsController {
 
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
 
 
-        });
 
     }
 
@@ -206,15 +224,13 @@ public class SearchRestaurantsController {
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
-            restaurantsList = new RestaurantsList();
-            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+        restaurantsList = new RestaurantsList();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
-       stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
 
-
-        });
 
 
     }
@@ -227,15 +243,12 @@ public class SearchRestaurantsController {
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
-            restaurantsList = new RestaurantsList();
-            restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+        restaurantsList = new RestaurantsList();
+        restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
 
 
     }
@@ -249,12 +262,9 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
 
     }
@@ -268,12 +278,9 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
     }
 
@@ -286,12 +293,9 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
-       stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
 
     }
@@ -305,12 +309,9 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
-       stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
 
     }
@@ -324,12 +325,9 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results,localizationManager);
 
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
 
     }
@@ -343,12 +341,9 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
 
     }
@@ -362,12 +357,9 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
-       stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
 
     }
@@ -381,12 +373,9 @@ public class SearchRestaurantsController {
             restaurantsList = new RestaurantsList();
             restaurantsList.loadRestaurantsList(restaurantsListPane, results, localizationManager);
 
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
 
 
     }
@@ -396,12 +385,9 @@ public class SearchRestaurantsController {
         restaurantsList = new RestaurantsList();
         restaurantsList.loadRestaurantsList(restaurantsListPane, queryResults, localizationManager);
 
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-           RestaurantsListController restaurantsListController = restaurantsList.getController();
-            restaurantsListController.refersh((Double) newVal);
-
-
-        });
+        RestaurantsListController restaurantsListController = restaurantsList.getController();
+        restaurantsListController.refershWidth((Double) newWidth);
+        restaurantsListController.refershHeight((Double) newHeight);
     }
 
 

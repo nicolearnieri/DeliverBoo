@@ -34,19 +34,19 @@ public class RestaurantsListController {
 
     private AnchorPane anchorPane;
 
-    private Double newVal;
+    //private Double newVal;
 
 
     public void createList(List<Integer> queryResults, LocalizationManager localizationManager, AnchorPane anchorPane) throws IOException {
         this.anchorPane=anchorPane;
        anchorPane.widthProperty().addListener((observable, oldValue, newValue) ->{
             listPane.setPrefWidth(newValue.doubleValue());
-           System.out.println("listener");
+           System.out.println("larghezza listener:"+newValue);
 
         });
 
         anchorPane.heightProperty().addListener((observable, oldValue, newValue) -> {
-
+            System.out.println("altezza listener: "+newValue);
             listPane.setPrefHeight(newValue.doubleValue());
         });
 
@@ -122,10 +122,17 @@ public class RestaurantsListController {
         restaurants.clear();
     }
 
-    public void refersh(Double newVal){
-        System.out.println(newVal-280);
+    public void refershWidth(Double newVal){
         listPane.setPrefWidth(newVal-280);
-        System.out.println("setted");
+        //listPane.setPrefHeight(700);
+        System.out.println("setted:"+(newVal-280));
+
+
+    }
+
+    public void refershHeight(Double newVal){
+        listPane.setPrefHeight(newVal-110);
+
 
 
     }
