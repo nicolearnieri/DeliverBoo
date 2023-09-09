@@ -23,7 +23,7 @@ public class RecapItemController {
             nameLabel.setText(food.getItName());
             quantityLabel.setText("Quantità: "+quantity);
         }else{
-            nameLabel.setText("Order summary");
+            nameLabel.setText(food.getEngName());
             quantityLabel.setText("Quantity: "+quantity);
         }
 
