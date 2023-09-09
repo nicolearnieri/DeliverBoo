@@ -16,7 +16,7 @@
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="394.0" prefWidth="334.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="messageLabel" alignment="CENTER" prefWidth="240.0" text="Completa tutti i campi per registrarti" textAlignment="CENTER" />
+            <Label fx:id="messageLabel" alignment="CENTER" prefWidth="350.0" text="Completa tutti i campi per registrarti" textAlignment="CENTER" />
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2" spacing="20.0">
                <children>
                   <Label fx:id="labelUsername" alignment="CENTER" prefHeight="17.6" prefWidth="130.0" text="Username" textAlignment="CENTER" />
@@ -72,7 +72,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2">
                <children>
-                  <Button fx:id="buttonSend" mnemonicParsing="false" onAction="#registration" prefHeight="34.0" prefWidth="80.0" text="Invia" />
+                  <Button fx:id="buttonSend" mnemonicParsing="false" onAction="#registration" onKeyPressed="#sendEnter" prefHeight="34.0" prefWidth="80.0" text="Invia" />
                </children>
             </HBox>
          </children>

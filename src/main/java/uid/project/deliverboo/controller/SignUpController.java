@@ -2,10 +2,13 @@ package uid.project.deliverboo.controller;
 
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -186,7 +189,7 @@ public class SignUpController {
     }
 
     @FXML
-    private void registration(ActionEvent event)
+    private void registration(Event event)
     {
         String email= GetFromTextField(emailField);
         String username = GetFromTextField(usernameField);
@@ -247,6 +250,16 @@ public class SignUpController {
     void openLogIn(ActionEvent event) throws Exception {
         SceneHandler.getInstance().setLogIn();
     }
+
+    @FXML
+    void sendEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER)
+        {
+            registration(event);
+        }
+
+    }
+
 
 
     private void updateTexts(){

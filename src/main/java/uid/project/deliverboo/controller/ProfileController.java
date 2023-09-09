@@ -135,5 +135,7 @@ public class ProfileController {
         otherwiseLabel.setText(localizationManager.getLocalizedString("label.otherwiseLabel"));
         deleteLabel.setText(localizationManager.getLocalizedString("label.deleteLabel"));
         deleteButton.setText(localizationManager.getLocalizedString("button.deleteButton"));
+        logOutButton.setText(localizationManager.getLocalizedString("button.logOut"));
+        logOutLabel.setText(localizationManager.getLocalizedString("label.logOut"));
     }
 }

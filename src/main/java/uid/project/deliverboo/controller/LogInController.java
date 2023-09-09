@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import uid.project.deliverboo.model.*;
@@ -70,8 +72,6 @@ public class LogInController {
 
         passwordFieldSU.textProperty().bindBidirectional(seePasswordFieldSU.textProperty());
         eyeImage.setImage(openEye);
-
-
 
         eyeImage.setOnMouseClicked(event -> {
             if (eyeImage.getImage() == openEye) {
@@ -174,6 +174,15 @@ public class LogInController {
             else logInError(localizationManager.getLocalizedString("error.password"));
         }
     }
+
+    @FXML
+    void accessEnter(KeyEvent event) throws ExecutionException, InterruptedException {
+        if (event.getCode() == KeyCode.ENTER)
+        {
+            logInUser();
+        }
+    }
+
 
     private void updateTexts(){
         accessButton.setText(localizationManager.getLocalizedString("button.accessButtonAc"));

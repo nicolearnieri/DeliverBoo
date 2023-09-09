@@ -78,6 +78,7 @@ public class SceneHandler {
         stage.getIcons().add(icon); // Imposta l'icona per la finestra
         stage.setScene(scene);
         stage.show();
+
     }
     public static SceneHandler getInstance() {
         if(instance == null)
@@ -431,6 +432,13 @@ public class SceneHandler {
         alertError.setContentText(message);
         alertError.getDialogPane().setPrefWidth(500);
         alertError.showAndWait();
+
+        /*
+        dà nullpointerException
+        Image stageIcon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Stage stage = (Stage) alertError.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(stageIcon);*/
+
     }
 
     public void showInfo(String message, String title) {
