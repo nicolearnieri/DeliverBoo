@@ -58,10 +58,10 @@
                            </image></ImageView>
                      </children>
                   </HBox>
-                  <HBox fx:id="securityCodeBox" alignment="CENTER" prefHeight="75.0" prefWidth="454.0" spacing="30.0">
+                  <HBox fx:id="securityCodeBox" alignment="CENTER" prefHeight="62.0" prefWidth="433.0" spacing="15.0">
                      <children>
                         <Label fx:id="SecurityLabel" prefHeight="52.0" prefWidth="337.0" text="Il Codice di Sicurezza o Verifica (CVV o CVC) è il codice di 3 o 4 cifre che trovi sul retro della carta." />
-                        <ImageView fitHeight="75.0" fitWidth="135.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="77.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../usedImages/cvv.png" />
                            </image>
@@ -70,8 +70,8 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="454.0" spacing="145.0">
                      <children>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="80.0" text="annulla" />
-                        <Button fx:id="confirmationButton" mnemonicParsing="false" onAction="#confirmPayment" prefHeight="30.0" prefWidth="80.0" text="conferma" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="90.0" text="annulla" />
+                        <Button fx:id="confirmationButton" mnemonicParsing="false" onAction="#confirmPayment" prefHeight="30.0" prefWidth="90.0" text="conferma" />
                      </children>
                   </HBox>
                </children>
