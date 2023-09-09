@@ -174,35 +174,52 @@ public class SceneHandler {
     }
 
     public void setRecapOrder(ListView<CartItem> cartList, String total) throws Exception {
-        secondStage = new Stage();
-        secondStage.initModality(Modality.APPLICATION_MODAL);
+        Stage thirdStage = new Stage();
+        thirdStage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
         Scene secondScene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
 
-        secondStage.initStyle(StageStyle.UNDECORATED);
+        thirdStage.initStyle(StageStyle.UNDECORATED);
         RecapOrderController controller= loader.getController();
-        controller.init(localizationManager, cartList, total, secondStage);
+        controller.init(localizationManager, cartList, total, thirdStage);
 
         changedTheme(secondScene);
+        thirdStage.setTitle("DeliverBoo");
+        thirdStage.setScene(secondScene);
+        thirdStage.show();
+    }
+
+    public void setPayment() throws IOException {
+        secondStage= new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Payment.fxml"));
+        Scene secondScene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
+
+        PaymentController controller= loader.getController();
+        controller.initialize();
+
+
+        changedTheme(secondScene);
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        stage.getIcons().add(icon);
         secondStage.setTitle("DeliverBoo");
         secondStage.setScene(secondScene);
         secondStage.show();
     }
 
     public void setOrderDetails() throws IOException {
+        hideStage(secondStage);
         stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderDetails.fxml"));
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
 
         OrderDetailsController controller= loader.getController();
-        //controller.init();
+        controller.init(localizationManager,stage, secondStage);
 
-        changedTheme(logInScene);
+        changedTheme(secondScene);
         stage.setTitle("DeliverBoo");
-        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
         stage.getIcons().add(icon); // Imposta l'icona per la finestra
-        stage.setScene(logInScene);
+        stage.setScene(secondScene);
         stage.show();
     }
 

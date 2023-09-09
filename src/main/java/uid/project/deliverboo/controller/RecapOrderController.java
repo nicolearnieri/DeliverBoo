@@ -40,14 +40,18 @@ public class RecapOrderController {
 
 
 
-    public void init(LocalizationManager localizationManager, ListView<CartItem> cartList, String total, Stage stage) throws IOException {
-        this.stage=stage;
+
+
+    public void init(LocalizationManager localizationManager, ListView<CartItem> cartList, String total, Stage ownStage) throws IOException {
+        this.stage=ownStage;
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
             recapLabel.setText("Riepilogo ordine");
             proceedButton.setText("Avanti");
+            backButton.setText("Chiudi");
         }else{
             recapLabel.setText("Order summary");
             proceedButton.setText("Proceed");
+            backButton.setText("Close");
         }
 
         totalLabel.setText(total);
@@ -72,8 +76,9 @@ public class RecapOrderController {
         SceneHandler.getInstance().closeStage(stage);
     }
 
-    public void proceed(){
+    public void proceed() throws IOException {
         SceneHandler.getInstance().closeStage(stage);
+        SceneHandler.getInstance().setOrderDetails();
     }
 
 

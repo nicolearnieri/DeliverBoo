@@ -19,17 +19,10 @@
    <top>
       <VBox prefHeight="140.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="38.0">
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBack" prefHeight="29.0" prefWidth="84.0" text="Chiudi">
                <VBox.margin>
                   <Insets left="20.0" top="20.0" />
                </VBox.margin>
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Icone/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
             <VBox alignment="CENTER" prefHeight="104.0" prefWidth="600.0">
                <children>
@@ -55,7 +48,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="proceedButton" alignment="CENTER" mnemonicParsing="false" prefHeight="36.0" prefWidth="71.0" text="Avanti">
+            <Button fx:id="proceedButton" alignment="CENTER" mnemonicParsing="false" onAction="#proceed" prefHeight="36.0" prefWidth="71.0" text="Avanti">
                <VBox.margin>
                   <Insets right="30.0" top="10.0" />
                </VBox.margin>
