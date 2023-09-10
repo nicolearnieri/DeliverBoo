@@ -2,6 +2,7 @@ package uid.project.deliverboo.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -96,6 +97,7 @@ public class PasswordController {
             if (exec.get())
                 SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.delete"), localizationManager.getLocalizedString("title.delete"));
             SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnClientStage());
+            SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnPassStage());
 
         }
 

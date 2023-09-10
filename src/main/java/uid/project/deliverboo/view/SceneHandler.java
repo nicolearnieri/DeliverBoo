@@ -47,6 +47,8 @@ public class SceneHandler {
     private Stage clientStage;
     private Stage secondStage;
 
+    private Stage passStage;
+
     private Stage thirdStage;
 
     private Scene searchScene;
@@ -197,7 +199,7 @@ public class SceneHandler {
         terminateExec(stage);
     }
 
-    public void setRecapOrder(ListView<CartItem> cartList, String total) throws Exception {
+    public void setRecapOrder(ListView<CartItem> cartList, String total, double tot) throws Exception {
         thirdStage = new Stage();
         thirdStage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
@@ -205,7 +207,7 @@ public class SceneHandler {
 
         thirdStage.initStyle(StageStyle.UNDECORATED);
         RecapOrderController controller= loader.getController();
-        controller.init(localizationManager, cartList, total, thirdStage);
+        controller.init(localizationManager, cartList, total, thirdStage, tot);
 
         changedTheme(secondScene);
         thirdStage.setTitle("DeliverBoo");
@@ -215,14 +217,14 @@ public class SceneHandler {
         terminateExec(thirdStage);
     }
 
-    public void setOrderDetails() throws IOException {
+    public void setOrderDetails(double tot) throws IOException {
         hideStage(secondStage);
         thirdStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderDetails.fxml"));
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
 
         OrderDetailsController controller= loader.getController();
-        controller.init(localizationManager,thirdStage, secondStage);
+        controller.init(localizationManager,thirdStage, secondStage, tot);
 
         changedTheme(secondScene);
         thirdStage.setTitle("DeliverBoo");
@@ -234,13 +236,13 @@ public class SceneHandler {
         terminateExec(thirdStage);
     }
 
-    public void setPayment() throws IOException {
+    public void setPayment(double tot) throws IOException {
         thirdStage= new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Payment.fxml"));
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
 
         PaymentController controller= loader.getController();
-        controller.initialize(secondStage, thirdStage, localizationManager);
+        controller.initialize(secondStage, thirdStage, localizationManager, tot);
 
 
         changedTheme(secondScene);
@@ -372,11 +374,16 @@ public class SceneHandler {
     {
         return clientStage;
     }
+
+    public Stage returnPassStage()
+    {
+        return passStage;
+    }
     public void setPasswordConfirmation() throws Exception {
-        if (stage != null) stage.close();
-        stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
+        if (passStage != null) passStage.close();
+        passStage = new Stage();
+        passStage.initModality(Modality.APPLICATION_MODAL);
+        passStage.setResizable(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Password.fxml"));
         logInScene = new Scene(loader.load(), 600, 400); //v:larghezza, v1:altezza
 
@@ -385,14 +392,14 @@ public class SceneHandler {
         controller.setLocalizationManager(localizationManager);
 
         changedTheme(logInScene);
-        stage.setTitle("DeliverBoo");
+        passStage.setTitle("DeliverBoo");
 
         //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        stage.getIcons().add(icon); // Imposta l'icona per la finestra
+        passStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
-        stage.setScene(logInScene);
-        stage.show();
+        passStage.setScene(logInScene);
+        passStage.show();
     }
 
     public void setFaq() throws Exception {

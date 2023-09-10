@@ -37,13 +37,16 @@ public class RecapOrderController {
 
     private Stage stage;
 
+    private double tot;
 
 
 
 
 
-    public void init(LocalizationManager localizationManager, ListView<CartItem> cartList, String total, Stage ownStage) throws IOException {
-        this.stage=ownStage;
+
+    public void init(LocalizationManager localizationManager, ListView<CartItem> cartList, String total, Stage ownStage, double tot) throws IOException {
+        stage=ownStage;
+        this.tot=tot;
         if(localizationManager.getCurrentLocale().equals(Locale.ITALIAN)){
             recapLabel.setText("Riepilogo ordine");
             proceedButton.setText("Avanti");
@@ -78,7 +81,7 @@ public class RecapOrderController {
 
     public void proceed() throws IOException {
         SceneHandler.getInstance().closeStage(stage);
-        SceneHandler.getInstance().setOrderDetails();
+        SceneHandler.getInstance().setOrderDetails(tot);
     }
 
 
