@@ -238,7 +238,7 @@ public class RestaurantHomeController {
         if(cartList.getItems().isEmpty()){
             SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("cartEmpty.text"), "cartEmpty.title");
         }else {
-            SceneHandler.getInstance().setRecapOrder(cartList, totalLabel.getText());
+            SceneHandler.getInstance().setRecapOrder(cartList, totalLabel.getText(), tot);
         }
     }
 
