@@ -115,7 +115,7 @@ public class ProfileController {
     void logOut(ActionEvent event) {
 
         CurrentUser.getInstance().logOut();
-        SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnStage());
+        SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnClientStage());
 
     }
 

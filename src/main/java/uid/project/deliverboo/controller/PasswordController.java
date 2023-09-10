@@ -95,7 +95,7 @@ public class PasswordController {
 
             if (exec.get())
                 SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.delete"), localizationManager.getLocalizedString("title.delete"));
-            SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnStage());
+            SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnClientStage());
 
         }
 

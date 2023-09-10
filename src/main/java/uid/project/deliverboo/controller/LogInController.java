@@ -118,14 +118,14 @@ public class LogInController {
         boolean userExists = false;
         boolean logInSucceded=false;
 
-        if (email) {
+        if (email) {  //Se l'utente cerca di accedere tramite email:
             Callable<Boolean> emailCallable = TaskCreator.createEmailNotExists(user);
             Future<Boolean> result = executor.submit(emailCallable);
             Boolean res = result.get();
             if (res)
-                logInError(localizationManager.getLocalizedString("error.email"));
-            else userExists = true;
-        } else {
+                logInError(localizationManager.getLocalizedString("error.email")); //l'email non esiste
+            else userExists = true; //l'utente esiste
+        } else { //cerca di accedere tramite username
             Callable<Boolean> userCallable = TaskCreator.createUsernameNotExists(user);
             Future<Boolean> result = executor.submit(userCallable);
             Boolean res = result.get();
@@ -142,16 +142,15 @@ public class LogInController {
             boolean check = BCrypt.checkpw(password, resP);
 
             if (check) {
-                logInSucceded=true;
-                //facimm ancuna cos tu rimember de iuser
+                //si settano le info dell'utente corrente (che ha fatto l'accesso)
                 CurrentUser cU = CurrentUser.getInstance();
+
                 if (email) {
                     cU.setEmail(user);
                     Callable<String> getUserCallable = TaskCreator.createGetUsername(user);
                     Future<String> result = executor.submit(getUserCallable);
                     String resS = result.get();
                     cU.setNomeUtente(resS);
-
                 }
                 else {
                     cU.setNomeUtente(user);
@@ -160,7 +159,10 @@ public class LogInController {
                     String resE= result.get();
                     cU.setEmail(resE);
                 }
+
                 logSuccess();
+                SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnLogInSignUpStage());
+
                 Callable<Vector<String>> info = TaskCreator.returnUserInfoCallable(user);
                 Future<Vector<String>> exec = executor.submit(info);
                 Vector<String> res = exec.get();
@@ -169,7 +171,6 @@ public class LogInController {
                     cU.setSurname(res.get(1));
                     cU.setPhoneNumber(res.get(2));
                 }
-
             }
             else logInError(localizationManager.getLocalizedString("error.password"));
         }
