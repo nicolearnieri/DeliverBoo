@@ -65,7 +65,7 @@ public class SceneHandler {
 
     private SceneHandler() {}
 
-    public void init(Stage primaryStage) throws Exception { //metodo che può generare eccezione
+    public void init(Stage primaryStage) throws Exception { //metodo che puÃ² generare eccezione
         if(stage != null)
             return;
         stage = primaryStage;
@@ -123,36 +123,35 @@ public class SceneHandler {
     public void setSearchRestaurants() throws Exception {
         if(stage!=null) {stage.close();}
 
-            // Carica la schermata di "Searching Progress" e visualizzala
-            Platform.runLater(() -> {
-                stage = new Stage();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
-                try {
-                    scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+        // Carica la schermata di "Searching Progress" e visualizzala
+        Platform.runLater(() -> {
+            stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchRestaurants.fxml"));
+            try {
+                scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
-                SearchRestaurantsController controller= loader.getController();
-                try {
-                    controller.init(localizationManager, stage);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+            SearchRestaurantsController controller= loader.getController();
+            try {
+                controller.init(localizationManager, stage);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
 
-                changedTheme(scene);
-                Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-                stage.getIcons().add(icon);
-                stage.setTitle("DeliverBoo");
-                stage.setScene(scene);
-                stage.show();
+            changedTheme(scene);
+            Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+            stage.getIcons().add(icon);
+            stage.setTitle("DeliverBoo");
+            stage.setScene(scene);
+            stage.show();
 
 
-                chargingStage.close();
-                terminateExec(stage);
+            chargingStage.close();
+            terminateExec(stage);
 
-            });
-        /*stage.show();*/
+        });
     }
 
     public void setSearchingProgress() throws Exception {
@@ -181,13 +180,13 @@ public class SceneHandler {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RestaurantHome.fxml"));
         Scene secondScene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
 
-       RestaurantHomeController controller= loader.getController();
-       controller.initialize(restaurant, stage, secondStage, localizationManager, controller);
+        RestaurantHomeController controller= loader.getController();
+        controller.initialize(restaurant, stage, secondStage, localizationManager, controller);
 
 
         changedTheme(secondScene);
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        stage.getIcons().add(icon);
+        secondStage.getIcons().add(icon);
         secondStage.setTitle("DeliverBoo");
         secondStage.setScene(secondScene);
         secondStage.show();
@@ -219,12 +218,12 @@ public class SceneHandler {
         Scene secondScene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
 
         PaymentController controller= loader.getController();
-        controller.initialize();
+        controller.initialize(stage, secondStage, localizationManager);
 
 
         changedTheme(secondScene);
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        stage.getIcons().add(icon);
+        secondStage.getIcons().add(icon);
         secondStage.setTitle("DeliverBoo");
         secondStage.setScene(secondScene);
         secondStage.show();
@@ -250,6 +249,25 @@ public class SceneHandler {
 
         terminateExec(stage);
     }
+
+    public void setOrderConfirmed() throws IOException {
+        closeStage(stage);
+        closeStage(secondStage);
+        stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderConfirmed.fxml"));
+        scene = new Scene(loader.load(), 700, 700); //v:larghezza, v1:altezza
+
+        OrderConfirmedController controller= loader.getController();
+        controller.init(localizationManager);
+
+        changedTheme(scene);
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        stage.getIcons().add(icon);
+        stage.setTitle("DeliverBoo");
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
 
@@ -323,7 +341,7 @@ public class SceneHandler {
 
         //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
+        stage.getIcons().add(icon); // Imposta l'icona per la finestra
 
         stage.setScene(logInScene);
         stage.show();
@@ -350,7 +368,7 @@ public class SceneHandler {
 
         //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
+        stage.getIcons().add(icon); // Imposta l'icona per la finestra
 
         stage.setScene(logInScene);
         stage.show();
@@ -465,7 +483,7 @@ public class SceneHandler {
         alertError.showAndWait();
 
         /*
-        dà nullpointerException
+        dÃ  nullpointerException
         Image stageIcon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
         Stage stage = (Stage) alertError.getDialogPane().getScene().getWindow();
         stage.getIcons().add(stageIcon);*/

@@ -7,12 +7,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import uid.project.deliverboo.view.SceneHandler;
+
+import java.io.IOException;
 
 public class PaymentController {
 
-    @FXML
-    private Label SecurityLabel;
 
     @FXML
     private Button cancelButton;
@@ -33,7 +34,7 @@ public class PaymentController {
     private Button confirmationButton;
 
     @FXML
-    private Label endDateLabel;
+    private Label expiryDateLabel;
 
     @FXML
     private Label messagePaymentLabel;
@@ -56,11 +57,21 @@ public class PaymentController {
     @FXML
     private ComboBox<String> yearBox;
 
+    @FXML
+    private Label securityLabel;
+
     private LocalizationManager localizationManager;
 
+    private Stage previousStage;
 
-    public void initialize() {
+    private Stage ownStage;
 
+
+    public void initialize(Stage stage, Stage ownStage, LocalizationManager localizationManager) {
+        this.previousStage=stage;
+        this.ownStage=ownStage;
+        this.localizationManager =localizationManager;
+        updateTexts();
         securityCodeBox.setManaged(false);
         securityCodeBox.setVisible(false);
 
@@ -81,19 +92,24 @@ public class PaymentController {
     }
 
     @FXML
-    void confirmPayment(ActionEvent event) {
-        SceneHandler.getInstance().showConfirmation(localizationManager.getLocalizedString("content.PaymentOk"), localizationManager.getLocalizedString("title.PaymentOk"));
+    void confirmPayment(ActionEvent event) throws IOException {
+        SceneHandler.getInstance().setOrderConfirmed();
     }
 
     @FXML
     void goBack(ActionEvent event) {
-
+        SceneHandler.getInstance().showStage(previousStage);
+        SceneHandler.getInstance().closeStage(ownStage);
     }
 
 
-    public void setLocalizationManager(LocalizationManager localizationManager){
-        this.localizationManager = localizationManager;
-        //updateTexts();
+    public void updateTexts(){
+        messagePaymentLabel.setText(localizationManager.getLocalizedString("label.messagePayment"));
+        cardOwnerLabel.setText(localizationManager.getLocalizedString("label.cardOwner"));
+        cardNumberLabel.setText(localizationManager.getLocalizedString("label.cardNumber"));
+        expiryDateLabel.setText(localizationManager.getLocalizedString("label.expiryDate"));
+        securityCodeLabel.setText(localizationManager.getLocalizedString("label.securityCode"));
+        securityLabel.setText(localizationManager.getLocalizedString("label.securityLabel"));
     }
 
 
