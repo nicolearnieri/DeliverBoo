@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import uid.project.deliverboo.model.EmailSender;
+import uid.project.deliverboo.model.ValidatorUtility;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.io.IOException;
@@ -104,7 +105,18 @@ public class PaymentController {
 
     @FXML
     void confirmPayment(ActionEvent event) throws IOException {
-        if (controlOnMonth()) {
+
+        boolean monthOk = controlOnMonth();
+        boolean cardOk = ValidatorUtility.isValidNumber(cardNumberField.getText());
+        boolean nameOk = ValidatorUtility.isValidString(cardOwnerField.getText());
+        boolean codeOk = ValidatorUtility.isValidNumber(securityCodeField.getText());
+
+        if (!monthOk) {SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongMonth.message"), localizationManager.getLocalizedString("wrongMonth.title"));}
+        if (!nameOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongName.message"), localizationManager.getLocalizedString("wrongName.title"));}
+        if (!codeOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongCode.message"), localizationManager.getLocalizedString("wrongCode.title"));}
+        if (!cardOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongCard.message"), localizationManager.getLocalizedString("wrongCard.title"));}
+
+        if (cardOk && nameOk && monthOk && codeOk) {
             String message = localizationManager.getLocalizedString("orderConfirmed.body1");
             String value = String.valueOf(tot);
             String message2 = localizationManager.getLocalizedString("orderConfirmed.body2");
@@ -113,10 +125,8 @@ public class PaymentController {
             SceneHandler.getInstance().setOrderConfirmed();
         }
 
-        else
-        {SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongMonth.message"), localizationManager.getLocalizedString("wrongMonth.title") );
-             }
     }
+
 
     @FXML
     void goBack(ActionEvent event) {

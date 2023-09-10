@@ -92,7 +92,17 @@ public class ProfileController {
         String newName = nameField.getText();
         String newSurname = surnameField.getText();
         String newPhone = phoneField.getText();
-        if (ValidatorUtility.isValidPhoneNumber(newPhone))
+
+        boolean nameOk = ValidatorUtility.isValidString(newName);
+        boolean surnameOk = ValidatorUtility.isValidString(newSurname);
+        boolean phoneOk = ValidatorUtility.isValidPhoneNumber(newPhone);
+
+
+        if (!nameOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongName.message"), localizationManager.getLocalizedString("wrongName.title"));}
+        if (!surnameOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongSurname.message"), localizationManager.getLocalizedString("wrongSurname.title"));}
+        if (!phoneOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongPhone.message"), localizationManager.getLocalizedString("wrongPhone.title"));}
+
+        if (nameOk && surnameOk && phoneOk)
         {
             Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getNomeUtente(), newName, newSurname, newPhone);
             Future<Boolean> exec = executor.submit(update);

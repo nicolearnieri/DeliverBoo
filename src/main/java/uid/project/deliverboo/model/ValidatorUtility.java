@@ -14,6 +14,12 @@ public class ValidatorUtility {
     private static final String PHONE_PATTERN = "^\\+?[0-9\\s\\-\\(\\)]+$";
     private static final Pattern phonePattern = Pattern.compile(PHONE_PATTERN);
 
+    private static final String NUMBER_PATTERN = "^\\d+$";
+    private static final Pattern numberPattern = Pattern.compile(NUMBER_PATTERN);
+
+    private static final String STRING_PATTERN = "^[a-zA-Z\\s]+$";
+    private static final Pattern stringPattern = Pattern.compile(STRING_PATTERN);
+
 
     // Metodo per verificare se una password è valida
     public static boolean isValidPassword(String password) {
@@ -28,6 +34,18 @@ public class ValidatorUtility {
     }
     public static boolean isValidPhoneNumber(String number) {
         Matcher matcher = phonePattern.matcher(number);
+        return matcher.matches();
+    }
+
+    public static boolean isValidNumber(String number)
+    {
+        Matcher matcher = numberPattern.matcher(number);
+        return matcher.matches();
+    }
+
+    public static boolean isValidString(String string)
+    {
+        Matcher matcher = stringPattern.matcher(string);
         return matcher.matches();
     }
 
