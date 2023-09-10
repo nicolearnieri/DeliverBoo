@@ -47,6 +47,8 @@ public class SceneHandler {
     private Stage clientStage;
     private Stage secondStage;
 
+    private Stage passStage;
+
     private Stage thirdStage;
 
     private Scene searchScene;
@@ -372,11 +374,16 @@ public class SceneHandler {
     {
         return clientStage;
     }
+
+    public Stage returnPassStage()
+    {
+        return passStage;
+    }
     public void setPasswordConfirmation() throws Exception {
-        if (stage != null) stage.close();
-        stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
+        if (passStage != null) passStage.close();
+        passStage = new Stage();
+        passStage.initModality(Modality.APPLICATION_MODAL);
+        passStage.setResizable(false);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Password.fxml"));
         logInScene = new Scene(loader.load(), 600, 400); //v:larghezza, v1:altezza
 
@@ -385,14 +392,14 @@ public class SceneHandler {
         controller.setLocalizationManager(localizationManager);
 
         changedTheme(logInScene);
-        stage.setTitle("DeliverBoo");
+        passStage.setTitle("DeliverBoo");
 
         //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        stage.getIcons().add(icon); // Imposta l'icona per la finestra
+        passStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
-        stage.setScene(logInScene);
-        stage.show();
+        passStage.setScene(logInScene);
+        passStage.show();
     }
 
     public void setFaq() throws Exception {
