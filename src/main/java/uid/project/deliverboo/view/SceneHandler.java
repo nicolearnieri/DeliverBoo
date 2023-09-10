@@ -18,10 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
+import java.util.concurrent.ExecutorService;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import javafx.scene.control.ButtonType;
+import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.Food;
 import uid.project.deliverboo.model.Restaurant;
 
@@ -57,6 +59,8 @@ public class SceneHandler {
     private static boolean loadingVisible = false;
 
     private LocalizationManager localizationManager;
+
+    private ExecutorService executor = ExecutorProvider.getExecutor();
 
 
     private SceneHandler() {}
@@ -101,6 +105,13 @@ public class SceneHandler {
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
+
+
+        stage.setOnCloseRequest(e -> {
+            executor.shutdownNow();
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public void setSearchRestaurants() throws Exception {
@@ -132,6 +143,12 @@ public class SceneHandler {
 
 
                 chargingStage.close();
+
+                stage.setOnCloseRequest(e -> {
+                    executor.shutdownNow();
+                    Platform.exit();
+                    System.exit(0);
+                });
             });
         /*stage.show();*/
     }
@@ -346,6 +363,12 @@ public class SceneHandler {
 
         stage.setScene(scene);
         stage.show();
+
+        stage.setOnCloseRequest(e -> {
+            executor.shutdownNow();
+            Platform.exit();
+            System.exit(0);
+        });
     }
 
     public void closeStage(Stage myStage)
