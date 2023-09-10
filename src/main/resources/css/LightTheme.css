@@ -45,7 +45,7 @@
 .text-field: hover
 {
     -fx-border-color: #7847ad;
-    -fx-border-radius: 15px; Raggio degli angoli dei bordi
+    -fx-border-radius: 15px; /*Raggio degli angoli dei bordi*/
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
 
