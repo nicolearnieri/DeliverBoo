@@ -260,7 +260,7 @@ public class SceneHandler {
         closeStage(thirdStage);
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderConfirmed.fxml"));
-        scene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
 
         OrderConfirmedController controller= loader.getController();
         controller.init(localizationManager);
