@@ -89,6 +89,16 @@ public class SceneHandler {
             instance = new SceneHandler();
         return instance;
     }
+
+    private void terminateExec(Stage stage)
+    {
+        stage.setOnCloseRequest(e -> {
+            executor.shutdownNow();
+            Platform.exit();
+            System.exit(0);
+        });
+    }
+
     public void setHomeInterface() throws Exception {
         if(stage!=null) {stage.close();}
         stage = new Stage();
@@ -107,11 +117,7 @@ public class SceneHandler {
         stage.show();
 
 
-        stage.setOnCloseRequest(e -> {
-            executor.shutdownNow();
-            Platform.exit();
-            System.exit(0);
-        });
+        terminateExec(stage);
     }
 
     public void setSearchRestaurants() throws Exception {
@@ -143,12 +149,8 @@ public class SceneHandler {
 
 
                 chargingStage.close();
+                terminateExec(stage);
 
-                stage.setOnCloseRequest(e -> {
-                    executor.shutdownNow();
-                    Platform.exit();
-                    System.exit(0);
-                });
             });
         /*stage.show();*/
     }
@@ -189,6 +191,8 @@ public class SceneHandler {
         secondStage.setTitle("DeliverBoo");
         secondStage.setScene(secondScene);
         secondStage.show();
+
+        terminateExec(stage);
     }
 
     public void setRecapOrder(ListView<CartItem> cartList, String total) throws Exception {
@@ -205,6 +209,8 @@ public class SceneHandler {
         thirdStage.setTitle("DeliverBoo");
         thirdStage.setScene(secondScene);
         thirdStage.show();
+
+        terminateExec(thirdStage);
     }
 
     public void setPayment() throws IOException {
@@ -222,6 +228,8 @@ public class SceneHandler {
         secondStage.setTitle("DeliverBoo");
         secondStage.setScene(secondScene);
         secondStage.show();
+
+        terminateExec(secondStage);
     }
 
     public void setOrderDetails() throws IOException {
@@ -239,6 +247,8 @@ public class SceneHandler {
         stage.getIcons().add(icon); // Imposta l'icona per la finestra
         stage.setScene(secondScene);
         stage.show();
+
+        terminateExec(stage);
     }
 
 
@@ -294,6 +304,8 @@ public class SceneHandler {
         logInOrSignUpStage.setResizable(false);
         logInOrSignUpStage.show();
     }
+
+
 
     public void setProfile() throws Exception {
         stage = new Stage();
@@ -364,11 +376,7 @@ public class SceneHandler {
         stage.setScene(scene);
         stage.show();
 
-        stage.setOnCloseRequest(e -> {
-            executor.shutdownNow();
-            Platform.exit();
-            System.exit(0);
-        });
+
     }
 
     public void closeStage(Stage myStage)
