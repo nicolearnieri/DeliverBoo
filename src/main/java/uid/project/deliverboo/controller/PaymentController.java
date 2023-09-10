@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import uid.project.deliverboo.model.EmailSender;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.io.IOException;
@@ -103,10 +104,17 @@ public class PaymentController {
 
     @FXML
     void confirmPayment(ActionEvent event) throws IOException {
-        if (controlOnMonth())
+        if (controlOnMonth()) {
+            String message = localizationManager.getLocalizedString("orderConfirmed.body1");
+            String value = String.valueOf(tot);
+            String message2 = localizationManager.getLocalizedString("orderConfirmed.body2");
+            String concatenated = message + value + message2;
+            EmailSender.sendEmail(OrderDetailsController.email, localizationManager.getLocalizedString("orderConfirmed.subject"), concatenated);
             SceneHandler.getInstance().setOrderConfirmed();
+        }
+
         else
-        {//errore amio
+        {SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongMonth.message"), localizationManager.getLocalizedString("wrongMonth.title") );
              }
     }
 

@@ -63,6 +63,8 @@ public class OrderDetailsController {
 
     private double tot;
 
+    public static String email;
+
     public void init(LocalizationManager localizationManager,Stage ownStage, Stage homeRStage, double tot) {
         stage=ownStage;
         this.homeRStage=homeRStage;
@@ -93,7 +95,6 @@ public class OrderDetailsController {
     }
 
     public void proceed() throws IOException {
-        String email=new String();
         String number=new String();
         if(nameField!=null && surnameField!=null && phoneNumberField!=null && emailField!=null && civicNumberField!=null){
             String name = (nameField.getText() != null) ? nameField.getText().trim() : "";
