@@ -401,6 +401,7 @@ public class SceneHandler {
         stage.setScene(scene);
         stage.show();
 
+        terminateExec(stage);
 
     }
 
