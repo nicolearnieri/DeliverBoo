@@ -27,7 +27,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="454.0">
                      <children>
-                        <Label fx:id="messagePaymentLabel" alignment="CENTER" prefHeight="18.0" prefWidth="316.0" text="Completa con i tuoi dati per ultimare il pagamento" />
+                        <Label fx:id="messagePaymentLabel" alignment="CENTER" prefHeight="18.0" prefWidth="428.0" text="Completa con i tuoi dati per ultimare il pagamento" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="75.0" spacing="15.0">
@@ -55,12 +55,12 @@
                         <Label fx:id="expiryDateLabel" prefHeight="18.0" prefWidth="234.0" text="Data Scadenza" textAlignment="CENTER" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <ComboBox fx:id="monthBox" prefHeight="30.0" prefWidth="85.0" promptText="MM" visibleRowCount="12">
+                              <ComboBox fx:id="monthBox" prefHeight="30.0" prefWidth="95.0" promptText="MM" visibleRowCount="12">
                                  <HBox.margin>
-                                    <Insets right="20.0" />
+                                    <Insets right="10.0" />
                                  </HBox.margin>
                               </ComboBox>
-                              <ComboBox fx:id="yearBox" prefHeight="30.0" prefWidth="85.0" promptText="YYYY" />
+                              <ComboBox fx:id="yearBox" prefHeight="30.0" prefWidth="95.0" promptText="YYYY" />
                            </children>
                         </HBox>
                      </children>

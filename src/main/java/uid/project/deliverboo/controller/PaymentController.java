@@ -110,6 +110,8 @@ public class PaymentController {
         expiryDateLabel.setText(localizationManager.getLocalizedString("label.expiryDate"));
         securityCodeLabel.setText(localizationManager.getLocalizedString("label.securityCode"));
         securityLabel.setText(localizationManager.getLocalizedString("label.securityLabel"));
+        cancelButton.setText(localizationManager.getLocalizedString("button.cancel"));
+        confirmationButton.setText(localizationManager.getLocalizedString("button.confirm"));
     }
 
 

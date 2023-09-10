@@ -46,6 +46,8 @@ public class SceneHandler {
 
     private Stage secondStage;
 
+    private Stage thirdStage;
+
     private Scene searchScene;
 
     private String theme = "DarkTheme";
@@ -103,7 +105,7 @@ public class SceneHandler {
         if(stage!=null) {stage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
-        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
 
 
         HomeController controller= loader.getController();
@@ -195,7 +197,7 @@ public class SceneHandler {
     }
 
     public void setRecapOrder(ListView<CartItem> cartList, String total) throws Exception {
-        Stage thirdStage = new Stage();
+        thirdStage = new Stage();
         thirdStage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
         Scene secondScene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
@@ -212,50 +214,52 @@ public class SceneHandler {
         terminateExec(thirdStage);
     }
 
-    public void setPayment() throws IOException {
-        secondStage= new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Payment.fxml"));
-        Scene secondScene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
-
-        PaymentController controller= loader.getController();
-        controller.initialize(stage, secondStage, localizationManager);
-
-
-        changedTheme(secondScene);
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        secondStage.getIcons().add(icon);
-        secondStage.setTitle("DeliverBoo");
-        secondStage.setScene(secondScene);
-        secondStage.show();
-
-        terminateExec(secondStage);
-    }
-
     public void setOrderDetails() throws IOException {
         hideStage(secondStage);
-        stage = new Stage();
+        thirdStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderDetails.fxml"));
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
 
         OrderDetailsController controller= loader.getController();
-        controller.init(localizationManager,stage, secondStage);
+        controller.init(localizationManager,thirdStage, secondStage);
 
         changedTheme(secondScene);
-        stage.setTitle("DeliverBoo");
+        thirdStage.setTitle("DeliverBoo");
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        stage.getIcons().add(icon); // Imposta l'icona per la finestra
-        stage.setScene(secondScene);
-        stage.show();
+        thirdStage.getIcons().add(icon); // Imposta l'icona per la finestra
+        thirdStage.setScene(secondScene);
+        thirdStage.show();
 
-        terminateExec(stage);
+        terminateExec(thirdStage);
     }
+
+    public void setPayment() throws IOException {
+        thirdStage= new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Payment.fxml"));
+        Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
+
+        PaymentController controller= loader.getController();
+        controller.initialize(secondStage, thirdStage, localizationManager);
+
+
+        changedTheme(secondScene);
+        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        thirdStage.getIcons().add(icon);
+        thirdStage.setTitle("DeliverBoo");
+        thirdStage.setScene(secondScene);
+        thirdStage.show();
+
+        terminateExec(secondStage);
+    }
+
+
 
     public void setOrderConfirmed() throws IOException {
         closeStage(stage);
         closeStage(secondStage);
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderConfirmed.fxml"));
-        scene = new Scene(loader.load(), 700, 700); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
 
         OrderConfirmedController controller= loader.getController();
         controller.init(localizationManager);

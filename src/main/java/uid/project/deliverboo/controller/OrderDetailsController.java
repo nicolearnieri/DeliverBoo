@@ -112,6 +112,7 @@ public class OrderDetailsController {
                     System.out.println("numero");
                     SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("phoneError.text"), ("phoneError.title"));
                 }else{
+                    SceneHandler.getInstance().closeStage(stage);
                     SceneHandler.getInstance().setPayment();
                 }
 
