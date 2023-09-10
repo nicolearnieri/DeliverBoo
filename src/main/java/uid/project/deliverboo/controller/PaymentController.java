@@ -76,9 +76,12 @@ public class PaymentController {
 
     int yearNumber = LocalDate.now().getYear();
 
-    public void initialize(Stage stage, Stage ownStage, LocalizationManager localizationManager) {
-        this.previousStage=stage;
+    private double tot;
+
+    public void initialize(Stage stage, Stage ownStage, LocalizationManager localizationManager, double tot) {
+        previousStage=stage;
         this.ownStage=ownStage;
+        this.tot=tot;
         this.localizationManager =localizationManager;
         updateTexts();
         securityCodeBox.setManaged(false);

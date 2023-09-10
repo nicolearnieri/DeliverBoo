@@ -242,7 +242,7 @@ public class SceneHandler {
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
 
         PaymentController controller= loader.getController();
-        controller.initialize(secondStage, thirdStage, localizationManager);
+        controller.initialize(secondStage, thirdStage, localizationManager, tot);
 
 
         changedTheme(secondScene);
