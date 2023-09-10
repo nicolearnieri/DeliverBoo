@@ -197,7 +197,7 @@ public class SceneHandler {
         terminateExec(stage);
     }
 
-    public void setRecapOrder(ListView<CartItem> cartList, String total) throws Exception {
+    public void setRecapOrder(ListView<CartItem> cartList, String total, double tot) throws Exception {
         thirdStage = new Stage();
         thirdStage.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RecapOrder.fxml"));
@@ -205,7 +205,7 @@ public class SceneHandler {
 
         thirdStage.initStyle(StageStyle.UNDECORATED);
         RecapOrderController controller= loader.getController();
-        controller.init(localizationManager, cartList, total, thirdStage);
+        controller.init(localizationManager, cartList, total, thirdStage, tot);
 
         changedTheme(secondScene);
         thirdStage.setTitle("DeliverBoo");
@@ -215,14 +215,14 @@ public class SceneHandler {
         terminateExec(thirdStage);
     }
 
-    public void setOrderDetails() throws IOException {
+    public void setOrderDetails(double tot) throws IOException {
         hideStage(secondStage);
         thirdStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderDetails.fxml"));
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
 
         OrderDetailsController controller= loader.getController();
-        controller.init(localizationManager,thirdStage, secondStage);
+        controller.init(localizationManager,thirdStage, secondStage, tot);
 
         changedTheme(secondScene);
         thirdStage.setTitle("DeliverBoo");
@@ -234,7 +234,7 @@ public class SceneHandler {
         terminateExec(thirdStage);
     }
 
-    public void setPayment() throws IOException {
+    public void setPayment(double tot) throws IOException {
         thirdStage= new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Payment.fxml"));
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza

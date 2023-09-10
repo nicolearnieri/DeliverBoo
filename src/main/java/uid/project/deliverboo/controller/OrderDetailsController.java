@@ -61,9 +61,12 @@ public class OrderDetailsController {
 
     private Stage stage;
 
-    public void init(LocalizationManager localizationManager,Stage ownStage, Stage homeRStage) {
-        this.stage=ownStage;
+    private double tot;
+
+    public void init(LocalizationManager localizationManager,Stage ownStage, Stage homeRStage, double tot) {
+        stage=ownStage;
         this.homeRStage=homeRStage;
+        this.tot=tot;
         emailField.setText(CurrentUser.getInstance().getEmail());
         nameField.setText(CurrentUser.getInstance().getName());
         surnameField.setText(CurrentUser.getInstance().getSurname());
@@ -113,7 +116,7 @@ public class OrderDetailsController {
                     SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("phoneError.text"), ("phoneError.title"));
                 }else{
                     SceneHandler.getInstance().closeStage(stage);
-                    SceneHandler.getInstance().setPayment();
+                    SceneHandler.getInstance().setPayment(tot);
                 }
 
             }
