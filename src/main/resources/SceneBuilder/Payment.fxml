@@ -99,8 +99,8 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="75.0" prefWidth="454.0" spacing="145.0">
                      <children>
-                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="90.0" text="annulla" />
-                        <Button fx:id="confirmationButton" mnemonicParsing="false" onAction="#confirmPayment" prefHeight="30.0" prefWidth="90.0" text="conferma" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#goBack" prefHeight="30.0" prefWidth="100.0" text="annulla" />
+                        <Button fx:id="confirmationButton" mnemonicParsing="false" onAction="#confirmPayment" prefHeight="30.0" prefWidth="100.0" text="conferma" />
                      </children>
                   </HBox>
                </children>

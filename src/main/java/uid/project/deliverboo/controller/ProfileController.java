@@ -100,7 +100,7 @@ public class ProfileController {
 
         if (!nameOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongName.message"), localizationManager.getLocalizedString("wrongName.title"));}
         if (!surnameOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongSurname.message"), localizationManager.getLocalizedString("wrongSurname.title"));}
-        if (!phoneOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongPhone.message"), localizationManager.getLocalizedString("wrongPhone.title"));}
+        if (!phoneOk) SceneHandler.getInstance().showError(localizationManager.getLocalizedString("phoneError.text"), localizationManager.getLocalizedString("phoneError.title"));
 
         if (nameOk && surnameOk && phoneOk)
         {
@@ -113,10 +113,6 @@ public class ProfileController {
                 CurrentUser.getInstance().setSurname(newSurname);
                 CurrentUser.getInstance().setPhoneNumber(newPhone);
             }
-        }
-        else
-        {
-            SceneHandler.getInstance().showError(localizationManager.getLocalizedString("phoneError.text"), localizationManager.getLocalizedString("phoneError.title"));
         }
 
     }
