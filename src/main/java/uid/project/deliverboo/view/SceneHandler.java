@@ -257,6 +257,7 @@ public class SceneHandler {
     public void setOrderConfirmed() throws IOException {
         closeStage(stage);
         closeStage(secondStage);
+        closeStage(thirdStage);
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderConfirmed.fxml"));
         scene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
@@ -270,6 +271,8 @@ public class SceneHandler {
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
         stage.show();
+
+        terminateExec(stage);
     }
 
 
