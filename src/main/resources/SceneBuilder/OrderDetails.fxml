@@ -150,7 +150,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="105.0">
                      <children>
-                        <TextField fx:id="civicNumberField" prefHeight="26.0" prefWidth="40.0">
+                        <TextField fx:id="civicNumberField" prefHeight="26.0" prefWidth="59.0">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

@@ -30,7 +30,7 @@
                   <Insets bottom="40.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="backToHomeButton" mnemonicParsing="false" onAction="#backToHome" prefHeight="26.0" prefWidth="186.0" text="Home">
+            <Button fx:id="backToHomeButton" mnemonicParsing="false" onAction="#backToHome" prefHeight="30.0" prefWidth="186.0" text="Home">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
