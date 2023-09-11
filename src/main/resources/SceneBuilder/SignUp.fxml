@@ -72,7 +72,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="57.2" prefWidth="347.2">
                <children>
-                  <Button fx:id="buttonSend" mnemonicParsing="false" onAction="#registration" onKeyPressed="#sendEnter" prefHeight="34.0" prefWidth="80.0" text="Invia" />
+                  <Button fx:id="buttonSend" mnemonicParsing="false" onAction="#registration" prefHeight="34.0" prefWidth="80.0" text="Invia" />
                </children>
             </HBox>
          </children>

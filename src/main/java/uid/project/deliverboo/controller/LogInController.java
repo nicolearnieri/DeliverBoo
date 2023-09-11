@@ -176,13 +176,6 @@ public class LogInController {
         }
     }
 
-    @FXML
-    void accessEnter(KeyEvent event) throws ExecutionException, InterruptedException {
-        if (event.getCode() == KeyCode.ENTER)
-        {
-            logInUser();
-        }
-    }
 
 
     private void updateTexts(){

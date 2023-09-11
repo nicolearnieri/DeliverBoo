@@ -252,14 +252,6 @@ public class SignUpController {
         SceneHandler.getInstance().setLogIn();
     }
 
-    @FXML
-    void sendEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER)
-        {
-            registration(event);
-        }
-
-    }
 
 
 

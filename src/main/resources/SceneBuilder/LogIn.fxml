@@ -66,7 +66,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="93.0" prefWidth="374.0">
                      <children>
-                        <Button fx:id="accessButton" mnemonicParsing="false" onAction="#logInUser" onKeyPressed="#accessEnter" prefHeight="34.0" prefWidth="80.0" text="Accedi" />
+                        <Button fx:id="accessButton" mnemonicParsing="false" onAction="#logInUser" prefHeight="34.0" prefWidth="80.0" text="Accedi" />
                      </children>
                      <VBox.margin>
                         <Insets />
