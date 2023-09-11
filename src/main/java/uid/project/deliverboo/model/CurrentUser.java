@@ -6,6 +6,8 @@ public class CurrentUser
     private String nomeUtente;
     private String email;
     private String phoneNumber;
+    private String name;
+    private String surname;
 
     public String getName() {
         return name;
@@ -23,8 +25,7 @@ public class CurrentUser
         this.surname = surname;
     }
 
-    private String name;
-    private String surname;
+
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -33,8 +34,6 @@ public class CurrentUser
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-
 
 
     private boolean access = false;
@@ -66,5 +65,7 @@ public class CurrentUser
         this.email = null;
         this.nomeUtente = null;
         this.phoneNumber = null;
+        this.name= null;
+        this.surname= null;
         this.access= false; }
 }
