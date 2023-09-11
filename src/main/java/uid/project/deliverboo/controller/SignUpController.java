@@ -210,10 +210,10 @@ public class SignUpController {
                 showUsernameError();}
 
 
-            if ( ValidatorUtility.isValidEmail(email))
+            if ( ValidatorUtility.isValidEmail(email)) //se il formato è valido
             {
                 Callable<Boolean> emailCallable = TaskCreator.createEmailNotExists(email);
-                result = executor.submit(userCallable);//oggetto prodotto da un'operazione asincrona
+                result = executor.submit(emailCallable);//oggetto prodotto da un'operazione asincrona
                 res = result.get();
 
                 if (res) {emailOk = true;}
