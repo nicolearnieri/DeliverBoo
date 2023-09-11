@@ -94,10 +94,12 @@ public class PasswordController {
             Callable<Boolean> delete = TaskCreator.createDeleteUser(userId);
             Future<Boolean> exec = executor.submit(delete);
 
-            if (exec.get())
+            if (exec.get()) {
                 SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.delete"), localizationManager.getLocalizedString("title.delete"));
-            SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnClientStage());
-            SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnPassStage());
+                SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnClientStage());
+                SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnPassStage());
+            }
+            else  SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.error"),localizationManager.getLocalizedString("title.error"));
 
         }
 
