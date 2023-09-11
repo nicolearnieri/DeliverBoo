@@ -150,7 +150,7 @@ public class SearchRestaurantsController {
             this.localizationManager=localizationManager;
             updateTexts();
 
-            Callable<List<Integer>> verifyCallable = TaskCreator.ReturnAddressTask(AddressVerifier.getFormattedAddress());
+            Callable<List<Integer>> verifyCallable = TaskCreator.createReturnAddressCallable(AddressVerifier.getFormattedAddress());
             Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
 
             try {

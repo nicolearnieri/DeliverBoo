@@ -57,7 +57,7 @@ public class RestaurantsListController {
         for (Integer element : queryResults) {
 
 
-            Callable<Boolean> verifyCallable = TaskCreator.ReturnRestInfoTask(element);
+            Callable<Boolean> verifyCallable = TaskCreator.createReturnRestInfoCallable(element);
             Future<Boolean> result = executor.submit(verifyCallable);
             try {
 

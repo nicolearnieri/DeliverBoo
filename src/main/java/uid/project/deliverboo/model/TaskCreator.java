@@ -10,50 +10,50 @@ public class TaskCreator
 {
     public static Callable<Boolean> createInsertUser(String username, String nome, String cognome, String email, String password, String numeroTelefono)
     {
-        InsertUserTask task = new InsertUserTask(username,nome,cognome, email, password,numeroTelefono);
-        return task;
+        InsertUserTask callable = new InsertUserTask(username,nome,cognome, email, password,numeroTelefono);
+        return callable;
     }
 
     public static Callable<Boolean> createDeleteUser (String userId)
     {
-        DeleteUserTask task = new DeleteUserTask(userId);
-        return task;
+        DeleteUserTask callable = new DeleteUserTask(userId);
+        return callable;
     }
 
     public static Callable<Boolean> createUsernameNotExists (String username)
     {
-        UsernameNotExistsTask task = new UsernameNotExistsTask(username);
-        return task;
+        UsernameNotExistsTask callable = new UsernameNotExistsTask(username);
+        return callable;
     }
 
     public static  Callable<Boolean> createEmailNotExists (String email)
     {
-        EmailNotExistsTask task = new EmailNotExistsTask(email);
-        return task;
+        EmailNotExistsTask callable = new EmailNotExistsTask(email);
+        return callable;
     }
 
     public static  Callable<String> createGetPassword (String param)
     {
-        GetPasswordTask task = new GetPasswordTask(param);
-        return task;
+        GetPasswordTask callable = new GetPasswordTask(param);
+        return callable;
     }
 
     public static  Callable<String> createGetUsername (String email)
     {
-        GetUsernameTask task = new GetUsernameTask(email);
-        return task;
+        GetUsernameTask callable = new GetUsernameTask(email);
+        return callable;
     }
 
     public static  Callable<String> createGetEmail (String username)
     {
-        GetEmailTask task = new GetEmailTask(username);
-        return task;
+        GetEmailTask callable = new GetEmailTask(username);
+        return callable;
     }
 
     public static  Callable<Boolean> createUpdateOnUser(String username, String nome, String cognome, String numeroTelefono)
     {
-        UpdateOnUserTask task = new UpdateOnUserTask(username,nome,cognome, numeroTelefono);
-        return task;
+        UpdateOnUserTask callable = new UpdateOnUserTask(username,nome,cognome, numeroTelefono);
+        return callable;
     }
 
     public static  Callable<List<Integer>> createSearchByType (String type, List<Integer> prevResults)
@@ -64,38 +64,38 @@ public class TaskCreator
 
     public static  Callable<List<Integer>> createSearchByName (String name, List<Integer> prevResults)
     {
-        SearchByNameTask task = new SearchByNameTask(name, prevResults);
-        return task;
+        SearchByNameTask callable = new SearchByNameTask(name, prevResults);
+        return callable;
     }
 
-    public static  Callable<List<Integer>> CreateSearchByCity (String city)
+    public static  Callable<List<Integer>> createSearchByCity (String city)
     {
-        SearchByAddressTask task = new SearchByAddressTask(city);
-        return task;
+        SearchByAddressTask callable = new SearchByAddressTask(city);
+        return callable;
     }
-public static  Callable<List<Integer>> ReturnAddressTask (String addressToCheck)
+public static  Callable<List<Integer>> createReturnAddressCallable (String addressToCheck)
     {
         //ReturnAddressTask task = new ReturnAddressTask(addressToCheck, listener);
-        ReturnAddressTask task = new ReturnAddressTask(addressToCheck);
-        return task;
+        ReturnAddressTask callable = new ReturnAddressTask(addressToCheck);
+        return callable;
     }
 
-public static Callable<Boolean> ReturnRestInfoTask (int code)
+public static Callable<Boolean> createReturnRestInfoCallable (int code)
     {
-        ReturnRestInfoTask task = new ReturnRestInfoTask(code);
-        return task;
+        ReturnRestInfoTask callable = new ReturnRestInfoTask(code);
+        return callable;
     }
 
-public static Callable<Boolean> ReturnFoodInfoCallable (int code)
+public static Callable<Boolean> createReturnFoodInfoCallable (int code)
 {
-    ReturnFoodInfoCallable call = new ReturnFoodInfoCallable(code);
-    return call;
+    ReturnFoodInfoCallable callable = new ReturnFoodInfoCallable(code);
+    return callable;
 }
 
 public static Callable<Vector<String>> returnUserInfoCallable(String value)
 {
-    GetInfoCallable call = new GetInfoCallable(value);
-    return call;
+    GetInfoCallable callable = new GetInfoCallable(value);
+    return callable;
 }
 
 }
