@@ -130,6 +130,7 @@ public class PaymentController {
 
     @FXML
     void goBack(ActionEvent event) {
+        SceneHandler.getInstance().setStageMaximized(previousStage, ownStage.isMaximized());
         SceneHandler.getInstance().showStage(previousStage);
         SceneHandler.getInstance().closeStage(ownStage);
     }

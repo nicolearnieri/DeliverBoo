@@ -90,6 +90,7 @@ public class OrderDetailsController {
     }
 
     public void goBack(){
+        SceneHandler.getInstance().setStageMaximized(homeRStage, stage.isMaximized());
         SceneHandler.getInstance().closeStage(stage);
         SceneHandler.getInstance().showStage(homeRStage);
     }

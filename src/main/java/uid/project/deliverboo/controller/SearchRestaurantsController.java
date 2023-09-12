@@ -79,8 +79,6 @@ public class SearchRestaurantsController {
     @FXML
     private MenuButton menu;
 
-    @FXML
-    private MenuItem FAQbutton;
 
     @FXML
     private Menu menuLanguage;
@@ -391,10 +389,6 @@ public class SearchRestaurantsController {
     }
 
 
-    @FXML
-    public void openFAQ(ActionEvent event) throws Exception {
-        SceneHandler.getInstance().setFaq();
-    }
 
     public void openHome(ActionEvent event) throws Exception{
         Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -457,7 +451,6 @@ public class SearchRestaurantsController {
         pub.setText(localizationManager.getLocalizedString("button.pub"));
         searchBar.setPromptText(localizationManager.getLocalizedString("textfield.searchBar"));
         menu.setText(localizationManager.getLocalizedString("menubutton.menu"));
-        FAQbutton.setText(localizationManager.getLocalizedString("menuitem.faq"));
         menuLanguage.setText(localizationManager.getLocalizedString("menu.menuLanguage"));
         menuTheme.setText(localizationManager.getLocalizedString("menu.menuTheme"));
         englishButton.setText(localizationManager.getLocalizedString("radiomenuitem.english"));
