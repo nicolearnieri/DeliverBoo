@@ -10,8 +10,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.Food;
+import uid.project.deliverboo.model.QueryCreator;
 import uid.project.deliverboo.model.Restaurant;
-import uid.project.deliverboo.model.TaskCreator;
+
 import uid.project.deliverboo.view.CartItem;
 import uid.project.deliverboo.view.MenuItem;
 import uid.project.deliverboo.view.SceneHandler;
@@ -104,7 +105,7 @@ public class RestaurantHomeController {
 
         imageRestaurant.setImage(new Image(Objects.requireNonNull(getClass().getResource(restaurant.getPath2())).toExternalForm()));
 
-        Callable<Boolean> verifyCallable = TaskCreator.createReturnFoodInfoCallable(restaurant.getCode());
+        Callable<Boolean> verifyCallable = QueryCreator.createReturnFoodInfoCallable(restaurant.getCode());
 
         Future<Boolean> result = executor.submit(verifyCallable);
         try {

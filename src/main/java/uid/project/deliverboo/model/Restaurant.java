@@ -1,6 +1,5 @@
 package uid.project.deliverboo.model;
 
-import java.util.List;
 
 public class Restaurant {
 

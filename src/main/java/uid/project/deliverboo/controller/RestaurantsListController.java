@@ -5,8 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import uid.project.deliverboo.model.ExecutorProvider;
+import uid.project.deliverboo.model.QueryCreator;
 import uid.project.deliverboo.model.Restaurant;
-import uid.project.deliverboo.model.TaskCreator;
+
 import uid.project.deliverboo.view.RestaurantItem;
 import uid.project.deliverboo.view.SceneHandler;
 
@@ -57,7 +58,7 @@ public class RestaurantsListController {
         for (Integer element : queryResults) {
 
 
-            Callable<Boolean> verifyCallable = TaskCreator.createReturnRestInfoCallable(element);
+            Callable<Boolean> verifyCallable = QueryCreator.createReturnRestInfoCallable(element);
             Future<Boolean> result = executor.submit(verifyCallable);
             try {
 

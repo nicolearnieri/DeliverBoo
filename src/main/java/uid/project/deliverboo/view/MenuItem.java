@@ -1,7 +1,6 @@
 package uid.project.deliverboo.view;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import uid.project.deliverboo.controller.LocalizationManager;

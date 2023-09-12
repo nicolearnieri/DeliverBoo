@@ -1,23 +1,23 @@
 package uid.project.deliverboo.controller;
 
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import uid.project.deliverboo.model.*;
-import uid.project.deliverboo.view.SceneHandler;
 import org.mindrot.jbcrypt.BCrypt;
-import uid.project.deliverboo.controller.HomeController;
+import uid.project.deliverboo.model.EmailSender;
+import uid.project.deliverboo.model.ExecutorProvider;
+import uid.project.deliverboo.model.QueryCreator;
+import uid.project.deliverboo.model.ValidatorUtility;
+import uid.project.deliverboo.view.SceneHandler;
 
-import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -201,7 +201,7 @@ public class SignUpController {
         boolean usernameOk = false;
 
         try {
-            Callable<Boolean> userCallable = TaskCreator.createUsernameNotExists(username);
+            Callable<Boolean> userCallable = QueryCreator.createUsernameNotExists(username);
             Future<Boolean> result = executor.submit(userCallable);//oggetto prodotto da un'operazione asincrona
             Boolean res = result.get();
             //controllo username valido: non dev'essere ripetuto nelle query
@@ -212,7 +212,7 @@ public class SignUpController {
 
             if ( ValidatorUtility.isValidEmail(email)) //se il formato è valido
             {
-                Callable<Boolean> emailCallable = TaskCreator.createEmailNotExists(email);
+                Callable<Boolean> emailCallable = QueryCreator.createEmailNotExists(email);
                 result = executor.submit(emailCallable);//oggetto prodotto da un'operazione asincrona
                 res = result.get();
 
@@ -230,7 +230,7 @@ public class SignUpController {
             {
 
                 String passwordEncoded= BCrypt.hashpw(password, BCrypt.gensalt(12)); //CODIFICA PASSWORD
-                Callable<Boolean> insTask = TaskCreator.createInsertUser(username, "", "", email, passwordEncoded, "");
+                Callable<Boolean> insTask = QueryCreator.createInsertUser(username, "", "", email, passwordEncoded, "");
                 Future<Boolean> insRes = executor.submit(insTask);//oggetto prodotto da un'operazione asincrona
                 res = insRes.get();
                 if (res)

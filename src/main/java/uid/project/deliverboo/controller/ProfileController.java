@@ -5,10 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.ExecutorProvider;
-import uid.project.deliverboo.model.TaskCreator;
+import uid.project.deliverboo.model.QueryCreator;
 import uid.project.deliverboo.model.ValidatorUtility;
 import uid.project.deliverboo.view.SceneHandler;
 
@@ -104,7 +103,7 @@ public class ProfileController {
 
         if (nameOk && surnameOk && phoneOk)
         {
-            Callable<Boolean> update = TaskCreator.createUpdateOnUser(CurrentUser.getInstance().getNomeUtente(), newName, newSurname, newPhone);
+            Callable<Boolean> update = QueryCreator.createUpdateOnUser(CurrentUser.getInstance().getNomeUtente(), newName, newSurname, newPhone);
             Future<Boolean> exec = executor.submit(update);
             if (exec.get()) {
 

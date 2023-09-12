@@ -3,7 +3,6 @@ package uid.project.deliverboo.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Locale;

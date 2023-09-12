@@ -1,18 +1,14 @@
 package uid.project.deliverboo.controller;
 
-import javafx.application.Platform;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import uid.project.deliverboo.model.*;
 import uid.project.deliverboo.view.SceneHandler;
 
-import java.util.Locale;
 import java.util.Objects;
 import java.util.Vector;
 import java.util.concurrent.Callable;
@@ -119,14 +115,14 @@ public class LogInController {
         boolean logInSucceded=false;
 
         if (email) {  //Se l'utente cerca di accedere tramite email:
-            Callable<Boolean> emailCallable = TaskCreator.createEmailNotExists(user);
+            Callable<Boolean> emailCallable = QueryCreator.createEmailNotExists(user);
             Future<Boolean> result = executor.submit(emailCallable);
             Boolean res = result.get();
             if (res)
                 logInError(localizationManager.getLocalizedString("error.email")); //l'email non esiste
             else userExists = true; //l'utente esiste
         } else { //cerca di accedere tramite username
-            Callable<Boolean> userCallable = TaskCreator.createUsernameNotExists(user);
+            Callable<Boolean> userCallable = QueryCreator.createUsernameNotExists(user);
             Future<Boolean> result = executor.submit(userCallable);
             Boolean res = result.get();
             if (res)
@@ -136,7 +132,7 @@ public class LogInController {
 
         if (userExists)
         {
-            Callable<String> getPwCallable = TaskCreator.createGetPassword(user);
+            Callable<String> getPwCallable = QueryCreator.createGetPassword(user);
             Future<String> resultP = executor.submit(getPwCallable);
             String resP = resultP.get();
             boolean check = BCrypt.checkpw(password, resP);
@@ -147,14 +143,14 @@ public class LogInController {
 
                 if (email) {
                     cU.setEmail(user);
-                    Callable<String> getUserCallable = TaskCreator.createGetUsername(user);
+                    Callable<String> getUserCallable = QueryCreator.createGetUsername(user);
                     Future<String> result = executor.submit(getUserCallable);
                     String resS = result.get();
                     cU.setNomeUtente(resS);
                 }
                 else {
                     cU.setNomeUtente(user);
-                    Callable<String> getEmailCallable = TaskCreator.createGetEmail(user);
+                    Callable<String> getEmailCallable = QueryCreator.createGetEmail(user);
                     Future<String> result = executor.submit(getEmailCallable);
                     String resE= result.get();
                     cU.setEmail(resE);
@@ -163,7 +159,7 @@ public class LogInController {
                 logSuccess();
                 SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnLogInSignUpStage());
 
-                Callable<Vector<String>> info = TaskCreator.returnUserInfoCallable(user);
+                Callable<Vector<String>> info = QueryCreator.returnUserInfoCallable(user);
                 Future<Vector<String>> exec = executor.submit(info);
                 Vector<String> res = exec.get();
                 if (res.size() ==3) {

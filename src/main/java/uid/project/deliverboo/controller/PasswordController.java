@@ -2,7 +2,6 @@ package uid.project.deliverboo.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -10,11 +9,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 import uid.project.deliverboo.model.CurrentUser;
 import uid.project.deliverboo.model.ExecutorProvider;
-import uid.project.deliverboo.model.TaskCreator;
+import uid.project.deliverboo.model.QueryCreator;
 import uid.project.deliverboo.view.SceneHandler;
 
 import java.util.Objects;
@@ -81,7 +79,7 @@ public class PasswordController {
         String userId = CurrentUser.getInstance().getNomeUtente();
 
 
-        Callable<String> getPwCallable = TaskCreator.createGetPassword(userId);
+        Callable<String> getPwCallable = QueryCreator.createGetPassword(userId);
         Future<String> resultP = executor.submit(getPwCallable);
 
         boolean passwordOk = BCrypt.checkpw(pw, resultP.get());
@@ -91,7 +89,7 @@ public class PasswordController {
             passwordCheck = true;
             CurrentUser.getInstance().logOut();
 
-            Callable<Boolean> delete = TaskCreator.createDeleteUser(userId);
+            Callable<Boolean> delete = QueryCreator.createDeleteUser(userId);
             Future<Boolean> exec = executor.submit(delete);
 
             if (exec.get()) {

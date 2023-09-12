@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 import uid.project.deliverboo.model.Food;
 import uid.project.deliverboo.view.CartItem;
 import uid.project.deliverboo.view.RecapItem;

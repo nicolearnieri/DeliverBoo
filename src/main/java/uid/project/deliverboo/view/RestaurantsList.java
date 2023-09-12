@@ -3,7 +3,6 @@ package uid.project.deliverboo.view;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import uid.project.deliverboo.controller.LocalizationManager;
 import uid.project.deliverboo.controller.RestaurantsListController;
 

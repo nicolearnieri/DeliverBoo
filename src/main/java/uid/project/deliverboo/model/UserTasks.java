@@ -9,10 +9,10 @@ import java.util.concurrent.Callable;
 
 import static uid.project.deliverboo.model.DataBaseManager.getConnection;
 
-class InsertUserTask implements Callable<Boolean> {
+class InsertUserCallable implements Callable<Boolean> {
     private String username, nome, cognome, email, password, numeroTelefono;
 
-    public InsertUserTask(String username, String nome, String cognome, String email, String password, String numeroTelefono) {
+    public InsertUserCallable(String username, String nome, String cognome, String email, String password, String numeroTelefono) {
         this.username = username;
         this.nome = nome;
         this.cognome = cognome;
@@ -45,10 +45,10 @@ class InsertUserTask implements Callable<Boolean> {
     }
 }
 
-class DeleteUserTask implements Callable<Boolean> {
+class DeleteUserCallable implements Callable<Boolean> {
     private String userId;
 
-    public DeleteUserTask(String userId) {
+    public DeleteUserCallable(String userId) {
         this.userId = userId;
     }
 
@@ -70,10 +70,10 @@ class DeleteUserTask implements Callable<Boolean> {
 
 
 
-class UsernameNotExistsTask implements Callable<Boolean> {
+class UsernameNotExistsCallable implements Callable<Boolean> {
     private String username;
 
-    public UsernameNotExistsTask(String username) {
+    public UsernameNotExistsCallable(String username) {
         this.username = username;
     }
 
@@ -96,10 +96,10 @@ class UsernameNotExistsTask implements Callable<Boolean> {
         return true;
     }
 }
-class EmailNotExistsTask implements Callable<Boolean> {
+class EmailNotExistsCallable implements Callable<Boolean> {
     private String email;
 
-    public EmailNotExistsTask(String email) {
+    public EmailNotExistsCallable(String email) {
         this.email = email;
     }
 
@@ -121,10 +121,10 @@ class EmailNotExistsTask implements Callable<Boolean> {
 }
 
 
-class GetPasswordTask implements Callable<String> {
+class GetPasswordCallable implements Callable<String> {
     private String param;
 
-    public GetPasswordTask(String param) {
+    public GetPasswordCallable(String param) {
         this.param = param;
     }
 
@@ -144,10 +144,10 @@ class GetPasswordTask implements Callable<String> {
         return "";
     }
 }
-class GetUsernameTask implements Callable<String>  {
+class GetUsernameCallable implements Callable<String>  {
     private String email;
 
-    public GetUsernameTask(String email) {
+    public GetUsernameCallable(String email) {
         this.email = email;
     }
 
@@ -169,10 +169,10 @@ class GetUsernameTask implements Callable<String>  {
         }
     }
 }
-class GetEmailTask implements Callable<String>  {
+class GetEmailCallable implements Callable<String>  {
     private String username;
 
-    public GetEmailTask(String username) {
+    public GetEmailCallable(String username) {
         this.username = username;
     }
 
@@ -226,10 +226,10 @@ class GetInfoCallable implements Callable<Vector<String>>  {
 
 
 
- class UpdateOnUserTask implements Callable<Boolean>  {
+ class UpdateOnUserCallable implements Callable<Boolean>  {
      private String user, name, surname, phone;
 
-     public UpdateOnUserTask(String user, String name, String surname, String phone) {
+     public UpdateOnUserCallable(String user, String name, String surname, String phone) {
          this.user = user;
          this.name = name;
          this.surname = surname;

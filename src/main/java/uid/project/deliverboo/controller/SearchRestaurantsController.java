@@ -148,7 +148,7 @@ public class SearchRestaurantsController {
             this.localizationManager=localizationManager;
             updateTexts();
 
-            Callable<List<Integer>> verifyCallable = TaskCreator.createReturnAddressCallable(AddressVerifier.getFormattedAddress());
+            Callable<List<Integer>> verifyCallable = QueryCreator.createReturnAddressCallable(AddressVerifier.getFormattedAddress());
             Future<List<Integer>> result = executor.submit(verifyCallable);//oggetto prodotto da un'operazione asincrona
 
             try {
@@ -194,7 +194,7 @@ public class SearchRestaurantsController {
     @FXML
     void searchByName(Event event) throws ExecutionException, InterruptedException, IOException {
         String name = searchBar.getText();
-        Callable<List<Integer>> sBN = TaskCreator.createSearchByName(name, queryResults );
+        Callable<List<Integer>> sBN = QueryCreator.createSearchByName(name, queryResults );
         Future<List<Integer>> executeSBN = executor.submit(sBN);
         List<Integer> results = executeSBN.get();
 
@@ -218,7 +218,7 @@ public class SearchRestaurantsController {
     }
     @FXML
     void searchGelateria(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Gelateria", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Gelateria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -237,7 +237,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchBread(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Forno", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Forno", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -253,7 +253,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchCoffee(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Caffetteria", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Caffetteria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -269,7 +269,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchPizza(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Pizzeria", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Pizzeria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -284,7 +284,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchGourmet(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Gourmet", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Ristorante Gourmet", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -300,7 +300,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchAsian(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Asiatico", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Ristorante Asiatico", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -316,7 +316,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchMexican(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Ristorante Messicano", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Ristorante Messicano", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -332,7 +332,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchPastries(ActionEvent event) throws IOException, ExecutionException, InterruptedException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Pasticceria", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Pasticceria", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -348,7 +348,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchPoke(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Poke", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Poke", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 
@@ -364,7 +364,7 @@ public class SearchRestaurantsController {
 
     @FXML
     void searchPub(ActionEvent event) throws ExecutionException, InterruptedException, IOException {
-        Callable<List<Integer>> sBT = TaskCreator.createSearchByType("Paninoteca", queryResults );
+        Callable<List<Integer>> sBT = QueryCreator.createSearchByType("Paninoteca", queryResults );
         Future<List<Integer>> executeSBT = executor.submit(sBT);
         List<Integer> results = executeSBT.get();
 

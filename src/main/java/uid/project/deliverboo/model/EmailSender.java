@@ -1,5 +1,6 @@
 package uid.project.deliverboo.model;
-import org.simplejavamail.MailException;
+
+
 import org.simplejavamail.api.email.Email;
 import org.simplejavamail.api.mailer.Mailer;
 import org.simplejavamail.email.EmailBuilder;

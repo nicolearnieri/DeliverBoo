@@ -17,14 +17,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
 import javafx.scene.control.ButtonType;
 import uid.project.deliverboo.model.ExecutorProvider;
-import uid.project.deliverboo.model.Food;
 import uid.project.deliverboo.model.Restaurant;
 
 public class SceneHandler {

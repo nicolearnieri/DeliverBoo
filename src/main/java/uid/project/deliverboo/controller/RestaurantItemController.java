@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 import uid.project.deliverboo.model.Restaurant;
 import uid.project.deliverboo.view.SceneHandler;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class RestaurantItemController {

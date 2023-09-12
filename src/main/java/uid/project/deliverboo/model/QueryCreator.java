@@ -6,53 +6,53 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 
-public class TaskCreator
+public class QueryCreator
 {
     public static Callable<Boolean> createInsertUser(String username, String nome, String cognome, String email, String password, String numeroTelefono)
     {
-        InsertUserTask callable = new InsertUserTask(username,nome,cognome, email, password,numeroTelefono);
+        InsertUserCallable callable = new InsertUserCallable(username,nome,cognome, email, password,numeroTelefono);
         return callable;
     }
 
     public static Callable<Boolean> createDeleteUser (String userId)
     {
-        DeleteUserTask callable = new DeleteUserTask(userId);
+        DeleteUserCallable callable = new DeleteUserCallable(userId);
         return callable;
     }
 
     public static Callable<Boolean> createUsernameNotExists (String username)
     {
-        UsernameNotExistsTask callable = new UsernameNotExistsTask(username);
+        UsernameNotExistsCallable callable = new UsernameNotExistsCallable(username);
         return callable;
     }
 
     public static  Callable<Boolean> createEmailNotExists (String email)
     {
-        EmailNotExistsTask callable = new EmailNotExistsTask(email);
+        EmailNotExistsCallable callable = new EmailNotExistsCallable(email);
         return callable;
     }
 
     public static  Callable<String> createGetPassword (String param)
     {
-        GetPasswordTask callable = new GetPasswordTask(param);
+        GetPasswordCallable callable = new GetPasswordCallable(param);
         return callable;
     }
 
     public static  Callable<String> createGetUsername (String email)
     {
-        GetUsernameTask callable = new GetUsernameTask(email);
+        GetUsernameCallable callable = new GetUsernameCallable(email);
         return callable;
     }
 
     public static  Callable<String> createGetEmail (String username)
     {
-        GetEmailTask callable = new GetEmailTask(username);
+        GetEmailCallable callable = new GetEmailCallable(username);
         return callable;
     }
 
     public static  Callable<Boolean> createUpdateOnUser(String username, String nome, String cognome, String numeroTelefono)
     {
-        UpdateOnUserTask callable = new UpdateOnUserTask(username,nome,cognome, numeroTelefono);
+        UpdateOnUserCallable callable = new UpdateOnUserCallable(username,nome,cognome, numeroTelefono);
         return callable;
     }
 
@@ -64,25 +64,19 @@ public class TaskCreator
 
     public static  Callable<List<Integer>> createSearchByName (String name, List<Integer> prevResults)
     {
-        SearchByNameTask callable = new SearchByNameTask(name, prevResults);
+        SearchByNameCallable callable = new SearchByNameCallable(name, prevResults);
         return callable;
     }
 
-    public static  Callable<List<Integer>> createSearchByCity (String city)
-    {
-        SearchByAddressTask callable = new SearchByAddressTask(city);
-        return callable;
-    }
 public static  Callable<List<Integer>> createReturnAddressCallable (String addressToCheck)
     {
-        //ReturnAddressTask task = new ReturnAddressTask(addressToCheck, listener);
-        ReturnAddressTask callable = new ReturnAddressTask(addressToCheck);
+        ReturnAddressCallable callable = new ReturnAddressCallable(addressToCheck);
         return callable;
     }
 
 public static Callable<Boolean> createReturnRestInfoCallable (int code)
     {
-        ReturnRestInfoTask callable = new ReturnRestInfoTask(code);
+        ReturnRestInfoCallable callable = new ReturnRestInfoCallable(code);
         return callable;
     }
 
