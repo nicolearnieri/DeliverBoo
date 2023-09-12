@@ -117,7 +117,7 @@
 
 }
 
-.list-view, .scroll-bar: vertical .thumb
+.list-view, .scroll-bar: vertical .thumb , .scroll-bar: horizontal .thumb
 {
     -fx-background-color: #5FDCDC;
 }
@@ -137,7 +137,7 @@
     -fx-background-radius: 15px;
 }
 
-.list-cell: hover, .scroll-bar:vertical .thumb: hover
+.list-cell: hover, .scroll-bar:vertical .thumb: hover , .scroll-bar:horizontal .thumb: hover
 {
     -fx-background-color: #37ABA9;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);

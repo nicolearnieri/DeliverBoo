@@ -128,15 +128,15 @@
 
 
 
-.list-view, .scroll-bar: vertical .thumb
+.list-view, .scroll-bar: vertical .thumb , .scroll-bar: horizontal .thumb
 {
     -fx-background-color:  #99A7BA;
 }
 
-.scroll-bar: vertical .thumb
+/*.scroll-bar: vertical .thumb
 {
     -fx-pref-height: 5px;
-}
+}*/
 
 .list-cell
 {
@@ -155,7 +155,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
 
-.scroll-bar:vertical .thumb: hover
+.scroll-bar:vertical .thumb: hover. , scroll-bar: horizontal .thumb: hover
 {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
 }
