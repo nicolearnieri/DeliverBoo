@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -60,7 +59,6 @@
             </Button>
             <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="46.0" prefWidth="127.0" text="Menu">
                <items>
-                  <MenuItem fx:id="FAQbutton" mnemonicParsing="false" onAction="#openFAQ" text="FAQ" />
                   <Menu fx:id="menuTheme" mnemonicParsing="false" text="Tema">
                      <items>
                         <RadioMenuItem fx:id="lightButton" mnemonicParsing="false" onAction="#setLightMode" text="Unspecified Action">

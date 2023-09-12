@@ -123,12 +123,11 @@ public class RestaurantHomeController {
         menuList.getItems().clear();
 
         for(Food food: menu){
-
             MenuItem menuItem= new MenuItem(food, localizationManager, controller);
-
             menuList.getItems().add(menuItem);
 
         }
+
 
         menuList.refresh();
 
@@ -142,12 +141,14 @@ public class RestaurantHomeController {
         if(cartList.getItems().isEmpty()==false){
             Boolean flag= SceneHandler.getInstance().showConfirmationCart(localizationManager.getLocalizedString("cartInfo.text"), localizationManager.getLocalizedString("cartInfo.title"));
             if(flag){
+                SceneHandler.getInstance().setStageMaximized(searchRestaurant, ownStage.isMaximized());
                 SceneHandler.getInstance().closeStage(ownStage);
                 cartList.getItems().clear();
 
                 SceneHandler.getInstance().showStage(searchRestaurant);
             }
         }else{
+            SceneHandler.getInstance().setStageMaximized(searchRestaurant, ownStage.isMaximized());
             SceneHandler.getInstance().closeStage(ownStage);
 
             SceneHandler.getInstance().showStage(searchRestaurant);

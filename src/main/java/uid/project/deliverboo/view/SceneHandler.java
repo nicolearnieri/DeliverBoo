@@ -67,6 +67,8 @@ public class SceneHandler {
 
     private ExecutorService executor = ExecutorProvider.getExecutor();
 
+    private boolean previousStageMaximized = false;
+
 
     private SceneHandler() {}
 
@@ -76,11 +78,9 @@ public class SceneHandler {
         stage = primaryStage;
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
         scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
-
         localizationManager= new LocalizationManager();
         HomeController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
-
         changedTheme(scene);
         stage.setTitle("DeliverBoo");
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));// Carica l'immagine dell'icona dall'URL relativo nel tuo progetto
@@ -104,11 +104,22 @@ public class SceneHandler {
         });
     }
 
+    public void setStageMaximized(Stage stage, Boolean bool){
+        if(bool){
+            stage.setMaximized(true);
+        }else{
+            stage.setMaximized(false);
+        }
+
+    }
+
     public void setHomeInterface() throws Exception {
+        previousStageMaximized=stage.isMaximized();
         if(stage!=null) {stage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "HomeInterface.fxml"));
         scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
+        if(previousStageMaximized) stage.setMaximized(true);
 
 
         HomeController controller= loader.getController();
@@ -126,6 +137,7 @@ public class SceneHandler {
     }
 
     public void setSearchRestaurants() throws Exception {
+        previousStageMaximized=stage.isMaximized();
         if(stage!=null) {stage.close();}
 
         // Carica la schermata di "Searching Progress" e visualizzala
@@ -144,6 +156,8 @@ public class SceneHandler {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
+
+            if(previousStageMaximized) stage.setMaximized(true);
 
             changedTheme(scene);
             Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
@@ -181,10 +195,11 @@ public class SceneHandler {
     }
 
     public void setRestaurantHome(Restaurant restaurant) throws Exception{
+        previousStageMaximized=stage.isMaximized();
         secondStage= new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "RestaurantHome.fxml"));
         Scene secondScene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
-
+        if(previousStageMaximized) secondStage.setMaximized(true);
         RestaurantHomeController controller= loader.getController();
         controller.initialize(restaurant, stage, secondStage, localizationManager, controller);
 
@@ -196,7 +211,7 @@ public class SceneHandler {
         secondStage.setScene(secondScene);
         secondStage.show();
 
-        terminateExec(stage);
+        terminateExec(secondStage);
     }
 
     public void setRecapOrder(ListView<CartItem> cartList, String total, double tot) throws Exception {
@@ -218,11 +233,12 @@ public class SceneHandler {
     }
 
     public void setOrderDetails(double tot) throws IOException {
+        previousStageMaximized=secondStage.isMaximized();
         hideStage(secondStage);
         thirdStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderDetails.fxml"));
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
-
+        if(previousStageMaximized) thirdStage.setMaximized(true);
         OrderDetailsController controller= loader.getController();
         controller.init(localizationManager,thirdStage, secondStage, tot);
 
@@ -237,10 +253,11 @@ public class SceneHandler {
     }
 
     public void setPayment(double tot) throws IOException {
+        previousStageMaximized=thirdStage.isMaximized();
         thirdStage= new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "Payment.fxml"));
         Scene secondScene = new Scene(loader.load(), 600, 700); //v:larghezza, v1:altezza
-
+        if(previousStageMaximized) thirdStage.setMaximized(true);
         PaymentController controller= loader.getController();
         controller.initialize(secondStage, thirdStage, localizationManager, tot);
 
@@ -252,19 +269,20 @@ public class SceneHandler {
         thirdStage.setScene(secondScene);
         thirdStage.show();
 
-        terminateExec(secondStage);
+        terminateExec(thirdStage);
     }
 
 
 
     public void setOrderConfirmed() throws IOException {
+        previousStageMaximized=thirdStage.isMaximized();
         closeStage(stage);
         closeStage(secondStage);
         closeStage(thirdStage);
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "OrderConfirmed.fxml"));
         scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
-
+        if(previousStageMaximized) stage.setMaximized(true);
         OrderConfirmedController controller= loader.getController();
         controller.init(localizationManager);
 
