@@ -406,7 +406,7 @@ public class SceneHandler {
         if(stage!=null) {stage.close();}
         stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "FAQ.fxml"));
-        scene = new Scene(loader.load(), 900, 700); //v:larghezza, v1:altezza
+        scene = new Scene(loader.load(), 1200, 700); //v:larghezza, v1:altezza
 
 
         FAQController controller= loader.getController();
