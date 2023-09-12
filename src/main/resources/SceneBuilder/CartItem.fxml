@@ -6,31 +6,30 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.CartItemController">
+<HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.CartItemController">
    <children>
-      <VBox prefHeight="154.0" prefWidth="321.0">
+      <VBox prefHeight="160.0" prefWidth="321.0">
          <children>
             <Label fx:id="nameLabel" text="Product's name">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="descriptionLabel" prefHeight="114.0" prefWidth="300.0" text="Description">
+            <Label fx:id="descriptionLabel" prefHeight="160.0" prefWidth="311.0" text="Description">
                <VBox.margin>
                   <Insets left="10.0" top="10.0" />
                </VBox.margin>
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER_RIGHT" prefHeight="400.0" prefWidth="288.0">
+      <VBox alignment="CENTER_RIGHT" prefHeight="400.0" prefWidth="270.0">
          <children>
             <Label fx:id="priceLabel" text="Price">
                <VBox.margin>
                   <Insets right="10.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="180.0">
                <children>
                   <Button fx:id="minusButton" mnemonicParsing="false" onAction="#ownDeductFood" prefHeight="25.0" prefWidth="25.0" text="-">
                      <HBox.margin>

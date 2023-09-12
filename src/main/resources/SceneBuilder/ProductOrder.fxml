@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="206.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.MenuItemController">
+<BorderPane prefHeight="220.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.MenuItemController">
    <center>
-      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="471.0">
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="471.0">
          <children>
-            <VBox prefHeight="150.0" prefWidth="300.0">
+            <VBox prefHeight="220.0" prefWidth="300.0">
                <children>
                   <Label fx:id="productName" prefHeight="100.0" prefWidth="300.0" text="ProductName" />
-                  <Label fx:id="productDescription" alignment="TOP_LEFT" prefHeight="157.0" prefWidth="313.0" text="Label" />
-                  <HBox prefHeight="100.0">
+                  <Label fx:id="productDescription" prefHeight="210.0" prefWidth="300.0" text="Label" />
+                  <HBox prefHeight="33.0" prefWidth="300.0">
                      <children>
                         <Label fx:id="price" prefHeight="90.0" prefWidth="150.0" text="Price">
                            <HBox.margin>
