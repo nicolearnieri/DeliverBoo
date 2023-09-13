@@ -26,10 +26,7 @@ import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.Restaurant;
 
 public class SceneHandler {
-    private final static String RESOURCE_PATH = "/src/main/resources/";
     private final static String CSS_PATH = "/css/";
-
-    private final static String FONTS_PATH = CSS_PATH + "fonts/";
     private final static String FXML_PATH = "/SceneBuilder/";
     private final Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     private final Alert alertError = new Alert(Alert.AlertType.ERROR);
@@ -55,9 +52,6 @@ public class SceneHandler {
     private String font = "FontMontserrat";
     private static SceneHandler instance = null;
 
-    public static boolean isLoadingVisible() {
-        return loadingVisible;
-    }
 
     private static boolean loadingVisible = false;
 
@@ -185,7 +179,6 @@ public class SceneHandler {
 
         changedTheme(searchScene);
         chargingStage.setTitle("DeliverBoo");
-        //stage.setResizable(false);
         chargingStage.setScene(searchScene);
         chargingStage.initStyle(StageStyle.UNDECORATED);
         chargingStage.show();
@@ -314,7 +307,6 @@ public class SceneHandler {
         changedTheme(logInScene);
         logInOrSignUpStage.setTitle("DeliverBoo");
 
-        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
         logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
@@ -340,7 +332,6 @@ public class SceneHandler {
         changedTheme(logInScene);
         logInOrSignUpStage.setTitle("DeliverBoo");
 
-        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
         logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
@@ -368,7 +359,6 @@ public class SceneHandler {
         changedTheme(logInScene);
         clientStage.setTitle("DeliverBoo");
 
-        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
         clientStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
@@ -376,10 +366,6 @@ public class SceneHandler {
         clientStage.show();
     }
 
-    public Stage returnStage()
-    {
-        return stage;
-    }
 
     public Stage returnLogInSignUpStage()
     {
@@ -410,7 +396,6 @@ public class SceneHandler {
         changedTheme(logInScene);
         passStage.setTitle("DeliverBoo");
 
-        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
         passStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
@@ -431,7 +416,6 @@ public class SceneHandler {
         changedTheme(scene);
         stage.setTitle("DeliverBoo");
 
-        //Nelle seguenti due righe si fa il cambio dell'icona nella barra sopra la finestra
         Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
         stage.getIcons().add(icon); // Imposta l'icona per la finestra
 
@@ -502,10 +486,6 @@ public class SceneHandler {
         setCSSForAlert(alertConfirmation);
     }
 
-    private void setCurrentRoot(String filename) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + filename));
-        scene.setRoot(loader.load());
-    }
 
     public void changeTheme(String newTheme) {
         theme=newTheme;
@@ -527,11 +507,6 @@ public class SceneHandler {
         alertError.getDialogPane().setPrefWidth(500);
         alertError.showAndWait();
 
-        /*
-        dÃ  nullpointerException
-        Image stageIcon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
-        Stage stage = (Stage) alertError.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(stageIcon);*/
 
     }
 
