@@ -53,8 +53,6 @@ public class SceneHandler {
     private static SceneHandler instance = null;
 
 
-    private static boolean loadingVisible = false;
-
     private LocalizationManager localizationManager;
 
     private ExecutorService executor = ExecutorProvider.getExecutor();
@@ -182,7 +180,7 @@ public class SceneHandler {
         chargingStage.setScene(searchScene);
         chargingStage.initStyle(StageStyle.UNDECORATED);
         chargingStage.show();
-        loadingVisible = true;
+
     }
 
     public void setRestaurantHome(Restaurant restaurant) throws Exception{
