@@ -97,9 +97,9 @@ public class PasswordController {
                 SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnClientStage());
                 SceneHandler.getInstance().closeStage(SceneHandler.getInstance().returnPassStage());
             }
-            else  SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.error"),localizationManager.getLocalizedString("title.error"));
-
         }
+        else  SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.error"),localizationManager.getLocalizedString("title.error"));
+
 
 
     }

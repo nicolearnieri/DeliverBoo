@@ -52,15 +52,15 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="75.0" spacing="15.0">
                      <children>
-                        <Label fx:id="expiryDateLabel" prefHeight="18.0" prefWidth="234.0" text="Data Scadenza" textAlignment="CENTER" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <Label fx:id="expiryDateLabel" prefHeight="18.0" prefWidth="201.0" text="Data Scadenza" textAlignment="CENTER" />
+                        <HBox alignment="CENTER" prefHeight="62.0" prefWidth="233.0">
                            <children>
-                              <ComboBox fx:id="monthBox" prefHeight="30.0" prefWidth="95.0" promptText="MM" visibleRowCount="12">
+                              <ComboBox fx:id="monthBox" prefHeight="30.0" prefWidth="115.0" promptText="MM" visibleRowCount="12">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </ComboBox>
-                              <ComboBox fx:id="yearBox" prefHeight="30.0" prefWidth="95.0" promptText="YYYY" />
+                              <ComboBox fx:id="yearBox" prefHeight="30.0" prefWidth="115.0" promptText="YYYY" />
                            </children>
                         </HBox>
                      </children>
@@ -87,9 +87,9 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <HBox fx:id="securityCodeBox" alignment="CENTER" prefHeight="62.0" prefWidth="433.0" spacing="15.0">
+                  <HBox fx:id="securityCodeBox" alignment="CENTER" prefHeight="133.0" prefWidth="480.0" spacing="15.0">
                      <children>
-                        <Label fx:id="securityLabel" prefHeight="79.0" prefWidth="338.0" text="Il Codice di Sicurezza o Verifica (CVV o CVC) è il codice di 3 o 4 cifre che trovi sul retro della carta." />
+                        <Label fx:id="securityLabel" prefHeight="79.0" prefWidth="386.0" text="Il Codice di Sicurezza o Verifica (CVV o CVC) è il codice di 3 o 4 cifre che trovi sul retro della carta." />
                         <ImageView fitHeight="77.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../usedImages/cvv.png" />

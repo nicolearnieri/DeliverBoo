@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.LogInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="482.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.LogInController">
    <children>
-      <BorderPane layoutX="95.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="95.0" layoutY="85.0" prefHeight="403.0" prefWidth="482.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="374.0" BorderPane.alignment="CENTER">
                <children>
@@ -52,10 +52,10 @@
                            <HBox.margin>
                               <Insets right="20.0" />
                            </HBox.margin></Label>
-                        <StackPane prefHeight="74.0" prefWidth="146.0">
+                        <StackPane prefHeight="74.0" prefWidth="154.0">
                            <children>
                               <TextField fx:id="seePasswordFieldSU" />
-                              <PasswordField fx:id="passwordFieldSU" prefHeight="26.0" prefWidth="154.0">
+                              <PasswordField fx:id="passwordFieldSU" prefHeight="26.0" prefWidth="153.0">
                                  <StackPane.margin>
                                     <Insets />
                                  </StackPane.margin></PasswordField>
@@ -78,7 +78,7 @@
          <bottom>
             <HBox prefHeight="48.0" prefWidth="374.0" spacing="15.0" BorderPane.alignment="BOTTOM_LEFT">
                <children>
-                  <Label fx:id="questionAccountLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="210.0" text="Non hai un account?" />
+                  <Label fx:id="questionAccountLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="286.0" text="Non hai un account?" />
                   <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#openSignUp" prefHeight="34.0" prefWidth="95.0" text="Registrati" />
                </children>
             </HBox>

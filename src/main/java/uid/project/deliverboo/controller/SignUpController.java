@@ -101,12 +101,12 @@ public class SignUpController {
         passwordFields();
 
         //informazioni sulla password mostrate quando si passa col mouse sul field per la password
-        passwordField.setOnMouseEntered(e -> {
+        stackPassword.setOnMouseEntered(e -> {
             passwordSuggestionBox.setVisible(true);
             passwordSuggestionBox.setManaged(true);
         });
 
-        passwordField.setOnMouseExited(e -> {
+        stackPassword.setOnMouseExited(e -> {
             passwordSuggestionBox.setVisible(false);
             passwordSuggestionBox.setManaged(false);
         });

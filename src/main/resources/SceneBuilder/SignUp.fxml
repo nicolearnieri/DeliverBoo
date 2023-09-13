@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="427.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.SignUpController">
+<BorderPane prefHeight="427.0" prefWidth="453.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uid.project.deliverboo.controller.SignUpController">
    <center>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="394.0" prefWidth="334.0" BorderPane.alignment="CENTER">
          <children>
@@ -87,7 +87,7 @@
    <bottom>
       <HBox prefHeight="48.0" prefWidth="347.0" spacing="15.0" BorderPane.alignment="BOTTOM_LEFT">
          <children>
-            <Label fx:id="questionAccountLabel" alignment="CENTER" prefHeight="18.0" prefWidth="219.0" text="Hai già un account?" textAlignment="CENTER" />
+            <Label fx:id="questionAccountLabel" alignment="CENTER" prefHeight="18.0" prefWidth="289.0" text="Hai già un account?" textAlignment="CENTER" />
             <Button fx:id="logInButton" mnemonicParsing="false" onAction="#openLogIn" prefHeight="34.0" prefWidth="95.0" />
          </children>
       </HBox>
