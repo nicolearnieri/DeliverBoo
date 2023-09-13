@@ -111,9 +111,8 @@ class ReturnAddressCallable implements Callable<List<Integer>> {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     String indirizzo = resultSet.getString("indirizzo");
-                    if (AddressVerifier.getDistance(indirizzo) <= 10)
+                    if (AddressVerifier.getDistance(indirizzo) <= 10 && AddressVerifier.getDistance(indirizzo) >= 0)
                         queryResults.add(resultSet.getInt("codice"));
-                    //listener.onProgressUpdate(0.8);
                 }
             }
             return queryResults;
