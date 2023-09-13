@@ -106,7 +106,6 @@ public class PasswordController {
 
     public void setLocalizationManager(LocalizationManager localizationManager){
         this.localizationManager = localizationManager;
-
         updateTexts();
     }
 

@@ -26,22 +26,6 @@ public class DataBaseManager {
 
 
 
-
-    //metodo per eseguire le query
-    public ResultSet executeQuery(String query) throws SQLException {
-        Connection connection = getConnection();
-        Statement statement = connection.createStatement();
-        return statement.executeQuery(query);
-        //resultSet: interfaccia che rappresenta un insieme di dati ottenuti tramite operazioni su JDBC
-    }
-
-
-    public int executeUpdate(String query) throws SQLException {
-        Connection connection = getConnection();
-        Statement statement = connection.createStatement();
-        return statement.executeUpdate(query);
-    }
-
     public static void closeConnection() {
         try {
             if (connection != null) {

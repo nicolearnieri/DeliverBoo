@@ -94,12 +94,13 @@ public class SignUpController {
 
 
 
-
-
     public void initialize() {
 
         passwordSuggestionBox.setManaged(false);
 
+        passwordFields();
+
+        //informazioni sulla password mostrate quando si passa col mouse sul field per la password
         passwordField.setOnMouseEntered(e -> {
             passwordSuggestionBox.setVisible(true);
             passwordSuggestionBox.setManaged(true);
@@ -109,8 +110,6 @@ public class SignUpController {
             passwordSuggestionBox.setVisible(false);
             passwordSuggestionBox.setManaged(false);
         });
-
-        passwordFields();
 
     }
 
@@ -127,8 +126,8 @@ public class SignUpController {
                 eyeImage.setImage(eyeOff);
                 seePasswordField.setVisible(true);
                 passwordField.setVisible(false);
-
-            } else {
+            }
+            else {
                 eyeImage.setImage(openEye);
                 seePasswordField.setVisible(false);
                 passwordField.setVisible(true);
@@ -147,9 +146,6 @@ public class SignUpController {
                 rPasswordField.setVisible(true);
             }
         });
-
-
-
 
     }
 
@@ -179,7 +175,7 @@ public class SignUpController {
 
     public void genericError ()
     { SceneHandler.getInstance().showError(localizationManager.getLocalizedString("content.error"),localizationManager.getLocalizedString("title.error")); }
-    private void regSuccess()
+    private void regSuccess()  //registrazione a buon fine
     { SceneHandler.getInstance().showInfo(localizationManager.getLocalizedString("content.signUp"),localizationManager.getLocalizedString("title.signUp")); }
 
 
@@ -202,12 +198,12 @@ public class SignUpController {
 
         try {
             Callable<Boolean> userCallable = QueryCreator.createUsernameNotExists(username);
-            Future<Boolean> result = executor.submit(userCallable);//oggetto prodotto da un'operazione asincrona
+            Future<Boolean> result = executor.submit(userCallable);
             Boolean res = result.get();
-            //controllo username valido: non dev'essere ripetuto nelle query
+
+            //controllo username valido: non dev'essere ripetuto nella query
             if (res) { usernameOk = true; }
-            else {
-                showUsernameError();}
+            else { showUsernameError(); }
 
 
             if ( ValidatorUtility.isValidEmail(email)) //se il formato è valido

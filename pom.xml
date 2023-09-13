@@ -120,7 +120,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>uid.project.deliverboo/uid.project.deliverboo.HelloApplication</mainClass>
+                            <mainClass>uid.project.deliverboo/uid.project.deliverboo.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

@@ -89,6 +89,7 @@ public class PaymentController {
         securityCodeBox.setManaged(false);
         securityCodeBox.setVisible(false);
 
+        //popUp per il CVV
         questionMark.setOnMouseEntered(e -> {
             securityCodeBox.setVisible(true);
             securityCodeBox.setManaged(true);

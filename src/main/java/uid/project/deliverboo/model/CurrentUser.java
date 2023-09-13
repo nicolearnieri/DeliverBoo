@@ -8,6 +8,7 @@ public class CurrentUser
     private String phoneNumber;
     private String name;
     private String surname;
+    private boolean access = false;
 
     public String getName() {
         return name;
@@ -36,7 +37,7 @@ public class CurrentUser
     }
 
 
-    private boolean access = false;
+
 
     private CurrentUser() {}
 

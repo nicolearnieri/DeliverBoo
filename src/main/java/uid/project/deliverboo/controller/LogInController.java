@@ -66,6 +66,7 @@ public class LogInController {
     }
     private void passwordFields() {
 
+        //per rendere il campo della password visibili o meno
         passwordFieldSU.textProperty().bindBidirectional(seePasswordFieldSU.textProperty());
         eyeImage.setImage(openEye);
 
@@ -112,21 +113,24 @@ public class LogInController {
         String password = passwordFieldSU.getText();
         boolean email = ValidatorUtility.isValidEmail(user);
         boolean userExists = false;
-        boolean logInSucceded=false;
 
-        if (email) {  //Se l'utente cerca di accedere tramite email:
+
+        if (email)
+        {  //Se l'utente cerca di accedere tramite email:
             Callable<Boolean> emailCallable = QueryCreator.createEmailNotExists(user);
             Future<Boolean> result = executor.submit(emailCallable);
             Boolean res = result.get();
             if (res)
                 logInError(localizationManager.getLocalizedString("error.email")); //l'email non esiste
             else userExists = true; //l'utente esiste
-        } else { //cerca di accedere tramite username
+        }
+        else
+        { //cerca di accedere tramite username
             Callable<Boolean> userCallable = QueryCreator.createUsernameNotExists(user);
             Future<Boolean> result = executor.submit(userCallable);
             Boolean res = result.get();
             if (res)
-                logInError(localizationManager.getLocalizedString("error.user"));
+                logInError(localizationManager.getLocalizedString("error.user")); //il nome utente non esiste
             else userExists = true;
         }
 
@@ -141,14 +145,16 @@ public class LogInController {
                 //si settano le info dell'utente corrente (che ha fatto l'accesso)
                 CurrentUser cU = CurrentUser.getInstance();
 
-                if (email) {
+                if (email)
+                {
                     cU.setEmail(user);
                     Callable<String> getUserCallable = QueryCreator.createGetUsername(user);
                     Future<String> result = executor.submit(getUserCallable);
                     String resS = result.get();
                     cU.setNomeUtente(resS);
                 }
-                else {
+                else
+                {
                     cU.setNomeUtente(user);
                     Callable<String> getEmailCallable = QueryCreator.createGetEmail(user);
                     Future<String> result = executor.submit(getEmailCallable);

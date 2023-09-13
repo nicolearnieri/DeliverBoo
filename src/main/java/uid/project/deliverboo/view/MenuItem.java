@@ -12,7 +12,7 @@ public class MenuItem extends StackPane {
 
     private MenuItemController controller;
     public MenuItem(Food food, LocalizationManager localizationManager, RestaurantHomeController rController){
-        FXMLLoader loader=new FXMLLoader(MenuItem.class.getResource("/SceneBuilder/ProductOrder.fxml"));
+        FXMLLoader loader=new FXMLLoader(MenuItem.class.getResource("/SceneBuilder/MenuItem.fxml"));
         try {
             BorderPane root= loader.load();
             controller=loader.getController();
