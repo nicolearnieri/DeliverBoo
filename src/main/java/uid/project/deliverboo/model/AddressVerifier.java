@@ -10,15 +10,13 @@ import uid.project.deliverboo.controller.LocalizationManager;
 import uid.project.deliverboo.view.SceneHandler;
 
 public class AddressVerifier {
-    private static JSONArray jsonArray;
     private static JSONObject jsonObject;
     private static JSONObject restaurant ;
     private static final double EARTH_RADIUS_KM = 6371.0;
     private static AddressVerifier instance = null;
     private AddressVerifier (){}
     public static AddressVerifier getInstance() {
-        if(instance == null)
-            instance = new AddressVerifier();
+        if(instance == null) instance = new AddressVerifier();
         return instance;
     }
     public static boolean userValidAddress(String address, LocalizationManager localizationManager) {
@@ -41,7 +39,7 @@ public class AddressVerifier {
                 }
                 in.close();
 
-                jsonArray = new JSONArray(response.toString());
+                JSONArray jsonArray = new JSONArray(response.toString());
                 int correctIndex=correctAddressIndex(jsonArray, localizationManager);
                 if (jsonArray.length() > 0 && correctIndex>=0) { //se l'array non è vuoto
                     jsonObject = jsonArray.getJSONObject(correctIndex); //prende il JSONObject
@@ -91,40 +89,27 @@ public class AddressVerifier {
         }
         return false;
     }
-
-    public static double getLatitude() {
-        return jsonObject.getDouble("lat");}
-    public static double getLongitude() {
-        return jsonObject.getDouble("lon");}
     public static String getFormattedAddress() {
         return jsonObject.getString("display_name"); //oltre a lat lon e display_name si può avere place_id, country, state, city, license, class e type (Classificazione e tipo del luogo)
-        }
-    private static double getRestaurantLatitude() {return restaurant.getDouble("lat");}
-    private static double getRestaurantLongitude() {return restaurant.getDouble("lon");}
-    public static String getCity(String temporaryAddress) {
-        String city="";
-        String[] addressParts = getFormattedAddress().split(", ");
-        if (addressParts.length >= 4) {
-            city = addressParts[1]; // La città dovrebbe essere il secondo elemento
-        }
-        return city;
     }
-
     public static double getDistance (String restaurantAddress) {
-        double lat1 = Math.toRadians(getLatitude());
-        double lon1 = Math.toRadians(getLongitude());
-        isValid(restaurantAddress);
-        double lat2 = Math.toRadians(getRestaurantLatitude());
-        double lon2 = Math.toRadians(getRestaurantLongitude());
+        if (isValid(restaurantAddress)){
+            double lat1 = Math.toRadians(jsonObject.getDouble("lat"));
+            double lon1 = Math.toRadians(jsonObject.getDouble("lon"));
 
-        double dlon = lon2 - lon1;
-        double dlat = lat2 - lat1;
+            double lat2 = Math.toRadians(restaurant.getDouble("lat"));
+            double lon2 = Math.toRadians(restaurant.getDouble("lon"));
 
-        double a = Math.pow(Math.sin(dlat / 2), 2)
-                + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            double dlon = lon2 - lon1;
+            double dlat = lat2 - lat1;
 
-        return EARTH_RADIUS_KM * c;
+            double a = Math.pow(Math.sin(dlat / 2), 2)
+                    + Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return EARTH_RADIUS_KM * c;
+        }
+        else {return -1;}
     }
 
     //funzione che, data jsonArray, restituisce l'indice del JSONObject giusto, altrimenti return -1
