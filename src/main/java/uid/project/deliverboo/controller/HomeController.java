@@ -1,6 +1,5 @@
 package uid.project.deliverboo.controller;
 
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -84,7 +83,6 @@ public class HomeController {
     @FXML
     private Label punLine;
 
-    private Stage chargingStage;
 
 
 
@@ -114,7 +112,7 @@ public class HomeController {
 
 
     public void openSearchRestaurants(Event event) throws Exception{
-        //try {
+
             if (AddressVerifier.getInstance().userValidAddress(addressField.getText(),localizationManager)) {
 
                 Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -135,9 +133,7 @@ public class HomeController {
             } else {
                 SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
             }
-       /* }catch (Exception e){
-            SceneHandler.getInstance().showError(localizationManager.getLocalizedString("address.errorMessage"), localizationManager.getLocalizedString("address.errorTitle"));
-        }*/
+
     }
 
 

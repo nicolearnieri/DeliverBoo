@@ -9,12 +9,9 @@ import uid.project.deliverboo.model.Food;
 import uid.project.deliverboo.view.CartItem;
 import uid.project.deliverboo.view.RecapItem;
 import uid.project.deliverboo.view.SceneHandler;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
-import java.util.Vector;
+
 
 public class RecapOrderController {
 
@@ -37,10 +34,6 @@ public class RecapOrderController {
     private Stage stage;
 
     private double tot;
-
-
-
-
 
 
     public void init(LocalizationManager localizationManager, ListView<CartItem> cartList, String total, Stage ownStage, double tot) throws IOException {

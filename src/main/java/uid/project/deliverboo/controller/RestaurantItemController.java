@@ -22,7 +22,7 @@ public class RestaurantItemController {
 
     @FXML
     private ImageView restaurantImage;
-    //qui si potrà usare HomeController.getAddress() per prendere l'indirizzo dell'utente e calcolare la distanza dal ristorante
+
 
     public void init(Restaurant restaurant) {
         nameLabel.setText(restaurant.getName());
@@ -32,30 +32,4 @@ public class RestaurantItemController {
 
     }
 
-    public static void setLightMode() {
-        SceneHandler.getInstance().changeTheme("LightTheme");
-
-    }
-
-    public static void setParadiseTheme() {SceneHandler.getInstance().changeTheme("ParadiseTheme");
-
-    }
-
-    public static void setDeliverBooTheme() {SceneHandler.getInstance().changeTheme("DeliverBooTheme");
-
-    }
-
-    public static void setDarkTheme() {SceneHandler.getInstance().changeTheme("DarkTheme");
-
-    }
-
-    public static void setObsidianTheme() {SceneHandler.getInstance().changeTheme("ObsidianTheme");
-
-    }
-    public static void setFontDyslexia() {SceneHandler.getInstance().changeFont("FontDyslexic");
-
-    }
-    public static void setFontMontserrat() {SceneHandler.getInstance().changeFont("FontMontserrat");
-
-    }
 }

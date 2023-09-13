@@ -3,7 +3,6 @@ package uid.project.deliverboo.model;
 public class Food {
     private String itName, engName, itDescr, engDescr, path;
     private double price;
-    private int codRest;
 
     public String getItName() {
         return itName;
@@ -54,11 +53,4 @@ public class Food {
         this.price = price;
     }
 
-    public int getCodRest() {
-        return codRest;
-    }
-
-    public void setCodRest(int codRest) {
-        this.codRest = codRest;
-    }
 }

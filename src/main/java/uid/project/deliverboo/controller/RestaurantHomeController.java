@@ -74,8 +74,6 @@ public class RestaurantHomeController {
 
     private RestaurantHomeController controller;
 
-    private int cont;
-
     private List<Integer> listQuantity=new ArrayList<>();
 
     public void initialize(Restaurant restaurant, Stage stage, Stage secondStage, LocalizationManager localizationManager, RestaurantHomeController controller) throws IOException {
@@ -138,7 +136,6 @@ public class RestaurantHomeController {
     }
 
     public void getBack(){
-        //qua va aggiunto l'if se la list del cart è vuoto
         if(cartList.getItems().isEmpty()==false){
             Boolean flag= SceneHandler.getInstance().showConfirmationCart(localizationManager.getLocalizedString("cartInfo.text"), localizationManager.getLocalizedString("cartInfo.title"));
             if(flag){
@@ -203,7 +200,7 @@ public class RestaurantHomeController {
             flag=controller.deductFood(f, cont);
             if (flag & cont == 0) {
 
-                itemsToRemove.add(cartItem); // Aggiungi l'elemento da rimuovere a una lista temporanea
+                itemsToRemove.add(cartItem);
 
                 foodInCart.remove(f);
             }
@@ -213,7 +210,6 @@ public class RestaurantHomeController {
         totalLabel.setText(total.getText()+tot+"€");
 
 
-        // Rimuovi gli elementi dalla ListView
         cartList.getItems().removeAll(itemsToRemove);
         itemsToRemove.clear();
     }
@@ -225,7 +221,7 @@ public class RestaurantHomeController {
             menuItemController.deductFood(f, contCart);
             if(contCart==0){
 
-                itemsToRemove.add(cartItem); // Aggiungi l'elemento da rimuovere a una lista temporanea
+                itemsToRemove.add(cartItem);
                 foodInCart.remove(f);
             }
         }

@@ -5,7 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import uid.project.deliverboo.controller.LocalizationManager;
 import uid.project.deliverboo.controller.RestaurantsListController;
-
 import java.io.IOException;
 import java.util.List;
 

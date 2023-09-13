@@ -50,10 +50,6 @@ public class MenuItemController{
 
 
 
-
-
-
-
     public void init(Food food, LocalizationManager localizationManager, RestaurantHomeController controller){
         this.food=food;
         this.controller=controller;

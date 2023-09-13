@@ -7,10 +7,8 @@ import javafx.scene.layout.AnchorPane;
 import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.model.QueryCreator;
 import uid.project.deliverboo.model.Restaurant;
-
 import uid.project.deliverboo.view.RestaurantItem;
 import uid.project.deliverboo.view.SceneHandler;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -35,7 +33,6 @@ public class RestaurantsListController {
 
     private AnchorPane anchorPane;
 
-    //private Double newVal;
 
 
     public void createList(List<Integer> queryResults, LocalizationManager localizationManager, AnchorPane anchorPane) throws IOException {

@@ -6,7 +6,6 @@ import javafx.scene.layout.StackPane;
 import uid.project.deliverboo.controller.LocalizationManager;
 import uid.project.deliverboo.controller.RecapItemController;
 import uid.project.deliverboo.model.Food;
-
 import java.io.IOException;
 
 public class RecapItem extends StackPane {
