@@ -1,14 +1,11 @@
 package uid.project.deliverboo;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.stage.Stage;
 import uid.project.deliverboo.model.ExecutorProvider;
 import uid.project.deliverboo.view.SceneHandler;
-
 import java.util.concurrent.ExecutorService;
 
-import static javafx.application.Application.launch;
 
 public class MainApplication extends Application {
 
