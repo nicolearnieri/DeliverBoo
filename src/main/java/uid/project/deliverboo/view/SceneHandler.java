@@ -46,8 +46,6 @@ public class SceneHandler {
 
     private Stage thirdStage;
 
-    private Scene searchScene;
-
     private String theme = "DarkTheme";
     private String font = "FontMontserrat";
     private static SceneHandler instance = null;
@@ -55,7 +53,7 @@ public class SceneHandler {
 
     private LocalizationManager localizationManager;
 
-    private ExecutorService executor = ExecutorProvider.getExecutor();
+    private final ExecutorService executor = ExecutorProvider.getExecutor();
 
     private boolean previousStageMaximized = false;
 
@@ -73,7 +71,7 @@ public class SceneHandler {
         controller.setLocalizationManager(localizationManager);
         changedTheme(scene);
         stage.setTitle("DeliverBoo");
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));// Carica l'immagine dell'icona dall'URL relativo nel tuo progetto
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));// Carica l'immagine dell'icona dall'URL relativo nel tuo progetto
         stage.getIcons().add(icon); // Imposta l'icona per la finestra
         stage.setScene(scene);
         stage.show();
@@ -95,12 +93,7 @@ public class SceneHandler {
     }
 
     public void setStageMaximized(Stage stage, Boolean bool){
-        if(bool){
-            stage.setMaximized(true);
-        }else{
-            stage.setMaximized(false);
-        }
-
+        stage.setMaximized(bool);
     }
 
     public void setHomeInterface() throws Exception {
@@ -116,7 +109,7 @@ public class SceneHandler {
         controller.setLocalizationManager(localizationManager);
 
         changedTheme(scene);
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         stage.getIcons().add(icon); // Imposta l'icona per la finestra
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
@@ -150,7 +143,7 @@ public class SceneHandler {
             if(previousStageMaximized) stage.setMaximized(true);
 
             changedTheme(scene);
-            Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+            Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
             stage.getIcons().add(icon);
             stage.setTitle("DeliverBoo");
             stage.setScene(scene);
@@ -168,7 +161,7 @@ public class SceneHandler {
 
         chargingStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH + "SearchingProgress.fxml"));
-        searchScene = new Scene(loader.load(), 360, 215); //v:larghezza, v1:altezza
+        Scene searchScene = new Scene(loader.load(), 360, 215); //v:larghezza, v1:altezza
 
         SearchingProgressController controller= loader.getController();
         controller.setLocalizationManager(localizationManager);
@@ -194,7 +187,7 @@ public class SceneHandler {
 
 
         changedTheme(secondScene);
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         secondStage.getIcons().add(icon);
         secondStage.setTitle("DeliverBoo");
         secondStage.setScene(secondScene);
@@ -233,7 +226,7 @@ public class SceneHandler {
 
         changedTheme(secondScene);
         thirdStage.setTitle("DeliverBoo");
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         thirdStage.getIcons().add(icon); // Imposta l'icona per la finestra
         thirdStage.setScene(secondScene);
         thirdStage.show();
@@ -252,7 +245,7 @@ public class SceneHandler {
 
 
         changedTheme(secondScene);
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         thirdStage.getIcons().add(icon);
         thirdStage.setTitle("DeliverBoo");
         thirdStage.setScene(secondScene);
@@ -276,7 +269,7 @@ public class SceneHandler {
         controller.init(localizationManager);
 
         changedTheme(scene);
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         stage.getIcons().add(icon);
         stage.setTitle("DeliverBoo");
         stage.setScene(scene);
@@ -305,7 +298,7 @@ public class SceneHandler {
         changedTheme(logInScene);
         logInOrSignUpStage.setTitle("DeliverBoo");
 
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
         logInOrSignUpStage.setScene(logInScene);
@@ -330,7 +323,7 @@ public class SceneHandler {
         changedTheme(logInScene);
         logInOrSignUpStage.setTitle("DeliverBoo");
 
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         logInOrSignUpStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
         logInOrSignUpStage.setScene(logInScene);
@@ -357,7 +350,7 @@ public class SceneHandler {
         changedTheme(logInScene);
         clientStage.setTitle("DeliverBoo");
 
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         clientStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
         clientStage.setScene(logInScene);
@@ -394,7 +387,7 @@ public class SceneHandler {
         changedTheme(logInScene);
         passStage.setTitle("DeliverBoo");
 
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         passStage.getIcons().add(icon); // Imposta l'icona per la finestra
 
         passStage.setScene(logInScene);
@@ -414,7 +407,7 @@ public class SceneHandler {
         changedTheme(scene);
         stage.setTitle("DeliverBoo");
 
-        Image icon = new Image(getClass().getResourceAsStream("/Icone/Ghost.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Icone/Ghost.png")));
         stage.getIcons().add(icon); // Imposta l'icona per la finestra
 
         stage.setScene(scene);
@@ -449,7 +442,6 @@ public class SceneHandler {
     }
     private void loadMontserrat() {
         Font.loadFont(getClass().getResourceAsStream("/css/fonts/Montserrat-Regular.ttf"), 12);
-        //System.out.println(myfont.getFamily());
     }
     private void loadOpenDyslexic() {
         Font.loadFont(getClass().getResourceAsStream("/css/fonts/OpenDyslexic-Regular.otf"), 12);
