@@ -110,7 +110,10 @@ public class PaymentController {
         boolean monthOk = controlOnMonth();
         boolean cardOk = ValidatorUtility.isValidNumber(cardNumberField.getText());
         boolean nameOk = ValidatorUtility.isValidString(cardOwnerField.getText());
-        boolean codeOk = ValidatorUtility.isValidNumber(securityCodeField.getText());
+        boolean codeOk = false;
+
+        if (ValidatorUtility.isValidNumber(securityCodeField.getText()) && (securityCodeField.getText().length()>2 && securityCodeField.getText().length()<5) )
+            codeOk= true;
 
         if (!monthOk) {SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongMonth.message"), localizationManager.getLocalizedString("wrongMonth.title"));}
         if (!nameOk){SceneHandler.getInstance().showError(localizationManager.getLocalizedString("wrongName.message"), localizationManager.getLocalizedString("wrongName.title"));}
