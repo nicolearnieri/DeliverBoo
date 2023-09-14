@@ -55,6 +55,9 @@ public class OrderDetailsController {
 
     @FXML
     private Button proceedButton;
+
+    @FXML
+    private Label notesForDirverLabel;
     private LocalizationManager localizationManager;
 
     private Stage homeRStage;
@@ -87,6 +90,7 @@ public class OrderDetailsController {
         houseNumberLabel.setText(localizationManager.getLocalizedString("label.houseNumber"));
         addressLabel.setText(localizationManager.getLocalizedString("label.infoAddress"));
         proceedButton.setText(localizationManager.getLocalizedString("button.proceedButton"));
+        notesForDirverLabel.setText(localizationManager.getLocalizedString("label.notesForDriver"));
     }
 
     public void goBack(){

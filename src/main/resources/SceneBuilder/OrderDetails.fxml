@@ -166,7 +166,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Note per il driver">
+                  <Label fx:id="notesForDirverLabel" text="Note per il driver">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
